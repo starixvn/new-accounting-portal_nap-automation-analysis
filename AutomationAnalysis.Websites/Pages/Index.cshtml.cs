@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace AutomationAnalysis.Websites.Pages
 {
-    [AllowAnonymous]
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;

@@ -1,4 +1,9 @@
 ﻿using Fanex.Logging;
+using Fanex.NAP.Client.AspNetCore.Configuration;
+using Fanex.NAP.Client.AspNetCore.Session;
+using Fanex.NAP.Client.Configuration;
+using Fanex.NAP.Client.Helpers.Web;
+using Fanex.NAP.Client.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -20,6 +25,15 @@ namespace AutomationAnalysis.Websites.App_Start
             services.AddSingleton<IMaintenanceService, MaintenanceService>();
             services.AddSingleton<IUMCacheService, UMCacheService>();
             services.AddSingleton<IUMRestClient, UMRestClient>();
+
+            services.AddSingleton<INapSettings>(new NapSettings(configuration));
+            services.AddSingleton<INapSession, NapSession>();
+
+            services.AddSingleton<IGroupService, GroupService>();
+            services.AddSingleton<IUserService, UserService>();
+            services.AddSingleton<ISecurityService, SecurityService>();
+            services.AddSingleton<ISiteService, SiteService>();
+
             return services;
         }
     }
