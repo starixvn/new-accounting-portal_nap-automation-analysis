@@ -28,6 +28,7 @@ namespace AutomationAnalysis.Websites
             services.AddSession(Configuration);
             services.AddCorsServices();
             services.AddFanexCaching(Configuration);
+            services.AddFanexData(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
