@@ -1,0 +1,2 @@
+# Note
+Initialize git
