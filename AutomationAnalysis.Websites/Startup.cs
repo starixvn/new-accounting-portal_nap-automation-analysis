@@ -4,6 +4,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using AutomationAnalysis.Websites.App_Start;
+using AutomationAnalysis.Websites.CrossCuttingConcern;
 
 
 namespace AutomationAnalysis.Websites
@@ -52,6 +53,7 @@ namespace AutomationAnalysis.Websites
             app.UseCookiePolicy();
             app.UseSession();
             app.UseRouting();
+            app.UseMiddleware<ErrorHandler>();
             app.UseCors(AllowOrigin);
             app.UseAuthentication();
             app.UseAuthorization();
