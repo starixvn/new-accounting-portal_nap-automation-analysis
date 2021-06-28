@@ -30,6 +30,7 @@ namespace AutomationAnalysis.Websites
             services.AddFanexCaching(Configuration);
             services.AddFanexData(Configuration);
             services.AddFanexLogging(Configuration);
+            services.AddDependencyInjection();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
