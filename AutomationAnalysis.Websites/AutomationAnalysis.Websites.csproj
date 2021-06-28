@@ -38,6 +38,9 @@
     <PackageReference Include="ONEbook.UM.AspNetCore" Version="3.1.0-beta02" />
     <PackageReference Include="ONEbook.UM.Transport" Version="3.1.1" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\AutomationAnalysis\AutomationAnalysis.csproj" />
+  </ItemGroup>
 
 
 

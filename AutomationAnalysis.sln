@@ -3,7 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31402.337
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationAnalysis.Websites", "AutomationAnalysis.Websites\AutomationAnalysis.Websites.csproj", "{E13E8229-35B6-4D59-A1E8-C40E348489EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationAnalysis.Websites", "AutomationAnalysis.Websites\AutomationAnalysis.Websites.csproj", "{E13E8229-35B6-4D59-A1E8-C40E348489EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5DD299F0-08DC-40FA-B100-7875804F726F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationAnalysis", "src\AutomationAnalysis\AutomationAnalysis.csproj", "{E1E4144B-8F84-400C-BED9-349291FC0FE4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B35EAB87-2414-4926-98A1-02724C4295E1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationAnalysisUnitTests", "tests\AutomationAnalysisUnitTests\AutomationAnalysisUnitTests.csproj", "{305C0AB3-50C2-4C6B-B4A0-8E849CD03542}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,9 +23,21 @@ Global
 		{E13E8229-35B6-4D59-A1E8-C40E348489EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E13E8229-35B6-4D59-A1E8-C40E348489EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E13E8229-35B6-4D59-A1E8-C40E348489EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1E4144B-8F84-400C-BED9-349291FC0FE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1E4144B-8F84-400C-BED9-349291FC0FE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1E4144B-8F84-400C-BED9-349291FC0FE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1E4144B-8F84-400C-BED9-349291FC0FE4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{305C0AB3-50C2-4C6B-B4A0-8E849CD03542}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{305C0AB3-50C2-4C6B-B4A0-8E849CD03542}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{305C0AB3-50C2-4C6B-B4A0-8E849CD03542}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{305C0AB3-50C2-4C6B-B4A0-8E849CD03542}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E1E4144B-8F84-400C-BED9-349291FC0FE4} = {5DD299F0-08DC-40FA-B100-7875804F726F}
+		{305C0AB3-50C2-4C6B-B4A0-8E849CD03542} = {B35EAB87-2414-4926-98A1-02724C4295E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1E46E49-843A-4B54-9E4E-06B77672BF68}
