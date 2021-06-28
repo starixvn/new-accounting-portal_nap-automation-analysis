@@ -15,6 +15,8 @@ namespace AutomationAnalysis.Websites
 {
     public class Startup
     {
+        private const string AllowOrigin = "AllowOrigin";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -29,6 +31,7 @@ namespace AutomationAnalysis.Websites
             services.AddAuthentication(Configuration);
             services.AddAuthorizationController();
             services.AddSession(Configuration);
+            services.AddCorsServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -50,7 +53,7 @@ namespace AutomationAnalysis.Websites
             app.UseCookiePolicy();
             app.UseSession();
             app.UseRouting();
-
+            app.UseCors(AllowOrigin);
             app.UseAuthentication();
             app.UseAuthorization();
 
