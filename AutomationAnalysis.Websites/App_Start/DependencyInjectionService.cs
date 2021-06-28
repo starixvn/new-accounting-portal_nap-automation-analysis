@@ -1,4 +1,6 @@
-﻿using Fanex.Logging;
+﻿using AutomationAnalysis.Services;
+using Fanex.Data.Repository;
+using Fanex.Logging;
 using Fanex.NAP.Client.AspNetCore.Configuration;
 using Fanex.NAP.Client.AspNetCore.Session;
 using Fanex.NAP.Client.Configuration;
@@ -15,9 +17,9 @@ using ONEbook.UM.Transport;
 
 namespace AutomationAnalysis.Websites.App_Start
 {
-    public static class NapDIService
+    public static class DependencyInjectionService
     {
-        public static IServiceCollection AddDependencyInjection(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddFanexDI(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddTransient<ILogger, Logger>();
@@ -33,6 +35,9 @@ namespace AutomationAnalysis.Websites.App_Start
             services.AddSingleton<IUserService, UserService>();
             services.AddSingleton<ISecurityService, SecurityService>();
             services.AddSingleton<ISiteService, SiteService>();
+
+            services.AddScoped<IDynamicRepository, DynamicRepository>();
+            services.AddSingleton<LogServiceWrapper, LogServiceWrapperImp>();
 
             return services;
         }

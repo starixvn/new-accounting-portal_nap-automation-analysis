@@ -1,10 +1,10 @@
+using AutomationAnalysis.Websites.App_Start;
+using AutomationAnalysis.Websites.CrossCuttingConcern;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using AutomationAnalysis.Websites.App_Start;
-using AutomationAnalysis.Websites.CrossCuttingConcern;
 
 
 namespace AutomationAnalysis.Websites
@@ -31,7 +31,9 @@ namespace AutomationAnalysis.Websites
             services.AddFanexCaching(Configuration);
             services.AddFanexData(Configuration);
             services.AddFanexLogging(Configuration);
-            services.AddDependencyInjection(Configuration);
+            services.AddFanexDI(Configuration);
+            services.AddMediatorServices();
+            services.AddAutoMapperServices();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
