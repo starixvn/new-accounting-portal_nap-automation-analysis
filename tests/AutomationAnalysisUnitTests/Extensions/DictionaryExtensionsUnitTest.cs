@@ -10,8 +10,8 @@ namespace AutomationAnalysisUnitTests.Extensions
         [Fact]
         public void GetValue_ValidKey_ReturnValue()
         {
-            GetValueTestHelpers<string, string>("key", "value");
-            GetValueTestHelpers<int, string>(1, "value");
+            GetValueTestHelpers("key", "value");
+            GetValueTestHelpers(1, "value");
             GetValueTestHelpers<object, object>(1, "value");
             GetValueTestHelpers<DateTime, object>(DateTime.Now, "value");
         }
@@ -19,16 +19,16 @@ namespace AutomationAnalysisUnitTests.Extensions
         [Fact]
         public void GetValue_InValidKey_ReturnDefaultValue()
         {
-            var dic = AddDictionaryOneItem<string, string>("A", "featureA");
+            var dic = AddDictionaryOneItem("A", "featureA");
 
             var result = dic.GetValue("B", "featureB");
 
             Assert.Equal("featureB", result);
         }
 
-        public void GetValueTestHelpers<TKey, TValue>(TKey key, TValue value)
+        private void GetValueTestHelpers<TKey, TValue>(TKey key, TValue value)
         {
-            var dic = AddDictionaryOneItem<TKey, TValue>(key, value);
+            var dic = AddDictionaryOneItem(key, value);
 
             var result = dic.GetValue(key);
 
@@ -37,8 +37,10 @@ namespace AutomationAnalysisUnitTests.Extensions
 
         private Dictionary<TKey, TValue> AddDictionaryOneItem<TKey, TValue>(TKey key, TValue value)
         {
-            var dic = new Dictionary<TKey, TValue>();
-            dic.Add(key, value);
+            var dic = new Dictionary<TKey, TValue>
+            {
+                { key, value }
+            };
 
             return dic;
         }

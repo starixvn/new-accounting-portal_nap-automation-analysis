@@ -1,9 +1,9 @@
 ﻿namespace AutomationAnalysis.Services
 {
-    using System.Text;
-    using System.Threading.Tasks;
     using Fanex.Logging;
     using Newtonsoft.Json;
+    using System.Text;
+    using System.Threading.Tasks;
 
     public interface LogServiceWrapper
     {

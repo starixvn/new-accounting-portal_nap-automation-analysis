@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using Fanex.Logging;
 using Fanex.Logging.Extensions;
 using Fanex.Logging.Extensions.AspNetCore;
@@ -7,6 +6,7 @@ using Fanex.Logging.Sentry.RavenClient;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using SharpRaven;
+using System.Collections.Generic;
 
 namespace AutomationAnalysis.Websites.App_Start
 {
@@ -31,6 +31,5 @@ namespace AutomationAnalysis.Websites.App_Start
 
             return services;
         }
-
     }
 }

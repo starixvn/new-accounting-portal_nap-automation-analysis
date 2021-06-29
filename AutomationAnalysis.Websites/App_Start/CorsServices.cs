@@ -1,17 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using StackExchange.Redis;
-
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace AutomationAnalysis.Websites.App_Start
 {

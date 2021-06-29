@@ -1,23 +1,23 @@
-﻿namespace AutomationAnalysis.Websites.CrossCuttingConcern
-{
-    using Fanex.Logging;
-    using Fanex.Logging.Extensions;
-    using Fanex.Logging.Extensions.Database;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.Extensions.Configuration;
-    using System;
-    using System.Threading.Tasks;
+﻿using Fanex.Logging;
+using Fanex.Logging.Extensions;
+using Fanex.Logging.Extensions.Database;
+using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using System;
+using System.Threading.Tasks;
 
+namespace AutomationAnalysis.Websites.CrossCuttingConcern
+{
     public class ErrorHandler
     {
-        private readonly RequestDelegate next;
-        private readonly ILogger logger;
+        private readonly RequestDelegate _next;
+        private readonly ILogger _logger;
         public IConfiguration Configuration { get; }
 
         public ErrorHandler(RequestDelegate next, ILogger logger, IConfiguration configuration)
         {
-            this.next = next;
-            this.logger = logger;
+            _next = next;
+            _logger = logger;
             Configuration = configuration;
         }
 
@@ -25,7 +25,7 @@
         {
             try
             {
-                await next(context);
+                await _next(context);
             }
             catch (Exception exception)
             {
@@ -40,7 +40,7 @@
                         .AddSection("Server Info", CommonInfoGetters.GetServerInfo())
                         .AddSection("Exception Info", CommonInfoGetters.GetExceptionInfo(exception))
                         .ToString();
-            await logger.ErrorAsync(logMessage);
+            await _logger.ErrorAsync(logMessage);
 
             var method = context.Request.Method.ToLowerInvariant();
             var requestedWith = context.Request.Headers["X-Requested-With"];
@@ -57,9 +57,8 @@
             if (!env.Equals("LIVE", StringComparison.CurrentCultureIgnoreCase))
             {
                 await context.Response.WriteAsync(Environment.NewLine);
-                await context.Response.WriteAsync(exception.StackTrace);
+                await context.Response.WriteAsync(exception.StackTrace ?? string.Empty);
             }
-            
         }
     }
 }

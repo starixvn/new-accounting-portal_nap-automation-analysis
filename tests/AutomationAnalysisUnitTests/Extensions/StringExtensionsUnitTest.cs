@@ -28,9 +28,7 @@ namespace AutomationAnalysisUnitTests.Extensions
         [Fact]
         public void IsContains_NullInput_ReturnFalse()
         {
-            string temp = null;
-
-            var result = temp.IsContains("sear");
+            var result = ((string)null).IsContains("sear");
 
             Assert.False(result);
         }

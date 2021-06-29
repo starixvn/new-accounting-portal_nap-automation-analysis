@@ -1,8 +1,8 @@
-using System.Linq;
 using Fanex.Data;
 using Fanex.Data.SqlServer;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using System.Linq;
 
 namespace AutomationAnalysis.Websites.App_Start
 {
@@ -28,6 +28,5 @@ namespace AutomationAnalysis.Websites.App_Start
 
             return services;
         }
-
     }
 }

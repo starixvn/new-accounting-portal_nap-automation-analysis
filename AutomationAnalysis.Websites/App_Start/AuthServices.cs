@@ -1,17 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using StackExchange.Redis;
-
+using System;
+using System.Threading.Tasks;
 
 namespace AutomationAnalysis.Websites.App_Start
 {
@@ -59,7 +54,7 @@ namespace AutomationAnalysis.Websites.App_Start
             return services;
         }
 
-        public  static  IServiceCollection AddSession(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddSession(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddSession(options =>
             {
