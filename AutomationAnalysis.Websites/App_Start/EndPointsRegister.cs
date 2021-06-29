@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace AutomationAnalysis.Websites.App_Start
 {
@@ -44,15 +45,15 @@ namespace AutomationAnalysis.Websites.App_Start
             return app;
         }
 
-
-        public static IApplicationBuilder UseControllerRouting(this IApplicationBuilder app)
+        public static IServiceCollection AddRazorPagesForSinglePageApp(this IServiceCollection services)
         {
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllers();
-            });
+            services.AddRazorPages()
+                .AddRazorPagesOptions(options =>
+                {
+                    options.Conventions.AddPageRoute("/Index", "/app/{*content}");
 
-            return app;
+                });
+            return services;
         }
     }
 }
