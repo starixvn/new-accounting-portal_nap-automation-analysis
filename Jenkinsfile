@@ -33,6 +33,14 @@ pipeline {
           }
         }
 		
+        stage("ReactJS Unit Test"){
+          steps{
+            script{
+              pipelineLib.jsJest("%WORKSPACE%/AutomationAnalysis.Websites/client")
+			  bat label: 'Replace lcov relative path', script: 'node "%WORKSPACE%\\AutomationAnalysis.Websites\\client\\replace-lcov.js" "%WORKSPACE%"'
+            }
+          }
+        }
       }      
     }    
 
@@ -57,12 +65,13 @@ pipeline {
 
   post{
     always{
-      archiveArtifacts "*.xml,*.email"
-      step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])      
-      mstest failOnError: false
+	  archiveArtifacts "*.xml,*.email"
+      step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])
+      cobertura coberturaReportFile: "cobertura.xml", onlyStable: false
+      xunit thresholds: [failed(failureNewThreshold: '1', failureThreshold: '1')], tools: [xUnitDotNet(deleteOutputFiles: true, failIfNotNew: true, pattern: 'UnitTest.xml', skipNoTestFiles: false, stopProcessingIfError: true)]
     }
     unsuccessful{
-      emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'mira.nguyen@starixvn.com,tyler.dang@starixvn.com,carlos.nguyen@starixvn.com,esther.nguyen@starixvn.com,jack.nguyen@starixvn.com'
+      emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'jacob.phan@starixvn.com,luca.duong@starixvn.com,johnny.thai@starixvn.com'
     }
   }
 }
