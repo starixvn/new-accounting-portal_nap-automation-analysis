@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace AutomationAnalysis.Websites.App_Start
 {
@@ -43,17 +42,6 @@ namespace AutomationAnalysis.Websites.App_Start
             });
 
             return app;
-        }
-
-        public static IServiceCollection AddRazorPagesForSinglePageApp(this IServiceCollection services)
-        {
-            services.AddRazorPages()
-                .AddRazorPagesOptions(options =>
-                {
-                    options.Conventions.AddPageRoute("/Index", "/app/{*content}");
-
-                });
-            return services;
         }
     }
 }
