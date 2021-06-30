@@ -2,8 +2,8 @@ import React from "react";
 import { shallow, mount } from "enzyme";
 import App from "./App";
 import { Route } from "react-router-dom";
-import Home from "./Feature/Home/Home";
-let pathMap : {[x: string]: any;};
+import Feature from "./Feature/Feature";
+let pathMap: { [x: string]: any };
 describe("routes using array of routers", () => {
   beforeAll(() => {
     const component = shallow(<App />);
@@ -14,6 +14,6 @@ describe("routes using array of routers", () => {
     }, {});
   });
   it("should show Home component for / router (getting array of routes)", () => {
-    expect(pathMap['/']).toBe(Home);
+    expect(pathMap["/app"]).toBe(Feature);
   });
 });

@@ -1,13 +1,20 @@
-import React from "react";
-import { Nav, Navbar, NavDropdown } from "react-bootstrap";
+import React, { useEffect } from "react";
+import { Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "@material-ui/core/AppBar";
 import { Menu, MenuItem, Typography } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
+import axios from "axios";
+interface Menu {
+  url: string;
+  name: string;
+}
 function Header() {
   const [auth, setAuth] = React.useState(true);
+  const [username, setUsername] = React.useState("");
+  const [menu, setMenu] = React.useState<Menu[]>([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const isMenuOpen = Boolean(anchorEl);
   const handleMenu = (event: any) => {
@@ -16,6 +23,17 @@ function Header() {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+  useEffect(() => {
+    (async () => {
+      try {
+        const res = await axios.get("/api/header");
+        setUsername(res.data.user);
+        setMenu(res.data.menus);
+      } catch (error) {
+        console.log(`failed post register as ${error}`);
+      }
+    })();
+  }, [menu]);
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -41,24 +59,11 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
+                {menu &&
+                  menu.map((x) => <Nav.Link href={x.url}>{x.name}</Nav.Link>)}
               </Nav>
             </Navbar.Collapse>
-            <Typography variant="h6">sa</Typography>
+            <Typography variant="h6">{username}</Typography>
             {auth && (
               <div id="toggle-menu">
                 <IconButton

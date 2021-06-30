@@ -1,13 +1,12 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Home from "./Feature/Home/Home";
-
+import Feature from "./Feature/Feature";
 function App() {
   return (
     <Suspense fallback={<div>Loading</div>}>
       <BrowserRouter>
         <Switch>
-          <Route component={Home} path="/" />
+          <Route component={Feature} path="/app" />
         </Switch>
       </BrowserRouter>
     </Suspense>
