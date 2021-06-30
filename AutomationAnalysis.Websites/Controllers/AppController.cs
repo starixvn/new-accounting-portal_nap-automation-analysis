@@ -17,7 +17,7 @@ namespace AutomationAnalysis.Websites.Controllers
             this.hostEnvironment = hostEnvironment;
         }
 
-        [Route("")]
+        [Route("{*path}")]
         [HttpGet]
         public IActionResult Index()
         {
