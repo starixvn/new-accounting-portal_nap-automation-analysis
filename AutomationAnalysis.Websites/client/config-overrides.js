@@ -3,6 +3,7 @@ const paths = require("./paths");
 process.env.HTTPS = "true";
 process.env.SSL_CRT_FILE = paths.sslCert;
 process.env.SSL_KEY_FILE = paths.sslKey;
+process.env.NODE_EXTRA_CA_CERTS = paths.caRootCert;
 
 module.exports = {
   webpack: function (config, env) {

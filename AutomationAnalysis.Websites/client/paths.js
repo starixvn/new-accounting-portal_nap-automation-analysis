@@ -14,4 +14,5 @@ module.exports = {
   publicPath: "wwwroot/app/",
   sslKey: resolveApp("config/key.pem"),
   sslCert: resolveApp("config/cert.pem"),
+  caRootCert: resolveApp("config/rootCA.pem")
 };
