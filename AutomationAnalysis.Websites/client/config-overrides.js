@@ -26,7 +26,7 @@ module.exports = {
       config.proxy = [
         {
           context: ["/api"],
-          target: "http://localhost:5000",
+          target: "https://localhost:44300",
           secure: false,
           logLevel: "debug",
           pathRewrite: {
