@@ -12,6 +12,6 @@ const resolveApp = (relativePath) => path.resolve(appDirectory, relativePath);
 module.exports = {
   appBuild: resolveApp("../wwwroot/app"),
   publicPath: "wwwroot/app/",
-  sslKey: resolveApp("config/localhost.key"),
-  sslCert: resolveApp("config/localhost.crt"),
+  sslKey: resolveApp("config/key.pem"),
+  sslCert: resolveApp("config/cert.pem"),
 };
