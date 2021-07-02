@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Nav, Navbar } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import AppBar from "@material-ui/core/AppBar";
@@ -6,35 +6,36 @@ import { Menu, MenuItem, Typography } from "@material-ui/core";
 import IconButton from "@material-ui/core/IconButton";
 import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
-import axios from "axios";
-interface Menu {
+import headerApi from "../../Api/headerApi";
+import { useHistory } from "react-router-dom";
+interface MenuHeader {
   url: string;
   name: string;
 }
 function Header() {
-  const [auth, setAuth] = React.useState(true);
-  const [username, setUsername] = React.useState("");
-  const [menu, setMenu] = React.useState<Menu[]>([]);
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const auth = true;
+  const [username, setUsername] = useState("");
+  const [menu, setMenu] = useState<MenuHeader[]>([]);
+  const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
-  const handleMenu = (event: any) => {
+  let history = useHistory();
+  const handleMenuLogout = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+  const handleLogout = () => {
+    history.push("/app/login");
+  };
   useEffect(() => {
     (async () => {
-      try {
-        const res = await axios.get("/api/header");
-        setUsername(res.data.user);
-        setMenu(res.data.menus);
-      } catch (error) {
-        console.log(`failed post register as ${error}`);
-      }
+      const res = await headerApi.getMenu();
+      setUsername(res.data.user);
+      setMenu(res.data.menus);
     })();
-  }, [menu]);
-  const renderMenu = (
+  }, []);
+  const renderMenuLogout = (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{ vertical: "top", horizontal: "right" }}
@@ -44,7 +45,7 @@ function Header() {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem className="menu-item" onClick={handleMenuClose}>
+      <MenuItem className="menu-item" onClick={handleLogout}>
         <ExitToAppIcon />
         Logout
       </MenuItem>
@@ -55,12 +56,16 @@ function Header() {
       <AppBar position="static">
         <div className="menu">
           <Navbar bg="dark" expand="lg" variant="dark">
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="/app">Automation Analysis</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                 {menu &&
-                  menu.map((x) => <Nav.Link href={x.url}>{x.name}</Nav.Link>)}
+                  menu.map((x) => (
+                    <Nav.Link key={x.name} href={x.url}>
+                      {x.name}
+                    </Nav.Link>
+                  ))}
               </Nav>
             </Navbar.Collapse>
             <Typography variant="h6">{username}</Typography>
@@ -72,7 +77,7 @@ function Header() {
                   aria-label="account of current user"
                   aria-controls="primary-search-account-menu"
                   aria-haspopup="true"
-                  onClick={handleMenu}
+                  onClick={handleMenuLogout}
                   color="inherit"
                 >
                   <AccountCircle />
@@ -82,7 +87,7 @@ function Header() {
           </Navbar>
         </div>
       </AppBar>
-      {renderMenu}
+      {renderMenuLogout}
     </div>
   );
 }
