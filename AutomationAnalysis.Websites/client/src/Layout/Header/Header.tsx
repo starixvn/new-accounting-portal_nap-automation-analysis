@@ -8,14 +8,12 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import headerApi from "../../Api/headerApi";
 import { useHistory } from "react-router-dom";
-interface MenuHeader {
-  url: string;
-  name: string;
-}
+import { MenuData } from "../../Models/MenuHeader";
+
 function Header() {
   const auth = true;
   const [username, setUsername] = useState("");
-  const [menu, setMenu] = useState<MenuHeader[]>([]);
+  const [menus, setMenus] = useState<MenuData[]>([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
   let history = useHistory();
@@ -29,11 +27,10 @@ function Header() {
     history.push("/app/login");
   };
   useEffect(() => {
-    (async () => {
-      const res = await headerApi.getMenu();
-      setUsername(res.data.user);
-      setMenu(res.data.menus);
-    })();
+    headerApi.getMenu().then((response) => {
+      setUsername(response.user);
+      setMenus(response.menus);
+    });
   }, []);
   const renderMenuLogout = (
     <Menu
@@ -60,10 +57,10 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                {menu &&
-                  menu.map((x) => (
-                    <Nav.Link key={x.name} href={x.url}>
-                      {x.name}
+                {menus &&
+                  menus.map((menu) => (
+                    <Nav.Link key={menu.name} href={menu.url}>
+                      {menu.name}
                     </Nav.Link>
                   ))}
               </Nav>
