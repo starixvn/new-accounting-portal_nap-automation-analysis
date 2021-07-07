@@ -1,15 +1,23 @@
 import React, { Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import Feature from "./Feature/Feature";
 function App() {
   return (
-    <Suspense fallback={<div>Loading</div>}>
-      <BrowserRouter>
-        <Switch>
-          <Route component={Feature} path="/app" />
-        </Switch>
-      </BrowserRouter>
-    </Suspense>
+    <>
+      <ToastContainer
+        hideProgressBar
+        position="bottom-right"
+        autoClose={3000}
+      />
+      <Suspense fallback={<div>Loading</div>}>
+        <BrowserRouter>
+          <Switch>
+            <Route component={Feature} path="/app" />
+          </Switch>
+        </BrowserRouter>
+      </Suspense>
+    </>
   );
 }
 
