@@ -1,7 +1,9 @@
-import React from "react";
 import { shallow, mount } from "enzyme";
+import { MenuHeader, MenuData } from "../../Models/MenuHeader";
+import headerApi from "../../Api/headerApi";
 import Header from "./Header";
-import {act } from "@testing-library/react";
+import { act } from "@testing-library/react";
+
 const mockHistoryPush = jest.fn();
 jest.mock("react-router-dom", () => ({
     ...jest.requireActual("react-router-dom"),
@@ -11,6 +13,17 @@ jest.mock("react-router-dom", () => ({
 }));
 describe("Header Component", () => {
     let wrapper: any;
+    beforeEach(() => {
+        const fakeMenus: MenuData[] = [{ name: "home", url: "/app" }, { name: "report", url: "/app/report" }];
+        const fakeHeader: MenuHeader = {
+            user: "sa",
+            menus: fakeMenus
+        };
+        const fakePromise =  Promise.resolve(fakeHeader);
+        jest.spyOn(headerApi, "getMenu").mockImplementation(() => fakePromise
+        );
+    });
+
     afterEach(() => {
         jest.clearAllMocks();
     });
@@ -39,7 +52,7 @@ describe("Header Component", () => {
         const component = mount(<Header />);
         await act(
             () =>
-                new Promise<void>(resolve=> {
+                new Promise<void>(resolve => {
                     setImmediate(() => {
                         component.update();
                         resolve();
