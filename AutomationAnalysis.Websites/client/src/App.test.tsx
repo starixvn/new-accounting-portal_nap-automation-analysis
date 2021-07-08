@@ -3,8 +3,9 @@ import { shallow } from "enzyme";
 import App from "./App";
 import { Route } from "react-router-dom";
 import Feature from "./Feature/Feature";
-let pathMap: { [x: string]: any };
+
 describe("routes using array of routers", () => {
+  let pathMap: { [x: string]: any };
   beforeAll(() => {
     const component = shallow(<App />);
     pathMap = component.find(Route).reduce((pathMap: any, route) => {
