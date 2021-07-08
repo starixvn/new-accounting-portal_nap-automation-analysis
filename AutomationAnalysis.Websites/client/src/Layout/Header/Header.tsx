@@ -16,7 +16,7 @@ function Header() {
   const [menus, setMenus] = useState<MenuData[]>([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const isMenuOpen = Boolean(anchorEl);
-  let history = useHistory();
+  const history = useHistory();
   const handleMenuLogout = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
@@ -24,10 +24,10 @@ function Header() {
     setAnchorEl(null);
   };
   const handleLogout = () => {
-    history.push("/app/login");
+    history.push("/app/redirect-login");
   };
   useEffect(() => {
-    headerApi.getMenu().then((response) => {
+    headerApi.getMenu().then(response => {
       setUsername(response.user);
       setMenus(response.menus);
     });
@@ -58,7 +58,7 @@ function Header() {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                 {menus &&
-                  menus.map((menu) => (
+                  menus.map(menu => (
                     <Nav.Link key={menu.name} href={menu.url}>
                       {menu.name}
                     </Nav.Link>
