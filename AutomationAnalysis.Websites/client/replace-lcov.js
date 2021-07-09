@@ -1,15 +1,17 @@
-var fs = require("fs");
-let rootDir = process.argv[2];
-let lcovFile = rootDir + "\\js-lcov\\lcov.info";
-let replacement =
+const fs = require("fs");
+const rootDir = process.argv[2];
+const lcovFile = rootDir + "\\js-lcov\\lcov.info";
+const replacement =
   "SF:" + rootDir + "\\AutomationAnalysis.Websites\\client\\src\\";
-fs.readFile(lcovFile, "utf8", function (err, data) {
+fs.readFile(lcovFile, "utf8", function(err, data) {
   if (err) {
     return console.log(err);
   }
-  var result = data.replace(/SF:src\\/g, replacement);
+  const result = data.replace(/SF:src\\/g, replacement);
 
-  fs.writeFile(lcovFile, result, "utf8", function (err) {
-    if (err) return console.log(err);
+  fs.writeFile(lcovFile, result, "utf8", function(fileError) {
+    if (fileError) {
+      return console.log(fileError);
+    }
   });
 });
