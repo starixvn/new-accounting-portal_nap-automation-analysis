@@ -2,7 +2,7 @@ import React from "react";
 import { shallow } from "enzyme";
 import App from "./App";
 import { Route } from "react-router-dom";
-import Feature from "./Feature/Feature";
+import Feature from "./Feature/RouteFeature";
 
 describe("routes using array of routers", () => {
   let pathMap: { [x: string]: any };

@@ -48,6 +48,12 @@ describe("Header Component", () => {
         wrapper = shallow(<Header />);
         expect(wrapper.find(".menu-item").text()).toBe("Logout");
     });
+    it("check onClose", () => {
+        wrapper = shallow(<Header />);
+        expect(
+            wrapper.find("#primary-search-account-menu").simulate("close")
+        ).toHaveLength(1);
+    });
     it("App loads with initial state of 0", async () => {
         const component = mount(<Header />);
         await act(

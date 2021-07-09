@@ -4,7 +4,7 @@ import HomePage from "./Home/HomePage";
 import ReportPage from "./Report/ReportPage";
 import RedirectToLogin from "./RedirectToLogin/RedirectToLogin";
 import Layout from "../Layout/Layout";
-function Home() {
+function Feature() {
   const match = useRouteMatch();
   return (
     <Layout>
@@ -17,4 +17,4 @@ function Home() {
   );
 }
 
-export default Home;
+export default Feature;
