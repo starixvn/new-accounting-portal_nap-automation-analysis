@@ -1,89 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Route snapshots Test Route Fea 1`] = `
-<Layout>
-  <Component>
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/"
-    />
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/report"
-    />
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/redirect-login"
-    />
-  </Component>
-</Layout>
-`;
-
 exports[`Route snapshots Test Route Feature 1`] = `
 <Layout>
-  <Component>
-    <Component
+  <Switch>
+    <Route
       component={[Function]}
       exact={true}
       path="/app/"
     />
-    <Component
+    <Route
       component={[Function]}
       exact={true}
       path="/app/report"
     />
-    <Component
+    <Route
       component={[Function]}
       exact={true}
       path="/app/redirect-login"
     />
-  </Component>
-</Layout>
-`;
-
-exports[`routes using array of routers  1`] = `
-<Layout>
-  <Component>
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/"
-    />
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/report"
-    />
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/redirect-login"
-    />
-  </Component>
-</Layout>
-`;
-
-exports[`routes using array of routers should show Home component for / router (getting array of routes) 1`] = `
-<Layout>
-  <Component>
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/"
-    />
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/report"
-    />
-    <Component
-      component={[Function]}
-      exact={true}
-      path="/app/redirect-login"
-    />
-  </Component>
+  </Switch>
 </Layout>
 `;
