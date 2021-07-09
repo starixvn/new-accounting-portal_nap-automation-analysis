@@ -43,7 +43,7 @@
                     <input type="password" id="password" name="password" />
                     <input type="submit" id="submit" value="Sign In" />
                     <div class="bestview">
-                        <span>Best view in </span><span class="ff4">Firefox 60+</span><span class="chrome">Chrome 67+</span>
+                        <span>Best view in </span><span class="ff4">Firefox 89+</span><span class="chrome">Chrome 91+</span>
                     </div>
                 </div>
             </div>
@@ -120,8 +120,8 @@
 
         function checkBrowser() {
             var browser = detectBrowser();
-            var isSuitableChrome = browser.chrome && browser.version >= 67;
-            var isSuitableFirefox = browser.firefox && browser.version >= 60;
+            var isSuitableChrome = browser.chrome && browser.version >= 91;
+            var isSuitableFirefox = browser.firefox && browser.version >= 89;
 
             if (!isSuitableChrome && !isSuitableFirefox) {
                 var warnPnl = document.getElementById('not-supported-browser-panel');
