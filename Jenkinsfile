@@ -16,8 +16,7 @@ pipeline {
     stage('Build') {
       steps {        
         script{
-          pipelineLib.beginSonarQubeForMsBuild("NAP-AutomationAnalysis", "Olympus / NAP-AutomationAnalysis", "/d:sonar.cs.opencover.reportsPaths=%WORKSPACE%\\CoverageReports\\*.xml /d:sonar.cs.vstest.reportsPaths=%WORKSPACE%\\TestResults\\*.trx")
-
+          pipelineLib.beginSonarQubeForMsBuild("NAP-AutomationAnalysis", "Olympus / NAP-AutomationAnalysis", "/d:sonar.cs.opencover.reportsPaths=%WORKSPACE%\\CoverageReports\\*.xml /d:sonar.cs.vstest.reportsPaths=%WORKSPACE%\\TestResults\\*.trx /d:sonar.cs.xunit.reportsPaths=%WORKSPACE%\\UnitTest.xml /d:sonar.sources=AutomationAnalysis.Websites/client/src /d:sonar.javascript.lcov.reportPaths=%WORKSPACE%\\js-lcov\\lcov.info /d:sonar.testExecutionReportPaths=%WORKSPACE%\\js-test-report.xml /d:sonar.tests=AutomationAnalysis.Websites/client/src /d:sonar.test.inclusions=**\\*.test.ts,**\\*.test.tsx")
           pipelineLib.msBuild16("AutomationAnalysis.sln")
         }
       }
@@ -67,8 +66,7 @@ pipeline {
     always{
 	  archiveArtifacts "*.xml,*.email"
       step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])
-      cobertura coberturaReportFile: "cobertura.xml", onlyStable: false
-      xunit thresholds: [failed(failureNewThreshold: '1', failureThreshold: '1')], tools: [xUnitDotNet(deleteOutputFiles: true, failIfNotNew: true, pattern: 'UnitTest.xml', skipNoTestFiles: false, stopProcessingIfError: true)]
+      cobertura coberturaReportFile: "cobertura.xml", onlyStable: false      
     }
     unsuccessful{
       emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'jacob.phan@starixvn.com,luca.duong@starixvn.com,johnny.thai@starixvn.com'
