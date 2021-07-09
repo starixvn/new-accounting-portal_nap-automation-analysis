@@ -1,29 +1,22 @@
 import { useEffect, useState } from "react";
 import AppBar from "@material-ui/core/AppBar";
 import headerApi from "../../Api/headerApi";
-import { useHistory } from "react-router-dom";
+import { IconButton, Typography } from "@material-ui/core";
+import { AccountCircle } from "@material-ui/icons";
+import { Nav, Navbar } from "react-bootstrap";
 import { MenuData } from "../../Models/MenuHeader";
-import MenuLogout from "./MenuLogout";
-import MenuNavBar from "./MenuNavBar";
+import MenuLogout from "./MenuLogout/MenuLogout";
 
 function Header() {
   const auth = true;
   const [username, setUsername] = useState("");
   const [menus, setMenus] = useState<MenuData[]>([]);
   const [anchorEl, setAnchorEl] = useState(null);
-  const history = useHistory();
-
   const handleMenuLogout = (event: any) => {
     setAnchorEl(event.currentTarget);
   };
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-  };
-  const handleLogout = () => {
-    history.push("/app/redirect-login");
-  };
   useEffect(() => {
-    headerApi.getMenu().then(response => {
+    headerApi.getMenu().then((response) => {
       setUsername(response.user);
       setMenus(response.menus);
     });
@@ -33,10 +26,39 @@ function Header() {
     <div>
       <AppBar position="static">
         <div className="menu">
-          <MenuNavBar username={username} menus={menus} showMenuLogout={handleMenuLogout} auth={auth} />
+          <Navbar bg="dark" expand="lg" variant="dark">
+            <Navbar.Brand href="/app">Automation Analysis</Navbar.Brand>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="mr-auto">
+                {menus &&
+                  menus.map((menu) => (
+                    <Nav.Link key={menu.name} href={menu.url}>
+                      {menu.name}
+                    </Nav.Link>
+                  ))}
+              </Nav>
+            </Navbar.Collapse>
+            <Typography variant="h6">{username}</Typography>
+            {auth && (
+              <div id="toggle-menu">
+                <IconButton
+                  className="icon-button"
+                  edge={"end"}
+                  aria-label="account of current user"
+                  aria-controls="primary-search-account-menu"
+                  aria-haspopup="true"
+                  onClick={handleMenuLogout}
+                  color="inherit"
+                >
+                  <AccountCircle />
+                </IconButton>
+              </div>
+            )}
+          </Navbar>
         </div>
       </AppBar>
-      <MenuLogout anchorEl={anchorEl} logout={handleLogout} closeMenu={handleMenuClose} />
+      <MenuLogout anchorEl={anchorEl} />
     </div>
   );
 }

@@ -1,29 +1,29 @@
 module.exports = {
-  webpack: function(config, env) {
+  webpack: function (config, env) {
     return config;
   },
-  paths: function(originalPaths, env) {
+  paths: function (originalPaths, env) {
     return originalPaths;
   },
-  jest: function(config) {
+  jest: function (config) {
     if (!config.testPathIgnorePatterns) {
       config.testPathIgnorePatterns = [];
     }
 
-    config.coverageDirectory = 'coverage';
+    config.coverageDirectory = "coverage";
     config.collectCoverageFrom = [
-      'src/**/*.{ts,tsx}',
-      '!src/**/*.d.ts',
-      '!src/index.tsx',
-      '!src/serviceWorker.ts'
+      "src/**/*.{ts,tsx}",
+      "!src/**/*.d.ts",
+      "!src/index.tsx",
+      "!src/serviceWorker.ts",
     ];
     config.coveragePathIgnorePatterns = [
-      './src/*/*.types.{ts,tsx}',
-      './src/index.tsx',
-      './src/serviceWorker.ts',
-      './src/reportWebVitals.ts'
+      "./src/*/*.types.{ts,tsx}",
+      "./src/index.tsx",
+      "./src/serviceWorker.ts",
+      "./src/reportWebVitals.ts",
     ];
-    config.coverageReporters = ['json', 'text', 'lcov', 'clover'];
+    config.coverageReporters = ["json", "text", "lcov", "clover"];
     config.coverageThreshold = {
       global: {
         statements: 95,
@@ -32,21 +32,21 @@ module.exports = {
         functions: 95,
       },
     };
-    config.snapshotSerializers = ['enzyme-to-json/serializer'];
-    config.moduleFileExtensions = ['js', 'json', 'jsx', 'ts', 'tsx', 'node'];
+    config.snapshotSerializers = ["enzyme-to-json/serializer"];
+    config.moduleFileExtensions = ["js", "json", "jsx", "ts", "tsx", "node"];
     config.moduleNameMapper = {
-      '^.+\\.module\\.(css|sass|scss)$': 'identity-obj-proxy',
-      'src/(.*)$': '<rootDir>/src/$1',
+      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+      "src/(.*)$": "<rootDir>/src/$1",
     };
 
     config.transformIgnorePatterns = [
-      '[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$',
-      '^.+\\.module\\.(css|sass|scss)$',
+      "[/\\\\]node_modules[/\\\\].+\\.(ts|tsx)$",
+      "^.+\\.module\\.(css|sass|scss)$",
     ];
     return config;
   },
-  devServer: function(configFunction) {
-    return function(proxy, allowedHost) {
+  devServer: function (configFunction) {
+    return function (proxy, allowedHost) {
       const config = configFunction(proxy, allowedHost);
       config.proxy = [
         {

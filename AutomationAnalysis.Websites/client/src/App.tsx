@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import Feature from "./Feature/RouteFeature";

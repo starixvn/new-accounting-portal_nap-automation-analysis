@@ -1,6 +1,5 @@
 import { shallow } from "enzyme";
 import ReportPage from "./ReportPage";
-import React from "react";
 describe("HomePage Component", () => {
   const wrapper = shallow(<ReportPage />);
   it("get Test Label", () => {

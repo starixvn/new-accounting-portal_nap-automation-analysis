@@ -1,4 +1,3 @@
-import React from "react";
 import { Switch, Route, useRouteMatch } from "react-router-dom";
 import HomePage from "./Home/HomePage";
 import ReportPage from "./Report/ReportPage";
@@ -11,7 +10,11 @@ function Feature() {
       <Switch>
         <Route exact path={`${match.url}/`} component={HomePage} />
         <Route exact path={`${match.url}/report`} component={ReportPage} />
-        <Route exact path={`${match.url}/redirect-login`} component={RedirectToLogin} />
+        <Route
+          exact
+          path={`${match.url}/redirect-login`}
+          component={RedirectToLogin}
+        />
       </Switch>
     </Layout>
   );
