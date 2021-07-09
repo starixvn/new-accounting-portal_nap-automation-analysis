@@ -32,7 +32,7 @@
         "build": "react-app-rewired build",
         "eslint": "eslint src/**/*.tsx",
         "test": "react-app-rewired test",
-        "test:coverage": "react-app-rewired test --watchAll --coverage ",
+        "test:coverage": "react-app-rewired test --watchAll --coverage",
         "pretty": "prettier --write \"./**/*.{js,jsx,json,ts,tsx}\"",
         "eject": "react-scripts eject"
     },
