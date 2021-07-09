@@ -8,14 +8,14 @@ it("should show Home component for / router (getting array of routes)", async ()
     Object.defineProperty(window, "location", {
         writable: true,
         value: {
-            assign: () => {},
+            assign: {},
         },
     });
     sinon.stub(window.location, "assign");
     const component = mount(<RedirectToLogin />);
     await act(
         () =>
-            new Promise<void>((resolve) => {
+            new Promise<void>(resolve => {
                 setImmediate(() => {
                     component.update();
                     resolve();
