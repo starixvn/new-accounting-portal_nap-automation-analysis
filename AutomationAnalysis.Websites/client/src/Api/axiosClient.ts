@@ -1,4 +1,9 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import axios, {
+  AxiosError,
+  AxiosInstance,
+  AxiosRequestConfig,
+  AxiosResponse,
+} from 'axios';
 import { toast } from 'react-toastify';
 
 interface Params {
@@ -18,27 +23,28 @@ const requestConfig: AxiosRequestConfig = {
   },
 };
 
-const axiosInstance = axios.create(requestConfig);
+function setInterceptors(instance: AxiosInstance) {
+  instance.interceptors.response.use(
+    response => response,
+    (error: AxiosError) => {
+      toast.error('Network Error <br/>' + JSON.stringify(error));
+      return Promise.reject(error);
+    }
+  );
+}
 
-axiosInstance.interceptors.response.use(
-  async response => response,
-  (error: AxiosError) => {
-    toast.error('Network Error');
-    console.log("Network error");
-    return Promise.reject(error);
-  }
-);
+const axiosInstance = axios.create(requestConfig);
+setInterceptors(axiosInstance);
 
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const requests = {
   get: <T>({ url, params }: Options) =>
     axiosInstance.get<T>(url, { params }).then(responseBody),
-
   post: <T>({ url, params, body }: Options) =>
     axiosInstance.post<T>(url, body, { params }).then(responseBody),
 };
 
-export { axiosInstance };
+export { setInterceptors, axiosInstance };
 
 export default requests;

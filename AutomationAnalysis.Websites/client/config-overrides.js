@@ -16,14 +16,12 @@ module.exports = {
       "!src/**/*.d.ts",
       "!src/index.tsx",
       "!src/serviceWorker.ts",
-      "!/src/Api/axiosClient.ts",
     ];
     config.coveragePathIgnorePatterns = [
       "./src/*/*.types.{ts,tsx}",
       "./src/index.tsx",
       "./src/serviceWorker.ts",
       "./src/reportWebVitals.ts",
-      "./src/Api/axiosClient.ts",
     ];
     config.coverageReporters = ["json", "text", "lcov", "clover"];
     config.coverageThreshold = {
