@@ -1,30 +1,30 @@
-import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from "axios";
-import { toast } from "react-toastify";
+import axios, { AxiosError, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { toast } from 'react-toastify';
 
 interface Params {
-  [key: string]: any;
+  [key: string]: any
 }
 
 interface Options {
-  url: string;
-  params?: Params;
-  body?: any;
+  url: string
+  params?: Params
+  body?: any
 }
 
 const requestConfig: AxiosRequestConfig = {
-  baseURL: "/api/",
+  baseURL: '/api/',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 };
 
 const axiosInstance = axios.create(requestConfig);
 
 axiosInstance.interceptors.response.use(
-  async (response) => response,
+  async response => response,
   (error: AxiosError) => {
-    toast.error("Network Error");
-
+    toast.error('Network Error');
+    console.log("Network error");
     return Promise.reject(error);
   }
 );
@@ -38,5 +38,7 @@ const requests = {
   post: <T>({ url, params, body }: Options) =>
     axiosInstance.post<T>(url, body, { params }).then(responseBody),
 };
+
+export { axiosInstance };
 
 export default requests;

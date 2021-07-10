@@ -1,11 +1,11 @@
 module.exports = {
-  webpack: function (config, env) {
+  webpack: function(config, env) {
     return config;
   },
-  paths: function (originalPaths, env) {
+  paths: function(originalPaths, env) {
     return originalPaths;
   },
-  jest: function (config) {
+  jest: function(config) {
     if (!config.testPathIgnorePatterns) {
       config.testPathIgnorePatterns = [];
     }
@@ -16,12 +16,14 @@ module.exports = {
       "!src/**/*.d.ts",
       "!src/index.tsx",
       "!src/serviceWorker.ts",
+      "!/src/Api/axiosClient.ts",
     ];
     config.coveragePathIgnorePatterns = [
       "./src/*/*.types.{ts,tsx}",
       "./src/index.tsx",
       "./src/serviceWorker.ts",
       "./src/reportWebVitals.ts",
+      "./src/Api/axiosClient.ts",
     ];
     config.coverageReporters = ["json", "text", "lcov", "clover"];
     config.coverageThreshold = {
@@ -45,8 +47,8 @@ module.exports = {
     ];
     return config;
   },
-  devServer: function (configFunction) {
-    return function (proxy, allowedHost) {
+  devServer: function(configFunction) {
+    return function(proxy, allowedHost) {
       const config = configFunction(proxy, allowedHost);
       config.proxy = [
         {
