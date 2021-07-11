@@ -24,7 +24,7 @@ const requestConfig: AxiosRequestConfig = {
 };
 
 function setInterceptors(instance: AxiosInstance) {
-  instance.interceptors.response.use(
+  return instance.interceptors.response.use(
     response => response,
     (error: AxiosError) => {
       toast.error('Network Error <br/>' + JSON.stringify(error));

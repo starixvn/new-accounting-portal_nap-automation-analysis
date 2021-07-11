@@ -18,51 +18,39 @@ describe('axiosInstance', () => {
     headers: {},
     config: {},
   };
-  function mockFailedAxios(method: string) {
-    axiosInstance.interceptors.response.use = jest.fn(
-      (successCallback, failCallback) => failCallback && failCallback(axiosError)
-    );
-
-    method === 'get' && jest.spyOn(axiosInstance, 'get').mockImplementation(() => Promise.reject(axiosError));
-
-    method === 'post' && jest.spyOn(axiosInstance, 'post').mockImplementation(() => Promise.reject(axiosError));
-  }
-
-  function mockSuccessfulAxios() {
-    axiosInstance.interceptors.response.use = jest.fn(
-      successCallback => { 
-        successCallback && successCallback(axiosResponse);
-        return 0;
-      }
-    );
-    jest.spyOn(axiosInstance, 'get').mockImplementation(() => Promise.resolve({}));
-  }
 
   afterEach(() => {
     jest.clearAllMocks();
   });
 
-  it('get - show error message with toast when AxiosError is thrown', () => {
-    mockFailedAxios('get');
+  it('interceptors - shows error message with toast when AxiosError is thrown', () => {
+    axiosInstance.interceptors.response.use = jest.fn(
+      (successCallback, failCallback) => failCallback && failCallback(axiosError)
+    );
     const spy = jest.spyOn(toast, 'error');
-    setInterceptors(axiosInstance);
-    requests.get({ url: '/any-url' }).catch(e => e);
+    expect(setInterceptors(axiosInstance)).rejects.toBe(axiosError);
     expect(spy).toHaveBeenCalled();
   });
 
-  it('post - show error message with toast when AxiosError is thrown', () => {
-    mockFailedAxios('post');
+  it('interceptors - dooes not show error message with toast when there is no axios error', () => {
+    axiosInstance.interceptors.response.use = jest.fn(successCallback => {
+      successCallback && successCallback(axiosResponse);
+      return 0;
+    });
     const spy = jest.spyOn(toast, 'error');
     setInterceptors(axiosInstance);
-    requests.post({ url: '/any-url' }).catch(e => e);
-    expect(spy).toHaveBeenCalled();
-  });
-
-  it('get - do not show error message with toast when there is no axios error', () => {
-    mockSuccessfulAxios();
-    const spy = jest.spyOn(toast, 'error');
-    setInterceptors(axiosInstance);
-    requests.get({ url: '/any-url' }).catch(e => e);
     expect(spy).toHaveBeenCalledTimes(0);
+  });
+
+  it('requests - get - returns value from axiosInstance.get', async () => {
+    jest.spyOn(axiosInstance, 'get').mockImplementation(() => Promise.resolve(axiosResponse));
+    const actual = await requests.get<string>({ url: '/any-url' });
+    expect(actual).toBe('OK');
+  });
+
+  it('requests - get - returns value from axiosInstance.get', async () => {
+    jest.spyOn(axiosInstance, 'post').mockImplementation(() => Promise.resolve(axiosResponse));
+    const actual = await requests.post({ url: '/any-url' });
+    expect(actual).toBe('OK');
   });
 });
