@@ -1,39 +1,26 @@
-import { Button, Card, Col, Row } from "react-bootstrap";
-import ScoreSelector from "./ScoreSelector";
-import RedCardSelector from "./RedCardSelector";
-import "./Filter.css";
-import InitialBetTypeRange from "../../../GlobalComponent/InitialBetTypeRange/InitialBetTypeRange";
-import DateRange from "../../../GlobalComponent/DateRange/DateRange";
 import { useState } from "react";
-
-export type GoalOption = "Home" | "Away";
-
-export const options = (values: number[]) => values && values.map(value => (
-    <option key={value} value={value}>{value}</option>
-));
-
-
-const Filter = () => {
+import DateRange from "../../../GlobalComponent/DateRange/DateRange";
+import "./Filter.css";
+export default function Filter() {
     const [league, setLeague] = useState("");
     const [view, setView] = useState("Full Time");
     const [timeInterval, setTimeInterval] = useState("5");
-
     return (
-        <Card>
-            <Card.Body>
-                <Row>
-                    <Col sm={1}>
+        <div className="containers">
+            <form>
+                <div className="row">
+                    <div className="label-content">
                         <label className="date-label">Date</label>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className="filter">
                         <DateRange />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={1}>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="label-content">
                         <label>League</label>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className="filter">
                         <input
                             type="text"
                             id="fname"
@@ -45,13 +32,13 @@ const Filter = () => {
                             required
                             value={league}
                         />
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={1}>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="label-content">
                         <label>View</label>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className="filter">
                         <select
                             onChange={(event) => {
                                 setView(event.target.value);
@@ -62,13 +49,13 @@ const Filter = () => {
                             <option value="Full Time">Full Time</option>
                             <option value="Half Time">Half Time</option>
                         </select>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col sm={1}>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="label-content">
                         <label>Time Interval</label>
-                    </Col>
-                    <Col>
+                    </div>
+                    <div className="filter">
                         <select
                             onChange={(event) => {
                                 setTimeInterval(event.target.value);
@@ -82,25 +69,19 @@ const Filter = () => {
                             <option value="10">10</option>
                             <option value="15">15</option>
                         </select>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col>
-                        <InitialBetTypeRange />
-                    </Col>
-                    <Col>
-                        <ScoreSelector />
-                    </Col>
-                    <Col>
-                        <RedCardSelector />
-                    </Col>
-                    <Col>
-                        <Button variant="success">Query</Button>
-                    </Col>
-                </Row>
-            </Card.Body>
-        </Card>
+                    </div>
+                </div>
+            </form>
+        </div>
     );
-};
+}
 
-export default Filter;
+export type GoalOption = "Home" | "Away";
+
+export const options = (values: number[]) =>
+    values &&
+    values.map((value) => (
+        <option key={value} value={value}>
+            {value}
+        </option>
+    ));

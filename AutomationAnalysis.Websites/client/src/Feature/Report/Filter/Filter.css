@@ -1,27 +1,32 @@
-select {
-  border: none !important;
-  outline: none !important;
+.containers {
+    border-radius: 5px;
+    padding-left: 30px;
+    width: 100%;
 }
 
-.goal-header {
-  background-color: purple;
-  color: white;
+.label-content {
+    float: left;
+    width: 10%;
+    margin-top: 6px;
+    font-size: large;
 }
 
-.redcard-header {
-  background-color: red;
-  color: white;
+.date-label {
+    padding-top: 20px;
 }
 
-.score-header {
-  background-color: blue;
-  color: white;
+.filter {
+    float: left;
+    width: 30%;
+    margin-top: 6px;
 }
 
-.home-bg {
-  background-color: lightgrey;
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
 }
 
-.away-bg {
-  background-color: "lightpink";
+.form-filter {
+    padding: 10px 30px;
 }
