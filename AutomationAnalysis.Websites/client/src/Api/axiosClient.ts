@@ -3,31 +3,31 @@ import axios, {
   AxiosInstance,
   AxiosRequestConfig,
   AxiosResponse,
-} from 'axios';
-import { toast } from 'react-toastify';
+} from "axios";
+import { toast } from "react-toastify";
 
 interface Params {
-  [key: string]: any
+  [key: string]: any;
 }
 
 interface Options {
-  url: string
-  params?: Params
-  body?: any
+  url: string;
+  params?: Params;
+  body?: any;
 }
 
 const requestConfig: AxiosRequestConfig = {
-  baseURL: '/api/',
+  baseURL: "/api/",
   headers: {
-    'Content-Type': 'application/json',
+    "Content-Type": "application/json",
   },
 };
 
 function setInterceptors(instance: AxiosInstance) {
   return instance.interceptors.response.use(
-    response => response,
+    (response) => response,
     (error: AxiosError) => {
-      toast.error('Network Error <br/>' + JSON.stringify(error));
+      toast.error("Network Error <br/>" + JSON.stringify(error));
       return Promise.reject(error);
     }
   );
