@@ -7,6 +7,7 @@ import {
 } from "@material-ui/pickers";
 import { toast } from "react-toastify";
 import "./DateRange.css";
+
 export default function DateRange() {
   const yesterDay = new Date(Date.now());
   yesterDay.setDate(yesterDay.getDate() - 1);
