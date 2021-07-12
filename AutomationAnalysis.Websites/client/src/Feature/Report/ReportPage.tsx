@@ -3,6 +3,8 @@ import { Col } from "react-bootstrap";
 import DateRange from "../../GlobalComponent/DateRange/DateRange";
 import InitialBetTypeRange from "../../GlobalComponent/InitialBetTypeRange/InitialBetTypeRange";
 import "./ReportPage.css";
+import Filter from "./Filter/Filter";
+
 function ReportPage() {
   const [league, setLeague] = useState("");
   const [view, setView] = useState("Full Time");
@@ -11,6 +13,7 @@ function ReportPage() {
     <div className="header">
       <h1>ReportPage</h1>
       <div className="containers">
+      <Filter />
         <form>
           <div className="row">
             <div className="label-content">
@@ -83,4 +86,5 @@ function ReportPage() {
     </div>
   );
 }
+
 export default ReportPage;

@@ -1,0 +1,27 @@
+select {
+  border: none !important;
+  outline: none !important;
+}
+
+.goal-header {
+  background-color: purple;
+  color: white;
+}
+
+.redcard-header {
+  background-color: red;
+  color: white;
+}
+
+.score-header {
+  background-color: blue;
+  color: white;
+}
+
+.home-bg {
+  background-color: lightgrey;
+}
+
+.away-bg {
+  background-color: "lightpink";
+}
