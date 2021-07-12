@@ -26,7 +26,7 @@ function Header() {
     <div>
       <AppBar position="static">
         <div className="menu">
-          <Navbar bg="dark" expand="lg" variant="dark">
+          <Navbar bg="bg-primary" expand="lg" variant="dark">
             <Navbar.Brand href="/app">Automation Analysis</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
