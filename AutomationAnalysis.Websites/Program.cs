@@ -23,9 +23,6 @@ namespace AutomationAnalysis.Websites
 
                         config.SetBasePath(env.ContentRootPath);
                         config.AddJsonFile("appsettings.json", optional: false, reloadOnChange: true);
-                        config.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true,
-                            reloadOnChange: true);
-
                         config.AddEnvironmentVariables();
                     });
                     webBuilder.UseStartup<Startup>();
