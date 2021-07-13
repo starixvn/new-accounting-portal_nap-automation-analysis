@@ -30,3 +30,20 @@
 .form-filter {
     padding: 10px 30px;
 }
+
+.filter-header button {
+ border-radius: 0 !important;
+}
+
+.goal-button {
+    margin: 0 10px;
+    width: 80px;
+}
+
+.active-button {
+    background-color: #288028 !important;
+}
+
+.breadcrumb {
+    background-color: #f1ec5f !important;
+}

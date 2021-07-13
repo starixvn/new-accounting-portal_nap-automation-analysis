@@ -1,9 +1,12 @@
+import Filter from "./Filter/Filter";
 import { shallow } from "enzyme";
 import ReportPage from "./ReportPage";
-describe("HomePage Component", () => {
+
+describe("ReportPage Component", () => {
   const wrapper = shallow(<ReportPage />);
-  it("get Test Label", () => {
-    const text = wrapper.find(".header h1").text();
-    expect(text).toBe("ReportPage");
+  
+  it("render correct", () => {
+    const compoment = wrapper.find(Filter);
+    expect(compoment.exists()).toEqual(true);
   });
 });
