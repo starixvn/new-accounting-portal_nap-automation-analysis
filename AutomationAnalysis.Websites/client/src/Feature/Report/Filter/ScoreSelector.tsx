@@ -1,17 +1,13 @@
 import { ChangeEvent, useState } from "react";
 import { Form, Table } from "react-bootstrap";
 import { options } from "./Filter";
-import { range } from "../../../Utils/HelperUtils";
+import _ from "lodash";
 
 type GoalOption = "Home" | "Away";
 
 const ScoreSelector = () => {
-  const [homeScoreOptions, setHomeScoreOptions] = useState<number[]>(
-    range(1, 10)
-  );
-  const [awayScoreOptions, setAwayScoreOptions] = useState<number[]>(
-    range(0, 11)
-  );
+  const [homeScoreOptions, setHomeScoreOptions] = useState<number[]>(_.range(1, 11));
+  const [awayScoreOptions, setAwayScoreOptions] = useState<number[]>(_.range(0, 11));
   const [homeScore, setHomeScore] = useState<number>(1);
   const [awayScore, setAwayScore] = useState<number>(1);
 
@@ -19,13 +15,13 @@ const ScoreSelector = () => {
     const value = e.target.value as GoalOption;
 
     if (value === "Home") {
-      setHomeScoreOptions(range(1, 10));
-      setAwayScoreOptions(range(0, 11));
+      setHomeScoreOptions(_.range(1, 11));
+      setAwayScoreOptions(_.range(0, 11));
       setHomeScore(1);
       setAwayScore(0);
     } else {
-      setHomeScoreOptions(range(0, 11));
-      setAwayScoreOptions(range(1, 10));
+      setHomeScoreOptions(_.range(0, 11));
+      setAwayScoreOptions(_.range(1, 11));
       setHomeScore(0);
       setAwayScore(1);
     }
@@ -61,11 +57,7 @@ const ScoreSelector = () => {
         <tr>
           <td>
             <Form>
-              <Form.Control
-                as="select"
-                onChange={changeGoalOption}
-                className="goal-select"
-              >
+              <Form.Control as="select" onChange={changeGoalOption} className="goal-select table-select ">
                 <option value="Home">Home</option>
                 <option value="Away">Away</option>
               </Form.Control>
@@ -77,7 +69,7 @@ const ScoreSelector = () => {
                 as="select"
                 value={homeScore}
                 onChange={changeHomeScore}
-                className="home-score-select"
+                className="home-score-select table-select"
               >
                 {options(homeScoreOptions)}
               </Form.Control>
@@ -89,7 +81,7 @@ const ScoreSelector = () => {
                 as="select"
                 value={awayScore}
                 onChange={changeAwayScore}
-                className="away-score-select"
+                className="away-score-select table-select"
               >
                 {options(awayScoreOptions)}
               </Form.Control>

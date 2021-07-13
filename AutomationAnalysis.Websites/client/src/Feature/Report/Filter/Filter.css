@@ -38,6 +38,11 @@
 .goal-button {
     margin: 0 10px;
     width: 80px;
+    margin-top: -11px;
+}
+
+.redcard-button {
+    margin-top: -11px;
 }
 
 .active-button {
@@ -46,4 +51,35 @@
 
 .breadcrumb {
     background-color: #f1ec5f !important;
+}
+
+label {
+    padding-right: 1rem !important;
+}
+
+.input-area .form-control {
+    display: inline-block !important;
+}
+
+.filter-select {
+    width: 120px !important;
+    height: 2rem !important;
+    font-size: 0.95rem !important;
+    padding: 0 !important;
+    font-size: 0.95rem !important;
+}
+
+.table-select {
+    border: none !important;
+    outline: none !important;
+    height: 2rem !important;
+    background-color: #f2f2f2 !important;
+    padding: 0 !important; 
+    font-size: 0.95rem;  
+}
+
+
+select:focus{
+    outline: none !important;
+    box-shadow:none !important;
 }

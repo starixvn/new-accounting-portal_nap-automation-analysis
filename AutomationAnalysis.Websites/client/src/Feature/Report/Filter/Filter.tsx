@@ -53,26 +53,18 @@ export default function Filter() {
     <Card>
       <Card.Header>
         <Row>
-          <Col className="filter-header">
+          <Col className="filter-header p-0">
             <span className="font-weight-bold d-inline-block">ISN Odds</span>
             <Button
               variant="secondary"
-              className={
-                reportSelect === "Score"
-                  ? "goal-button active-button"
-                  : "goal-button"
-              }
+              className={reportSelect === "Score" ? "goal-button active-button" : "goal-button"}
               onClick={clickedGoal}
             >
               Goal
             </Button>
             <Button
               variant="secondary"
-              className={
-                reportSelect === "Score"
-                  ? "redcard-button"
-                  : "redcard-button active-button"
-              }
+              className={reportSelect === "Score" ? "redcard-button" : "redcard-button active-button"}
               onClick={clickedRedcard}
             >
               Redcard
@@ -89,35 +81,27 @@ export default function Filter() {
             <DateRange />
           </Col>
         </Form.Group>
-        <Form.Group as={Row}>
-          <Form.Label column sm="1">
-            League
-          </Form.Label>
-          <Col>
-            <input style={{ width: 370 }} />
+        <Form.Group as={Row} className="input-area">
+          <Col sm="4">
+            <Form.Label>League</Form.Label>
+            <Form.Control type="text" style={{ height: "2rem", width: "50%" }} />
           </Col>
-        </Form.Group>
-        <Form.Group as={Row}>
-          <Form.Label column sm="1">
-            View
-          </Form.Label>
-          <Col>
-            <select style={{ width: 100, height: 30 }}>
+
+          <Col sm="3">
+            <Form.Label>View</Form.Label>
+            <Form.Control as="select" className="filter-select">
               <option value="Full Time">Full Time</option>
               <option value="Half Time">Half Time</option>
-            </select>
+            </Form.Control>
           </Col>
-        </Form.Group>
-        <Form.Group as={Row}>
-          <Form.Label column sm="1">
-            Time interval
-          </Form.Label>
+
           <Col>
-            <select style={{ width: 100, height: 30 }}>
+            <Form.Label>Time interval</Form.Label>
+            <Form.Control as="select" className="filter-select">
               <option value="5">5</option>
               <option value="10">10</option>
               <option value="15">15</option>
-            </select>
+            </Form.Control>
           </Col>
         </Form.Group>
         <Row>
@@ -125,7 +109,7 @@ export default function Filter() {
             <InitialBetTypeRange />
           </Col>
           {ScoreAndRedCardChooser(reportSelect)}
-          <Col>
+          <Col sm="1">
             <Button variant="success">Query</Button>
           </Col>
         </Row>

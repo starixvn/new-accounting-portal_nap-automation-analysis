@@ -1,6 +1,6 @@
 import { Form, Table } from "react-bootstrap";
 import { options } from "./Filter";
-import { range } from "../../../Utils/HelperUtils";
+import _ from "lodash";
 import { ChangeEvent, useState } from "react";
 
 const RedCardSelector = () => {
@@ -24,7 +24,7 @@ const RedCardSelector = () => {
           <th rowSpan={2} className="align-middle redcard-header">
             RedCard
           </th>
-          <th colSpan={2} className="score-header">
+          <th colSpan={2} className="score-header ">
             Red card
           </th>
         </tr>
@@ -35,16 +35,16 @@ const RedCardSelector = () => {
       </thead>
       <tbody>
         <tr>
-          <td>Current</td>
+          <td className="align-middle">Current</td>
           <td>
             <Form>
               <Form.Control
                 as="select"
                 value={redcardHome}
                 onChange={changeRedcardHome}
-                className="home-redcard-select"
+                className="home-redcard-select table-select"
               >
-                {options(range(0, 11))}
+                {options(_.range(0, 11))}
               </Form.Control>
             </Form>
           </td>
@@ -54,9 +54,9 @@ const RedCardSelector = () => {
                 as="select"
                 value={redcardAway}
                 onChange={changeRedcardAway}
-                className="away-redcard-select"
+                className="away-redcard-select table-select"
               >
-                {options(range(0, 11))}
+                {options(_.range(0, 11))}
               </Form.Control>
             </Form>
           </td>

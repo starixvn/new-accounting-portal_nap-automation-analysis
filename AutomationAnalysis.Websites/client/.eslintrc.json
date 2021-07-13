@@ -17,13 +17,6 @@
   },
   "rules": {
     "semi": [2, "always"],
-    "no-warning-comments": [
-      2,
-      {
-        "terms": [""],
-        "location": "anywhere"
-      }
-    ],
     "no-var": "error",
     "no-empty-function": "error",
     "prefer-const": "error",
