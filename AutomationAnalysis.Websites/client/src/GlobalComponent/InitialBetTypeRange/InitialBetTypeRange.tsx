@@ -28,6 +28,7 @@ export default function InitialBetTypeRange() {
                 <tr>
                     <td>
                         <input
+                            aria-label="fromHDP-input"
                             type="number"
                             datatype="float"
                             step="0.01"
@@ -43,6 +44,7 @@ export default function InitialBetTypeRange() {
                     </td>
                     <td>
                         <input
+                            aria-label="toHDP-input"
                             type="number"
                             datatype="float"
                             step="0.01"
@@ -58,6 +60,7 @@ export default function InitialBetTypeRange() {
                     </td>
                     <td>
                         <input
+                            aria-label="fromOU-input"
                             type="number"
                             datatype="float"
                             step="0.01"
@@ -73,6 +76,7 @@ export default function InitialBetTypeRange() {
                     </td>
                     <td>
                         <input
+                            aria-label="toOU-input"
                             type="number"
                             datatype="float"
                             step="0.01"

@@ -11,7 +11,7 @@ exports[`Route snapshots Test Route Feature 1`] = `
     <Route
       component={[Function]}
       exact={true}
-      path="/app/report"
+      path="/app/isn-odds-data"
     />
     <Route
       component={[Function]}

@@ -11,18 +11,10 @@ export default function DateRange() {
     const [selectedFromDate, setSelectedFromDate] = React.useState(yesterDay);
     const [selectedToDate, setSelectedToDate] = React.useState(yesterDay);
     const handleFromDateChange = (date: any) => {
-        if (selectedToDate.getDate() - date.getDate() > 180 || date > yesterDay || date > selectedToDate) {
-            toast.error("Please choose again Date Range!");
-        } else {
-            setSelectedFromDate(date);
-        }
+        setSelectedFromDate(date);
     };
     const handleToDateChange = (date: any) => {
-        if (date.getDate() - selectedFromDate.getDate() > 180 || date > yesterDay || date < selectedFromDate) {
-            toast.error("Please choose again Date Range!");
-        } else {
-            setSelectedToDate(date);
-        }
+        setSelectedFromDate(date);
     };
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>
@@ -32,8 +24,10 @@ export default function DateRange() {
                     variant="inline"
                     format="MM/dd/yyyy"
                     margin="normal"
-                    id="from-date"
                     value={selectedFromDate}
+                    inputProps={{
+                        id: "from-date",
+                    }}
                     onChange={handleFromDateChange}
                     KeyboardButtonProps={{
                         "aria-label": "change date",
@@ -46,7 +40,9 @@ export default function DateRange() {
                     variant="inline"
                     format="MM/dd/yyyy"
                     margin="normal"
-                    id="to-date"
+                    inputProps={{
+                        id: "to-date",
+                    }}
                     value={selectedToDate}
                     onChange={handleToDateChange}
                     KeyboardButtonProps={{

@@ -77,13 +77,13 @@ exports[`Layout Component renders correctly 1`] = `
                     className="menu"
                   >
                     <Navbar
-                      bg="dark"
+                      bg="bg-primary"
                       collapseOnSelect={false}
                       expand="lg"
                       variant="dark"
                     >
                       <nav
-                        className="navbar navbar-expand-lg navbar-dark bg-dark"
+                        className="navbar navbar-expand-lg navbar-dark bg-bg-primary"
                       >
                         <NavbarBrand
                           href="/app"
