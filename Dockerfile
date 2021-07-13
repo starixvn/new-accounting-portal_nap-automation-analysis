@@ -1,6 +1,5 @@
 FROM registry.nexdev.net:5050/docker/dotnet/core/sdk:5.0.102-ca-patch-buster-slim AS builder
 WORKDIR /src
-ENV TZ="America/La_Paz" 
 
 COPY ./.sonarlint/. ./.sonarlint
 COPY ./src/AutomationAnalysis/. ./src/AutomationAnalysis
@@ -23,4 +22,5 @@ RUN sed -i 's/MinProtocol = TLSv1.2/MinProtocol = TLSv1/g' /usr/lib/ssl/openssl.
 WORKDIR /app
 COPY --from=builder /app .
 
+ENV TZ="America/La_Paz" 
 ENTRYPOINT ["dotnet", "AutomationAnalysis.Websites.dll"]
