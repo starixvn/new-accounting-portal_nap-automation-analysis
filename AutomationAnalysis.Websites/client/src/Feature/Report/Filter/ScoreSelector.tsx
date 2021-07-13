@@ -1,8 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import { Form, Table } from "react-bootstrap";
-import { GoalOption, options } from "./Filter";
+import { options, GoalOption } from "./Filter";
 import { range } from "../../../Utils/HelperUtils";
-
 
 const ScoreSelector = () => {
     const [homeScoreOptions, setHomeScoreOptions] = useState<number[]>(range(1, 10));
