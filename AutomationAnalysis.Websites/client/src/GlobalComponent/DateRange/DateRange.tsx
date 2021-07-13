@@ -2,7 +2,7 @@ import React from "react";
 import Grid from "@material-ui/core/Grid";
 import DateFnsUtils from "@date-io/date-fns";
 import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
-import { toast } from "react-toastify";
+
 import "./DateRange.css";
 
 export default function DateRange() {
@@ -10,11 +10,12 @@ export default function DateRange() {
     yesterDay.setDate(yesterDay.getDate() - 1);
     const [selectedFromDate, setSelectedFromDate] = React.useState(yesterDay);
     const [selectedToDate, setSelectedToDate] = React.useState(yesterDay);
+    
     const handleFromDateChange = (date: any) => {
         setSelectedFromDate(date);
     };
     const handleToDateChange = (date: any) => {
-        setSelectedFromDate(date);
+        setSelectedToDate(date);
     };
     return (
         <MuiPickersUtilsProvider utils={DateFnsUtils}>

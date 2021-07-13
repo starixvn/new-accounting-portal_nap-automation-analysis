@@ -30,7 +30,7 @@ describe("RedCardSelector Component", () => {
 
     it("redcard-click click correct", () => {
         const wrapper = shallow(<Filter />);
-        const buttonElement = wrapper.find(".readcard-button");
+        const buttonElement = wrapper.find(".redcard-button");
 
         expect(buttonElement.exists()).toEqual(true);
         expect(buttonElement.simulate("click")).toHaveLength(1);
