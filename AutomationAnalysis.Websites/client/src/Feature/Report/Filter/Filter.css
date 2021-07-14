@@ -1,85 +1,86 @@
 .containers {
-    border-radius: 5px;
-    padding-left: 30px;
-    width: 100%;
+  border-radius: 5px;
+  padding-left: 30px;
+  width: 100%;
 }
 
 .label-content {
-    float: left;
-    width: 10%;
-    margin-top: 6px;
-    font-size: large;
+  float: left;
+  width: 10%;
+  margin-top: 6px;
+  font-size: large;
 }
 
 .date-label {
-    padding-top: 20px;
+  padding-top: 20px;
 }
 
 .filter {
-    float: left;
-    width: 30%;
-    margin-top: 6px;
+  float: left;
+  width: 30%;
+  margin-top: 6px;
 }
 
 .row:after {
-    content: "";
-    display: table;
-    clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 .form-filter {
-    padding: 10px 30px;
+  padding: 10px 30px;
 }
 
 .filter-header button {
- border-radius: 0 !important;
+  border-radius: 0 !important;
 }
 
 .goal-button {
-    margin: 0 10px;
-    width: 80px;
-    margin-top: -11px;
+  margin: 0 10px;
+  width: 80px;
+  margin-top: -11px;
 }
 
 .redcard-button {
-    margin-top: -11px;
+  margin-top: -11px;
 }
 
 .active-button {
-    background-color: #288028 !important;
+  background-color: #288028 !important;
 }
 
 .breadcrumb {
-    background-color: #f1ec5f !important;
+  background-color: #fdf75a !important;
+  padding: 0.5rem 0.5rem !important;
 }
 
 label {
-    padding-right: 1rem !important;
+  padding-right: 1rem !important;
 }
 
 .input-area .form-control {
-    display: inline-block !important;
+  display: inline-block !important;
 }
 
 .filter-select {
-    width: 120px !important;
-    height: 2rem !important;
-    font-size: 0.95rem !important;
-    padding: 0 !important;
-    font-size: 0.95rem !important;
+  width: 120px !important;
+  height: 2rem !important;
+  font-size: 0.95rem !important;
+  padding: 0 !important;
+  font-size: 0.95rem !important;
 }
 
 .table-select {
-    border: none !important;
-    outline: none !important;
-    height: 2rem !important;
-    background-color: #f2f2f2 !important;
-    padding: 0 !important; 
-    font-size: 0.95rem;  
+  border: none !important;
+  outline: none !important;
+  height: 2rem !important;
+  background-color: #f2f2f2 !important;
+  padding: 0 !important;
+  font-size: 0.95rem;
 }
 
-
-select:focus{
-    outline: none !important;
-    box-shadow:none !important;
+input:focus,
+select:focus {
+  outline: none !important;
+  box-shadow: none !important;
 }

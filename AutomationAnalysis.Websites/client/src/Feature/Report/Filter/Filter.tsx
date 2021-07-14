@@ -57,14 +57,22 @@ export default function Filter() {
             <span className="font-weight-bold d-inline-block">ISN Odds</span>
             <Button
               variant="secondary"
-              className={reportSelect === "Score" ? "goal-button active-button" : "goal-button"}
+              className={
+                reportSelect === "Score"
+                  ? "goal-button active-button"
+                  : "goal-button"
+              }
               onClick={clickedGoal}
             >
               Goal
             </Button>
             <Button
               variant="secondary"
-              className={reportSelect === "Score" ? "redcard-button" : "redcard-button active-button"}
+              className={
+                reportSelect === "Score"
+                  ? "redcard-button"
+                  : "redcard-button active-button"
+              }
               onClick={clickedRedcard}
             >
               Redcard
@@ -73,21 +81,20 @@ export default function Filter() {
         </Row>
       </Card.Header>
       <Card.Body>
-        <Form.Group as={Row}>
-          <Form.Label column sm="1">
-            Date
-          </Form.Label>
-          <Col sm="6">
+        <Form.Group as={Row} className="input-area">
+          <Col>
+            <Form.Label>Date</Form.Label>
             <DateRange />
           </Col>
-        </Form.Group>
-        <Form.Group as={Row} className="input-area">
-          <Col sm="4">
+          <Col sm="3">
             <Form.Label>League</Form.Label>
-            <Form.Control type="text" style={{ height: "2rem", width: "50%" }} />
+            <Form.Control
+              type="text"
+              style={{ height: "2rem", width: "50%" }}
+            />
           </Col>
 
-          <Col sm="3">
+          <Col sm="2">
             <Form.Label>View</Form.Label>
             <Form.Control as="select" className="filter-select">
               <option value="Full Time">Full Time</option>
@@ -95,7 +102,7 @@ export default function Filter() {
             </Form.Control>
           </Col>
 
-          <Col>
+          <Col sm="3">
             <Form.Label>Time interval</Form.Label>
             <Form.Control as="select" className="filter-select">
               <option value="5">5</option>

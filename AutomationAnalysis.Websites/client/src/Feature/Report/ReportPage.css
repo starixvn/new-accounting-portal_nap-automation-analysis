@@ -1,31 +1,24 @@
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 .card-body {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 
-
-.goal-header {
-    background-color: #c31bc3;
-    color: white;
-}
-
+.score-header,
+.goal-header,
 .redcard-header {
-    background-color: #f73c3c;
-    color: white;
-}
-
-.score-header {
-    background-color: #0b7ae6;
-    color: white;
+  background-color: #0b7ae6;
+  color: white;
 }
 
 .home-bg {
-    background-color: lightgrey;
+  background-color: lightgrey;
+  color: #333333;
 }
 
 .away-bg {
-    background-color: "lightpink";
+  background-color: "lightpink";
+  color: #333333;
 }

@@ -22,7 +22,7 @@ const RedCardSelector = () => {
       <thead>
         <tr>
           <th rowSpan={2} className="align-middle redcard-header">
-            RedCard
+            Redcard
           </th>
           <th colSpan={2} className="score-header ">
             Red card
