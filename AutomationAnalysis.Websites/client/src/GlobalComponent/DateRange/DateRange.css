@@ -8,18 +8,19 @@
 }
 
 .MuiInputBase-root {
-  width: 160px !important;
+  width: 150px !important;
   background-color: white !important;
   border-radius: 3px !important;
+  height: 1.5rem !important;
 }
 .MuiInputBase-input {
   padding: 7px 6px !important;
-  height: unset !important;
+  font-size: 0.8125rem !important;
 }
 
 .divider {
   font-weight: bold;
   padding: 0 10px;
   display: inline-block;
-  font-size: 22px;
+  font-size: 15px;
 }

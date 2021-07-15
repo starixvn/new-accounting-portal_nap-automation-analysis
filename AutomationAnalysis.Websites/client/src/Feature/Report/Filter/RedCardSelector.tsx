@@ -7,12 +7,8 @@ import { selectAwayRedcard, selectHomeRedcard } from "../Store/ReportActions";
 
 const RedCardSelector = () => {
   const dispatch = useDispatch();
-  const redcardHome = useSelector(
-    (state: ApplicationState) => state.report.redcardHome
-  );
-  const redcardAway = useSelector(
-    (state: ApplicationState) => state.report.redcardAway
-  );
+  const redcardHome = useSelector((state: ApplicationState) => state.report.redcardHome);
+  const redcardAway = useSelector((state: ApplicationState) => state.report.redcardAway);
 
   return (
     <Table className="text-center" size="sm" bordered>
@@ -32,7 +28,9 @@ const RedCardSelector = () => {
       </thead>
       <tbody>
         <tr>
-          <td className="align-middle">Current</td>
+          <td className="align-middle" style={{ fontSize: "1rem" }}>
+            Current
+          </td>
           <td>
             <Form>
               <Form.Control

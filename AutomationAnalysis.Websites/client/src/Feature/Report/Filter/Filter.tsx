@@ -21,19 +21,19 @@ export const options = (values: number[]) =>
 const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
   reportSelect === "Score" ? (
     <>
-      <Col>
+      <Col sm="3">
         <ScoreSelector />
       </Col>
-      <Col>
+      <Col sm="3">
         <RedCardSelector />
       </Col>
     </>
   ) : (
     <>
-      <Col>
+      <Col sm="3">
         <RedCardSelector />
       </Col>
-      <Col>
+      <Col sm="3">
         <ScoreSelector />
       </Col>
     </>
@@ -77,21 +77,21 @@ export default function Filter() {
       </Card.Header>
       <Card.Body>
         <Form.Group as={Row} className="input-area">
-          <Col>
+          <Col sm="auto">
             <Form.Label>Date</Form.Label>
             <DateRange />
           </Col>
-          <Col sm="3">
+          <Col sm="auto">
             <Form.Label>League</Form.Label>
             <Form.Control
               type="text"
-              style={{ height: "2rem", width: "50%" }}
+              style={{ height: "1.5rem", width: "70%" }}
               value={league}
               onChange={(e) => dispatch(changeLeague(e.target.value))}
             />
           </Col>
 
-          <Col sm="2">
+          <Col sm="auto">
             <Form.Label>View</Form.Label>
             <Form.Control
               as="select"
@@ -104,7 +104,7 @@ export default function Filter() {
             </Form.Control>
           </Col>
 
-          <Col sm="3">
+          <Col sm="auto">
             <Form.Label>Time interval</Form.Label>
             <Form.Control
               as="select"
@@ -119,11 +119,11 @@ export default function Filter() {
           </Col>
         </Form.Group>
         <Row>
-          <Col>
+          <Col sm="auto">
             <InitialBetTypeRange />
           </Col>
           {ScoreAndRedCardChooser(reportOption)}
-          <Col sm="1">
+          <Col sm="auto">
             <Button variant="success" onClick={submit}>
               Query
             </Button>
