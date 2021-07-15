@@ -1,21 +1,18 @@
 import { Form, Table } from "react-bootstrap";
 import { options } from "./Filter";
 import _ from "lodash";
-import { ChangeEvent, useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { ApplicationState } from "../../../configureStore";
+import { selectAwayRedcard, selectHomeRedcard } from "../Store/ReportActions";
 
 const RedCardSelector = () => {
-  const [redcardHome, setRedcardHome] = useState<number>(0);
-  const [redcardAway, setRedcardAway] = useState<number>(0);
-
-  const changeRedcardHome = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setRedcardHome(+value);
-  };
-
-  const changeRedcardAway = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setRedcardAway(+value);
-  };
+  const dispatch = useDispatch();
+  const redcardHome = useSelector(
+    (state: ApplicationState) => state.report.redcardHome
+  );
+  const redcardAway = useSelector(
+    (state: ApplicationState) => state.report.redcardAway
+  );
 
   return (
     <Table className="text-center" size="sm" bordered>
@@ -41,7 +38,7 @@ const RedCardSelector = () => {
               <Form.Control
                 as="select"
                 value={redcardHome}
-                onChange={changeRedcardHome}
+                onChange={(e) => dispatch(selectHomeRedcard(+e.target.value))}
                 className="home-redcard-select table-select"
               >
                 {options(_.range(0, 11))}
@@ -53,7 +50,7 @@ const RedCardSelector = () => {
               <Form.Control
                 as="select"
                 value={redcardAway}
-                onChange={changeRedcardAway}
+                onChange={(e) => dispatch(selectAwayRedcard(+e.target.value))}
                 className="away-redcard-select table-select"
               >
                 {options(_.range(0, 11))}

@@ -1,11 +1,16 @@
-import { useState } from "react";
 import { Table } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { ApplicationState } from "../../../configureStore";
+import { changeFromHDP, changeFromOU, changeToHDP, changeToOU } from "../Store/ReportActions";
 import "./InitialBetTypeRange.css";
+
 export default function InitialBetTypeRange() {
-  const [fromHDP, setFromHDP] = useState(0);
-  const [toHDP, setToHDP] = useState(0);
-  const [fromOU, setFromOU] = useState(0);
-  const [toOU, setToOU] = useState(0);
+  const dispatch = useDispatch();
+  const fromHDP = useSelector((state: ApplicationState) => state.report.fromHDP);
+  const toHDP = useSelector((state: ApplicationState) => state.report.toHDP);
+  const fromOU = useSelector((state: ApplicationState) => state.report.fromOU);
+  const toOU = useSelector((state: ApplicationState) => state.report.toOU);
+
   return (
     <Table style={{ textAlign: "center" }} size="sm" bordered>
       <thead>
@@ -32,13 +37,9 @@ export default function InitialBetTypeRange() {
               type="number"
               datatype="float"
               step="0.01"
-              id="fname"
-              name="firstname"
               value={fromHDP}
-              onChange={(event: any) => {
-                setFromHDP(event.target.value);
-              }}
               className="input-range"
+              onChange={(e) => dispatch(changeFromHDP(+e.target.value))}
             />
           </td>
           <td>
@@ -47,15 +48,9 @@ export default function InitialBetTypeRange() {
               type="number"
               datatype="float"
               step="0.01"
-              id="fname"
-              name="firstname"
-              style={{ width: 100 }}
               value={toHDP}
-              onChange={(event: any) => {
-                setToHDP(event.target.value);
-              }}
-              required
               className="input-range"
+              onChange={(e) => dispatch(changeToHDP(+e.target.value))}
             />
           </td>
           <td>
@@ -64,15 +59,9 @@ export default function InitialBetTypeRange() {
               type="number"
               datatype="float"
               step="0.01"
-              id="fname"
-              name="firstname"
-              style={{ width: 100 }}
               value={fromOU}
-              onChange={(event: any) => {
-                setFromOU(event.target.value);
-              }}
-              required
               className="input-range"
+              onChange={(e) => dispatch(changeFromOU(+e.target.value))}
             />
           </td>
           <td>
@@ -81,15 +70,9 @@ export default function InitialBetTypeRange() {
               type="number"
               datatype="float"
               step="0.01"
-              id="fname"
-              name="firstname"
-              style={{ width: 100 }}
               value={toOU}
-              onChange={(event: any) => {
-                setToOU(event.target.value);
-              }}
-              required
               className="input-range"
+              onChange={(e) => dispatch(changeToOU(+e.target.value))}
             />
           </td>
         </tr>

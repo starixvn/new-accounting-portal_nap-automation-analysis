@@ -1,13 +1,14 @@
-import { useState } from "react";
 import { Button, Card, Col, Form, Row } from "react-bootstrap";
 import DateRange from "../../../GlobalComponent/DateRange/DateRange";
-import InitialBetTypeRange from "../../../GlobalComponent/InitialBetTypeRange/InitialBetTypeRange";
+import InitialBetTypeRange from "./InitialBetTypeRange";
 import "./Filter.css";
 import RedCardSelector from "./RedCardSelector";
 import ScoreSelector from "./ScoreSelector";
 import BreadcrumbFilter from "./BreadcrumbFilter";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { ApplicationState } from "../../../configureStore";
+import { changeLeague, selectReportOption, selectTimeInterval, selectView } from "../Store/ReportActions";
+import { ReportOption, ViewOption } from "../Store/ReportState";
 
 export const options = (values: number[]) =>
   values &&
@@ -16,8 +17,6 @@ export const options = (values: number[]) =>
       {value}
     </option>
   ));
-
-type ReportOption = "Score" | "Redcard";
 
 const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
   reportSelect === "Score" ? (
@@ -41,15 +40,11 @@ const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
   );
 
 export default function Filter() {
-  const [reportSelect, setReportSelect] = useState<ReportOption>("Score");
-
-  const clickedGoal = () => {
-    setReportSelect("Score");
-  };
-
-  const clickedRedcard = () => {
-    setReportSelect("Redcard");
-  };
+  const dispatch = useDispatch();
+  const league = useSelector((state: ApplicationState) => state.report.league);
+  const timeInterval = useSelector((state: ApplicationState) => state.report.timeInterval);
+  const viewOption = useSelector((state: ApplicationState) => state.report.viewOption);
+  const reportOption = useSelector((state: ApplicationState) => state.report.reportOption);
 
   const reportSate = useSelector((state: ApplicationState) => state.report);
 
@@ -65,23 +60,15 @@ export default function Filter() {
             <span className="font-weight-bold d-inline-block">ISN Odds</span>
             <Button
               variant="secondary"
-              className={
-                reportSelect === "Score"
-                  ? "goal-button active-button"
-                  : "goal-button"
-              }
-              onClick={clickedGoal}
+              className={reportOption === "Score" ? "goal-button active-button" : "goal-button"}
+              onClick={() => dispatch(selectReportOption("Score"))}
             >
               Goal
             </Button>
             <Button
               variant="secondary"
-              className={
-                reportSelect === "Score"
-                  ? "redcard-button"
-                  : "redcard-button active-button"
-              }
-              onClick={clickedRedcard}
+              className={reportOption === "Score" ? "redcard-button" : "redcard-button active-button"}
+              onClick={() => dispatch(selectReportOption("Redcard"))}
             >
               Redcard
             </Button>
@@ -99,12 +86,19 @@ export default function Filter() {
             <Form.Control
               type="text"
               style={{ height: "2rem", width: "50%" }}
+              value={league}
+              onChange={(e) => dispatch(changeLeague(e.target.value))}
             />
           </Col>
 
           <Col sm="2">
             <Form.Label>View</Form.Label>
-            <Form.Control as="select" className="filter-select">
+            <Form.Control
+              as="select"
+              className="filter-select"
+              value={viewOption}
+              onChange={(e) => dispatch(selectView(e.target.value as ViewOption))}
+            >
               <option value="Full Time">Full Time</option>
               <option value="Half Time">Half Time</option>
             </Form.Control>
@@ -112,7 +106,12 @@ export default function Filter() {
 
           <Col sm="3">
             <Form.Label>Time interval</Form.Label>
-            <Form.Control as="select" className="filter-select">
+            <Form.Control
+              as="select"
+              className="filter-select"
+              value={timeInterval}
+              onChange={(e) => dispatch(selectTimeInterval(+e.target.value))}
+            >
               <option value="5">5</option>
               <option value="10">10</option>
               <option value="15">15</option>
@@ -123,7 +122,7 @@ export default function Filter() {
           <Col>
             <InitialBetTypeRange />
           </Col>
-          {ScoreAndRedCardChooser(reportSelect)}
+          {ScoreAndRedCardChooser(reportOption)}
           <Col sm="1">
             <Button variant="success" onClick={submit}>
               Query

@@ -1,24 +1,17 @@
 import React from "react";
 import DateFnsUtils from "@date-io/date-fns";
-import {
-  MuiPickersUtilsProvider,
-  KeyboardDatePicker,
-} from "@material-ui/pickers";
+import { MuiPickersUtilsProvider, KeyboardDatePicker } from "@material-ui/pickers";
 
 import "./DateRange.css";
+import { useDispatch, useSelector } from "react-redux";
+import { ApplicationState } from "../../configureStore";
+import { selectFromDate, selectToDate } from "../../Feature/Report/Store/ReportActions";
 
 export default function DateRange() {
-  const yesterDay = new Date(Date.now());
-  yesterDay.setDate(yesterDay.getDate() - 1);
-  const [selectedFromDate, setSelectedFromDate] = React.useState(yesterDay);
-  const [selectedToDate, setSelectedToDate] = React.useState(yesterDay);
+  const dispatch = useDispatch();
+  const fromDate = useSelector((state: ApplicationState) => state.report.fromDate);
+  const toDate = useSelector((state: ApplicationState) => state.report.toDate);
 
-  const handleFromDateChange = (date: any) => {
-    setSelectedFromDate(date);
-  };
-  const handleToDateChange = (date: any) => {
-    setSelectedToDate(date);
-  };
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <div className="d-inline-block">
@@ -27,12 +20,12 @@ export default function DateRange() {
           variant="inline"
           format="MM/dd/yyyy"
           margin="normal"
-          value={selectedFromDate}
+          value={fromDate}
+          onChange={(date) => dispatch(selectFromDate(date as Date))}
           InputProps={{
             id: "from-date",
             disableUnderline: true,
           }}
-          onChange={handleFromDateChange}
           KeyboardButtonProps={{
             "aria-label": "change date",
           }}
@@ -47,8 +40,8 @@ export default function DateRange() {
             id: "to-date",
             disableUnderline: true,
           }}
-          value={selectedToDate}
-          onChange={handleToDateChange}
+          value={toDate}
+          onChange={(date) => dispatch(selectToDate(date as Date))}
           KeyboardButtonProps={{
             "aria-label": "change date",
           }}

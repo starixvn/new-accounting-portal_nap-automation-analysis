@@ -30,8 +30,9 @@ const ScoreSelector = () => {
   );
 
   const changeGoalOption = (e: ChangeEvent<HTMLInputElement>) => {
-    dispatch(selectGoalOption(e.target.value as GoalOption));
-    if (goalOption === "Home") {
+    const value = e.target.value as GoalOption;
+    dispatch(selectGoalOption(value));
+    if (value === "Home") {
       setHomeScoreOptions(_.range(1, 11));
       setAwayScoreOptions(_.range(0, 11));
     } else {
