@@ -6,6 +6,8 @@ import "./Filter.css";
 import RedCardSelector from "./RedCardSelector";
 import ScoreSelector from "./ScoreSelector";
 import BreadcrumbFilter from "./BreadcrumbFilter";
+import { useSelector } from "react-redux";
+import { ApplicationState } from "../../../configureStore";
 
 export const options = (values: number[]) =>
   values &&
@@ -47,6 +49,12 @@ export default function Filter() {
 
   const clickedRedcard = () => {
     setReportSelect("Redcard");
+  };
+
+  const reportSate = useSelector((state: ApplicationState) => state.report);
+
+  const submit = () => {
+    console.log({ reportSate });
   };
 
   return (
@@ -117,7 +125,9 @@ export default function Filter() {
           </Col>
           {ScoreAndRedCardChooser(reportSelect)}
           <Col sm="1">
-            <Button variant="success">Query</Button>
+            <Button variant="success" onClick={submit}>
+              Query
+            </Button>
           </Col>
         </Row>
         <Row>

@@ -2,39 +2,42 @@ import { ChangeEvent, useState } from "react";
 import { Form, Table } from "react-bootstrap";
 import { options } from "./Filter";
 import _ from "lodash";
-
-type GoalOption = "Home" | "Away";
+import { GoalOption } from "../Store/ReportState";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectAwayScore,
+  selectGoalOption,
+  selectHomeScore,
+} from "../Store/ReportActions";
+import { ApplicationState } from "../../../configureStore";
 
 const ScoreSelector = () => {
-  const [homeScoreOptions, setHomeScoreOptions] = useState<number[]>(_.range(1, 11));
-  const [awayScoreOptions, setAwayScoreOptions] = useState<number[]>(_.range(0, 11));
-  const [homeScore, setHomeScore] = useState<number>(1);
-  const [awayScore, setAwayScore] = useState<number>(1);
+  const dispatch = useDispatch();
+  const goalOption = useSelector(
+    (state: ApplicationState) => state.report.goalOption
+  );
+  const scoreHome = useSelector(
+    (state: ApplicationState) => state.report.scoreHome
+  );
+  const scoreAway = useSelector(
+    (state: ApplicationState) => state.report.scoreAway
+  );
+  const [homeScoreOptions, setHomeScoreOptions] = useState<number[]>(
+    _.range(1, 11)
+  );
+  const [awayScoreOptions, setAwayScoreOptions] = useState<number[]>(
+    _.range(0, 11)
+  );
 
   const changeGoalOption = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value as GoalOption;
-
-    if (value === "Home") {
+    dispatch(selectGoalOption(e.target.value as GoalOption));
+    if (goalOption === "Home") {
       setHomeScoreOptions(_.range(1, 11));
       setAwayScoreOptions(_.range(0, 11));
-      setHomeScore(1);
-      setAwayScore(0);
     } else {
       setHomeScoreOptions(_.range(0, 11));
       setAwayScoreOptions(_.range(1, 11));
-      setHomeScore(0);
-      setAwayScore(1);
     }
-  };
-
-  const changeHomeScore = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setHomeScore(+value);
-  };
-
-  const changeAwayScore = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value;
-    setAwayScore(+value);
   };
 
   return (
@@ -57,7 +60,12 @@ const ScoreSelector = () => {
         <tr>
           <td>
             <Form>
-              <Form.Control as="select" onChange={changeGoalOption} className="goal-select table-select ">
+              <Form.Control
+                as="select"
+                onChange={changeGoalOption}
+                value={goalOption}
+                className="goal-select table-select "
+              >
                 <option value="Home">Home</option>
                 <option value="Away">Away</option>
               </Form.Control>
@@ -67,8 +75,8 @@ const ScoreSelector = () => {
             <Form>
               <Form.Control
                 as="select"
-                value={homeScore}
-                onChange={changeHomeScore}
+                value={scoreHome}
+                onChange={(e) => dispatch(selectHomeScore(+e.target.value))}
                 className="home-score-select table-select"
               >
                 {options(homeScoreOptions)}
@@ -79,8 +87,8 @@ const ScoreSelector = () => {
             <Form>
               <Form.Control
                 as="select"
-                value={awayScore}
-                onChange={changeAwayScore}
+                value={scoreAway}
+                onChange={(e) => dispatch(selectAwayScore(+e.target.value))}
                 className="away-score-select table-select"
               >
                 {options(awayScoreOptions)}
