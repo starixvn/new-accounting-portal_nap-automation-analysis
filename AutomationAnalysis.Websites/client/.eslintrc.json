@@ -1,4 +1,5 @@
 {
+    //Jacob eslint rules
     "env": {
         "browser": true,
         "es2021": true,
@@ -34,6 +35,9 @@
         "import/no-extraneous-dependencies": "off",
         "@typescript-eslint/no-explicit-any": "off",
         "react/react-in-jsx-scope": "off",
+        "react/destructuring-assignment": "off",
+        "import/order":"off",
+        "no-unused-expressions":"off",
         "no-param-reassign": 0
     },
     "settings": {

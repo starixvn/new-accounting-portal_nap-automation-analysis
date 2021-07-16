@@ -1,9 +1,9 @@
-import { Form, Table } from "react-bootstrap";
-import { options } from "./Filter";
-import _ from "lodash";
-import { useSelector, useDispatch } from "react-redux";
-import { ApplicationState } from "../../../configureStore";
-import { selectAwayRedcard, selectHomeRedcard } from "../Store/ReportActions";
+import { Form, Table } from 'react-bootstrap';
+import { options } from './Filter';
+import _ from 'lodash';
+import { useSelector, useDispatch } from 'react-redux';
+import { ApplicationState } from '../../../configureStore';
+import { selectAwayRedcard, selectHomeRedcard } from '../Store/ReportActions';
 
 const RedCardSelector = () => {
   const dispatch = useDispatch();
@@ -28,7 +28,7 @@ const RedCardSelector = () => {
       </thead>
       <tbody>
         <tr>
-          <td className="align-middle" style={{ fontSize: "1rem" }}>
+          <td className="align-middle" style={{ fontSize: '1rem' }}>
             Current
           </td>
           <td>

@@ -1,43 +1,45 @@
-import { Button, Card, Col, Form, Row } from "react-bootstrap";
-import DateRange from "../../../GlobalComponent/DateRange/DateRange";
-import InitialBetTypeRange from "./InitialBetTypeRange";
-import "./Filter.css";
-import RedCardSelector from "./RedCardSelector";
-import ScoreSelector from "./ScoreSelector";
-import BreadcrumbFilter from "./BreadcrumbFilter";
-import { useDispatch, useSelector } from "react-redux";
-import { ApplicationState } from "../../../configureStore";
-import { changeLeague, selectReportOption, selectTimeInterval, selectView } from "../Store/ReportActions";
-import { ReportOption, ViewOption } from "../Store/ReportState";
+import {
+  Button, Card, Col, Form, Row,
+} from 'react-bootstrap';
+import DateRange from '../../../GlobalComponent/DateRange/DateRange';
+import InitialBetTypeRange from './InitialBetTypeRange';
+import './Filter.css';
+import RedCardSelector from './RedCardSelector';
+import ScoreSelector from './ScoreSelector';
+import BreadcrumbFilter from './BreadcrumbFilter';
+import { useDispatch, useSelector } from 'react-redux';
+import { ApplicationState } from '../../../configureStore';
+import {
+  changeLeague, selectReportOption, selectTimeInterval, selectView,
+} from '../Store/ReportActions';
+import { ReportOption, ViewOption } from '../Store/ReportState';
 
-export const options = (values: number[]) =>
-  values &&
-  values.map((value) => (
+export const options = (values: number[]) => values
+  && values.map((value) => (
     <option key={value} value={value}>
       {value}
     </option>
   ));
 
-const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
-  reportSelect === "Score" ? (
-    <>
-      <Col sm="3">
-        <ScoreSelector />
-      </Col>
-      <Col sm="3">
-        <RedCardSelector />
-      </Col>
-    </>
-  ) : (
-    <>
-      <Col sm="3">
-        <RedCardSelector />
-      </Col>
-      <Col sm="3">
-        <ScoreSelector />
-      </Col>
-    </>
-  );
+const ScoreAndRedCardChooser = (reportSelect: ReportOption) => (reportSelect === 'Score' ? (
+  <>
+    <Col sm="3">
+      <ScoreSelector />
+    </Col>
+    <Col sm="3">
+      <RedCardSelector />
+    </Col>
+  </>
+) : (
+  <>
+    <Col sm="3">
+      <RedCardSelector />
+    </Col>
+    <Col sm="3">
+      <ScoreSelector />
+    </Col>
+  </>
+));
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -60,15 +62,15 @@ export default function Filter() {
             <span className="font-weight-bold d-inline-block">ISN Odds</span>
             <Button
               variant="secondary"
-              className={reportOption === "Score" ? "goal-button active-button" : "goal-button"}
-              onClick={() => dispatch(selectReportOption("Score"))}
+              className={reportOption === 'Score' ? 'goal-button active-button' : 'goal-button'}
+              onClick={() => dispatch(selectReportOption('Score'))}
             >
               Goal
             </Button>
             <Button
               variant="secondary"
-              className={reportOption === "Score" ? "redcard-button" : "redcard-button active-button"}
-              onClick={() => dispatch(selectReportOption("Redcard"))}
+              className={reportOption === 'Score' ? 'redcard-button' : 'redcard-button active-button'}
+              onClick={() => dispatch(selectReportOption('Redcard'))}
             >
               Redcard
             </Button>
@@ -85,7 +87,7 @@ export default function Filter() {
             <Form.Label>League</Form.Label>
             <Form.Control
               type="text"
-              style={{ height: "1.5rem", width: "70%" }}
+              style={{ height: '1.5rem', width: '70%' }}
               value={league}
               onChange={(e) => dispatch(changeLeague(e.target.value))}
             />

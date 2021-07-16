@@ -1,8 +1,10 @@
-import { Table } from "react-bootstrap";
-import { useDispatch, useSelector } from "react-redux";
-import { ApplicationState } from "../../../configureStore";
-import { changeFromHDP, changeFromOU, changeToHDP, changeToOU } from "../Store/ReportActions";
-import "./InitialBetTypeRange.css";
+import { Table } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { ApplicationState } from '../../../configureStore';
+import {
+  changeFromHDP, changeFromOU, changeToHDP, changeToOU,
+} from '../Store/ReportActions';
+import './InitialBetTypeRange.css';
 
 export default function InitialBetTypeRange() {
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ export default function InitialBetTypeRange() {
   const toOU = useSelector((state: ApplicationState) => state.report.toOU);
 
   return (
-    <Table style={{ textAlign: "center" }} size="sm" bordered>
+    <Table style={{ textAlign: 'center' }} size="sm" bordered>
       <thead>
         <tr>
           <th colSpan={2} className="score-header">

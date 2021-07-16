@@ -1,38 +1,38 @@
-import { ChangeEvent, useState } from "react";
-import { Form, Table } from "react-bootstrap";
-import { options } from "./Filter";
-import _ from "lodash";
-import { GoalOption } from "../Store/ReportState";
-import { useDispatch, useSelector } from "react-redux";
+import { ChangeEvent, useState } from 'react';
+import { Form, Table } from 'react-bootstrap';
+import { options } from './Filter';
+import _ from 'lodash';
+import { GoalOption } from '../Store/ReportState';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectAwayScore,
   selectGoalOption,
   selectHomeScore,
-} from "../Store/ReportActions";
-import { ApplicationState } from "../../../configureStore";
+} from '../Store/ReportActions';
+import { ApplicationState } from '../../../configureStore';
 
 const ScoreSelector = () => {
   const dispatch = useDispatch();
   const goalOption = useSelector(
-    (state: ApplicationState) => state.report.goalOption
+    (state: ApplicationState) => state.report.goalOption,
   );
   const scoreHome = useSelector(
-    (state: ApplicationState) => state.report.scoreHome
+    (state: ApplicationState) => state.report.scoreHome,
   );
   const scoreAway = useSelector(
-    (state: ApplicationState) => state.report.scoreAway
+    (state: ApplicationState) => state.report.scoreAway,
   );
   const [homeScoreOptions, setHomeScoreOptions] = useState<number[]>(
-    _.range(1, 11)
+    _.range(1, 11),
   );
   const [awayScoreOptions, setAwayScoreOptions] = useState<number[]>(
-    _.range(0, 11)
+    _.range(0, 11),
   );
 
   const changeGoalOption = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value as GoalOption;
     dispatch(selectGoalOption(value));
-    if (value === "Home") {
+    if (value === 'Home') {
       setHomeScoreOptions(_.range(1, 11));
       setAwayScoreOptions(_.range(0, 11));
     } else {

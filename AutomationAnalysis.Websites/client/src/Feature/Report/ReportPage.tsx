@@ -1,8 +1,8 @@
-import "./ReportPage.css";
-import Filter from "./Filter/Filter";
+import './ReportPage.css';
+import Filter from './Filter/Filter';
 
 function ReportPage() {
-    return <Filter />;
+  return <Filter />;
 }
 
 export default ReportPage;

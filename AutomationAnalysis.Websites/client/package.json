@@ -36,7 +36,7 @@
     "scripts": {
         "start": "set HTTPS=true && react-app-rewired start",
         "build": "react-app-rewired build",
-        "eslint": "eslint src/**/*.tsx",
+        "eslint": "eslint src/**/*.tsx --fix",
         "test": "react-app-rewired test",
         "test:coverage": "react-app-rewired test --watchAll --coverage",
         "pretty": "prettier --write \"./**/*.{js,jsx,json,ts,tsx}\"",

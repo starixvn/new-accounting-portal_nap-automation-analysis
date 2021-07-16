@@ -1,5 +1,4 @@
-import React from "react";
-import { Breadcrumb } from "react-bootstrap";
+import { Breadcrumb } from 'react-bootstrap';
 
 const BreadcrumbFilter = () => (
   <Breadcrumb>

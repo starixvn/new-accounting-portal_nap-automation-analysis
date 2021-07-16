@@ -1,15 +1,15 @@
-import { useEffect, useState } from "react";
-import AppBar from "@material-ui/core/AppBar";
-import headerApi from "../../Api/headerApi";
-import { IconButton, Typography } from "@material-ui/core";
-import { AccountCircle } from "@material-ui/icons";
-import { Nav, Navbar } from "react-bootstrap";
-import { MenuData } from "../../Models/MenuHeader";
-import MenuLogout from "./MenuLogout/MenuLogout";
+import { useEffect, useState } from 'react';
+import AppBar from '@material-ui/core/AppBar';
+import headerApi from '../../Api/headerApi';
+import { IconButton, Typography } from '@material-ui/core';
+import { AccountCircle } from '@material-ui/icons';
+import { Nav, Navbar } from 'react-bootstrap';
+import { MenuData } from '../../Models/MenuHeader';
+import MenuLogout from './MenuLogout/MenuLogout';
 
 function Header() {
   const auth = true;
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState('');
   const [menus, setMenus] = useState<MenuData[]>([]);
   const [anchorEl, setAnchorEl] = useState(null);
   const handleMenuLogout = (event: any) => {
@@ -31,8 +31,8 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                {menus &&
-                  menus.map((menu) => (
+                {menus
+                  && menus.map((menu) => (
                     <Nav.Link key={menu.name} href={menu.url}>
                       {menu.name}
                     </Nav.Link>
@@ -44,7 +44,7 @@ function Header() {
               <div id="toggle-menu">
                 <IconButton
                   className="icon-button"
-                  edge={"end"}
+                  edge="end"
                   aria-label="account of current user"
                   aria-controls="primary-search-account-menu"
                   aria-haspopup="true"
