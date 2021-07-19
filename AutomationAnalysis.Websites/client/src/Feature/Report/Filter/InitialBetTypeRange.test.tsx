@@ -1,5 +1,5 @@
-import InitialBetType from './InitialBetTypeRange';
 import { render, fireEvent } from '@testing-library/react';
+import InitialBetType from './InitialBetTypeRange';
 
 describe('InitialBetType Component', () => {
   let wrapper: any;

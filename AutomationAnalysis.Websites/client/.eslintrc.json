@@ -32,12 +32,7 @@
                 "tsx": "never"
             }
         ],
-        "import/no-extraneous-dependencies": "off",
-        "@typescript-eslint/no-explicit-any": "off",
-        "react/react-in-jsx-scope": "off",
-        "react/destructuring-assignment": "off",
-        "import/order":"off",
-        "no-unused-expressions":"off",
+        "react/react-in-jsx-scope": "off",       
         "no-param-reassign": 0
     },
     "settings": {

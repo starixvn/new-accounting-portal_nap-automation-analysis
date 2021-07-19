@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
-import headerApi from '../../Api/headerApi';
 import { IconButton, Typography } from '@material-ui/core';
 import { AccountCircle } from '@material-ui/icons';
 import { Nav, Navbar } from 'react-bootstrap';
+import headerApi from '../../Api/headerApi';
 import { MenuData } from '../../Models/MenuHeader';
 import MenuLogout from './MenuLogout/MenuLogout';
 

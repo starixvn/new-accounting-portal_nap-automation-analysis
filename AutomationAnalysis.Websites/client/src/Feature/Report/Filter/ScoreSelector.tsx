@@ -1,9 +1,9 @@
 import { ChangeEvent, useState } from 'react';
 import { Form, Table } from 'react-bootstrap';
-import { options } from './Filter';
 import _ from 'lodash';
-import { GoalOption } from '../Store/ReportState';
 import { useDispatch, useSelector } from 'react-redux';
+import { options } from './Filter';
+import { GoalOption } from '../Store/ReportState';
 import {
   selectAwayScore,
   selectGoalOption,

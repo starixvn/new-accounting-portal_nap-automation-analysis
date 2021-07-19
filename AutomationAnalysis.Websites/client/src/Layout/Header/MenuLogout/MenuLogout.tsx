@@ -1,4 +1,5 @@
 import { Menu, MenuItem } from '@material-ui/core';
+
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { useHistory } from 'react-router-dom';
 
@@ -18,7 +19,7 @@ export default function MenuLogout(props: any) {
       id="primary-search-account-menu"
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-      open={Boolean(props.anchorEl)}
+      open={Boolean(anchorEl)}
       onClose={handleMenuClose}
     >
       <MenuItem className="menu-item" onClick={handleLogout}>

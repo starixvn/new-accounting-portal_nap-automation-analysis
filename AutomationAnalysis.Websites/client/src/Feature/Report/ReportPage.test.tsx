@@ -1,5 +1,5 @@
-import Filter from './Filter/Filter';
 import { shallow } from 'enzyme';
+import Filter from './Filter/Filter';
 import ReportPage from './ReportPage';
 
 describe('ReportPage Component', () => {

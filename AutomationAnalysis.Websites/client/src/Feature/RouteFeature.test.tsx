@@ -1,6 +1,6 @@
-import RouteFeature from './RouteFeature';
 import { shallow } from 'enzyme';
 import EnzymeToJson from 'enzyme-to-json';
+import RouteFeature from './RouteFeature';
 
 jest.mock('react-router-dom', () => {
   const originalModule = jest.requireActual('react-router-dom');

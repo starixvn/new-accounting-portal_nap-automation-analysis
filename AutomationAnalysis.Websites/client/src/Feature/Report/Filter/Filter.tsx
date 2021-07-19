@@ -1,18 +1,27 @@
+import './Filter.css';
+
 import {
-  Button, Card, Col, Form, Row,
+  Button,
+  Card,
+  Col,
+  Form,
+  Row,
 } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
+import { ReportOption, ViewOption } from '../Store/ReportState';
+import {
+  changeLeague,
+  selectReportOption,
+  selectTimeInterval,
+  selectView,
+} from '../Store/ReportActions';
+
+import { ApplicationState } from '../../../configureStore';
+import BreadcrumbFilter from './BreadcrumbFilter';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
 import InitialBetTypeRange from './InitialBetTypeRange';
-import './Filter.css';
 import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
-import BreadcrumbFilter from './BreadcrumbFilter';
-import { useDispatch, useSelector } from 'react-redux';
-import { ApplicationState } from '../../../configureStore';
-import {
-  changeLeague, selectReportOption, selectTimeInterval, selectView,
-} from '../Store/ReportActions';
-import { ReportOption, ViewOption } from '../Store/ReportState';
 
 export const options = (values: number[]) => values
   && values.map((value) => (

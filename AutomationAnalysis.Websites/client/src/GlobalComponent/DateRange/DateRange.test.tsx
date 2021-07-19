@@ -1,5 +1,5 @@
-import DateRange from './DateRange';
 import { mount } from 'enzyme';
+import DateRange from './DateRange';
 
 describe('DateRange Component', () => {
   it('render home-redcard-select and test event change', () => {

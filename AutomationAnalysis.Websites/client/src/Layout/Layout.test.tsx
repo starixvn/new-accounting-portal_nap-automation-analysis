@@ -1,6 +1,6 @@
-import Layout from './Layout';
 import { mount } from 'enzyme';
 import EnzymeToJson from 'enzyme-to-json';
+import Layout from './Layout';
 
 describe('Layout Component', () => {
   it('renders correctly', () => {

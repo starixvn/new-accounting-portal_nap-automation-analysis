@@ -1,10 +1,11 @@
-import ReactDOM from 'react-dom';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
 import 'react-toastify/dist/ReactToastify.min.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import configureStore from './configureStore';
+
 import { Provider } from 'react-redux';
+import ReactDOM from 'react-dom';
+import App from './App';
+import configureStore from './configureStore';
+import reportWebVitals from './reportWebVitals';
 
 const store = configureStore();
 

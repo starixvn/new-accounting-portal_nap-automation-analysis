@@ -1,7 +1,7 @@
 import { Form, Table } from 'react-bootstrap';
-import { options } from './Filter';
 import _ from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
+import { options } from './Filter';
 import { ApplicationState } from '../../../configureStore';
 import { selectAwayRedcard, selectHomeRedcard } from '../Store/ReportActions';
 

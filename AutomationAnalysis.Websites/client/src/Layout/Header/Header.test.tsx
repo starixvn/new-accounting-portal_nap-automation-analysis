@@ -1,8 +1,8 @@
 import { shallow, mount } from 'enzyme';
+import { act } from '@testing-library/react';
 import { MenuHeader, MenuData } from '../../Models/MenuHeader';
 import headerApi from '../../Api/headerApi';
 import Header from './Header';
-import { act } from '@testing-library/react';
 
 const mockHistoryPush = jest.fn();
 jest.mock('react-router-dom', () => ({
