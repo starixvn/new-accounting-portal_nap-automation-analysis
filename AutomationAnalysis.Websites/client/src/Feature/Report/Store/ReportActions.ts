@@ -1,5 +1,3 @@
-/* eslint-disable no-shadow */
-/* eslint-disable no-unused-vars */
 import { GoalOption, ReportOption, ViewOption } from "./ReportState";
 
 export enum ReportActionTypes {
