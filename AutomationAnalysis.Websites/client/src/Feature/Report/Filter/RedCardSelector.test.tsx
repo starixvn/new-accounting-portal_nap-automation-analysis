@@ -1,29 +1,23 @@
-import { render } from '@testing-library/react';
-import { shallow } from 'enzyme';
-import RedCardSelector from './RedCardSelector';
+import { mount } from "enzyme";
+import { Provider } from "react-redux";
+import configureStore from "../../../configureStore";
+import RedCardSelector from "./RedCardSelector";
 
-describe('RedCardSelector Component', () => {
-  it('render correct', () => {
-    const { queryAllByText } = render(<RedCardSelector />);
-    const text = queryAllByText('Red card');
-    expect(text).not.toBeNull();
-  });
+describe("RedCardSelector Component", () => {
+  const mockStore = configureStore();
+  const wrapper = mount(
+    <Provider store={mockStore}>
+      <RedCardSelector />
+    </Provider>
+  );
 
-  it('render home-redcard-select and test event change', () => {
-    const wrapper = shallow(<RedCardSelector />);
-    const selectElement = wrapper.find('.home-redcard-select');
+  it("render home-redcard-select and test event change", () => {
+    const selectHomeElement = wrapper.find("select").at(0);
+    const selectAwayElement = wrapper.find("select").at(1);
 
-    expect(selectElement.exists()).toEqual(true);
-    expect(selectElement.simulate('change', { target: { value: 0 } })).toHaveLength(1);
-    expect(selectElement.simulate('change', { target: { value: 3 } })).toHaveLength(1);
-  });
-
-  it('render away-redcard-select correct and test event change', () => {
-    const wrapper = shallow(<RedCardSelector />);
-    const selectElement = wrapper.find('.away-redcard-select');
-
-    expect(selectElement.exists()).toEqual(true);
-    expect(selectElement.simulate('change', { target: { value: 1 } })).toHaveLength(1);
-    expect(selectElement.simulate('change', { target: { value: 10 } })).toHaveLength(1);
+    expect(selectHomeElement).not.toBeNull();
+    expect(selectAwayElement).not.toBeNull();
+    expect(selectHomeElement.simulate("change", { target: { value: 0 } })).toHaveLength(1);
+    expect(selectAwayElement.simulate("change", { target: { value: 0 } })).toHaveLength(1);
   });
 });

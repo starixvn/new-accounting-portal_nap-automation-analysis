@@ -1,31 +1,35 @@
-import { render, fireEvent } from '@testing-library/react';
-import InitialBetType from './InitialBetTypeRange';
+import { render, fireEvent } from "@testing-library/react";
+import { mount } from "enzyme";
+import { Provider } from "react-redux";
+import configureStore from "../../../configureStore";
+import InitialBetType from "./InitialBetTypeRange";
 
-describe('InitialBetType Component', () => {
-  let wrapper: any;
+describe("InitialBetType Component", () => {
+  const mockStore = configureStore();
 
-  it('check value fromHDP-input', () => {
-    wrapper = render(<InitialBetType />);
-    const input = wrapper.getByLabelText('fromHDP-input');
-    fireEvent.change(input, { target: { value: '0.23' } });
-    expect(input.value).toBe('0.23');
+  const wrapper = mount(
+    <Provider store={mockStore}>
+      <InitialBetType />
+    </Provider>
+  );
+
+  it("check value fromHDP-input", () => {
+    const input = wrapper.find("input").at(0);
+    expect(input.simulate("change", { target: { value: 0.01 } })).toHaveLength(1);
   });
-  it('check value toHDP-input', () => {
-    wrapper = render(<InitialBetType />);
-    const input = wrapper.getByLabelText('toHDP-input');
-    fireEvent.change(input, { target: { value: '0.23' } });
-    expect(input.value).toBe('0.23');
+
+  it("check value toHDP-input", () => {
+    const input = wrapper.find("input").at(1);
+    expect(input.simulate("change", { target: { value: 0.01 } })).toHaveLength(1);
   });
-  it('check value fromOU-input', () => {
-    wrapper = render(<InitialBetType />);
-    const input = wrapper.getByLabelText('fromOU-input');
-    fireEvent.change(input, { target: { value: '0.23' } });
-    expect(input.value).toBe('0.23');
+
+  it("check value fromOU-input", () => {
+    const input = wrapper.find("input").at(2);
+    expect(input.simulate("change", { target: { value: 0.01 } })).toHaveLength(1);
   });
-  it('check value toOU-input', () => {
-    wrapper = render(<InitialBetType />);
-    const input = wrapper.getByLabelText('toOU-input');
-    fireEvent.change(input, { target: { value: '0.23' } });
-    expect(input.value).toBe('0.23');
+
+  it("check value toOU-input", () => {
+    const input = wrapper.find("input").at(3);
+    expect(input.simulate("change", { target: { value: 0.01 } })).toHaveLength(1);
   });
 });

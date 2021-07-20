@@ -1,15 +1,13 @@
-import { Form, Table } from 'react-bootstrap';
-import _ from 'lodash';
-import { useSelector, useDispatch } from 'react-redux';
-import { options } from './Filter';
-import { ApplicationState } from '../../../configureStore';
-import { selectAwayRedcard, selectHomeRedcard } from '../Store/ReportActions';
+import { Form, Table } from "react-bootstrap";
+import _ from "lodash";
+import { useSelector, useDispatch } from "react-redux";
+import { options } from "./Filter";
+import { ApplicationState } from "../../../configureStore";
+import { selectAwayRedcard, selectHomeRedcard } from "../Store/ReportActions";
 
 const RedCardSelector = () => {
   const dispatch = useDispatch();
-  const redcardHome = useSelector((state: ApplicationState) => state.report.redcardHome);
-  const redcardAway = useSelector((state: ApplicationState) => state.report.redcardAway);
-
+  const { redcardHome, redcardAway } = useSelector((state: ApplicationState) => state.report);
   return (
     <Table className="text-center" size="sm" bordered>
       <thead>
@@ -28,7 +26,7 @@ const RedCardSelector = () => {
       </thead>
       <tbody>
         <tr>
-          <td className="align-middle" style={{ fontSize: '1rem' }}>
+          <td className="align-middle" style={{ fontSize: "1rem" }}>
             Current
           </td>
           <td>

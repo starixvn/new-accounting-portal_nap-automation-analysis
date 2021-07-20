@@ -1,43 +1,36 @@
 {
-    //Jacob eslint rules
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest/globals": true
+  //Jacob eslint rules
+  "env": {
+    "browser": true,
+    "es2021": true,
+    "jest/globals": true
+  },
+  "extends": ["plugin:react/recommended", "airbnb"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
     },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb"
-    ],
-    "parser": "@typescript-eslint/parser",
-    "parserOptions": {
-        "ecmaFeatures": {
-            "jsx": true
-        },
-        "ecmaVersion": 12,
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react",
-        "@typescript-eslint",
-        "jest"
-    ],
-    "rules": {
-        "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
-        "import/extensions": [
-            "error",
-            "ignorePackages",
-            {
-                "ts": "never",
-                "tsx": "never"
-            }
-        ],
-        "react/react-in-jsx-scope": "off",       
-        "no-param-reassign": 0
-    },
-    "settings": {
-      "import/resolver": {
-        "typescript": {}
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": ["react", "@typescript-eslint", "jest"],
+  "rules": {
+    "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "ts": "never",
+        "tsx": "never"
       }
+    ],
+    "react/react-in-jsx-scope": "off",
+    "no-param-reassign": 0
+  },
+  "settings": {
+    "import/resolver": {
+      "typescript": {}
     }
+  }
 }
