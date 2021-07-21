@@ -26,6 +26,7 @@
       }
     ],
     "react/react-in-jsx-scope": "off",
+    "linebreak-style": ["error", "windows"],
     "no-param-reassign": 0
   },
   "settings": {
