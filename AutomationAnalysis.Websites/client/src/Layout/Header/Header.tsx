@@ -31,8 +31,8 @@ function Header() {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                {menus
-                  && menus.map((menu) => (
+                {menus &&
+                  menus.map((menu) => (
                     <Nav.Link key={menu.name} href={menu.url}>
                       {menu.name}
                     </Nav.Link>

@@ -31,19 +31,18 @@ describe('Header Component', () => {
   });
   it('check IconButton when click', () => {
     wrapper = shallow(<Header />);
-    expect(
-      wrapper.find('.icon-button').simulate('click', { currentTarget: true }),
-    ).toHaveLength(1);
+    expect(wrapper.find('.icon-button').simulate('click', { currentTarget: true })).toHaveLength(1);
   });
   it('App loads with initial state of 0', async () => {
     const component = mount(<Header />);
     await act(
-      () => new Promise<void>((resolve) => {
-        setImmediate(() => {
-          component.update();
-          resolve();
-        });
-      }),
+      () =>
+        new Promise<void>((resolve) => {
+          setImmediate(() => {
+            component.update();
+            resolve();
+          });
+        }),
     );
   });
 });

@@ -1,6 +1,6 @@
-import { Reducer } from "redux";
-import { ReportState, initialReportState } from "./ReportState";
-import { ReportActions, ReportActionTypes } from "./ReportActions";
+import { Reducer } from 'redux';
+import { ReportState, initialReportState } from './ReportState';
+import { ReportActions, ReportActionTypes } from './ReportActions';
 
 const reportReducer: Reducer<ReportState, ReportActions> = (state = initialReportState, action): ReportState => {
   switch (action.type) {
@@ -13,8 +13,8 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
       return {
         ...state,
         goalOption: action.goalOption,
-        scoreHome: action.goalOption === "Home" ? 1 : 0,
-        scoreAway: action.goalOption === "Away" ? 1 : 0,
+        scoreHome: action.goalOption === 'Home' ? 1 : 0,
+        scoreAway: action.goalOption === 'Away' ? 1 : 0,
       };
     case ReportActionTypes.SELECT_SCORE_HOME:
       return {

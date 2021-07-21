@@ -26,8 +26,6 @@ describe('Header Component', () => {
   });
   it('check onClose', () => {
     wrapper = shallow(<MenuLogout />);
-    expect(
-      wrapper.find('#primary-search-account-menu').simulate('close'),
-    ).toHaveLength(1);
+    expect(wrapper.find('#primary-search-account-menu').simulate('close')).toHaveLength(1);
   });
 });

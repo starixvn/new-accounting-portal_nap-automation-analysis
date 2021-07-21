@@ -7,11 +7,7 @@ import Feature from './Feature/RouteFeature';
 function App() {
   return (
     <>
-      <ToastContainer
-        hideProgressBar
-        position="bottom-right"
-        autoClose={3000}
-      />
+      <ToastContainer hideProgressBar position="bottom-right" autoClose={3000} />
       <Suspense fallback={<div>Loading</div>}>
         <BrowserRouter>
           <Switch>

@@ -1,9 +1,9 @@
-import { shallow } from "enzyme";
-import { Route } from "react-router-dom";
-import App from "./App";
-import Feature from "./Feature/RouteFeature";
+import { shallow } from 'enzyme';
+import { Route } from 'react-router-dom';
+import App from './App';
+import Feature from './Feature/RouteFeature';
 
-describe("routes using array of routers", () => {
+describe('routes using array of routers', () => {
   let path: { [x: string]: any };
   beforeAll(() => {
     const component = shallow(<App />);
@@ -13,7 +13,7 @@ describe("routes using array of routers", () => {
       return pathMap;
     }, {});
   });
-  it("should show Home component for / router (getting array of routes)", () => {
-    expect(path["/app"]).toBe(Feature);
+  it('should show Home component for / router (getting array of routes)', () => {
+    expect(path['/app']).toBe(Feature);
   });
 });

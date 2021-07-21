@@ -1,10 +1,5 @@
-import axios, {
-  AxiosError,
-  AxiosInstance,
-  AxiosRequestConfig,
-  AxiosResponse,
-} from "axios";
-import { toast } from "react-toastify";
+import axios, { AxiosError, AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { toast } from 'react-toastify';
 
 interface Params {
   [key: string]: any;
@@ -17,9 +12,9 @@ interface Options {
 }
 
 const requestConfig: AxiosRequestConfig = {
-  baseURL: "/api/",
+  baseURL: '/api/',
   headers: {
-    "Content-Type": "application/json",
+    'Content-Type': 'application/json',
   },
 };
 
@@ -27,9 +22,9 @@ function setInterceptors(instance: AxiosInstance) {
   return instance.interceptors.response.use(
     (response) => response,
     (error: AxiosError) => {
-      toast.error("Network Error <br/>" + JSON.stringify(error));
+      toast.error(`Network Error <br/> ${JSON.stringify(error)}`);
       return Promise.reject(error);
-    }
+    },
   );
 }
 
@@ -39,10 +34,8 @@ setInterceptors(axiosInstance);
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const requests = {
-  get: <T>({ url, params }: Options) =>
-    axiosInstance.get<T>(url, { params }).then(responseBody),
-  post: <T>({ url, params, body }: Options) =>
-    axiosInstance.post<T>(url, body, { params }).then(responseBody),
+  get: <T>({ url, params }: Options) => axiosInstance.get<T>(url, { params }).then(responseBody),
+  post: <T>({ url, params, body }: Options) => axiosInstance.post<T>(url, body, { params }).then(responseBody),
 };
 
 export { setInterceptors, axiosInstance };

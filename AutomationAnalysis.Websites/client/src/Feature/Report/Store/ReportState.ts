@@ -1,6 +1,6 @@
-export type GoalOption = "Home" | "Away";
-export type ViewOption = "Full Time" | "Half Time";
-export type ReportOption = "Score" | "Redcard";
+export type GoalOption = 'Home' | 'Away';
+export type ViewOption = 'Full Time' | 'Half Time';
+export type ReportOption = 'Score' | 'Redcard';
 
 export interface ReportState {
   readonly reportOption: ReportOption;
@@ -21,15 +21,15 @@ export interface ReportState {
 }
 
 export const initialReportState: ReportState = {
-  reportOption: "Score",
-  goalOption: "Home",
+  reportOption: 'Score',
+  goalOption: 'Home',
   scoreHome: 1,
   scoreAway: 0,
   redcardAway: 0,
   redcardHome: 0,
-  league: "",
+  league: '',
   timeInterval: 5,
-  viewOption: "Full Time",
+  viewOption: 'Full Time',
   fromHDP: 0,
   toHDP: 0,
   fromOU: 0,

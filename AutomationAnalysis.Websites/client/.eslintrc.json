@@ -5,7 +5,7 @@
     "es2021": true,
     "jest/globals": true
   },
-  "extends": ["plugin:react/recommended", "airbnb"],
+  "extends": ["plugin:react/recommended", "airbnb", "plugin:prettier/recommended"],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
@@ -27,7 +27,9 @@
     ],
     "react/react-in-jsx-scope": "off",
     "linebreak-style": ["error", "windows"],
-    "no-param-reassign": 0
+    "no-param-reassign": 0,
+    "no-shadow": "off",
+    "@typescript-eslint/no-shadow": ["error"]
   },
   "settings": {
     "import/resolver": {

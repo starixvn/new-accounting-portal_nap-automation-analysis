@@ -13,11 +13,12 @@ it('should show Home component for / router (getting array of routes)', async ()
   sinon.stub(window.location, 'assign');
   const component = mount(<RedirectToLogin />);
   await act(
-    () => new Promise<void>((resolve) => {
-      setImmediate(() => {
-        component.update();
-        resolve();
-      });
-    }),
+    () =>
+      new Promise<void>((resolve) => {
+        setImmediate(() => {
+          component.update();
+          resolve();
+        });
+      }),
   );
 });
