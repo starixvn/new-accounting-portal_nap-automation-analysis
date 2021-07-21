@@ -1,6 +1,6 @@
 export default function HeaderForRedCard() {
   return (
-    <thead>
+    <>
       <tr>
         <th colSpan={2} className="score-header">
           Time
@@ -31,6 +31,6 @@ export default function HeaderForRedCard() {
         <th className="home-bg">HDP</th>
         <th className="away-bg">OU</th>
       </tr>
-    </thead>
+    </>
   );
 }
