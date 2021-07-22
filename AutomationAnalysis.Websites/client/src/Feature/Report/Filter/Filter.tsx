@@ -1,7 +1,7 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { ReportOption, ViewOption } from '../Store/ReportState';
-import { changeLeague, selectReportOption, selectTimeInterval, selectView } from '../Store/ReportActions';
+import { changeLeague, getReports, selectReportOption, selectTimeInterval, selectView } from '../Store/ReportActions';
 
 import { ApplicationState } from '../../../configureStore';
 import BreadcrumbFilter from './BreadcrumbFilter';
@@ -10,6 +10,8 @@ import InitialBetTypeRange from './InitialBetTypeRange';
 import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
 import './Filter.css';
+import reportApi from '../../../Api/reportApi';
+import { Report } from '../../../Models/Report';
 
 export const options = (values: number[]) =>
   values &&
@@ -44,7 +46,23 @@ export default function Filter() {
   const dispatch = useDispatch();
   const { league, timeInterval, viewOption, reportOption } = useSelector((state: ApplicationState) => state.report);
 
-  const submit = () => {};
+  const submit = () => {
+    const result: Report[] = [
+      {
+        fromTime: '0.00',
+        toTime: '5.00',
+        beforeHDP: 1,
+        beforeOU: 2,
+        noOfLeague: 2,
+        noOfMatch: 2,
+        afterHDP: 2,
+        afterOU: 2,
+        differenceHDP: 2,
+        differenceOU: 2,
+      },
+    ];
+    dispatch(getReports(result));
+  };
 
   return (
     <Card>

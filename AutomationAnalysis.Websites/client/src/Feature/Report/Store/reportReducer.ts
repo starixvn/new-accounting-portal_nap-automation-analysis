@@ -81,6 +81,11 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
         ...state,
         toDate: action.toDate,
       };
+    case ReportActionTypes.GET_REPORTS:
+      return {
+        ...state,
+        reports: action.reports,
+      };
     default:
       return state;
   }

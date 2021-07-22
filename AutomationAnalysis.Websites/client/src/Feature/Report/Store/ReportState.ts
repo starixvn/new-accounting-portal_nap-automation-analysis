@@ -1,3 +1,5 @@
+import { Report } from '../../../Models/Report';
+
 export type GoalOption = 'Home' | 'Away';
 export type ViewOption = 'Full Time' | 'Half Time';
 export type ReportOption = 'Score' | 'Redcard';
@@ -18,6 +20,7 @@ export interface ReportState {
   readonly toOU: number;
   readonly fromDate: Date;
   readonly toDate: Date;
+  readonly reports: Report[];
 }
 
 export const initialReportState: ReportState = {
@@ -36,4 +39,5 @@ export const initialReportState: ReportState = {
   toOU: 0,
   fromDate: new Date(),
   toDate: new Date(),
+  reports: [],
 };
