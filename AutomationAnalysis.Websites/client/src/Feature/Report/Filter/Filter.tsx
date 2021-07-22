@@ -1,5 +1,6 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 import { ReportOption, ViewOption } from '../Store/ReportState';
 import { changeLeague, getReports, selectReportOption, selectTimeInterval, selectView } from '../Store/ReportActions';
 
@@ -11,7 +12,6 @@ import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
-import { Report } from '../../../Models/Report';
 
 export const options = (values: number[]) =>
   values &&
@@ -44,11 +44,19 @@ const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
 
 export default function Filter() {
   const dispatch = useDispatch();
-  const { league, timeInterval, viewOption, reportOption } = useSelector((state: ApplicationState) => state.report);
-
+  const { league, timeInterval, viewOption, reportOption, fromDate, toDate } = useSelector(
+    (state: ApplicationState) => state.report,
+  );
+  const dateRange = (toDate.getTime() - fromDate.getTime()) / (24 * 3600 * 1000);
+  const yesterDay = new Date(Date.now());
+  yesterDay.setDate(yesterDay.getDate() - 1);
   const submit = async () => {
-    const result = await reportApi.getReports();
-    dispatch(getReports(result));
+    if (dateRange > 180 || fromDate > toDate || fromDate > yesterDay || toDate > yesterDay) {
+      toast.error('Please choose again Date Range!');
+    } else {
+      const result = await reportApi.getReports();
+      dispatch(getReports(result));
+    }
   };
 
   return (
