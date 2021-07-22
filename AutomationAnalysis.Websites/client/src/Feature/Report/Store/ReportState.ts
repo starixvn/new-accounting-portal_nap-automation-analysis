@@ -14,10 +14,10 @@ export interface ReportState {
   readonly league: string;
   readonly timeInterval: number;
   readonly viewOption: ViewOption;
-  readonly fromHDP: number;
-  readonly toHDP: number;
-  readonly fromOU: number;
-  readonly toOU: number;
+  readonly fromHDP: string;
+  readonly toHDP: string;
+  readonly fromOU: string;
+  readonly toOU: string;
   readonly fromDate: Date;
   readonly toDate: Date;
   readonly reports: Report[];
@@ -33,10 +33,10 @@ export const initialReportState: ReportState = {
   league: '',
   timeInterval: 5,
   viewOption: 'Full Time',
-  fromHDP: 0,
-  toHDP: 0,
-  fromOU: 0,
-  toOU: 0,
+  fromHDP: '0',
+  toHDP: '0',
+  fromOU: '0',
+  toOU: '0',
   fromDate: new Date(),
   toDate: new Date(),
   reports: [],

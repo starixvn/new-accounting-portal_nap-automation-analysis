@@ -39,7 +39,7 @@ export default function InitialBetTypeRange() {
               step="0.01"
               value={fromHDP}
               className="input-range"
-              onChange={(e) => dispatch(changeFromHDP(+e.target.value))}
+              onChange={(e) => dispatch(changeFromHDP(e.target.value))}
             />
           </td>
           <td>
@@ -50,7 +50,7 @@ export default function InitialBetTypeRange() {
               step="0.01"
               value={toHDP}
               className="input-range"
-              onChange={(e) => dispatch(changeToHDP(+e.target.value))}
+              onChange={(e) => dispatch(changeToHDP(e.target.value))}
             />
           </td>
           <td>
@@ -61,7 +61,7 @@ export default function InitialBetTypeRange() {
               step="0.01"
               value={fromOU}
               className="input-range"
-              onChange={(e) => dispatch(changeFromOU(+e.target.value))}
+              onChange={(e) => dispatch(changeFromOU(e.target.value))}
             />
           </td>
           <td>
@@ -72,7 +72,7 @@ export default function InitialBetTypeRange() {
               step="0.01"
               value={toOU}
               className="input-range"
-              onChange={(e) => dispatch(changeToOU(+e.target.value))}
+              onChange={(e) => dispatch(changeToOU(e.target.value))}
             />
           </td>
         </tr>

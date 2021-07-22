@@ -74,25 +74,25 @@ export const changeLeague = (league: string) =>
     league,
   } as const);
 
-export const changeFromHDP = (fromHDP: number) =>
+export const changeFromHDP = (fromHDP: string) =>
   ({
     type: ReportActionTypes.CHANGE_FROM_HDP,
     fromHDP,
   } as const);
 
-export const changeToHDP = (toHDP: number) =>
+export const changeToHDP = (toHDP: string) =>
   ({
     type: ReportActionTypes.CHANGE_TO_HDP,
     toHDP,
   } as const);
 
-export const changeFromOU = (fromOU: number) =>
+export const changeFromOU = (fromOU: string) =>
   ({
     type: ReportActionTypes.CHANGE_FROM_OU,
     fromOU,
   } as const);
 
-export const changeToOU = (toOU: number) =>
+export const changeToOU = (toOU: string) =>
   ({
     type: ReportActionTypes.CHANGE_TO_OU,
     toOU,

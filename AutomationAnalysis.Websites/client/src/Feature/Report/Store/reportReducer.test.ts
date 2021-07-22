@@ -77,28 +77,28 @@ describe("report reducer", () => {
   });
 
   it("return state changed fromHDP", () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_HDP, fromHDP: 1 })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_HDP, fromHDP: '1' })).toEqual({
       ...initialReportState,
       fromHDP: 1,
     });
   });
 
   it("return state changed toHDP", () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_HDP, toHDP: 1 })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_HDP, toHDP: '1' })).toEqual({
       ...initialReportState,
       toHDP: 1,
     });
   });
 
   it("return state changed fromOU", () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_OU, fromOU: 1 })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_OU, fromOU: '1' })).toEqual({
       ...initialReportState,
       fromOU: 1,
     });
   });
 
   it("return state changed toOU", () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_OU, toOU: 1 })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_OU, toOU: '1' })).toEqual({
       ...initialReportState,
       toOU: 1,
     });
