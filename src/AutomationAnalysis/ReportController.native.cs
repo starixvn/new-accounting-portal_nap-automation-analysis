@@ -1,5 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Fanex.NAP.Client.Helpers.Web;
+using System;
+using System.IO;
+using AutomationAnalysis.Utils;
+using AutomationAnalysis.Models;
 
 namespace AutomationAnalysis
 {
@@ -15,9 +19,11 @@ namespace AutomationAnalysis
         }
 
         [Route("")]
-        public IActionResult Index()
+        public IActionResult Index([FromQuery] Filter filter)
         {
-            return Ok();
+            var file = FileUtil.GetFileInfo(Path.Combine("wwwroot", "data", "report.json"));
+            var data = System.IO.File.ReadAllText(file.FullName);
+            return Ok(data);
         }
     }
 }

@@ -46,21 +46,8 @@ export default function Filter() {
   const dispatch = useDispatch();
   const { league, timeInterval, viewOption, reportOption } = useSelector((state: ApplicationState) => state.report);
 
-  const submit = () => {
-    const result: Report[] = [
-      {
-        fromTime: '0.00',
-        toTime: '5.00',
-        beforeHDP: 1,
-        beforeOU: 2,
-        noOfLeague: 2,
-        noOfMatch: 2,
-        afterHDP: 2,
-        afterOU: 2,
-        differenceHDP: 2,
-        differenceOU: 2,
-      },
-    ];
+  const submit = async () => {
+    const result = await reportApi.getReports();
     dispatch(getReports(result));
   };
 
