@@ -4,6 +4,7 @@ import {
   changeLeague,
   changeToHDP,
   changeToOU,
+  getReports,
   ReportActionTypes,
   selectAwayRedcard,
   selectAwayScore,
@@ -15,31 +16,31 @@ import {
   selectTimeInterval,
   selectToDate,
   selectView,
-} from "./ReportActions";
-import configureStore from "../../../configureStore";
+} from './ReportActions';
+import configureStore from '../../../configureStore';
 
-describe("report action", () => {
+describe('report action', () => {
   const mockStore = configureStore();
 
-  it("dispatches selectReportOption", () => {
+  it('dispatches selectReportOption', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_REPORT,
-      reportOption: "Score",
+      reportOption: 'Goal',
     };
 
-    expect(mockStore.dispatch(selectReportOption("Score"))).toEqual(expectedAction);
+    expect(mockStore.dispatch(selectReportOption('Goal'))).toEqual(expectedAction);
   });
 
-  it("dispatches selectGoalOption", () => {
+  it('dispatches selectGoalOption', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_GOAL,
-      goalOption: "Home",
+      goalOption: 'Home',
     };
 
-    expect(mockStore.dispatch(selectGoalOption("Home"))).toEqual(expectedAction);
+    expect(mockStore.dispatch(selectGoalOption('Home'))).toEqual(expectedAction);
   });
 
-  it("dispatches selectHomeScore", () => {
+  it('dispatches selectHomeScore', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_SCORE_HOME,
       scoreHome: 1,
@@ -48,7 +49,7 @@ describe("report action", () => {
     expect(mockStore.dispatch(selectHomeScore(1))).toEqual(expectedAction);
   });
 
-  it("dispatches selectAwayScore", () => {
+  it('dispatches selectAwayScore', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_SCORE_AWAY,
       scoreAway: 1,
@@ -57,7 +58,7 @@ describe("report action", () => {
     expect(mockStore.dispatch(selectAwayScore(1))).toEqual(expectedAction);
   });
 
-  it("dispatches selectHomeRedcard", () => {
+  it('dispatches selectHomeRedcard', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_REDCARD_HOME,
       redcardHome: 1,
@@ -66,7 +67,7 @@ describe("report action", () => {
     expect(mockStore.dispatch(selectHomeRedcard(1))).toEqual(expectedAction);
   });
 
-  it("dispatches selectAwayRedcard", () => {
+  it('dispatches selectAwayRedcard', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_REDCARD_AWAY,
       redcardAway: 1,
@@ -75,16 +76,16 @@ describe("report action", () => {
     expect(mockStore.dispatch(selectAwayRedcard(1))).toEqual(expectedAction);
   });
 
-  it("dispatches selectView", () => {
+  it('dispatches selectView', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_VIEW,
-      viewOption: "Full Time",
+      viewOption: 'Full Time',
     };
 
-    expect(mockStore.dispatch(selectView("Full Time"))).toEqual(expectedAction);
+    expect(mockStore.dispatch(selectView('Full Time'))).toEqual(expectedAction);
   });
 
-  it("dispatches selectTimeInterval", () => {
+  it('dispatches selectTimeInterval', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_TIME_INTERVAL,
       timeInterval: 5,
@@ -93,52 +94,52 @@ describe("report action", () => {
     expect(mockStore.dispatch(selectTimeInterval(5))).toEqual(expectedAction);
   });
 
-  it("dispatches changeLeague", () => {
+  it('dispatches changeLeague', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_LEAGUE,
-      league: "C1",
+      league: 'C1',
     };
 
-    expect(mockStore.dispatch(changeLeague("C1"))).toEqual(expectedAction);
+    expect(mockStore.dispatch(changeLeague('C1'))).toEqual(expectedAction);
   });
 
-  it("dispatches changeFromHDP", () => {
+  it('dispatches changeFromHDP', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_FROM_HDP,
-      fromHDP: 1,
+      fromHDP: '1',
     };
 
-    expect(mockStore.dispatch(changeFromHDP(1))).toEqual(expectedAction);
+    expect(mockStore.dispatch(changeFromHDP('1'))).toEqual(expectedAction);
   });
 
-  it("dispatches changeToHDP", () => {
+  it('dispatches changeToHDP', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_TO_HDP,
-      toHDP: 1,
+      toHDP: '1',
     };
 
-    expect(mockStore.dispatch(changeToHDP(1))).toEqual(expectedAction);
+    expect(mockStore.dispatch(changeToHDP('1'))).toEqual(expectedAction);
   });
 
-  it("dispatches changeFromOU", () => {
+  it('dispatches changeFromOU', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_FROM_OU,
-      fromOU: 1,
+      fromOU: '1',
     };
 
-    expect(mockStore.dispatch(changeFromOU(1))).toEqual(expectedAction);
+    expect(mockStore.dispatch(changeFromOU('1'))).toEqual(expectedAction);
   });
 
-  it("dispatches changeToOU", () => {
+  it('dispatches changeToOU', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_TO_OU,
-      toOU: 1,
+      toOU: '1',
     };
 
-    expect(mockStore.dispatch(changeToOU(1))).toEqual(expectedAction);
+    expect(mockStore.dispatch(changeToOU('1'))).toEqual(expectedAction);
   });
 
-  it("dispatches selectFromDate", () => {
+  it('dispatches selectFromDate', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_FROM_DATE,
       fromDate: new Date(),
@@ -147,12 +148,21 @@ describe("report action", () => {
     expect(mockStore.dispatch(selectFromDate(new Date()))).toEqual(expectedAction);
   });
 
-  it("dispatches selectToDate", () => {
+  it('dispatches selectToDate', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_TO_DATE,
       toDate: new Date(),
     };
 
     expect(mockStore.dispatch(selectToDate(new Date()))).toEqual(expectedAction);
+  });
+
+  it('dispatches getReport', () => {
+    const expectedAction = {
+      type: ReportActionTypes.GET_REPORTS,
+      reports: [],
+    };
+
+    expect(mockStore.dispatch(getReports([]))).toEqual(expectedAction);
   });
 });

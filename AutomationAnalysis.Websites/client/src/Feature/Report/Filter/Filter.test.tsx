@@ -3,7 +3,6 @@ import { Provider } from 'react-redux';
 import Filter from './Filter';
 import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
-import BreadcrumbFilter from './BreadcrumbFilter';
 import configureStore from '../../../configureStore';
 
 describe('RedCardSelector Component', () => {
@@ -18,7 +17,6 @@ describe('RedCardSelector Component', () => {
   it('render subcompoment correct', () => {
     expect(wrapper.find(RedCardSelector).exists()).toEqual(true);
     expect(wrapper.find(ScoreSelector).exists()).toEqual(true);
-    expect(wrapper.find(BreadcrumbFilter).exists()).toEqual(true);
   });
 
   it('button click correct', () => {

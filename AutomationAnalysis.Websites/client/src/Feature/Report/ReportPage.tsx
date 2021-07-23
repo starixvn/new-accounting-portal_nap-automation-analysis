@@ -9,7 +9,7 @@ import './ReportPage.css';
 function ReportPage() {
   const { reports, reportOption } = useSelector((state: ApplicationState) => state.report);
 
-  const head = reportOption === 'Score' ? <HeaderForGoal /> : <HeaderForRedCard />;
+  const head = reportOption === 'Goal' ? <HeaderForGoal /> : <HeaderForRedCard />;
 
   const body = reports.map((report) => (
     <tr key={report.fromTime}>
@@ -26,10 +26,10 @@ function ReportPage() {
     </tr>
   ));
   return (
-    <>
+    <div className="report-container">
       <Filter />
       {!!reports?.length && <GridView head={head} body={body} />}
-    </>
+    </div>
   );
 }
 

@@ -5,10 +5,10 @@ export default function HeaderForRedCard() {
         <th colSpan={2} className="score-header">
           Time
         </th>
-        <th rowSpan={2} className="score-header">
+        <th rowSpan={2} className="score-header align-middle">
           No. Of League
         </th>
-        <th rowSpan={2} className="score-header">
+        <th rowSpan={2} className="score-header align-middle">
           No. Of Match
         </th>
         <th colSpan={2} className="score-header">

@@ -4,9 +4,9 @@
   width: 100%;
 }
 
-.card {
+/* .card {
   font-size: 0.8125rem;
-}
+} */
 
 .card td,
 .card th {
@@ -24,14 +24,8 @@
   padding-top: 20px;
 }
 
-.filter {
-  float: left;
-  width: 30%;
-  margin-top: 6px;
-}
-
 .row:after {
-  content: "";
+  content: '';
   display: table;
   clear: both;
 }
@@ -59,7 +53,7 @@
 }
 
 .breadcrumb {
-  background-color: #fdf75a !important;
+  background-color: #dedede !important;
   padding: 0.5rem 0.5rem !important;
   margin-top: 10px !important;
 }

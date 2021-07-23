@@ -1,12 +1,18 @@
-import { shallow } from 'enzyme';
+import { mount } from 'enzyme';
+import { Provider } from 'react-redux';
+import configureStore from '../../configureStore';
 import Filter from './Filter/Filter';
 import ReportPage from './ReportPage';
 
 describe('ReportPage Component', () => {
-  const wrapper = shallow(<ReportPage />);
+  const mockStore = configureStore();
+  const wrapper = mount(
+    <Provider store={mockStore}>
+      <ReportPage />
+    </Provider>,
+  );
 
   it('render correct', () => {
-    const compoment = wrapper.find(Filter);
-    expect(compoment.exists()).toEqual(true);
+    expect(wrapper.find(Filter).exists()).toEqual(true);
   });
 });

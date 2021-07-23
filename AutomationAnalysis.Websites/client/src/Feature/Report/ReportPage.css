@@ -1,6 +1,9 @@
 h1 {
   text-align: center;
 }
+.report-container {
+  font-size: 0.8125rem;
+}
 
 .card-body {
   background-color: #f2f2f2;
@@ -19,6 +22,6 @@ h1 {
 }
 
 .away-bg {
-  background-color: "lightpink";
+  background-color: 'lightpink';
   color: #333333;
 }

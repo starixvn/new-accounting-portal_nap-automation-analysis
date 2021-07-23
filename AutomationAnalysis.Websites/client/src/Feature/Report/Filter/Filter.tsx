@@ -22,7 +22,7 @@ export const options = (values: number[]) =>
   ));
 
 const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
-  reportSelect === 'Score' ? (
+  reportSelect === 'Goal' ? (
     <>
       <Col sm="3">
         <ScoreSelector />
@@ -44,19 +44,24 @@ const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
 
 export default function Filter() {
   const dispatch = useDispatch();
-  const { league, timeInterval, viewOption, reportOption, fromDate, toDate } = useSelector(
+  const { league, timeInterval, viewOption, reportOption, fromDate, toDate, reports } = useSelector(
     (state: ApplicationState) => state.report,
   );
-  const dateRange = (toDate.getTime() - fromDate.getTime()) / (24 * 3600 * 1000);
-  const yesterDay = new Date(Date.now());
-  yesterDay.setDate(yesterDay.getDate() - 1);
+
+  const validDateRange = () => {
+    const dateRange = (toDate.getTime() - fromDate.getTime()) / (24 * 3600 * 1000);
+    const yesterDay = new Date(Date.now());
+    yesterDay.setDate(yesterDay.getDate() - 1);
+    return dateRange > 180 || fromDate > toDate || fromDate > yesterDay || toDate > yesterDay;
+  };
+
   const submit = async () => {
-    if (dateRange > 180 || fromDate > toDate || fromDate > yesterDay || toDate > yesterDay) {
+    if (validDateRange()) {
       toast.error('Please choose again Date Range!');
-    } else {
-      const result = await reportApi.getReports();
-      dispatch(getReports(result));
+      return;
     }
+    const result = await reportApi.getReports();
+    dispatch(getReports(result));
   };
 
   return (
@@ -67,14 +72,14 @@ export default function Filter() {
             <span className="font-weight-bold d-inline-block">ISN Odds</span>
             <Button
               variant="secondary"
-              className={reportOption === 'Score' ? 'goal-button active-button' : 'goal-button'}
-              onClick={() => dispatch(selectReportOption('Score'))}
+              className={reportOption === 'Goal' ? 'goal-button active-button' : 'goal-button'}
+              onClick={() => dispatch(selectReportOption('Goal'))}
             >
               Goal
             </Button>
             <Button
               variant="secondary"
-              className={reportOption === 'Score' ? 'redcard-button' : 'redcard-button active-button'}
+              className={reportOption === 'Goal' ? 'redcard-button' : 'redcard-button active-button'}
               onClick={() => dispatch(selectReportOption('Redcard'))}
             >
               Redcard
@@ -137,9 +142,7 @@ export default function Filter() {
           </Col>
         </Row>
         <Row>
-          <Col>
-            <BreadcrumbFilter />
-          </Col>
+          <Col>{!!reports?.length && <BreadcrumbFilter />}</Col>
         </Row>
       </Card.Body>
     </Card>

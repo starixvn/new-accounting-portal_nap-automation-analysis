@@ -2,7 +2,7 @@ import { Report } from '../../../Models/Report';
 
 export type GoalOption = 'Home' | 'Away';
 export type ViewOption = 'Full Time' | 'Half Time';
-export type ReportOption = 'Score' | 'Redcard';
+export type ReportOption = 'Goal' | 'Redcard';
 
 export interface ReportState {
   readonly reportOption: ReportOption;
@@ -24,7 +24,7 @@ export interface ReportState {
 }
 
 export const initialReportState: ReportState = {
-  reportOption: 'Score',
+  reportOption: 'Goal',
   goalOption: 'Home',
   scoreHome: 1,
   scoreAway: 0,
