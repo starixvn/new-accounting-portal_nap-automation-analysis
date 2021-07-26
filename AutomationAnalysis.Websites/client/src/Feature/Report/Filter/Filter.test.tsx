@@ -1,6 +1,7 @@
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { toast } from 'react-toastify';
+import { act } from '@testing-library/react';
 import Filter from './Filter';
 import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
@@ -56,17 +57,19 @@ describe('RedCardSelector Component', () => {
     expect(spy).toHaveBeenCalled();
   });
 
-  it('submit query correct get reportDate', () => {
+  it('submit query correct get reportDate', async () => {
     mockStore.dispatch(selectFromDate(new Date('2021-07-24')));
     mockStore.dispatch(selectToDate(new Date('2021-07-25')));
-    wrapper = mount(
-      <Provider store={mockStore}>
-        <Filter />
-      </Provider>,
-    );
     const buttonQuery = wrapper.find('button').at(4);
     buttonQuery.simulate('click');
-    const spy = jest.spyOn(mockStore, 'dispatch');
-    expect(spy).toHaveBeenCalled();
+    await act(
+      () =>
+        new Promise<void>((resolve) => {
+          setImmediate(() => {
+            wrapper.update();
+            resolve();
+          });
+        }),
+    );
   });
 });
