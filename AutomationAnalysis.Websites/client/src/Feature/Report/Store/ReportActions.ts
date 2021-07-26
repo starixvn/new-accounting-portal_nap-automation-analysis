@@ -3,7 +3,7 @@ import { TeamOption, ReportOption, ViewOption } from './ReportState';
 
 export enum ReportActionTypes {
   SELECT_REPORT = 'SELECT_REPORT',
-  SELECT_GOAL = 'SELECT_GOAL',
+  SELECT_TEAM = 'SELECT_TEAM',
   SELECT_SCORE_HOME = 'SELECT_SCORE_HOME',
   SELECT_SCORE_AWAY = 'SELECT_SCORE_AWAY',
   SELECT_REDCARD_HOME = 'SELECT_REDCARD_HOME',
@@ -28,7 +28,7 @@ export const selectReportOption = (reportOption: ReportOption) =>
 
 export const selectTeamOption = (teamType: TeamOption) =>
   ({
-    type: ReportActionTypes.SELECT_GOAL,
+    type: ReportActionTypes.SELECT_TEAM,
     teamType,
   } as const);
 

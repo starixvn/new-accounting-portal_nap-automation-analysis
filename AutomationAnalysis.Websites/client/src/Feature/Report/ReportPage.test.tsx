@@ -16,7 +16,6 @@ describe('ReportPage Component', () => {
       </Provider>,
     );
     expect(wrapper.find(Filter).exists()).toEqual(true);
-    expect(wrapper.find(GridView).exists()).toEqual(false);
   });
 
   it('render gridview correct', () => {

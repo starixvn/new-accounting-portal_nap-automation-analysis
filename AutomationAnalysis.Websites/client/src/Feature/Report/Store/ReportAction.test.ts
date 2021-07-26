@@ -33,8 +33,8 @@ describe('report action', () => {
 
   it('dispatches selectGoalOption', () => {
     const expectedAction = {
-      type: ReportActionTypes.SELECT_GOAL,
-      goalOption: 'Home',
+      type: ReportActionTypes.SELECT_TEAM,
+      teamType: 'Home',
     };
 
     expect(mockStore.dispatch(selectTeamOption('Home'))).toEqual(expectedAction);
@@ -43,7 +43,7 @@ describe('report action', () => {
   it('dispatches selectHomeScore', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_SCORE_HOME,
-      scoreHome: 1,
+      homeScore: 1,
     };
 
     expect(mockStore.dispatch(selectHomeScore(1))).toEqual(expectedAction);
@@ -52,7 +52,7 @@ describe('report action', () => {
   it('dispatches selectAwayScore', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_SCORE_AWAY,
-      scoreAway: 1,
+      awayScore: 1,
     };
 
     expect(mockStore.dispatch(selectAwayScore(1))).toEqual(expectedAction);
@@ -61,7 +61,7 @@ describe('report action', () => {
   it('dispatches selectHomeRedcard', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_REDCARD_HOME,
-      redcardHome: 1,
+      homeRedCard: 1,
     };
 
     expect(mockStore.dispatch(selectHomeRedcard(1))).toEqual(expectedAction);
@@ -70,7 +70,7 @@ describe('report action', () => {
   it('dispatches selectAwayRedcard', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_REDCARD_AWAY,
-      redcardAway: 1,
+      awayRedCard: 1,
     };
 
     expect(mockStore.dispatch(selectAwayRedcard(1))).toEqual(expectedAction);
@@ -79,7 +79,7 @@ describe('report action', () => {
   it('dispatches selectView', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_VIEW,
-      viewOption: 'Full Time',
+      view: 'Full Time',
     };
 
     expect(mockStore.dispatch(selectView('Full Time'))).toEqual(expectedAction);
@@ -88,7 +88,7 @@ describe('report action', () => {
   it('dispatches selectTimeInterval', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_TIME_INTERVAL,
-      timeInterval: 5,
+      interval: 5,
     };
 
     expect(mockStore.dispatch(selectTimeInterval(5))).toEqual(expectedAction);
@@ -106,7 +106,7 @@ describe('report action', () => {
   it('dispatches changeFromHDP', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_FROM_HDP,
-      fromHDP: '1',
+      fromInitialHDP: '1',
     };
 
     expect(mockStore.dispatch(changeFromHDP('1'))).toEqual(expectedAction);
@@ -115,7 +115,7 @@ describe('report action', () => {
   it('dispatches changeToHDP', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_TO_HDP,
-      toHDP: '1',
+      toInitialHDP: '1',
     };
 
     expect(mockStore.dispatch(changeToHDP('1'))).toEqual(expectedAction);
@@ -124,7 +124,7 @@ describe('report action', () => {
   it('dispatches changeFromOU', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_FROM_OU,
-      fromOU: '1',
+      fromInitialOU: '1',
     };
 
     expect(mockStore.dispatch(changeFromOU('1'))).toEqual(expectedAction);
@@ -133,7 +133,7 @@ describe('report action', () => {
   it('dispatches changeToOU', () => {
     const expectedAction = {
       type: ReportActionTypes.CHANGE_TO_OU,
-      toOU: '1',
+      toInitialOU: '1',
     };
 
     expect(mockStore.dispatch(changeToOU('1'))).toEqual(expectedAction);

@@ -9,7 +9,7 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
         ...initialReportState,
         reportOption: action.reportOption,
       };
-    case ReportActionTypes.SELECT_GOAL:
+    case ReportActionTypes.SELECT_TEAM:
       return {
         ...state,
         teamType: action.teamType,

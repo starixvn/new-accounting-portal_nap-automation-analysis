@@ -14,60 +14,59 @@ describe('report reducer', () => {
   });
 
   it('return state selected goal', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_GOAL, goalOption: 'Home' })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_TEAM, teamType: 'Home' })).toEqual({
       ...initialReportState,
-      goalOption: 'Home',
-      scoreHome: 1,
-      scoreAway: 0,
+      teamType: 'Home',
+      homeScore: 1,
+      awayScore: 0,
     });
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_GOAL, goalOption: 'Away' })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_TEAM, teamType: 'Away' })).toEqual({
       ...initialReportState,
-      goalOption: 'Away',
-      scoreHome: 0,
-      scoreAway: 1,
+      teamType: 'Away',
+      homeScore: 0,
+      awayScore: 1,
     });
   });
 
   it('return state selected score home', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_SCORE_HOME, scoreHome: 5 })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_SCORE_HOME, homeScore: 5 })).toEqual({
       ...initialReportState,
-      scoreHome: 5,
+      homeScore: 5,
     });
   });
 
   it('return state selected score away', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_SCORE_AWAY, scoreAway: 5 })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_SCORE_AWAY, awayScore: 5 })).toEqual({
       ...initialReportState,
-      scoreAway: 5,
+      awayScore: 5,
     });
   });
 
   it('return selected redcard home', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_REDCARD_HOME, redcardHome: 4 })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_REDCARD_HOME, homeRedCard: 4 })).toEqual({
       ...initialReportState,
-      redcardHome: 4,
+      homeRedCard: 4,
     });
   });
 
   it('return selected redcard away', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_REDCARD_AWAY, redcardAway: 4 })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_REDCARD_AWAY, awayRedCard: 4 })).toEqual({
       ...initialReportState,
-      redcardAway: 4,
+      awayRedCard: 4,
     });
   });
 
   it('return state selected viewOption', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_VIEW, viewOption: 'Full Time' })).toEqual(
-      { ...initialReportState, viewOption: 'Full Time' },
-    );
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_VIEW, view: 'Full Time' })).toEqual({
+      ...initialReportState,
+      view: 'Full Time',
+    });
   });
 
   it('return selected timeinterval', () => {
-    expect(
-      reportReducer(initialReportState, { type: ReportActionTypes.SELECT_TIME_INTERVAL, timeInterval: 5 }),
-    ).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_TIME_INTERVAL, interval: 5 })).toEqual({
       ...initialReportState,
-      timeInterval: 5,
+      interval: 5,
     });
   });
 
@@ -79,30 +78,32 @@ describe('report reducer', () => {
   });
 
   it('return state changed fromHDP', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_HDP, fromHDP: '1' })).toEqual({
-      ...initialReportState,
-      fromHDP: '1',
-    });
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_HDP, fromInitialHDP: '1' })).toEqual(
+      {
+        ...initialReportState,
+        fromInitialHDP: '1',
+      },
+    );
   });
 
   it('return state changed toHDP', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_HDP, toHDP: '1' })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_HDP, toInitialHDP: '1' })).toEqual({
       ...initialReportState,
-      toHDP: '1',
+      toInitialHDP: '1',
     });
   });
 
   it('return state changed fromOU', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_OU, fromOU: '1' })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_OU, fromInitialOU: '1' })).toEqual({
       ...initialReportState,
-      fromOU: '1',
+      fromInitialOU: '1',
     });
   });
 
   it('return state changed toOU', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_OU, toOU: '1' })).toEqual({
+    expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_OU, toInitialOU: '1' })).toEqual({
       ...initialReportState,
-      toOU: '1',
+      toInitialOU: '1',
     });
   });
 
