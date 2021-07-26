@@ -81,44 +81,46 @@ describe('report reducer', () => {
   it('return state changed fromHDP', () => {
     expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_HDP, fromHDP: '1' })).toEqual({
       ...initialReportState,
-      fromHDP: 1,
+      fromHDP: '1',
     });
   });
 
   it('return state changed toHDP', () => {
     expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_HDP, toHDP: '1' })).toEqual({
       ...initialReportState,
-      toHDP: 1,
+      toHDP: '1',
     });
   });
 
   it('return state changed fromOU', () => {
     expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_FROM_OU, fromOU: '1' })).toEqual({
       ...initialReportState,
-      fromOU: 1,
+      fromOU: '1',
     });
   });
 
   it('return state changed toOU', () => {
     expect(reportReducer(initialReportState, { type: ReportActionTypes.CHANGE_TO_OU, toOU: '1' })).toEqual({
       ...initialReportState,
-      toOU: 1,
+      toOU: '1',
     });
   });
 
   it('return state selected fromdate', () => {
     expect(
-      reportReducer(initialReportState, { type: ReportActionTypes.SELECT_FROM_DATE, fromDate: new Date() }),
+      reportReducer(initialReportState, { type: ReportActionTypes.SELECT_FROM_DATE, fromDate: new Date('2020-12-20') }),
     ).toEqual({
       ...initialReportState,
-      fromDate: new Date(),
+      fromDate: new Date('2020-12-20'),
     });
   });
 
   it('return state selected todate', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_TO_DATE, toDate: new Date() })).toEqual({
+    expect(
+      reportReducer(initialReportState, { type: ReportActionTypes.SELECT_TO_DATE, toDate: new Date('2020-12-20') }),
+    ).toEqual({
       ...initialReportState,
-      toDate: new Date(),
+      toDate: new Date('2020-12-20'),
     });
   });
 

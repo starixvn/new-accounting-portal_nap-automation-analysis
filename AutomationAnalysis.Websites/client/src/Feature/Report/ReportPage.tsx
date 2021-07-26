@@ -12,7 +12,7 @@ function ReportPage() {
   const head = reportOption === 'Goal' ? <HeaderForGoal /> : <HeaderForRedCard />;
 
   const body = reports.map((report) => (
-    <tr key={report.fromTime}>
+    <tr key={`${report.fromTime}-${report.toTime}`}>
       <td>{report.fromTime}</td>
       <td>{report.toTime}</td>
       <td>{report.noOfLeague}</td>
