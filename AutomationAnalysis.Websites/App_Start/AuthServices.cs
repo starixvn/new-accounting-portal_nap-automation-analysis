@@ -1,12 +1,13 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+﻿using System;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
-using System;
-using System.Threading.Tasks;
+using Newtonsoft.Json.Serialization;
 
 namespace AutomationAnalysis.Websites.App_Start
 {
@@ -48,6 +49,7 @@ namespace AutomationAnalysis.Websites.App_Start
                 .AddNewtonsoftJson(options =>
                     {
                         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                        options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     }
                 );
 
