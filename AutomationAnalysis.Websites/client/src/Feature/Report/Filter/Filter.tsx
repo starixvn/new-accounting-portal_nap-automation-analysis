@@ -44,9 +44,10 @@ const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
 
 export default function Filter() {
   const dispatch = useDispatch();
-  const { league, timeInterval, viewOption, reportOption, fromDate, toDate, reports } = useSelector(
+  const { league, interval, view, reportOption, fromDate, toDate, reports } = useSelector(
     (state: ApplicationState) => state.report,
   );
+  const filter = useSelector((state: ApplicationState) => state.report);
 
   const validDateRange = () => {
     const dateRange = (toDate.getTime() - fromDate.getTime()) / (24 * 3600 * 1000);
@@ -108,7 +109,7 @@ export default function Filter() {
             <Form.Control
               as="select"
               className="filter-select"
-              value={viewOption}
+              value={view}
               onChange={(e) => dispatch(selectView(e.target.value as ViewOption))}
             >
               <option value="Full Time">Full Time</option>
@@ -121,7 +122,7 @@ export default function Filter() {
             <Form.Control
               as="select"
               className="filter-select"
-              value={timeInterval}
+              value={interval}
               onChange={(e) => dispatch(selectTimeInterval(+e.target.value))}
             >
               <option value="5">5</option>

@@ -7,7 +7,7 @@ import { selectAwayRedcard, selectHomeRedcard } from '../Store/ReportActions';
 
 const RedCardSelector = () => {
   const dispatch = useDispatch();
-  const { redcardHome, redcardAway } = useSelector((state: ApplicationState) => state.report);
+  const { homeRedCard, awayRedCard } = useSelector((state: ApplicationState) => state.report);
   return (
     <Table striped bordered hover size="sm" className="text-center">
       <thead>
@@ -33,7 +33,7 @@ const RedCardSelector = () => {
             <Form>
               <Form.Control
                 as="select"
-                value={redcardHome}
+                value={homeRedCard}
                 onChange={(e) => dispatch(selectHomeRedcard(+e.target.value))}
                 className="home-redcard-select table-select"
               >
@@ -45,7 +45,7 @@ const RedCardSelector = () => {
             <Form>
               <Form.Control
                 as="select"
-                value={redcardAway}
+                value={awayRedCard}
                 onChange={(e) => dispatch(selectAwayRedcard(+e.target.value))}
                 className="away-redcard-select table-select"
               >

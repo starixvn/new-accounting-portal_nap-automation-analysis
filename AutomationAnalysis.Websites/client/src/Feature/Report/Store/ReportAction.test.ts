@@ -9,7 +9,7 @@ import {
   selectAwayRedcard,
   selectAwayScore,
   selectFromDate,
-  selectGoalOption,
+  selectTeamOption,
   selectHomeRedcard,
   selectHomeScore,
   selectReportOption,
@@ -37,7 +37,7 @@ describe('report action', () => {
       goalOption: 'Home',
     };
 
-    expect(mockStore.dispatch(selectGoalOption('Home'))).toEqual(expectedAction);
+    expect(mockStore.dispatch(selectTeamOption('Home'))).toEqual(expectedAction);
   });
 
   it('dispatches selectHomeScore', () => {

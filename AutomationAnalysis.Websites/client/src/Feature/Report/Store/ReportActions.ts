@@ -1,5 +1,5 @@
 import { Report } from '../../../Models/Report';
-import { GoalOption, ReportOption, ViewOption } from './ReportState';
+import { TeamOption, ReportOption, ViewOption } from './ReportState';
 
 export enum ReportActionTypes {
   SELECT_REPORT = 'SELECT_REPORT',
@@ -26,46 +26,46 @@ export const selectReportOption = (reportOption: ReportOption) =>
     reportOption,
   } as const);
 
-export const selectGoalOption = (goalOption: GoalOption) =>
+export const selectTeamOption = (teamType: TeamOption) =>
   ({
     type: ReportActionTypes.SELECT_GOAL,
-    goalOption,
+    teamType,
   } as const);
 
-export const selectHomeScore = (scoreHome: number) =>
+export const selectHomeScore = (homeScore: number) =>
   ({
     type: ReportActionTypes.SELECT_SCORE_HOME,
-    scoreHome,
+    homeScore,
   } as const);
 
-export const selectAwayScore = (scoreAway: number) =>
+export const selectAwayScore = (awayScore: number) =>
   ({
     type: ReportActionTypes.SELECT_SCORE_AWAY,
-    scoreAway,
+    awayScore,
   } as const);
 
-export const selectHomeRedcard = (redcardHome: number) =>
+export const selectHomeRedcard = (homeRedCard: number) =>
   ({
     type: ReportActionTypes.SELECT_REDCARD_HOME,
-    redcardHome,
+    homeRedCard,
   } as const);
 
-export const selectAwayRedcard = (redcardAway: number) =>
+export const selectAwayRedcard = (awayRedCard: number) =>
   ({
     type: ReportActionTypes.SELECT_REDCARD_AWAY,
-    redcardAway,
+    awayRedCard,
   } as const);
 
-export const selectView = (viewOption: ViewOption) =>
+export const selectView = (view: ViewOption) =>
   ({
     type: ReportActionTypes.SELECT_VIEW,
-    viewOption,
+    view,
   } as const);
 
-export const selectTimeInterval = (timeInterval: number) =>
+export const selectTimeInterval = (interval: number) =>
   ({
     type: ReportActionTypes.SELECT_TIME_INTERVAL,
-    timeInterval,
+    interval,
   } as const);
 
 export const changeLeague = (league: string) =>
@@ -74,28 +74,28 @@ export const changeLeague = (league: string) =>
     league,
   } as const);
 
-export const changeFromHDP = (fromHDP: string) =>
+export const changeFromHDP = (fromInitialHDP: string) =>
   ({
     type: ReportActionTypes.CHANGE_FROM_HDP,
-    fromHDP,
+    fromInitialHDP,
   } as const);
 
-export const changeToHDP = (toHDP: string) =>
+export const changeToHDP = (toInitialHDP: string) =>
   ({
     type: ReportActionTypes.CHANGE_TO_HDP,
-    toHDP,
+    toInitialHDP,
   } as const);
 
-export const changeFromOU = (fromOU: string) =>
+export const changeFromOU = (fromInitialOU: string) =>
   ({
     type: ReportActionTypes.CHANGE_FROM_OU,
-    fromOU,
+    fromInitialOU,
   } as const);
 
-export const changeToOU = (toOU: string) =>
+export const changeToOU = (toInitialOU: string) =>
   ({
     type: ReportActionTypes.CHANGE_TO_OU,
-    toOU,
+    toInitialOU,
   } as const);
 
 export const selectFromDate = (fromDate: Date) =>
@@ -117,7 +117,7 @@ export const getReports = (reports: Report[]) =>
   } as const);
 
 export type ReportActions =
-  | ReturnType<typeof selectGoalOption>
+  | ReturnType<typeof selectTeamOption>
   | ReturnType<typeof selectHomeScore>
   | ReturnType<typeof selectAwayScore>
   | ReturnType<typeof selectHomeRedcard>

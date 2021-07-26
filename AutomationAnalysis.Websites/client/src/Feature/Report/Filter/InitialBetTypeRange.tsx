@@ -6,10 +6,10 @@ import './InitialBetTypeRange.css';
 
 export default function InitialBetTypeRange() {
   const dispatch = useDispatch();
-  const fromHDP = useSelector((state: ApplicationState) => state.report.fromHDP);
-  const toHDP = useSelector((state: ApplicationState) => state.report.toHDP);
-  const fromOU = useSelector((state: ApplicationState) => state.report.fromOU);
-  const toOU = useSelector((state: ApplicationState) => state.report.toOU);
+  const fromHDP = useSelector((state: ApplicationState) => state.report.fromInitialHDP);
+  const toHDP = useSelector((state: ApplicationState) => state.report.toInitialHDP);
+  const fromOU = useSelector((state: ApplicationState) => state.report.fromInitialOU);
+  const toOU = useSelector((state: ApplicationState) => state.report.toInitialOU);
 
   return (
     <Table style={{ textAlign: 'center' }} size="sm" bordered>

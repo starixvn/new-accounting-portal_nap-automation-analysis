@@ -3,19 +3,21 @@ import { Form, Table } from 'react-bootstrap';
 import _ from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { options } from './Filter';
-import { GoalOption } from '../Store/ReportState';
-import { selectAwayScore, selectGoalOption, selectHomeScore } from '../Store/ReportActions';
+import { TeamOption } from '../Store/ReportState';
+import { selectAwayScore, selectTeamOption, selectHomeScore } from '../Store/ReportActions';
 import { ApplicationState } from '../../../configureStore';
 
 const ScoreSelector = () => {
   const dispatch = useDispatch();
-  const { goalOption, scoreHome, scoreAway } = useSelector((state: ApplicationState) => state.report);
+  const { teamType: goalOption, homeScore, awayScore } = useSelector((state: ApplicationState) => state.report);
   const [homeScoreOptions, setHomeScoreOptions] = useState<number[]>(_.range(1, 11));
   const [awayScoreOptions, setAwayScoreOptions] = useState<number[]>(_.range(0, 11));
 
   const changeGoalOption = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value as GoalOption;
-    dispatch(selectGoalOption(value));
+    const value = e.target.value as TeamOption;
+
+    dispatch(selectTeamOption(value));
+
     if (value === 'Home') {
       setHomeScoreOptions(_.range(1, 11));
       setAwayScoreOptions(_.range(0, 11));
@@ -60,7 +62,7 @@ const ScoreSelector = () => {
             <Form>
               <Form.Control
                 as="select"
-                value={scoreHome}
+                value={homeScore}
                 onChange={(e) => dispatch(selectHomeScore(+e.target.value))}
                 className="home-score-select table-select"
               >
@@ -72,7 +74,7 @@ const ScoreSelector = () => {
             <Form>
               <Form.Control
                 as="select"
-                value={scoreAway}
+                value={awayScore}
                 onChange={(e) => dispatch(selectAwayScore(+e.target.value))}
                 className="away-score-select table-select"
               >

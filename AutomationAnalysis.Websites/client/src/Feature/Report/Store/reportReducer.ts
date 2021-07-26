@@ -12,39 +12,39 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
     case ReportActionTypes.SELECT_GOAL:
       return {
         ...state,
-        goalOption: action.goalOption,
-        scoreHome: action.goalOption === 'Home' ? 1 : 0,
-        scoreAway: action.goalOption === 'Away' ? 1 : 0,
+        teamType: action.teamType,
+        homeScore: action.teamType === 'Home' ? 1 : 0,
+        awayScore: action.teamType === 'Away' ? 1 : 0,
       };
     case ReportActionTypes.SELECT_SCORE_HOME:
       return {
         ...state,
-        scoreHome: action.scoreHome,
+        homeScore: action.homeScore,
       };
     case ReportActionTypes.SELECT_SCORE_AWAY:
       return {
         ...state,
-        scoreAway: action.scoreAway,
+        awayScore: action.awayScore,
       };
     case ReportActionTypes.SELECT_REDCARD_HOME:
       return {
         ...state,
-        redcardHome: action.redcardHome,
+        homeRedCard: action.homeRedCard,
       };
     case ReportActionTypes.SELECT_REDCARD_AWAY:
       return {
         ...state,
-        redcardAway: action.redcardAway,
+        awayRedCard: action.awayRedCard,
       };
     case ReportActionTypes.SELECT_VIEW:
       return {
         ...state,
-        viewOption: action.viewOption,
+        view: action.view,
       };
     case ReportActionTypes.SELECT_TIME_INTERVAL:
       return {
         ...state,
-        timeInterval: action.timeInterval,
+        interval: action.interval,
       };
     case ReportActionTypes.CHANGE_LEAGUE:
       return {
@@ -54,22 +54,22 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
     case ReportActionTypes.CHANGE_FROM_HDP:
       return {
         ...state,
-        fromHDP: action.fromHDP,
+        fromInitialHDP: action.fromInitialHDP,
       };
     case ReportActionTypes.CHANGE_TO_HDP:
       return {
         ...state,
-        toHDP: action.toHDP,
+        toInitialHDP: action.toInitialHDP,
       };
     case ReportActionTypes.CHANGE_FROM_OU:
       return {
         ...state,
-        fromOU: action.fromOU,
+        fromInitialOU: action.fromInitialOU,
       };
     case ReportActionTypes.CHANGE_TO_OU:
       return {
         ...state,
-        toOU: action.toOU,
+        toInitialOU: action.toInitialOU,
       };
     case ReportActionTypes.SELECT_FROM_DATE:
       return {
