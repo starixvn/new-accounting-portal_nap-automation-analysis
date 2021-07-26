@@ -11,24 +11,31 @@ function ReportPage() {
 
   const head = reportOption === 'Goal' ? <HeaderForGoal /> : <HeaderForRedCard />;
 
-  const body = reports.map((report) => (
-    <tr key={`${report.From}-${report.To}`}>
-      <td>{report.From}</td>
-      <td>{report.To}</td>
-      <td>{report.NumberOfLeague}</td>
-      <td>{report.NumberOfMatch}</td>
-      <td>{report.BeforeHDP}</td>
-      <td>{report.BeforeOU}</td>
-      <td>{report.AfterHDP}</td>
-      <td>{report.AfterOU}</td>
-      <td>{report.DiffHDP}</td>
-      <td>{report.DiffOU}</td>
+  const body = reports?.length ? (
+    reports.map((report) => (
+      <tr key={`${report.from}-${report.to}`}>
+        <td>{report.from}</td>
+        <td>{report.to}</td>
+        <td>{report.numberOfLeague}</td>
+        <td>{report.numberOfMatch}</td>
+        <td>{report.beforeHDP}</td>
+        <td>{report.beforeOU}</td>
+        <td>{report.afterHDP}</td>
+        <td>{report.afterOU}</td>
+        <td>{report.diffHDP}</td>
+        <td>{report.diffOU}</td>
+      </tr>
+    ))
+  ) : (
+    <tr>
+      <td colSpan={10}>No found data!</td>
     </tr>
-  ));
+  );
+
   return (
     <div className="report-container">
       <Filter />
-      {!!reports?.length && <GridView head={head} body={body} />}
+      <GridView head={head} body={body} />
     </div>
   );
 }
