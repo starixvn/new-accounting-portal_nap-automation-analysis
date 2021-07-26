@@ -1,12 +1,12 @@
 export interface Report {
-  fromTime: string;
-  toTime: string;
-  noOfLeague: number;
-  noOfMatch: number;
-  beforeHDP: number;
-  beforeOU: number;
-  afterHDP: number;
-  afterOU: number;
-  differenceHDP: number;
-  differenceOU: number;
+  From: string;
+  To: string;
+  NumberOfLeague: number;
+  NumberOfMatch: number;
+  BeforeHDP: number;
+  BeforeOU: number;
+  AfterHDP: number;
+  AfterOU: number;
+  DiffHDP: number;
+  DiffOU: number;
 }

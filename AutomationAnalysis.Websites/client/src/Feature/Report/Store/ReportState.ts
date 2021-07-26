@@ -4,6 +4,11 @@ export type TeamOption = 'Home' | 'Away';
 export type ViewOption = 'Full Time' | 'Half Time';
 export type ReportOption = 'Goal' | 'Redcard';
 
+export type SelectItem = {
+  value: number | string;
+  label: string;
+};
+
 export interface ReportState {
   readonly reportOption: ReportOption;
   readonly teamType: TeamOption;

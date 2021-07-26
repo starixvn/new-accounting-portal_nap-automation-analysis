@@ -23,16 +23,16 @@ describe('ReportPage Component', () => {
     mockStore.dispatch(
       getReports([
         {
-          fromTime: '0.00',
-          toTime: '5.00',
-          beforeHDP: 1,
-          beforeOU: 2,
-          noOfLeague: 2,
-          noOfMatch: 2,
-          afterHDP: 2,
-          afterOU: 2,
-          differenceHDP: 2,
-          differenceOU: 2,
+          From: '0.00',
+          To: '5.00',
+          BeforeHDP: 1,
+          BeforeOU: 2,
+          NumberOfLeague: 2,
+          NumberOfMatch: 2,
+          AfterHDP: 2,
+          AfterOU: 2,
+          DiffHDP: 2,
+          DiffOU: 2,
         },
       ]),
     );

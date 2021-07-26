@@ -12,17 +12,17 @@ function ReportPage() {
   const head = reportOption === 'Goal' ? <HeaderForGoal /> : <HeaderForRedCard />;
 
   const body = reports.map((report) => (
-    <tr key={`${report.fromTime}-${report.toTime}`}>
-      <td>{report.fromTime}</td>
-      <td>{report.toTime}</td>
-      <td>{report.noOfLeague}</td>
-      <td>{report.noOfMatch}</td>
-      <td>{report.beforeHDP}</td>
-      <td>{report.beforeOU}</td>
-      <td>{report.afterHDP}</td>
-      <td>{report.afterOU}</td>
-      <td>{report.differenceHDP}</td>
-      <td>{report.differenceOU}</td>
+    <tr key={`${report.From}-${report.To}`}>
+      <td>{report.From}</td>
+      <td>{report.To}</td>
+      <td>{report.NumberOfLeague}</td>
+      <td>{report.NumberOfMatch}</td>
+      <td>{report.BeforeHDP}</td>
+      <td>{report.BeforeOU}</td>
+      <td>{report.AfterHDP}</td>
+      <td>{report.AfterOU}</td>
+      <td>{report.DiffHDP}</td>
+      <td>{report.DiffOU}</td>
     </tr>
   ));
   return (
