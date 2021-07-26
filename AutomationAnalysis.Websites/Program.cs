@@ -16,7 +16,11 @@ namespace AutomationAnalysis.Websites
             var hostBuilder = Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseUrls($"http://*:5000");
+#if DEBUG
+                    webBuilder.UseUrls("https://*:5001");
+#else
+                    webBuilder.UseUrls("http://*:5000");
+#endif
                     webBuilder.ConfigureAppConfiguration((builderContext, config) =>
                     {
                         var env = builderContext.HostingEnvironment;

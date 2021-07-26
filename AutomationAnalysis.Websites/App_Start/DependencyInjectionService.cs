@@ -1,4 +1,5 @@
 ﻿using AutomationAnalysis.Services;
+using AutomationAnalysis.SimpleApi;
 using Fanex.Data.Repository;
 using Fanex.Logging;
 using Fanex.NAP.Client.AspNetCore.Configuration;
@@ -39,7 +40,10 @@ namespace AutomationAnalysis.Websites.App_Start
             services.AddScoped<IDynamicRepository, DynamicRepository>();
             services.AddSingleton<LogServiceWrapper, LogServiceWrapperImp>();
 
+            services.AddScoped<SimpleCriteriaFactory, SimpleCriteriaFactoryBase>();
+
             return services;
         }
+
     }
 }

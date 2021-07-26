@@ -1,5 +1,6 @@
-﻿using AutomationAnalysis.Extensions;
+﻿using System;
 using System.Collections.Generic;
+using AutomationAnalysis.Extensions;
 using Xunit;
 
 namespace AutomationAnalysisUnitTests.Extensions
@@ -18,10 +19,10 @@ namespace AutomationAnalysisUnitTests.Extensions
             };
 
             // Act
-            var value = dictionary.GetValue(key, "defaultValue");
+            var actual = dictionary.GetValue(key, "defaultValue");
 
             // Assert
-            Assert.Equal(value, expectedValue);
+            Assert.Equal(actual, expectedValue);
         }
 
         [Theory]
@@ -37,10 +38,35 @@ namespace AutomationAnalysisUnitTests.Extensions
             };
 
             // Act
-            var value = dictionary.GetValue(key);
+            var actual = dictionary.GetValue(key);
 
             // Assert
-            Assert.Equal(value, expectedValue);
+            Assert.Equal(actual, expectedValue);
+        }
+
+        [Fact]
+        public void CloneCaseInSensitive_Returns_DictionaryWithLowerKey()
+        {
+            // Arrange
+            var dictionary = new Dictionary<string, string>
+            {
+                { "KEY1", "value1" },
+                { "Key1", "value1" },
+                { "key1", "value1" },
+                { "key2", "value2" }
+            };
+
+            var expectedValue = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                {"key1", "value1"},
+                {"key2", "value2"}
+            };
+
+            // Act
+            var actual = dictionary.CloneCaseInSensitive();
+
+            // Assert
+            Assert.Equal(actual, expectedValue);
         }
     }
 }
