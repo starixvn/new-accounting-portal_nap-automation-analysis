@@ -21,9 +21,11 @@ namespace AutomationAnalysis.SimpleApi
         {
             RegisterISNOdds();
         }
+
         private static void RegisterISNOdds()
         {
             CriteriaTypes.Add(ConstantApiKey.ISNOddsByGoalRedCardQuery, typeof(ISNOddsByGoalRedCardQueryCriteria));
+            CriteriaTypes.Add(ConstantApiKey.ISNOddsByGoalRedCardDetailQuery, typeof(ISNOddsByGoalRedCardDetailQueryCriteria));
         }
 
         public virtual ICriteria CreateCriteria(Type criteriaType, Dictionary<string, string> queryModel)
