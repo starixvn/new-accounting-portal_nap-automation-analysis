@@ -1,4 +1,5 @@
 import { Report } from '../../../Models/Report';
+import { ReportDetails } from '../../../Models/ReportDetails';
 
 export type TeamOption = 'Home' | 'Away';
 export type ViewOption = 'Full Time' | 'Half Time';
@@ -26,6 +27,8 @@ export interface ReportState {
   readonly fromDate: Date;
   readonly toDate: Date;
   readonly reports: Report[];
+  readonly reportDetails: ReportDetails[];
+  readonly isLoading: boolean;
 }
 
 export const initialReportState: ReportState = {
@@ -45,4 +48,6 @@ export const initialReportState: ReportState = {
   fromDate: new Date(),
   toDate: new Date(),
   reports: [],
+  reportDetails: [],
+  isLoading: false,
 };

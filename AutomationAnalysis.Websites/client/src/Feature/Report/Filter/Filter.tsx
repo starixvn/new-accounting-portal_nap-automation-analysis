@@ -12,7 +12,6 @@ import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
-import { apiKey } from '../../../Utils/ConstantsUtil';
 
 export const options = (values: number[]) =>
   values &&
@@ -38,7 +37,6 @@ interface FilterReport {
   awayRedCard: number;
   mode: number;
   teamType: number;
-  apiKey: string;
 }
 
 const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
@@ -77,10 +75,10 @@ export default function Filter() {
   };
 
   const submit = async () => {
-    if (validDateRange()) {
-      toast.error('Please choose again Date Range!');
-      return;
-    }
+    // if (validDateRange()) {
+    //   toast.error('Please choose again Date Range!');
+    //   return;
+    // }
     const filter: FilterReport = {
       fromDate: reportState.fromDate,
       toDate: reportState.toDate,
@@ -97,7 +95,6 @@ export default function Filter() {
       homeRedCard: reportState.homeRedCard,
       awayRedCard: reportState.awayRedCard,
       mode: reportState.reportOption === 'Goal' ? 0 : 1,
-      apiKey,
     };
     const result = await reportApi.getReports(filter);
     dispatch(getReports(result));

@@ -6,10 +6,12 @@ interface Props {
 }
 
 const GridView = ({ head, body }: Props) => (
-  <Table className="text-center" striped size="sm" bordered>
-    <thead>{head}</thead>
-    <tbody>{body}</tbody>
-  </Table>
+  <div className="grid-container">
+    <Table className="text-center" striped size="sm" bordered>
+      <thead>{head}</thead>
+      <tbody>{body}</tbody>
+    </Table>
+  </div>
 );
 
 export default GridView;

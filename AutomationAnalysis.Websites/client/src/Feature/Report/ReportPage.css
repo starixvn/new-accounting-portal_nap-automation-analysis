@@ -25,3 +25,7 @@ h1 {
   background-color: 'lightpink';
   color: #333333;
 }
+
+.grid-container {
+  padding: 1.25rem;
+}

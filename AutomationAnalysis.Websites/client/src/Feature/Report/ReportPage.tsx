@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { Spinner } from 'react-bootstrap';
 import Filter from './Filter/Filter';
 import GridView from './GridView/GridView';
 import HeaderForGoal from './GridView/HeaderForGoal';
@@ -11,9 +12,17 @@ function ReportPage() {
 
   const head = reportOption === 'Goal' ? <HeaderForGoal /> : <HeaderForRedCard />;
 
+  const handleClick = (from = '', to = '') => {
+    console.log(from, to);
+  };
+
   const body = reports?.length ? (
     reports.map((report) => (
-      <tr key={`${report.from}-${report.to}`}>
+      <tr
+        key={`${report.from}-${report.to}`}
+        style={{ cursor: 'pointer' }}
+        onClick={() => handleClick(report.from, report.to)}
+      >
         <td>{report.from}</td>
         <td>{report.to}</td>
         <td>{report.numberOfLeague}</td>

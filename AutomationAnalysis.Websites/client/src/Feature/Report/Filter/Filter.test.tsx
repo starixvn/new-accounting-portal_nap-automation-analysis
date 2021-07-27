@@ -19,7 +19,7 @@ describe('RedCardSelector Component', () => {
   });
   const mockStore = configureStore();
 
-  let wrapper = mount(
+  const wrapper = mount(
     <Provider store={mockStore}>
       <Filter />
     </Provider>,
