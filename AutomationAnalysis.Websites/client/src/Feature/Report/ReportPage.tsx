@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import { useSelector } from 'react-redux';
 import Filter from './Filter/Filter';
 import GridView from './GridView/GridView';
-import HeaderForGoal from './GridView/HeaderForGoal';
+import HeaderForGoal from './GridView/GridViewMain/HeaderForGoal';
 import { ApplicationState } from '../../configureStore';
-import HeaderForRedCard from './GridView/HeaderForRedCard';
+import HeaderForRedCard from './GridView/GridViewMain/HeaderForRedCard';
+import HeaderForGoalDrilldown from './GridView/GridViewDrilldown/HeaderForGoalDrilldown';
+import HeaderForRedCardDrilldown from './GridView/GridViewDrilldown/HeaderForRedCardDrilldown';
 import reportApi from '../../Api/reportApi';
 import './ReportPage.css';
 
@@ -27,10 +30,13 @@ interface ReportDetail {
   toMinute: number;
 }
 function ReportPage() {
+  const [isChange, setIsChange] = useState(false);
   const { reports, reportOption } = useSelector((state: ApplicationState) => state.report);
   const reportState = useSelector((state: ApplicationState) => state.report);
   const head = reportOption === 'Goal' ? <HeaderForGoal /> : <HeaderForRedCard />;
+  const headDrilldown = reportOption === 'Goal' ? <HeaderForGoalDrilldown /> : <HeaderForRedCardDrilldown />;
   const reportDetail = async (from: string, to: string) => {
+    setIsChange(true);
     const filterReportDrilldown: ReportDetail = {
       fromDate: reportState.fromDate,
       toDate: reportState.toDate,
@@ -55,15 +61,21 @@ function ReportPage() {
   };
   const body = reports?.length ? (
     reports.map((report) => (
-      <tr
-        style={{ cursor: 'pointer' }}
-        key={`${report.from}-${report.to}`}
-        onClick={() => reportDetail(report.from, report.to)}
-      >
+      <tr key={`${report.from}-${report.to}`}>
         <td>{report.from}</td>
         <td>{report.to}</td>
         <td>{report.numberOfLeague}</td>
-        <td>{report.numberOfMatch}</td>
+        <td>
+          <li
+            key={`${report.numberOfMatch}`}
+            style={{ color: 'blue', cursor: 'pointer', listStyleType: 'none' }}
+            onClick={() => reportDetail(report.from, report.to)}
+            onKeyDown={() => reportDetail(report.from, report.to)}
+            role="presentation"
+          >
+            {report.numberOfMatch}
+          </li>
+        </td>
         <td>{report.beforeHDP}</td>
         <td>{report.beforeOU}</td>
         <td>{report.afterHDP}</td>
@@ -77,11 +89,11 @@ function ReportPage() {
       <td colSpan={10}>No found data!</td>
     </tr>
   );
-
+  const bodyDrilldown = <></>;
   return (
     <div className="report-container">
       <Filter />
-      <GridView head={head} body={body} />
+      {isChange ? <GridView head={headDrilldown} body={bodyDrilldown} /> : <GridView head={head} body={body} />}
     </div>
   );
 }
