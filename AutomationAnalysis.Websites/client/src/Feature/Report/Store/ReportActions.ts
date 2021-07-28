@@ -1,4 +1,5 @@
 import { Report } from '../Models/Report';
+import { ReportDetail } from '../Models/ReportDetail';
 import { TeamOption, ReportOption, ViewOption } from './ReportState';
 
 export enum ReportActionTypes {
@@ -18,6 +19,7 @@ export enum ReportActionTypes {
   SELECT_FROM_DATE = 'SELECT_FROM_DATE',
   SELECT_TO_DATE = 'SELECT_TO_DATE',
   GET_REPORTS = 'GET_REPORTS',
+  GET_REPORT_DETAILS = 'GET_REPORT_DETAILS',
 }
 
 export const selectReportOption = (reportOption: ReportOption) =>
@@ -116,6 +118,12 @@ export const getReports = (reports: Report[]) =>
     reports,
   } as const);
 
+export const getReportDetails = (reportDetails: ReportDetail[]) =>
+  ({
+    type: ReportActionTypes.GET_REPORT_DETAILS,
+    reportDetails,
+  } as const);
+
 export type ReportActions =
   | ReturnType<typeof selectTeamOption>
   | ReturnType<typeof selectHomeScore>
@@ -132,4 +140,5 @@ export type ReportActions =
   | ReturnType<typeof selectFromDate>
   | ReturnType<typeof selectToDate>
   | ReturnType<typeof selectReportOption>
-  | ReturnType<typeof getReports>;
+  | ReturnType<typeof getReports>
+  | ReturnType<typeof getReportDetails>;
