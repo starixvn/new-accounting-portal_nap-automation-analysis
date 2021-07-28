@@ -1,10 +1,10 @@
-// import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
 import Filter from './Filter/Filter';
 import { ApplicationState } from '../../configureStore';
 import GridViewMain from './GridView/GridViewMain/GridViewMain';
 import GridViewDrilldown from './GridView/GridViewDrilldown/GridViewDrilldown';
+import UsePageLoading from '../../GlobalComponent/UsePageLoading';
 import './ReportPage.css';
 import { mapStateToFilter } from './Models/ReportFilter';
 import reportApi from '../../Api/reportApi';
@@ -15,6 +15,7 @@ function ReportPage() {
   const reportState = useSelector((state: ApplicationState) => state.report);
   const { reports, reportOption, reportDetails } = reportState;
   const dispatch = useDispatch();
+  const [loader, showLoader, hideLoader] = UsePageLoading();
   const headGroupByLeagueNames = (data: ReportDetail[]) =>
     _.chain(data)
       .groupBy((x) => x.leagueName)
@@ -43,19 +44,24 @@ function ReportPage() {
   };
 
   const drillDown = async (fromMinute: string, toMinute: string) => {
+    showLoader();
     const filter = { ...mapStateToFilter(reportState), fromMinute, toMinute };
     const data = await reportApi.getReportDetails(filter);
     const result = processReportDetailsData(data);
     dispatch(getReportDetails(result));
+    hideLoader();
   };
 
   return (
     <div className="report-container">
-      <Filter />
-      {!!reports?.length && !reportDetails?.length && (
-        <GridViewMain mode={reportOption} reports={reports} drillDown={drillDown} />
-      )}
-      {!!reportDetails?.length && <GridViewDrilldown mode={reportOption} reportDetails={reportDetails} />}
+      <>
+        <Filter />
+        {!!reports?.length && !reportDetails?.length && (
+          <GridViewMain mode={reportOption} reports={reports} drillDown={drillDown} />
+        )}
+        {!!reportDetails?.length && <GridViewDrilldown mode={reportOption} reportDetails={reportDetails} />}
+        {loader}
+      </>
     </div>
   );
 }
