@@ -1,14 +1,9 @@
-import { Report } from '../../../Models/Report';
-import { ReportDetails } from '../../../Models/ReportDetails';
+import { Report } from '../Models/Report';
+import { ReportDetail } from '../Models/ReportDetail';
 
 export type TeamOption = 'Home' | 'Away';
 export type ViewOption = 'Full Time' | 'Half Time';
 export type ReportOption = 'Goal' | 'Redcard';
-
-export type SelectItem = {
-  value: number | string;
-  label: string;
-};
 
 export interface ReportState {
   readonly reportOption: ReportOption;
@@ -27,7 +22,7 @@ export interface ReportState {
   readonly fromDate: Date;
   readonly toDate: Date;
   readonly reports: Report[];
-  readonly reportDetails: ReportDetails[];
+  readonly reportDetails: ReportDetail[];
   readonly isLoading: boolean;
 }
 
@@ -41,12 +36,12 @@ export const initialReportState: ReportState = {
   league: '',
   interval: 5,
   view: 'Full Time',
-  fromInitialHDP: '0',
-  toInitialHDP: '0',
-  fromInitialOU: '0',
-  toInitialOU: '0',
-  fromDate: new Date(),
-  toDate: new Date(),
+  fromInitialHDP: '-5',
+  toInitialHDP: '5',
+  fromInitialOU: '-5',
+  toInitialOU: '5',
+  fromDate: new Date('2019-03-10'),
+  toDate: new Date('2021-06-10'),
   reports: [],
   reportDetails: [],
   isLoading: false,

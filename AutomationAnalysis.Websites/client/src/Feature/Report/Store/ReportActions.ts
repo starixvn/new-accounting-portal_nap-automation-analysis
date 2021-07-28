@@ -1,4 +1,4 @@
-import { Report } from '../../../Models/Report';
+import { Report } from '../Models/Report';
 import { TeamOption, ReportOption, ViewOption } from './ReportState';
 
 export enum ReportActionTypes {

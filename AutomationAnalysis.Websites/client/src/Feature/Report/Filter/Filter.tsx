@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { ReportOption, ViewOption } from '../Store/ReportState';
 import { changeLeague, getReports, selectReportOption, selectTimeInterval, selectView } from '../Store/ReportActions';
-
 import { ApplicationState } from '../../../configureStore';
 import BreadcrumbFilter from './BreadcrumbFilter';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
@@ -12,6 +11,7 @@ import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
+import { mapStateToFilter } from '../Models/ReportFilter';
 
 export const options = (values: number[]) =>
   values &&
@@ -20,24 +20,6 @@ export const options = (values: number[]) =>
       {value}
     </option>
   ));
-
-interface FilterReport {
-  fromDate: Date;
-  toDate: Date;
-  league: string;
-  view: boolean;
-  interval: number;
-  fromInitialHDP: number;
-  toInitialHDP: number;
-  fromInitialOU: number;
-  toInitialOU: number;
-  homeScore: number;
-  awayScore: number;
-  homeRedCard: number;
-  awayRedCard: number;
-  mode: number;
-  teamType: number;
-}
 
 const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
   reportSelect === 'Goal' ? (
@@ -79,23 +61,7 @@ export default function Filter() {
     //   toast.error('Please choose again Date Range!');
     //   return;
     // }
-    const filter: FilterReport = {
-      fromDate: reportState.fromDate,
-      toDate: reportState.toDate,
-      teamType: reportState.teamType === 'Home' ? 0 : 1,
-      league: reportState.league,
-      view: reportState.view === 'Full Time',
-      interval: reportState.interval,
-      fromInitialHDP: +reportState.fromInitialOU,
-      toInitialHDP: +reportState.toInitialHDP,
-      fromInitialOU: +reportState.fromInitialOU,
-      toInitialOU: +reportState.toInitialOU,
-      homeScore: reportState.homeScore,
-      awayScore: reportState.awayScore,
-      homeRedCard: reportState.homeRedCard,
-      awayRedCard: reportState.awayRedCard,
-      mode: reportState.reportOption === 'Goal' ? 0 : 1,
-    };
+    const filter = mapStateToFilter(reportState);
     const result = await reportApi.getReports(filter);
     dispatch(getReports(result));
   };

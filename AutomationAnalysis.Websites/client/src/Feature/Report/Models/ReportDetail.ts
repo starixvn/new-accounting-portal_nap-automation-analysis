@@ -1,10 +1,9 @@
-export interface ReportDetails {
+export interface ReportDetail {
   leagueName: string;
   matchName: string;
   minute: number;
   second: number;
-  // eslint-disable-next-line camelcase
-  only_second: number;
+  onlySecond: number;
   beforeHDP: number;
   beforeOU: number;
   afterHDP: number;
