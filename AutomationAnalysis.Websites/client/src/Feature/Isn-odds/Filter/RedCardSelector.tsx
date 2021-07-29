@@ -3,7 +3,7 @@ import _ from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { options } from './Filter';
 import { ApplicationState } from '../../../configureStore';
-import { selectAwayRedcard, selectHomeRedcard } from '../Store/ReportActions';
+import { selectAwayRedcard, selectHomeRedcard } from '../Store/Isn-odds-Actions';
 
 const RedCardSelector = () => {
   const dispatch = useDispatch();

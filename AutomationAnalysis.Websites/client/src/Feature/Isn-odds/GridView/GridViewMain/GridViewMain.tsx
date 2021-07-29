@@ -1,8 +1,8 @@
 import GridView from '../GridView';
 import HeaderForGoal from './HeaderForGoal';
 import HeaderForRedCard from './HeaderForRedCard';
-import { ReportOption } from '../../Store/ReportState';
-import { Report } from '../../Models/Report';
+import { ReportOption } from '../../Store/Isn-odds-State';
+import { Report } from '../../Models/Isn-odds';
 
 type Props = {
   mode: ReportOption;

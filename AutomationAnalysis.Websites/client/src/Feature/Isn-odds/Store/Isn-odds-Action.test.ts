@@ -16,7 +16,7 @@ import {
   selectTimeInterval,
   selectToDate,
   selectView,
-} from './ReportActions';
+} from './Isn-odds-Actions';
 import configureStore from '../../../configureStore';
 
 describe('report action', () => {

@@ -1,6 +1,6 @@
 import { combineReducers, createStore } from 'redux';
-import { ReportState } from './Feature/Report/Store/ReportState';
-import reportReducer from './Feature/Report/Store/reportReducer';
+import { ReportState } from './Feature/Isn-odds/Store/Isn-odds-State';
+import reportReducer from './Feature/Isn-odds/Store/Isn-odds-Reducer';
 
 export interface ApplicationState {
   report: ReportState;

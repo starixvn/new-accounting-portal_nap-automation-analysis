@@ -4,7 +4,7 @@ import { MuiPickersUtilsProvider, KeyboardDatePicker } from '@material-ui/picker
 import './DateRange.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../configureStore';
-import { selectFromDate, selectToDate } from '../../Feature/Report/Store/ReportActions';
+import { selectFromDate, selectToDate } from '../../Feature/Isn-odds/Store/Isn-odds-Actions';
 
 export default function DateRange() {
   const dispatch = useDispatch();

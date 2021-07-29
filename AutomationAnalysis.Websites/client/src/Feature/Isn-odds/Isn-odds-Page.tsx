@@ -5,11 +5,11 @@ import { ApplicationState } from '../../configureStore';
 import GridViewMain from './GridView/GridViewMain/GridViewMain';
 import GridViewDrilldown from './GridView/GridViewDrilldown/GridViewDrilldown';
 import UsePageLoading from '../../GlobalComponent/UsePageLoading';
-import './ReportPage.css';
-import { mapStateToFilter } from './Models/ReportFilter';
+import './Isn-odds-Page.css';
+import { mapStateToFilter } from './Models/Isn-odds-Filter';
 import reportApi from '../../Api/reportApi';
-import { ReportDetail } from './Models/ReportDetail';
-import { getReportDetails } from './Store/ReportActions';
+import { ReportDetail } from './Models/Isn-odds-Detail';
+import { getReportDetails } from './Store/Isn-odds-Actions';
 
 function ReportPage() {
   const reportState = useSelector((state: ApplicationState) => state.report);

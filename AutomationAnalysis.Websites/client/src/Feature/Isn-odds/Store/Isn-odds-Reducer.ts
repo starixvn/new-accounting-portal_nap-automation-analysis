@@ -1,6 +1,6 @@
 import { Reducer } from 'redux';
-import { ReportState, initialReportState } from './ReportState';
-import { ReportActions, ReportActionTypes } from './ReportActions';
+import { ReportState, initialReportState } from './Isn-odds-State';
+import { ReportActions, ReportActionTypes } from './Isn-odds-Actions';
 
 const reportReducer: Reducer<ReportState, ReportActions> = (state = initialReportState, action): ReportState => {
   switch (action.type) {

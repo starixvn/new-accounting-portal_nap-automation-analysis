@@ -1,8 +1,8 @@
-import { Report } from '../Feature/Report/Models/Report';
-import { ReportDetail } from '../Feature/Report/Models/ReportDetail';
+import { Report } from '../Feature/Isn-odds/Models/Isn-odds';
+import { ReportDetail } from '../Feature/Isn-odds/Models/Isn-odds-Detail';
 import requests from './axiosClient';
 import { apiKey } from '../Utils/ConstantsUtil';
-import { ReportFilter } from '../Feature/Report/Models/ReportFilter';
+import { ReportFilter } from '../Feature/Isn-odds/Models/Isn-odds-Filter';
 
 const reportApi = {
   getReports: (filter: ReportFilter) =>

@@ -7,7 +7,7 @@ import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
 import configureStore from '../../../configureStore';
 import reportApi from '../../../Api/reportApi';
-import { selectFromDate, selectToDate } from '../Store/ReportActions';
+import { selectFromDate, selectToDate } from '../Store/Isn-odds-Actions';
 // import { getReports, selectFromDate, selectToDate } from '../Store/ReportActions';
 
 describe('RedCardSelector Component', () => {

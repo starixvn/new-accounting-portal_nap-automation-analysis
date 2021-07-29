@@ -1,6 +1,6 @@
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import HomePage from './Home/HomePage';
-import ReportPage from './Report/ReportPage';
+import ReportPage from './Isn-odds/Isn-odds-Page';
 import RedirectToLogin from './RedirectToLogin/RedirectToLogin';
 import Layout from '../Layout/Layout';
 

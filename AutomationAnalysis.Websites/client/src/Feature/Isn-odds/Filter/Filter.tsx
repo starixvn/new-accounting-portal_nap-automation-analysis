@@ -1,8 +1,14 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { ReportOption, ViewOption } from '../Store/ReportState';
-import { changeLeague, getReports, selectReportOption, selectTimeInterval, selectView } from '../Store/ReportActions';
+import { ReportOption, ViewOption } from '../Store/Isn-odds-State';
+import {
+  changeLeague,
+  getReports,
+  selectReportOption,
+  selectTimeInterval,
+  selectView,
+} from '../Store/Isn-odds-Actions';
 import { ApplicationState } from '../../../configureStore';
 import BreadcrumbFilter from './BreadcrumbFilter';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
@@ -12,7 +18,7 @@ import ScoreSelector from './ScoreSelector';
 import UsePageLoading from '../../../GlobalComponent/UsePageLoading';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
-import { mapStateToFilter } from '../Models/ReportFilter';
+import { mapStateToFilter } from '../Models/Isn-odds-Filter';
 
 export const options = (values: number[]) =>
   values &&

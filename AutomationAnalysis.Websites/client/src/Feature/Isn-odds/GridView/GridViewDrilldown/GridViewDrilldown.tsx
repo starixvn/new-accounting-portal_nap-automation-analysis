@@ -1,5 +1,5 @@
-import { ReportDetail } from '../../Models/ReportDetail';
-import { ReportOption } from '../../Store/ReportState';
+import { ReportDetail } from '../../Models/Isn-odds-Detail';
+import { ReportOption } from '../../Store/Isn-odds-State';
 import GridView from '../GridView';
 import HeaderForGoalDrilldown from './HeaderForGoalDrilldown';
 import HeaderForRedCardDrilldown from './HeaderForRedCardDrilldown';
