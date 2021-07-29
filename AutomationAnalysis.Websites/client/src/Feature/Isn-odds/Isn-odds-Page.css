@@ -12,7 +12,7 @@ h1 {
 .score-header,
 .goal-header,
 .redcard-header {
-  background-color: #0b7ae6;
+  background-color: #3c5ea5;
   color: white;
 }
 
@@ -27,5 +27,21 @@ h1 {
 }
 
 .grid-container {
-  padding: 1.25rem;
+  padding: 0 1.25rem;
+}
+
+.grid-main tr td:nth-child(1) {
+  background-color: #f2f2f2;
+}
+
+.grid-main tr td:nth-child(2) {
+  background-color: #f2f2f2;
+}
+
+.grid-main tbody tr:nth-child(even) {
+  background: #ebf5fc;
+}
+
+.font-weight-500 {
+  font-weight: 500;
 }

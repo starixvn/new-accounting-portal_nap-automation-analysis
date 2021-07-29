@@ -2,34 +2,26 @@ export default function HeaderForRedCard() {
   return (
     <>
       <tr>
-        <th colSpan={2} className="score-header">
-          Time
-        </th>
-        <th rowSpan={2} className="score-header align-middle">
+        <th colSpan={2}>Time</th>
+        <th rowSpan={2} className=" align-middle">
           No. Of League
         </th>
-        <th rowSpan={2} className="score-header align-middle">
+        <th rowSpan={2} className=" align-middle">
           No. Of Match
         </th>
-        <th colSpan={2} className="score-header">
-          Before RedCard
-        </th>
-        <th colSpan={2} className="score-header">
-          After RedCard
-        </th>
-        <th colSpan={2} className="score-header">
-          Difference
-        </th>
+        <th colSpan={2}>Before RedCard</th>
+        <th colSpan={2}>After RedCard</th>
+        <th colSpan={2}>Difference</th>
       </tr>
       <tr>
-        <th className="home-bg">From</th>
-        <th className="away-bg">To</th>
-        <th className="home-bg">HDP</th>
-        <th className="away-bg">OU</th>
-        <th className="home-bg">HDP</th>
-        <th className="away-bg">OU</th>
-        <th className="home-bg">HDP</th>
-        <th className="away-bg">OU</th>
+        <th>From</th>
+        <th>To</th>
+        <th>HDP</th>
+        <th>OU</th>
+        <th>HDP</th>
+        <th>OU</th>
+        <th>HDP</th>
+        <th>OU</th>
       </tr>
     </>
   );

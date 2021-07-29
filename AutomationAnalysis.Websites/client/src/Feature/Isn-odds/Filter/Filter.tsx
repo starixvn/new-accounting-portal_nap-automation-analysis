@@ -78,17 +78,17 @@ export default function Filter() {
       <Card>
         <Card.Header>
           <Row>
-            <Col className="filter-header p-0">
+            <Col className="filter-header">
               <span className="font-weight-bold d-inline-block">ISN Odds</span>
               <Button
-                variant="secondary"
+                variant="success"
                 className={reportOption === 'Goal' ? 'goal-button active-button' : 'goal-button'}
                 onClick={() => dispatch(selectReportOption('Goal'))}
               >
                 Goal
               </Button>
               <Button
-                variant="secondary"
+                variant="success"
                 className={reportOption === 'Goal' ? 'redcard-button' : 'redcard-button active-button'}
                 onClick={() => dispatch(selectReportOption('Redcard'))}
               >

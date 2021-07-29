@@ -1,39 +1,33 @@
-export default function HeaderForGoalDrilldown() {
+export default function HeaderForRedCardDrilldown() {
   return (
     <>
       <tr>
-        <th rowSpan={2} className="score-header align-middle">
+        <th rowSpan={2} className="align-middle">
           #
         </th>
-        <th rowSpan={2} className="score-header align-middle">
+        <th rowSpan={2} className=" align-middle">
           Event
         </th>
-        <th rowSpan={2} className="score-header align-middle">
+        <th rowSpan={2} className=" align-middle">
           Minute
         </th>
-        <th rowSpan={2} className="score-header align-middle">
+        <th rowSpan={2} className=" align-middle">
           Second
         </th>
-        <th rowSpan={2} className="score-header align-middle">
+        <th rowSpan={2} className=" align-middle">
           Only Second
         </th>
-        <th colSpan={2} className="score-header">
-          Before Goal
-        </th>
-        <th colSpan={2} className="score-header">
-          After Goal
-        </th>
-        <th colSpan={2} className="score-header">
-          Difference
-        </th>
+        <th colSpan={2}>Before RedCard</th>
+        <th colSpan={2}>After RedCard</th>
+        <th colSpan={2}>Difference</th>
       </tr>
       <tr>
-        <th className="home-bg">HDP</th>
-        <th className="away-bg">OU</th>
-        <th className="home-bg">HDP</th>
-        <th className="away-bg">OU</th>
-        <th className="home-bg">HDP</th>
-        <th className="away-bg">OU</th>
+        <th>HDP</th>
+        <th>OU</th>
+        <th>HDP</th>
+        <th>OU</th>
+        <th>HDP</th>
+        <th>OU</th>
       </tr>
     </>
   );

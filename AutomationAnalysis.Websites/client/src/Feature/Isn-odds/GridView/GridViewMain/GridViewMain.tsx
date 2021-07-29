@@ -42,7 +42,11 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
       <td colSpan={10}>No found data!</td>
     </tr>
   );
-  return <GridView head={head} body={body} />;
+  return (
+    <div className="grid-main">
+      <GridView head={head} body={body} />
+    </div>
+  );
 };
 
 export default GridViewMain;

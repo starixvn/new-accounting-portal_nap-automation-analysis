@@ -36,6 +36,9 @@
 
 .filter-header button {
   border-radius: 0 !important;
+  border: none !important;
+  color: black;
+  background-color: #a9d08e;
 }
 
 .goal-button {
@@ -49,13 +52,24 @@
 }
 
 .active-button {
-  background-color: #288028 !important;
+  background-color: #548235 !important;
+  color: white !important;
 }
 
 .breadcrumb {
-  background-color: #dedede !important;
-  padding: 0.5rem 0.5rem !important;
+  background-color: #ffc000 !important;
+  padding: 0.5rem 1.25rem !important;
   margin-top: 10px !important;
+}
+.breadcrumb-item,
+.breadcrumb-item a {
+  color: black !important;
+  font-weight: bold;
+}
+.breadcrumb-item + .breadcrumb-item::before {
+  content: '>>' !important;
+  color: black !important;
+  font-weight: bold;
 }
 
 label {

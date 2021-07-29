@@ -7,6 +7,10 @@
   padding: 0 !important;
 }
 
+.MuiSvgIcon-root {
+  color: #4e8ec5 !important;
+}
+
 .MuiInputBase-root {
   width: 150px !important;
   background-color: white !important;

@@ -12,13 +12,13 @@ type Props = {
 const GridViewDrilldown = ({ mode, reportDetails }: Props) => {
   const head = mode === 'Goal' ? <HeaderForGoalDrilldown /> : <HeaderForRedCardDrilldown />;
   const body = reportDetails?.length ? (
-    reportDetails.map((reportDetail) => (
+    reportDetails.map((reportDetail, index) => (
       <tr
-        key={`${reportDetail.leagueName}-${reportDetail.matchName}`}
+        key={`${reportDetail.leagueName}-${reportDetail.matchName}-${index}`}
         style={reportDetail.index ? { backgroundColor: '#cfeafd', fontWeight: 'bold' } : {}}
       >
-        <td>{reportDetail.index}</td>
-        <td>{reportDetail.matchName}</td>
+        <td className={reportDetail.index ? 'font-weight-500' : ''}>{reportDetail.index}</td>
+        <td className={reportDetail.index ? 'font-weight-500' : ''}>{reportDetail.matchName}</td>
         <td>{reportDetail.minute}</td>
         <td>{reportDetail.second}</td>
         <td>{reportDetail.onlySecond}</td>

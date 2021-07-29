@@ -9,7 +9,7 @@ const RedCardSelector = () => {
   const dispatch = useDispatch();
   const { homeRedCard, awayRedCard } = useSelector((state: ApplicationState) => state.report);
   return (
-    <Table striped bordered hover size="sm" className="text-center">
+    <Table bordered size="sm" className="text-center">
       <thead>
         <tr>
           <th rowSpan={2} className="align-middle redcard-header">

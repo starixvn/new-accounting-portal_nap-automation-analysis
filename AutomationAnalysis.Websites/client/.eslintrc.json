@@ -40,7 +40,8 @@
     "no-shadow": "off",
     "react/jsx-filename-extension": ["warn", { "extensions": [".tsx"] }],
     "react/react-in-jsx-scope": "off",
-    "@typescript-eslint/no-explicit-any": "off"
+    "@typescript-eslint/no-explicit-any": "off",
+    "react/no-array-index-key": "off"
   },
   "settings": {
     "import/resolver": {
