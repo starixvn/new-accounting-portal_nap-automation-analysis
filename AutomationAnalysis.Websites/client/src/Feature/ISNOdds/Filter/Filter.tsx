@@ -57,10 +57,10 @@ export default function Filter() {
   };
   const [loader, showLoader, hideLoader] = UsePageLoading();
   const submit = async () => {
-    // if (validDateRange()) {
-    //   toast.error('Please choose again Date Range!');
-    //   return;
-    // }
+    if (validDateRange()) {
+      toast.error('Please choose again Date Range!');
+      return;
+    }
     showLoader();
     const filter = mapStateToFilter(reportState);
     const result = await reportApi.getReports(filter);
