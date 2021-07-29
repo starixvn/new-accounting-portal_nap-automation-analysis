@@ -9,7 +9,7 @@ describe('GridViewMain Component', () => {
   const mockStore = configureStore();
   const fakeMode: ReportOption = 'Goal';
   const fakeModeRedCard: ReportOption = 'Redcard';
-  let fakeDrilldown = (from: string, to: string) =>{};
+  let fakeDrilldown = (from: string, to: string) => {};
   const fakeReport: Report[] = [
     {
       from: '0.00',

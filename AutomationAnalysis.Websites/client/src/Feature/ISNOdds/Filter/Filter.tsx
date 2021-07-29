@@ -1,7 +1,7 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { ReportOption, ViewOption } from '../Store/ISNOddsState';
 import { toast } from 'react-toastify';
+import { ReportOption, ViewOption } from '../Store/ISNOddsState';
 import { changeLeague, getReports, selectReportOption, selectTimeInterval, selectView } from '../Store/ISNOddsActions';
 import { ApplicationState } from '../../../configureStore';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
@@ -57,10 +57,10 @@ export default function Filter() {
   };
   const [loader, showLoader, hideLoader] = UsePageLoading();
   const submit = async () => {
-    if (validDateRange()) {
-      toast.error('Please choose again Date Range!');
-      return;
-    }
+    // if (validDateRange()) {
+    //   toast.error('Please choose again Date Range!');
+    //   return;
+    // }
     showLoader();
     const filter = mapStateToFilter(reportState);
     const result = await reportApi.getReports(filter);
