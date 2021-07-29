@@ -23,7 +23,6 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
             key={`${report.numberOfMatch}`}
             style={{ color: 'blue', cursor: 'pointer', listStyleType: 'none' }}
             onClick={() => drillDown(report.from, report.to)}
-            onKeyDown={() => drillDown(report.from, report.to)}
             role="presentation"
           >
             {report.numberOfMatch}

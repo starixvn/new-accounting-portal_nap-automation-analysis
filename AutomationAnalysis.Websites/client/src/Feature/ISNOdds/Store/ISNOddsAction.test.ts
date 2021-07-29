@@ -16,6 +16,8 @@ import {
   selectTimeInterval,
   selectToDate,
   selectView,
+  getReportDetails,
+  showMainReport,
 } from './ISNOddsActions';
 import configureStore from '../../../configureStore';
 
@@ -164,5 +166,22 @@ describe('report action', () => {
     };
 
     expect(mockStore.dispatch(getReports([]))).toEqual(expectedAction);
+  });
+  it('dispatches getReportDetail', () => {
+    const expectedAction = {
+      type: ReportActionTypes.GET_REPORT_DETAILS,
+      fromMinute: '0',
+      toMinute: '5',
+      reportDetails: [],
+    };
+
+    expect(mockStore.dispatch(getReportDetails('0','5',[]))).toEqual(expectedAction);
+  });
+  it('dispatches mainReport', () => {
+    const expectedAction = {
+      type: ReportActionTypes.SHOW_MAIN_REPORT,
+    };
+
+    expect(mockStore.dispatch(showMainReport())).toEqual(expectedAction);
   });
 });
