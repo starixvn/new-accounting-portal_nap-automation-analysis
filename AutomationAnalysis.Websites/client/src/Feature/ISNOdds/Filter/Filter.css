@@ -42,18 +42,21 @@
 }
 
 .goal-button {
-  margin: 0 10px;
+  margin: -6px 10px 0;
   width: 80px;
-  margin-top: -11px;
 }
 
 .redcard-button {
-  margin-top: -11px;
+  margin-top: -5px;
 }
 
 .active-button {
   background-color: #548235 !important;
   color: white !important;
+}
+
+.breadcrumb-main {
+  margin: 1rem 1.25rem;
 }
 
 .breadcrumb {

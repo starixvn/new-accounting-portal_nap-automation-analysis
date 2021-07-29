@@ -5,6 +5,10 @@ h1 {
   font-size: 0.8125rem;
 }
 
+.card {
+  margin: 1rem 1.25rem;
+  border: snow;
+}
 .card-body {
   background-color: #f2f2f2;
 }

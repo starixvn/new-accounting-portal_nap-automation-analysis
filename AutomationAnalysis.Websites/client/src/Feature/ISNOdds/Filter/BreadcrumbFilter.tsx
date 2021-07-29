@@ -20,11 +20,13 @@ const BreadcrumbFilter = () => {
   const currentBreadcrumbText = numberUtility.toTimeRangeString(fromMinuteInNumber, toMinuteInNumber);
 
   return (
-    <Breadcrumb>
-      {detailGridVisible && (
+    <Breadcrumb className="breadcrumb-main">
+      {detailGridVisible ? (
         <Breadcrumb.Item href="#" onClick={goBackToMainReport}>
           {parentBreadcrumbText}
         </Breadcrumb.Item>
+      ) : (
+        <Breadcrumb.Item style={{ height: '1rem' }} />
       )}
       {detailGridVisible && <Breadcrumb.Item active>{currentBreadcrumbText}</Breadcrumb.Item>}
     </Breadcrumb>
