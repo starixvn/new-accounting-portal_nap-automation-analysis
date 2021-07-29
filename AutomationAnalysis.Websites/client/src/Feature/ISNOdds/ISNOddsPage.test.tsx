@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import configureStore from '../../configureStore';
 import Filter from './Filter/Filter';
 import GridView from './GridView/GridView';
-import ReportPage from './Isn-odds-Page';
-import { getReports } from './Store/Isn-odds-Actions';
+import ReportPage from './ISNOddsPage';
+import { getReports } from './Store/ISNOddsActions';
 
 describe('ReportPage Component', () => {
   const mockStore = configureStore();

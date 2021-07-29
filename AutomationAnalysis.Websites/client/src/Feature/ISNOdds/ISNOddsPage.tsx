@@ -1,18 +1,16 @@
 import _ from 'lodash';
-import './Isn-odds-Page.css';
-
 import { useDispatch, useSelector } from 'react-redux';
-
 import { ApplicationState } from '../../configureStore';
 import BreadcrumbFilter from './Filter/BreadcrumbFilter';
 import Filter from './Filter/Filter';
 import GridViewDrilldown from './GridView/GridViewDrilldown/GridViewDrilldown';
 import GridViewMain from './GridView/GridViewMain/GridViewMain';
-import { ReportDetail } from './Models/Isn-odds-Detail';
+import { ReportDetail } from './Models/ISNOddsDetail';
 import UsePageLoading from '../../GlobalComponent/UsePageLoading';
-import { getReportDetails } from './Store/Isn-odds-Actions';
-import { mapStateToFilter } from './Models/Isn-odds-Filter';
+import { getReportDetails } from './Store/ISNOddsActions';
+import { mapStateToFilter } from './Models/ISNOddsFilter';
 import reportApi from '../../Api/reportApi';
+import './ISNOddsPage.css';
 
 function ReportPage() {
   const reportState = useSelector((state: ApplicationState) => state.report);

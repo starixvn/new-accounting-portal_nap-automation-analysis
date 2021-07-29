@@ -1,7 +1,7 @@
 import { Table } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../../configureStore';
-import { changeFromHDP, changeFromOU, changeToHDP, changeToOU } from '../Store/Isn-odds-Actions';
+import { changeFromHDP, changeFromOU, changeToHDP, changeToOU } from '../Store/ISNOddsActions';
 import './InitialBetTypeRange.css';
 
 export default function InitialBetTypeRange() {

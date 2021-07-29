@@ -1,4 +1,4 @@
-import { ReportState } from '../Store/Isn-odds-State';
+import { ReportState } from '../Store/ISNOddsState';
 
 export interface ReportFilter {
   fromDate: Date;

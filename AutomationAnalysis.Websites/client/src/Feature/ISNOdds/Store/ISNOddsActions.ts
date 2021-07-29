@@ -1,6 +1,6 @@
-import { Report } from '../Models/Isn-odds';
-import { ReportDetail } from '../Models/Isn-odds-Detail';
-import { TeamOption, ReportOption, ViewOption } from './Isn-odds-State';
+import { Report } from '../Models/ISNOdds';
+import { ReportDetail } from '../Models/ISNOddsDetail';
+import { TeamOption, ReportOption, ViewOption } from './ISNOddsState';
 
 export enum ReportActionTypes {
   SELECT_REPORT = 'SELECT_REPORT',

@@ -3,8 +3,8 @@ import { Form, Table } from 'react-bootstrap';
 import _ from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { options } from './Filter';
-import { TeamOption } from '../Store/Isn-odds-State';
-import { selectAwayScore, selectTeamOption, selectHomeScore } from '../Store/Isn-odds-Actions';
+import { TeamOption } from '../Store/ISNOddsState';
+import { selectAwayScore, selectTeamOption, selectHomeScore } from '../Store/ISNOddsActions';
 import { ApplicationState } from '../../../configureStore';
 
 const ScoreSelector = () => {

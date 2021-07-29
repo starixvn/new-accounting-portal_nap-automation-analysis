@@ -1,13 +1,7 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { ReportOption, ViewOption } from '../Store/Isn-odds-State';
-import {
-  changeLeague,
-  getReports,
-  selectReportOption,
-  selectTimeInterval,
-  selectView,
-} from '../Store/Isn-odds-Actions';
+import { ReportOption, ViewOption } from '../Store/ISNOddsState';
+import { changeLeague, getReports, selectReportOption, selectTimeInterval, selectView } from '../Store/ISNOddsActions';
 import { ApplicationState } from '../../../configureStore';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
 import InitialBetTypeRange from './InitialBetTypeRange';
@@ -16,7 +10,7 @@ import ScoreSelector from './ScoreSelector';
 import UsePageLoading from '../../../GlobalComponent/UsePageLoading';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
-import { mapStateToFilter } from '../Models/Isn-odds-Filter';
+import { mapStateToFilter } from '../Models/ISNOddsFilter';
 
 export const options = (values: number[]) =>
   values &&

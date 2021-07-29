@@ -1,6 +1,6 @@
-import { ReportActionTypes } from './Isn-odds-Actions';
-import reportReducer from './Isn-odds-Reducer';
-import { initialReportState } from './Isn-odds-State';
+import { ReportActionTypes } from './ISNOddsActions';
+import reportReducer from './ISNOddsReducer';
+import { initialReportState } from './ISNOddsState';
 
 describe('report reducer', () => {
   it('return state selected report', () => {

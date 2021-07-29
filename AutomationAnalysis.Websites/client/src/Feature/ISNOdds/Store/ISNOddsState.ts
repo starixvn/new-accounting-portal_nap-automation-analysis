@@ -1,5 +1,5 @@
-import { Report } from '../Models/Isn-odds';
-import { ReportDetail } from '../Models/Isn-odds-Detail';
+import { Report } from '../Models/ISNOdds';
+import { ReportDetail } from '../Models/ISNOddsDetail';
 
 export type TeamOption = 'Home' | 'Away';
 export type ViewOption = 'Full Time' | 'Half Time';
