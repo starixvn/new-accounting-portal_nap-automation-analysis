@@ -90,6 +90,13 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
       return {
         ...state,
         reportDetails: action.reportDetails,
+        fromMinute: action.fromMinute,
+        toMinute: action.toMinute,
+      };
+    case ReportActionTypes.SHOW_MAIN_REPORT:
+      return {
+        ...state,
+        reportDetails: [],
       };
     default:
       return state;

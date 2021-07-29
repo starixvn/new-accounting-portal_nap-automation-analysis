@@ -1,14 +1,32 @@
 import { Breadcrumb } from 'react-bootstrap';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../../configureStore';
+import { showMainReport } from '../Store/Isn-odds-Actions';
+import numberUtility from '../../../Utils/NumberUtility';
 
 const BreadcrumbFilter = () => {
-  const { reportOption } = useSelector((state: ApplicationState) => state.report);
+  const { reportOption, fromMinute, toMinute, reportDetails } = useSelector((state: ApplicationState) => state.report);
+  const dispatch = useDispatch();
+  const goBackToMainReport = () => {
+    dispatch(showMainReport());
+  };
+
+  const detailGridVisible = !!reportDetails?.length;
+
+  const fromMinuteInNumber = parseInt(fromMinute, 10);
+  const toMinuteInNumber = parseInt(toMinute, 10);
+
+  const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;
+  const currentBreadcrumbText = numberUtility.toTimeRangeString(fromMinuteInNumber, toMinuteInNumber);
+
   return (
     <Breadcrumb>
-      <Breadcrumb.Item href="#">Home</Breadcrumb.Item>
-      <Breadcrumb.Item href="#">ISN Odds</Breadcrumb.Item>
-      <Breadcrumb.Item active>{reportOption.toString()}</Breadcrumb.Item>
+      {detailGridVisible && (
+        <Breadcrumb.Item href="#" onClick={goBackToMainReport}>
+          {parentBreadcrumbText}
+        </Breadcrumb.Item>
+      )}
+      {detailGridVisible && <Breadcrumb.Item active>{currentBreadcrumbText}</Breadcrumb.Item>}
     </Breadcrumb>
   );
 };

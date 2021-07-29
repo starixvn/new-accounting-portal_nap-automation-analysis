@@ -20,6 +20,7 @@ export enum ReportActionTypes {
   SELECT_TO_DATE = 'SELECT_TO_DATE',
   GET_REPORTS = 'GET_REPORTS',
   GET_REPORT_DETAILS = 'GET_REPORT_DETAILS',
+  SHOW_MAIN_REPORT = 'SHOW_MAIN_REPORT',
 }
 
 export const selectReportOption = (reportOption: ReportOption) =>
@@ -118,10 +119,17 @@ export const getReports = (reports: Report[]) =>
     reports,
   } as const);
 
-export const getReportDetails = (reportDetails: ReportDetail[]) =>
+export const getReportDetails = (fromMinute: string, toMinute: string, reportDetails: ReportDetail[]) =>
   ({
     type: ReportActionTypes.GET_REPORT_DETAILS,
+    fromMinute,
+    toMinute,
     reportDetails,
+  } as const);
+
+export const showMainReport = () =>
+  ({
+    type: ReportActionTypes.SHOW_MAIN_REPORT,
   } as const);
 
 export type ReportActions =
@@ -141,4 +149,5 @@ export type ReportActions =
   | ReturnType<typeof selectToDate>
   | ReturnType<typeof selectReportOption>
   | ReturnType<typeof getReports>
-  | ReturnType<typeof getReportDetails>;
+  | ReturnType<typeof getReportDetails>
+  | ReturnType<typeof showMainReport>;

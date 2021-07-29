@@ -1,15 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
 import _ from 'lodash';
-import Filter from './Filter/Filter';
-import { ApplicationState } from '../../configureStore';
-import GridViewMain from './GridView/GridViewMain/GridViewMain';
-import GridViewDrilldown from './GridView/GridViewDrilldown/GridViewDrilldown';
-import UsePageLoading from '../../GlobalComponent/UsePageLoading';
 import './Isn-odds-Page.css';
+
+import { useDispatch, useSelector } from 'react-redux';
+
+import { ApplicationState } from '../../configureStore';
+import BreadcrumbFilter from './Filter/BreadcrumbFilter';
+import Filter from './Filter/Filter';
+import GridViewDrilldown from './GridView/GridViewDrilldown/GridViewDrilldown';
+import GridViewMain from './GridView/GridViewMain/GridViewMain';
+import { ReportDetail } from './Models/Isn-odds-Detail';
+import UsePageLoading from '../../GlobalComponent/UsePageLoading';
+import { getReportDetails } from './Store/Isn-odds-Actions';
 import { mapStateToFilter } from './Models/Isn-odds-Filter';
 import reportApi from '../../Api/reportApi';
-import { ReportDetail } from './Models/Isn-odds-Detail';
-import { getReportDetails } from './Store/Isn-odds-Actions';
 
 function ReportPage() {
   const reportState = useSelector((state: ApplicationState) => state.report);
@@ -48,18 +51,19 @@ function ReportPage() {
     const filter = { ...mapStateToFilter(reportState), fromMinute, toMinute };
     const data = await reportApi.getReportDetails(filter);
     const result = processReportDetailsData(data);
-    dispatch(getReportDetails(result));
+    dispatch(getReportDetails(fromMinute, toMinute, result));
     hideLoader();
   };
 
+  const mainGridVisible = !!reports?.length && !reportDetails?.length;
+  const detailGridVisible = !!reportDetails?.length;
   return (
     <div className="report-container">
       <>
         <Filter />
-        {!!reports?.length && !reportDetails?.length && (
-          <GridViewMain mode={reportOption} reports={reports} drillDown={drillDown} />
-        )}
-        {!!reportDetails?.length && <GridViewDrilldown mode={reportOption} reportDetails={reportDetails} />}
+        {(mainGridVisible || detailGridVisible) && <BreadcrumbFilter />}
+        {mainGridVisible && <GridViewMain mode={reportOption} reports={reports} drillDown={drillDown} />}
+        {detailGridVisible && <GridViewDrilldown mode={reportOption} reportDetails={reportDetails} />}
         {loader}
       </>
     </div>

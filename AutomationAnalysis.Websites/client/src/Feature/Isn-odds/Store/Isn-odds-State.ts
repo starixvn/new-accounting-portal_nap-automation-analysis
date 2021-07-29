@@ -24,6 +24,8 @@ export interface ReportState {
   readonly reports: Report[];
   readonly reportDetails: ReportDetail[];
   readonly isLoading: boolean;
+  readonly fromMinute: string;
+  readonly toMinute: string;
 }
 
 export const initialReportState: ReportState = {
@@ -45,4 +47,6 @@ export const initialReportState: ReportState = {
   reports: [],
   reportDetails: [],
   isLoading: false,
+  fromMinute: '',
+  toMinute: '',
 };

@@ -1,6 +1,5 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { toast } from 'react-toastify';
 import { ReportOption, ViewOption } from '../Store/Isn-odds-State';
 import {
   changeLeague,
@@ -10,7 +9,6 @@ import {
   selectView,
 } from '../Store/Isn-odds-Actions';
 import { ApplicationState } from '../../../configureStore';
-import BreadcrumbFilter from './BreadcrumbFilter';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
 import InitialBetTypeRange from './InitialBetTypeRange';
 import RedCardSelector from './RedCardSelector';
@@ -51,7 +49,7 @@ const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
 
 export default function Filter() {
   const dispatch = useDispatch();
-  const { league, interval, view, reportOption, fromDate, toDate, reports } = useSelector(
+  const { league, interval, view, reportOption, fromDate, toDate } = useSelector(
     (state: ApplicationState) => state.report,
   );
   const reportState = useSelector((state: ApplicationState) => state.report);
@@ -152,9 +150,6 @@ export default function Filter() {
                 Query
               </Button>
             </Col>
-          </Row>
-          <Row>
-            <Col>{!!reports?.length && <BreadcrumbFilter />}</Col>
           </Row>
         </Card.Body>
       </Card>
