@@ -1,0 +1,114 @@
+import { ReportDetail } from '../Feature/ISNOdds/Models/ISNOddsDetail';
+import processReportDetailsData from './HelpersUtility';
+
+describe('HelperUtility method', () => {
+  it('', () => {
+    const mockData: ReportDetail[] = [
+      {
+        leagueName: 'A',
+        matchName: 'X -vs- Y',
+        minute: 83,
+        second: 7,
+        onlySecond: 4987,
+        beforeHDP: 1,
+        beforeOU: 1,
+        afterHDP: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+      },
+      {
+        leagueName: 'A',
+        matchName: 'Y -vs- Z',
+        minute: 80,
+        second: 51,
+        onlySecond: 4851,
+        beforeHDP: 1,
+        beforeOU: 1,
+        afterHDP: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+      },
+      {
+        leagueName: 'B',
+        matchName: 'Albacete Balompie -vs- Mirandes',
+        minute: 82,
+        second: 10,
+        onlySecond: 4930,
+        beforeHDP: 1,
+        beforeOU: 1,
+        afterHDP: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+      },
+    ];
+    const expectedData: ReportDetail[] = [
+      {
+        leagueName: 'A',
+        matchName: 'A',
+        beforeHDP: 1,
+        afterHDP: 1,
+        beforeOU: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+        index: 1,
+      },
+      {
+        leagueName: 'A',
+        matchName: 'X -vs- Y',
+        minute: 83,
+        second: 7,
+        onlySecond: 4987,
+        beforeHDP: 1,
+        beforeOU: 1,
+        afterHDP: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+      },
+      {
+        leagueName: 'A',
+        matchName: 'Y -vs- Z',
+        minute: 80,
+        second: 51,
+        onlySecond: 4851,
+        beforeHDP: 1,
+        beforeOU: 1,
+        afterHDP: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+      },
+      {
+        leagueName: 'B',
+        matchName: 'B',
+        beforeHDP: 1,
+        afterHDP: 1,
+        beforeOU: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+        index: 2,
+      },
+      {
+        leagueName: 'B',
+        matchName: 'Albacete Balompie -vs- Mirandes',
+        minute: 82,
+        second: 10,
+        onlySecond: 4930,
+        beforeHDP: 1,
+        beforeOU: 1,
+        afterHDP: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+      },
+    ];
+    const result = processReportDetailsData(mockData);
+    console.log(result);
+    expect(result).toEqual(expectedData);
+  });
+});
