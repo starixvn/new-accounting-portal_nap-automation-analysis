@@ -15,18 +15,16 @@ const headGroupByLeagueNames = (data: ReportDetail[]) =>
       diffOU: _.round(_.meanBy(value, 'diffOU'), 2),
     }))
     .value();
+
 const processReportDetailsData = (data: ReportDetail[]) => {
-  console.log(data);
   const result: ReportDetail[] = [];
   const heads = headGroupByLeagueNames(data);
-  console.log(heads);
   heads.forEach((head, index) => {
     const indexHead = index + 1;
     result.push({ ...head, index: indexHead });
     const filtered = data.filter((value) => value.leagueName === head.leagueName);
     result.push(...filtered);
   });
-  console.log(result);
   return result;
 };
 

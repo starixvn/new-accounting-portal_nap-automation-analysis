@@ -1,7 +1,7 @@
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import { toast } from 'react-toastify';
-import { act } from '@testing-library/react';
+// import { act } from '@testing-library/react';
 import Filter from './Filter';
 import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
@@ -9,11 +9,12 @@ import configureStore from '../../../configureStore';
 import reportApi from '../../../Api/reportApi';
 import { selectFromDate, selectToDate } from '../Store/ISNOddsActions';
 
+jest.mock('../../../Api/reportApi');
 describe('RedCardSelector Component', () => {
-  beforeEach(() => {
-    jest.spyOn(reportApi, 'getReports').mockImplementation(() => Promise.resolve([]));
+  beforeAll(() => {
+    (reportApi.getReports as jest.Mock).mockResolvedValue([]);
   });
-  afterEach(() => {
+  afterAll(() => {
     jest.clearAllMocks();
   });
   const mockStore = configureStore();
@@ -61,14 +62,6 @@ describe('RedCardSelector Component', () => {
     mockStore.dispatch(selectToDate(new Date('2021-07-25')));
     const buttonQuery = wrapper.find('button').at(4);
     buttonQuery.simulate('click');
-    await act(
-      () =>
-        new Promise<void>((resolve) => {
-          setImmediate(() => {
-            wrapper.update();
-            resolve();
-          });
-        }),
-    );
+    expect(reportApi.getReports).toHaveBeenCalled();
   });
 });

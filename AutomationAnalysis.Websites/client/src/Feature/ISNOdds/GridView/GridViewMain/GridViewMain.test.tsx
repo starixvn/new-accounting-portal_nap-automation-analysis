@@ -9,7 +9,7 @@ describe('GridViewMain Component', () => {
   const mockStore = configureStore();
   const fakeMode: ReportOption = 'Goal';
   const fakeModeRedCard: ReportOption = 'Redcard';
-  let fakeDrilldown = (from: string, to: string) => {};
+  const fakeDrilldown = jest.fn(); // (from: string, to: string) => {};
   const fakeReport: Report[] = [
     {
       from: '0.00',
@@ -41,7 +41,9 @@ describe('GridViewMain Component', () => {
       </Provider>,
     );
     const drilldown = wrapper.find('li');
-    expect(drilldown.simulate('click')).toHaveLength(1);
+    drilldown.simulate('click');
+    // expect(drilldown.simulate('click')).toHaveLength(1);
+    expect(fakeDrilldown).toHaveBeenCalled();
   });
   it('null report', () => {
     const wrapper = mount(

@@ -108,7 +108,6 @@ describe('HelperUtility method', () => {
       },
     ];
     const result = processReportDetailsData(mockData);
-    console.log(result);
     expect(result).toEqual(expectedData);
   });
 });

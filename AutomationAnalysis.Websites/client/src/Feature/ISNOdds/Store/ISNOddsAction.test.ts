@@ -144,19 +144,19 @@ describe('report action', () => {
   it('dispatches selectFromDate', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_FROM_DATE,
-      fromDate: new Date(),
+      fromDate: new Date('2020-03-21'),
     };
 
-    expect(mockStore.dispatch(selectFromDate(new Date()))).toEqual(expectedAction);
+    expect(mockStore.dispatch(selectFromDate(new Date('2020-03-21')))).toEqual(expectedAction);
   });
 
   it('dispatches selectToDate', () => {
     const expectedAction = {
       type: ReportActionTypes.SELECT_TO_DATE,
-      toDate: new Date(),
+      toDate: new Date('2020-03-21'),
     };
 
-    expect(mockStore.dispatch(selectToDate(new Date()))).toEqual(expectedAction);
+    expect(mockStore.dispatch(selectToDate(new Date('2020-03-21')))).toEqual(expectedAction);
   });
 
   it('dispatches getReport', () => {
@@ -175,7 +175,7 @@ describe('report action', () => {
       reportDetails: [],
     };
 
-    expect(mockStore.dispatch(getReportDetails('0','5',[]))).toEqual(expectedAction);
+    expect(mockStore.dispatch(getReportDetails('0', '5', []))).toEqual(expectedAction);
   });
   it('dispatches mainReport', () => {
     const expectedAction = {
