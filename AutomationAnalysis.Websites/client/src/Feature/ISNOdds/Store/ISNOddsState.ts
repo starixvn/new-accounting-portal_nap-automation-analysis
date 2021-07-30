@@ -54,3 +54,26 @@ export const initialReportState: ReportState = {
   fromMinute: '',
   toMinute: '',
 };
+
+// export const initialReportState: ReportState = {
+//   reportOption: 'Goal',
+//   teamType: 'Home',
+//   homeScore: 1,
+//   awayScore: 0,
+//   awayRedCard: 0,
+//   homeRedCard: 0,
+//   league: '',
+//   interval: 5,
+//   view: 'Full Time',
+//   fromInitialHDP: '-5.00',
+//   toInitialHDP: '5.00',
+//   fromInitialOU: '-5.00',
+//   toInitialOU: '5.00',
+//   fromDate: new Date('2019-03-10'),
+//   toDate: new Date('2021-07-07'),
+//   reports: [],
+//   reportDetails: [],
+//   isLoading: false,
+//   fromMinute: '',
+//   toMinute: '',
+// };

@@ -1,4 +1,5 @@
-import { Breadcrumb } from 'react-bootstrap';
+import { Breadcrumb, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { ImFileExcel } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../../configureStore';
 import { showMainReport } from '../Store/ISNOddsActions';
@@ -19,17 +20,25 @@ const BreadcrumbFilter = () => {
   const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;
   const currentBreadcrumbText = numberUtility.toTimeRangeString(fromMinuteInNumber, toMinuteInNumber);
 
+  const toolTip = <Tooltip id="tool-top">Download report</Tooltip>;
   return (
-    <Breadcrumb className="breadcrumb-main">
-      {detailGridVisible ? (
-        <Breadcrumb.Item href="#" onClick={goBackToMainReport}>
-          {parentBreadcrumbText}
-        </Breadcrumb.Item>
-      ) : (
-        <Breadcrumb.Item style={{ height: '1rem' }} />
-      )}
-      {detailGridVisible && <Breadcrumb.Item active>{currentBreadcrumbText}</Breadcrumb.Item>}
-    </Breadcrumb>
+    <div className="breadcrumb-main">
+      <Breadcrumb>
+        {detailGridVisible ? (
+          <Breadcrumb.Item href="#" onClick={goBackToMainReport}>
+            {parentBreadcrumbText}
+          </Breadcrumb.Item>
+        ) : (
+          <Breadcrumb.Item style={{ height: '1rem' }} />
+        )}
+        {detailGridVisible && <Breadcrumb.Item active>{currentBreadcrumbText}</Breadcrumb.Item>}
+      </Breadcrumb>
+      <OverlayTrigger placement="top" overlay={toolTip}>
+        <Button>
+          <ImFileExcel size="25" color="#28a745" />
+        </Button>
+      </OverlayTrigger>
+    </div>
   );
 };
 

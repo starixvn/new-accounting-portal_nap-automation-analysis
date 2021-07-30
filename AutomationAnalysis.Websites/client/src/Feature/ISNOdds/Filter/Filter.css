@@ -56,14 +56,29 @@
 }
 
 .breadcrumb-main {
-  margin: 1rem 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 1.25rem 1rem;
+  background-color: #ffc000;
+}
+
+.breadcrumb-main button {
+  height: auto;
+  width: 4rem;
+  border: none !important;
+  border-radius: 0 !important;
+  background-color: #f1b200 !important;
+}
+
+.breadcrumb-main button:hover {
+  background-color: unset !important;
 }
 
 .breadcrumb {
-  background-color: #ffc000 !important;
-  padding: 0.5rem 1.25rem !important;
-  margin-top: 10px !important;
+  background-color: #ffc000;
+  margin: 0 !important;
 }
+
 .breadcrumb-item,
 .breadcrumb-item a {
   color: black !important;
