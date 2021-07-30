@@ -5,9 +5,9 @@ import { apiKey } from '../Utils/ConstantsUtility';
 import { ReportFilter } from '../Feature/ISNOdds/Models/ISNOddsFilter';
 
 const reportApi = {
-  getReports: (filter: ReportFilter) =>
+  getReports: (filter?: ReportFilter) =>
     requests.get<Report[]>({ url: '/simple-api/query', params: { ...filter, apiKey: apiKey.REPORT_QUERY } }),
-  getReportDetails: (filter: ReportFilter) =>
+  getReportDetails: (filter?: ReportFilter) =>
     requests.get<ReportDetail[]>({
       url: '/simple-api/query',
       params: { ...filter, apiKey: apiKey.REPORT_DETAILS_QUERY },

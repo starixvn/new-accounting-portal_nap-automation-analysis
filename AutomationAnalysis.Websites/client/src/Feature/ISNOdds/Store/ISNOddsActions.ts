@@ -21,6 +21,7 @@ export enum ReportActionTypes {
   GET_REPORTS = 'GET_REPORTS',
   GET_REPORT_DETAILS = 'GET_REPORT_DETAILS',
   SHOW_MAIN_REPORT = 'SHOW_MAIN_REPORT',
+  GETTING_DATA = 'GETTING_DATA',
 }
 
 export const selectReportOption = (reportOption: ReportOption) =>
@@ -117,6 +118,7 @@ export const getReports = (reports: Report[]) =>
   ({
     type: ReportActionTypes.GET_REPORTS,
     reports,
+    isLoading: false,
   } as const);
 
 export const getReportDetails = (fromMinute: string, toMinute: string, reportDetails: ReportDetail[]) =>
@@ -125,11 +127,18 @@ export const getReportDetails = (fromMinute: string, toMinute: string, reportDet
     fromMinute,
     toMinute,
     reportDetails,
+    isLoading: false,
   } as const);
 
 export const showMainReport = () =>
   ({
     type: ReportActionTypes.SHOW_MAIN_REPORT,
+  } as const);
+
+export const gettingData = () =>
+  ({
+    type: ReportActionTypes.GETTING_DATA,
+    isLoading: true,
   } as const);
 
 export type ReportActions =
@@ -150,4 +159,5 @@ export type ReportActions =
   | ReturnType<typeof selectReportOption>
   | ReturnType<typeof getReports>
   | ReturnType<typeof getReportDetails>
-  | ReturnType<typeof showMainReport>;
+  | ReturnType<typeof showMainReport>
+  | ReturnType<typeof gettingData>;

@@ -85,6 +85,7 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
       return {
         ...state,
         reports: action.reports,
+        isLoading: action.isLoading,
       };
     case ReportActionTypes.GET_REPORT_DETAILS:
       return {
@@ -92,11 +93,17 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
         reportDetails: action.reportDetails,
         fromMinute: action.fromMinute,
         toMinute: action.toMinute,
+        isLoading: action.isLoading,
       };
     case ReportActionTypes.SHOW_MAIN_REPORT:
       return {
         ...state,
         reportDetails: [],
+      };
+    case ReportActionTypes.GETTING_DATA:
+      return {
+        ...state,
+        isLoading: action.isLoading,
       };
     default:
       return state;

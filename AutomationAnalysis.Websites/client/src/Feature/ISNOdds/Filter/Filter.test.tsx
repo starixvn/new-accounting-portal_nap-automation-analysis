@@ -12,7 +12,18 @@ import { selectFromDate, selectToDate } from '../Store/ISNOddsActions';
 jest.mock('../../../Api/reportApi');
 describe('RedCardSelector Component', () => {
   beforeAll(() => {
-    (reportApi.getReports as jest.Mock).mockResolvedValue([]);
+    (reportApi.getReports as jest.Mock).mockResolvedValue([
+      {
+        leagueName: 'string',
+        matchName: 'string',
+        beforeHDP: 1,
+        beforeOU: 2,
+        afterHDP: 2,
+        afterOU: 2,
+        diffHDP: 2,
+        diffOU: 2,
+      },
+    ]);
   });
   afterAll(() => {
     jest.clearAllMocks();
@@ -51,6 +62,8 @@ describe('RedCardSelector Component', () => {
   });
 
   it('submit query error range date', () => {
+    mockStore.dispatch(selectFromDate(new Date()));
+    mockStore.dispatch(selectToDate(new Date()));
     const spy = jest.spyOn(toast, 'error');
     const buttonQuery = wrapper.find('button').at(4);
     buttonQuery.simulate('click');

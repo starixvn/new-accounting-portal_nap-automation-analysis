@@ -2,13 +2,20 @@ import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { ReportOption, ViewOption } from '../Store/ISNOddsState';
-import { changeLeague, getReports, selectReportOption, selectTimeInterval, selectView } from '../Store/ISNOddsActions';
+import {
+  changeLeague,
+  getReports,
+  gettingData,
+  selectReportOption,
+  selectTimeInterval,
+  selectView,
+} from '../Store/ISNOddsActions';
 import { ApplicationState } from '../../../configureStore';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
 import InitialBetTypeRange from './InitialBetTypeRange';
 import RedCardSelector from './RedCardSelector';
 import ScoreSelector from './ScoreSelector';
-import UsePageLoading from '../../../GlobalComponent/UsePageLoading';
+import PageLoading from '../../../GlobalComponent/PageLoading';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
 import { mapStateToFilter } from '../Models/ISNOddsFilter';
@@ -44,10 +51,8 @@ const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
 
 export default function Filter() {
   const dispatch = useDispatch();
-  const { league, interval, view, reportOption, fromDate, toDate } = useSelector(
-    (state: ApplicationState) => state.report,
-  );
   const reportState = useSelector((state: ApplicationState) => state.report);
+  const { league, interval, view, reportOption, fromDate, toDate, isLoading } = reportState;
 
   const validDateRange = () => {
     const dateRange = (toDate.getTime() - fromDate.getTime()) / (24 * 3600 * 1000);
@@ -55,17 +60,16 @@ export default function Filter() {
     yesterDay.setDate(yesterDay.getDate() - 1);
     return dateRange > 365 || fromDate > toDate || fromDate > yesterDay || toDate > yesterDay;
   };
-  const [loader, showLoader, hideLoader] = UsePageLoading();
+
   const submit = async () => {
     if (validDateRange()) {
       toast.error('Please choose again Date Range!');
       return;
     }
-    showLoader();
+    dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
     const result = await reportApi.getReports(filter);
     dispatch(getReports(result));
-    hideLoader();
   };
 
   return (
@@ -148,7 +152,7 @@ export default function Filter() {
           </Row>
         </Card.Body>
       </Card>
-      {loader}
+      {isLoading && <PageLoading />}
     </>
   );
 }

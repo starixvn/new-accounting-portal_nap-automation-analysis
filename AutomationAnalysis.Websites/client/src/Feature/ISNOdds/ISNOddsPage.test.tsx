@@ -8,6 +8,8 @@ import GridViewMain from './GridView/GridViewMain/GridViewMain';
 import ReportPage from './ISNOddsPage';
 import { getReportDetails, getReports } from './Store/ISNOddsActions';
 import GridViewDrilldown from './GridView/GridViewDrilldown/GridViewDrilldown';
+import { ReportState } from './Store/ISNOddsState';
+import { mapStateToFilter, ReportFilter } from './Models/ISNOddsFilter';
 
 jest.mock('../../Api/reportApi');
 jest.mock('../../Utils/HelpersUtility');
@@ -56,6 +58,7 @@ describe('ReportPage Component', () => {
     gridMain.find('li').simulate('click');
     expect(reportApi.getReportDetails).toHaveBeenCalledTimes(1);
   });
+
   it('render griddrilldown correct', () => {
     mockStore.dispatch(
       getReportDetails('0', '5', [

@@ -126,9 +126,12 @@ describe('report reducer', () => {
   });
 
   it('return state get report', () => {
-    expect(reportReducer(initialReportState, { type: ReportActionTypes.GET_REPORTS, reports: [] })).toEqual({
+    expect(
+      reportReducer(initialReportState, { type: ReportActionTypes.GET_REPORTS, reports: [], isLoading: false }),
+    ).toEqual({
       ...initialReportState,
       reports: [],
+      isLoading: false,
     });
   });
 });

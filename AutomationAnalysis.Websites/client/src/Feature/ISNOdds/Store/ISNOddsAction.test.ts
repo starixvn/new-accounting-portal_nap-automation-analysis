@@ -163,6 +163,7 @@ describe('report action', () => {
     const expectedAction = {
       type: ReportActionTypes.GET_REPORTS,
       reports: [],
+      isLoading: false,
     };
 
     expect(mockStore.dispatch(getReports([]))).toEqual(expectedAction);
@@ -173,6 +174,7 @@ describe('report action', () => {
       fromMinute: '0',
       toMinute: '5',
       reportDetails: [],
+      isLoading: false,
     };
 
     expect(mockStore.dispatch(getReportDetails('0', '5', []))).toEqual(expectedAction);
