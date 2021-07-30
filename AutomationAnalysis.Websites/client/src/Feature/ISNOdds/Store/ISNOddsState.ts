@@ -28,8 +28,9 @@ export interface ReportState {
   readonly toMinute: string;
 }
 
-const currentDate = new Date();
-const beforeMonth = new Date(currentDate.getFullYear(), currentDate.getMonth() - 1, currentDate.getDate());
+const curr = new Date(Date.now());
+const toDay = new Date(curr.setDate(curr.getDate() - curr.getDay() - 1));
+const fromDay = new Date(curr.setDate(curr.getDate() - curr.getDay() - 21));
 
 export const initialReportState: ReportState = {
   reportOption: 'Goal',
@@ -45,8 +46,8 @@ export const initialReportState: ReportState = {
   toInitialHDP: '0.00',
   fromInitialOU: '0.00',
   toInitialOU: '0.00',
-  fromDate: currentDate,
-  toDate: beforeMonth,
+  fromDate: fromDay,
+  toDate: toDay,
   reports: [],
   reportDetails: [],
   isLoading: false,
