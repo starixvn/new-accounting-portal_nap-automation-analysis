@@ -10,7 +10,7 @@ namespace AutomationAnalysis.ISNOdds.Services
 {
     public interface ExportExcelService
     {
-        ExcelPackage CreateExcelPackage(string templatePath, object model);
+        ExcelPackage CreateExcelPackage(string templatePath, MainExcelRequest model);
     }
 
     public class ExportExcelServiceImp : ExportExcelService
@@ -24,27 +24,28 @@ namespace AutomationAnalysis.ISNOdds.Services
             using (var stream = new FileStream(templatePath, FileMode.Open, FileAccess.Read))
             {
                 excelPackage = new ExcelPackage(stream);
-                reportSheet = excelPackage.Workbook.Worksheets.Copy("", "");
+                reportSheet = excelPackage.Workbook.Worksheets.Copy("Template", "Report");
             }
         }
 
         public void ClearTemplate()
         {
-            excelPackage.Workbook.Worksheets.Delete("");
+            excelPackage.Workbook.Worksheets.Delete("Report");
         }
 
-        public ExcelPackage CreateExcelPackage(string templatePath, object model)
+        public ExcelPackage CreateExcelPackage(string templatePath, MainExcelRequest model)
         {
             LoadTemplate(templatePath);
             BuildLAReportBody(model);
+            excelPackage.Save();
             ClearTemplate();
             return excelPackage;
         }
 
-        public void BuildLAReportBody(object model)
+        public void BuildLAReportBody(MainExcelRequest model)
         {
-            reportSheet.ApplyModel(model);
-            // reportSheet.ApplyVertical(, 1);
+            //reportSheet.ApplyModel(model);
+            reportSheet.ApplyVertical(model.Reports, 5);
         }
     }
 }

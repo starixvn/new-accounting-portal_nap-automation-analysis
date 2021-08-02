@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ApplicationState } from '../../../configureStore';
 import { showMainReport } from '../Store/ISNOddsActions';
 import numberUtility from '../../../Utils/NumberUtility';
+import reportApi from '../../../Api/reportApi';
 
 const BreadcrumbFilter = () => {
   const { reportOption, fromMinute, toMinute, reportDetails } = useSelector((state: ApplicationState) => state.report);
@@ -21,6 +22,12 @@ const BreadcrumbFilter = () => {
   const currentBreadcrumbText = numberUtility.toTimeRangeString(fromMinuteInNumber, toMinuteInNumber);
 
   const toolTip = <Tooltip id="tool-top">Download report</Tooltip>;
+
+  const reportState = useSelector((state: ApplicationState) => state.report);
+  const downloadReportExcel = async () => {
+    const result = await reportApi.getReportExcel(reportState);
+  };
+
   return (
     <div className="breadcrumb-main">
       <Breadcrumb>
@@ -34,7 +41,7 @@ const BreadcrumbFilter = () => {
         {detailGridVisible && <Breadcrumb.Item active>{currentBreadcrumbText}</Breadcrumb.Item>}
       </Breadcrumb>
       <OverlayTrigger placement="top" overlay={toolTip}>
-        <Button>
+        <Button onClick={downloadReportExcel}>
           <ImFileExcel size="25" color="#28a745" />
         </Button>
       </OverlayTrigger>

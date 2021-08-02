@@ -25,6 +25,7 @@ namespace AutomationAnalysis.Websites
             services.AddAuthentication(Configuration);
             services.AddAuthorizationController();
             services.AddSession(Configuration);
+            services.AddBussinessServices();
             services.AddCorsServices();
             services.AddFanexCaching(Configuration);
             services.AddFanexData(Configuration);

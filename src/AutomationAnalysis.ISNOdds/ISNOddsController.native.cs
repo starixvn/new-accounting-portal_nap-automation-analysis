@@ -17,6 +17,7 @@ namespace AutomationAnalysis.ISNOdds
         }
 
         [Route("excel")]
+        [HttpPost]
         public async Task<IActionResult> Excel(MainExcelRequest request)
         {
             var excelPackage = await mediator.Send(request);

@@ -2,6 +2,7 @@
 {
     using System;
     using System.Threading.Tasks;
+    using AutomationAnalysis.ISNOdds.Services;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Http;
@@ -64,6 +65,13 @@
                 options.IdleTimeout = TimeSpan.FromMinutes(int.Parse(configuration.GetSection("AuthSettings:SessionTimeOut").Value));
                 options.Cookie.Name = "Fanex.AutomationAnalysis.Session";
             });
+
+            return services;
+        }
+
+        public static IServiceCollection AddBussinessServices(this IServiceCollection services)
+        {
+            services.AddScoped<ExportExcelService, ExportExcelServiceImp>();
 
             return services;
         }

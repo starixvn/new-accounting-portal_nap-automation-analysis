@@ -12,6 +12,7 @@ const reportApi = {
       url: '/simple-api/query',
       params: { ...filter, apiKey: apiKey.REPORT_DETAILS_QUERY },
     }),
+  getReportExcel: (model: any) => requests.post<any>({ url: '/api/isn-odds/excel', body: model }),
 };
 
 export default reportApi;
