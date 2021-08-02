@@ -1,7 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-
-namespace AutomationAnalysis.Websites.App_Start
+﻿namespace AutomationAnalysis.Websites
 {
+    using Microsoft.AspNetCore.Builder;
+
     public static class EndPointsRegister
     {
         public static IApplicationBuilder UseFanexAuth(this IApplicationBuilder app)

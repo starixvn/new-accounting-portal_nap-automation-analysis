@@ -1,16 +1,16 @@
-﻿using System;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Serialization;
-
-namespace AutomationAnalysis.Websites.App_Start
+﻿namespace AutomationAnalysis.Websites
 {
+    using System;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc.Authorization;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
+
     public static class AuthServices
     {
         public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)

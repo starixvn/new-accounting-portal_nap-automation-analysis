@@ -1,13 +1,12 @@
-using AutomationAnalysis.Websites.App_Start;
-using AutomationAnalysis.Websites.CrossCuttingConcern;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
 namespace AutomationAnalysis.Websites
 {
+    using CrossCuttingConcern;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+
     public class Startup
     {
         private const string AllowOrigin = "AllowOrigin";

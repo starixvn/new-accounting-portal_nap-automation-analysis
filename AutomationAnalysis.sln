@@ -15,6 +15,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationAnalysisUnitTests
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationAnalysis.SimpleApi", "src\AutomationAnalysis.SimpleApi\AutomationAnalysis.SimpleApi.csproj", "{056F64B6-C81C-4AB4-80AE-2777071C90BB}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AutomationAnalysis.ISNOdds", "src\AutomationAnalysis.ISNOdds\AutomationAnalysis.ISNOdds.csproj", "{7A43D576-17C9-44B1-AD6D-343AC4EE79D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,6 +39,10 @@ Global
 		{056F64B6-C81C-4AB4-80AE-2777071C90BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{056F64B6-C81C-4AB4-80AE-2777071C90BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{056F64B6-C81C-4AB4-80AE-2777071C90BB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -45,6 +51,7 @@ Global
 		{E1E4144B-8F84-400C-BED9-349291FC0FE4} = {5DD299F0-08DC-40FA-B100-7875804F726F}
 		{305C0AB3-50C2-4C6B-B4A0-8E849CD03542} = {B35EAB87-2414-4926-98A1-02724C4295E1}
 		{056F64B6-C81C-4AB4-80AE-2777071C90BB} = {5DD299F0-08DC-40FA-B100-7875804F726F}
+		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0} = {5DD299F0-08DC-40FA-B100-7875804F726F}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1E46E49-843A-4B54-9E4E-06B77672BF68}

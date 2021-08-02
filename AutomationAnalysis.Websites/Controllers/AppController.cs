@@ -1,13 +1,13 @@
-﻿using System;
-using System.IO;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-
-namespace AutomationAnalysis.Websites.Controllers
+﻿namespace AutomationAnalysis.Websites.Controllers
 {
+    using System;
+    using System.IO;
+    using System.Net;
+    using System.Net.Sockets;
+    using System.Text;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
+
     [Route("/app")]
     public class AppController : Controller
     {

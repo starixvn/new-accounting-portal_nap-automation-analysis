@@ -1,11 +1,11 @@
-using Fanex.Caching.Redis;
-using Microsoft.AspNetCore.DataProtection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using StackExchange.Redis;
-
-namespace AutomationAnalysis.Websites.App_Start
+namespace AutomationAnalysis.Websites
 {
+    using Fanex.Caching.Redis;
+    using Microsoft.AspNetCore.DataProtection;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using StackExchange.Redis;
+
     public static class FanexCaching
     {
         // This method gets called by the runtime. Use this method to add services to the container.
