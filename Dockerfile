@@ -4,6 +4,7 @@ WORKDIR /src
 COPY ./.sonarlint/. ./.sonarlint
 COPY ./src/AutomationAnalysis/. ./src/AutomationAnalysis
 COPY ./src/AutomationAnalysis.SimpleApi/. ./src/AutomationAnalysis.SimpleApi
+COPY ./src/AutomationAnalysis.ISNOdds/. ./src/AutomationAnalysis.ISNOdds
 COPY ./AutomationAnalysis.Websites/AutomationAnalysis.Websites.csproj ./AutomationAnalysis.Websites/AutomationAnalysis.Websites.csproj
 
 WORKDIR /src/AutomationAnalysis.Websites
