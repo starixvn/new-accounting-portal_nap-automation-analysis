@@ -4,6 +4,7 @@ using OfficeOpenXml;
 
 namespace AutomationAnalysis.ISNOdds
 {
+    using AutomationAnalysis.ISNOdds.Services;
     using System.Threading;
     using System.Threading.Tasks;
 
@@ -46,9 +47,20 @@ namespace AutomationAnalysis.ISNOdds
 
     public class MainExcelHandler : IRequestHandler<MainExcelRequest, ExcelPackage>
     {
-        public Task<ExcelPackage> Handle(MainExcelRequest request, CancellationToken cancellationToken)
+        private readonly ExportExcelService exportExcelService;
+
+        public MainExcelHandler(ExportExcelService exportExcelService)
         {
-            throw new NotImplementedException();
+            this.exportExcelService = exportExcelService;
+        }
+
+        public async Task<ExcelPackage> Handle(MainExcelRequest request, CancellationToken cancellationToken)
+        {
+            var templatePath = "";
+            object exportExcelModel = null;
+            var excelPackage = exportExcelService.CreateExcelPackage(templatePath, exportExcelModel);
+
+            return await Task.FromResult(excelPackage);
         }
     }
 }

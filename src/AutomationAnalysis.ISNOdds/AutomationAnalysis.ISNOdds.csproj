@@ -18,9 +18,6 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\AutomationAnalysis\AutomationAnalysis.csproj" />
   </ItemGroup>
 
