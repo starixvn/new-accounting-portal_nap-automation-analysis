@@ -21,8 +21,8 @@ export interface ReportState {
   readonly toInitialOU: string;
   readonly fromDate: Date;
   readonly toDate: Date;
-  readonly reports: Report[];
-  readonly reportDetails: ReportDetail[];
+  readonly reports: Report[] | undefined;
+  readonly reportDetails: ReportDetail[] | undefined;
   readonly isLoading: boolean;
   readonly fromMinute: string;
   readonly toMinute: string;
@@ -48,8 +48,8 @@ export const initialReportState: ReportState = {
   toInitialOU: '0.00',
   fromDate: fromDay,
   toDate: toDay,
-  reports: [],
-  reportDetails: [],
+  reports: undefined,
+  reportDetails: undefined,
   isLoading: false,
   fromMinute: '',
   toMinute: '',
@@ -71,8 +71,8 @@ export const initialReportState: ReportState = {
 //   toInitialOU: '5.00',
 //   fromDate: new Date('2019-03-10'),
 //   toDate: new Date('2021-07-07'),
-//   reports: [],
-//   reportDetails: [],
+//   reports: undefined,
+//   reportDetails: undefined,
 //   isLoading: false,
 //   fromMinute: '',
 //   toMinute: '',

@@ -10,7 +10,16 @@ const numberUtility = {
     const fromMinuteInTwoDigitsFormat = toTwoDigitsNumber(fromMinute);
     const toMinuteInTwoDigitsFormat = toTwoDigitsNumber(toMinute);
 
-    return `${fromMinuteInTwoDigitsFormat}:01 - ${toMinuteInTwoDigitsFormat}:00`;
+    let lastTimeToString = '';
+    if (fromMinuteInTwoDigitsFormat === '45') {
+      lastTimeToString = 'HT';
+    } else if (fromMinuteInTwoDigitsFormat === '90') {
+      lastTimeToString = 'FT';
+    } else {
+      lastTimeToString = `${toMinuteInTwoDigitsFormat}:00`;
+    }
+
+    return `${fromMinuteInTwoDigitsFormat}:01 - ${lastTimeToString}`;
   },
 };
 

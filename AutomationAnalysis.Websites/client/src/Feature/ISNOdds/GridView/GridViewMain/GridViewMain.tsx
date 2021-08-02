@@ -6,7 +6,7 @@ import { Report } from '../../Models/ISNOdds';
 
 type Props = {
   mode: ReportOption;
-  reports: Report[];
+  reports: Report[] | undefined;
   drillDown: (from: string, to: string) => void;
 };
 
@@ -38,7 +38,7 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
     ))
   ) : (
     <tr>
-      <td colSpan={10}>No found data!</td>
+      <td colSpan={10}>Not found data!</td>
     </tr>
   );
   return (

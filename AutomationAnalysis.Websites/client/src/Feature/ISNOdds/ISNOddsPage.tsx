@@ -19,13 +19,13 @@ function ReportPage() {
   const drillDown = async (fromMinute: string, toMinute: string) => {
     dispatch(gettingData());
     const filter = { ...mapStateToFilter(reportState), fromMinute, toMinute };
-    const data = await reportApi.getReportDetails(filter);
+    const data = (await reportApi.getReportDetails(filter)) || [];
     const result = processReportDetailsData(data);
     dispatch(getReportDetails(fromMinute, toMinute, result));
   };
 
-  const mainGridVisible = !!reports?.length && !reportDetails?.length;
-  const detailGridVisible = !!reportDetails?.length;
+  const mainGridVisible = !!reports && !reportDetails;
+  const detailGridVisible = !!reportDetails;
   return (
     <div className="report-container">
       <>

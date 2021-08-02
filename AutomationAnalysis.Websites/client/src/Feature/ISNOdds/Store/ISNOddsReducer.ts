@@ -98,7 +98,7 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
     case ReportActionTypes.SHOW_MAIN_REPORT:
       return {
         ...state,
-        reportDetails: [],
+        reportDetails: undefined,
       };
     case ReportActionTypes.GETTING_DATA:
       return {

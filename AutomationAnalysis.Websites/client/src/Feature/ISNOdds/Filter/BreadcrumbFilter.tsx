@@ -12,7 +12,7 @@ const BreadcrumbFilter = () => {
     dispatch(showMainReport());
   };
 
-  const detailGridVisible = !!reportDetails?.length;
+  const detailGridVisible = !!reportDetails;
 
   const fromMinuteInNumber = parseInt(fromMinute, 10);
   const toMinuteInNumber = parseInt(toMinute, 10);

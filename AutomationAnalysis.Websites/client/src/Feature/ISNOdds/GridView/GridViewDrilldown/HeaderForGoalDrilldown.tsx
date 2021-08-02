@@ -17,8 +17,8 @@ export default function HeaderForRedCardDrilldown() {
         <th rowSpan={2} className=" align-middle">
           Only Second
         </th>
-        <th colSpan={2}>Before RedCard</th>
-        <th colSpan={2}>After RedCard</th>
+        <th colSpan={2}>Before Goal</th>
+        <th colSpan={2}>After Goal</th>
         <th colSpan={2}>Difference</th>
       </tr>
       <tr>

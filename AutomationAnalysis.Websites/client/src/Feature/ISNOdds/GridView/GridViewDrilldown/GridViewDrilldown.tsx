@@ -6,7 +6,7 @@ import HeaderForRedCardDrilldown from './HeaderForRedCardDrilldown';
 
 type Props = {
   mode: ReportOption;
-  reportDetails: ReportDetail[];
+  reportDetails: ReportDetail[] | undefined;
 };
 
 const GridViewDrilldown = ({ mode, reportDetails }: Props) => {
@@ -32,7 +32,7 @@ const GridViewDrilldown = ({ mode, reportDetails }: Props) => {
     ))
   ) : (
     <tr>
-      <td colSpan={10}>No found data!</td>
+      <td colSpan={10}>Not found data!</td>
     </tr>
   );
   return <GridView head={head} body={body} />;

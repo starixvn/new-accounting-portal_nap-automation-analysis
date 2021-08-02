@@ -68,7 +68,7 @@ export default function Filter() {
     }
     dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
-    const result = await reportApi.getReports(filter);
+    const result = (await reportApi.getReports(filter)) || [];
     dispatch(getReports(result));
   };
 
