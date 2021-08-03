@@ -1,6 +1,7 @@
 import { Breadcrumb, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { ImFileExcel } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
+import FileSaver from 'file-saver';
 import { ApplicationState } from '../../../configureStore';
 import { showMainReport } from '../Store/ISNOddsActions';
 import numberUtility from '../../../Utils/NumberUtility';
@@ -26,6 +27,7 @@ const BreadcrumbFilter = () => {
   const reportState = useSelector((state: ApplicationState) => state.report);
   const downloadReportExcel = async () => {
     const result = await reportApi.getReportExcel(reportState);
+    FileSaver.saveAs(result, 'users.xlsx');
   };
 
   return (

@@ -25,7 +25,7 @@ export const mapStateToFilter = (state: ReportState): ReportFilter => ({
   toDate: state.toDate,
   teamType: state.teamType === 'Home' ? 0 : 1,
   league: state.league,
-  view: state.view === 'Full Time',
+  view: state.view === 'Half Time',
   interval: state.interval,
   fromInitialHDP: +state.fromInitialOU,
   toInitialHDP: +state.toInitialHDP,

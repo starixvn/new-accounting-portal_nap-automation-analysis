@@ -9,6 +9,7 @@ interface Options {
   url: string;
   params?: Params;
   body?: any;
+  config?: AxiosRequestConfig;
 }
 
 const requestConfig: AxiosRequestConfig = {
@@ -33,8 +34,8 @@ setInterceptors(axiosInstance);
 const responseBody = <T>(response: AxiosResponse<T>) => response.data;
 
 const requests = {
-  get: <T>({ url, params }: Options) => axiosInstance.get<T>(url, { params }).then(responseBody),
-  post: <T>({ url, params, body }: Options) => axiosInstance.post<T>(url, body, { params }).then(responseBody),
+  get: <T>({ url, params, config }: Options) => axiosInstance.get<T>(url, { params, ...config }).then(responseBody),
+  post: <T>({ url, body, config }: Options) => axiosInstance.post<T>(url, body, config).then(responseBody),
 };
 
 export { setInterceptors, axiosInstance };

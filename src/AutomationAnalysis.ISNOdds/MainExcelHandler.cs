@@ -1,17 +1,16 @@
 ﻿using System;
 using MediatR;
 using OfficeOpenXml;
+using AutomationAnalysis.ISNOdds.Models;
+using AutomationAnalysis.ISNOdds.Services;
+using Microsoft.AspNetCore.Hosting;
+using System.Collections.Generic;
+using System.IO;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace AutomationAnalysis.ISNOdds
 {
-    using AutomationAnalysis.ISNOdds.Models;
-    using AutomationAnalysis.ISNOdds.Services;
-    using Microsoft.AspNetCore.Hosting;
-    using System.Collections.Generic;
-    using System.IO;
-    using System.Threading;
-    using System.Threading.Tasks;
-
     public class MainExcelRequest : IRequest<ExcelPackage>
     {
         public DateTime FromDate { get; set; }
@@ -63,9 +62,8 @@ namespace AutomationAnalysis.ISNOdds
 
         public async Task<ExcelPackage> Handle(MainExcelRequest request, CancellationToken cancellationToken)
         {
-            var templatePath = Path.Combine(hostEnvironment.ContentRootPath, "App_Data", "Templates", "TemplateExcel.xlsx");
-            var isExist = File.Exists(templatePath);
-            // object exportExcelModel = request.Reports;
+            var absolutePath = Path.Combine("App_Data", "Templates", "MainReport.xlsx");
+            var templatePath = Path.Combine(hostEnvironment.ContentRootPath, absolutePath);
             var excelPackage = exportExcelService.CreateExcelPackage(templatePath, request);
 
             return await Task.FromResult(excelPackage);

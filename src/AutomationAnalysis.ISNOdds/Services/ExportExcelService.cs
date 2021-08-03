@@ -1,4 +1,6 @@
-﻿using Epplus.Mapper.Extensions;
+﻿using AutomationAnalysis.ISNOdds.Constant;
+using AutomationAnalysis.ISNOdds.Models;
+using Epplus.Mapper.Extensions;
 using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
@@ -17,35 +19,34 @@ namespace AutomationAnalysis.ISNOdds.Services
     {
         private ExcelPackage excelPackage { get; set; }
 
-        private ExcelWorksheet reportSheet;
+        private ExcelWorksheet reportSheet { get; set; }
 
         public void LoadTemplate(string templatePath)
         {
             using (var stream = new FileStream(templatePath, FileMode.Open, FileAccess.Read))
             {
                 excelPackage = new ExcelPackage(stream);
-                reportSheet = excelPackage.Workbook.Worksheets.Copy("Template", "Report");
+                reportSheet = excelPackage.Workbook.Worksheets[0];
             }
-        }
-
-        public void ClearTemplate()
-        {
-            excelPackage.Workbook.Worksheets.Delete("Report");
         }
 
         public ExcelPackage CreateExcelPackage(string templatePath, MainExcelRequest model)
         {
             LoadTemplate(templatePath);
             BuildLAReportBody(model);
-            excelPackage.Save();
-            ClearTemplate();
+
             return excelPackage;
         }
 
         public void BuildLAReportBody(MainExcelRequest model)
         {
-            //reportSheet.ApplyModel(model);
-            reportSheet.ApplyVertical(model.Reports, 5);
+            var header = new ISNOddsExcelFileInfoModel
+            {
+                ReportOption = model.ReportOption
+            };
+
+            reportSheet.ApplyModel(header);
+            reportSheet.ApplyVertical(model.Reports, ReportConst.StartIndexRow);
         }
     }
 }

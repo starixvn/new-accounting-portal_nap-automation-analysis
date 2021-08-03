@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Threading.Tasks;
+using AutomationAnalysis.ISNOdds.Constant;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -21,14 +22,8 @@ namespace AutomationAnalysis.ISNOdds
         public async Task<IActionResult> Excel(MainExcelRequest request)
         {
             var excelPackage = await mediator.Send(request);
-            await using var stream = new MemoryStream();
-            await excelPackage.SaveAsAsync(stream);
-            var content = stream.ToArray();
-
-            return File(
-                content,
-                "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
-                "users.xlsx");
+            var content = await excelPackage.GetAsByteArrayAsync();
+            return File(content, FileContentType.EXCEL);
         }
     }
 }
