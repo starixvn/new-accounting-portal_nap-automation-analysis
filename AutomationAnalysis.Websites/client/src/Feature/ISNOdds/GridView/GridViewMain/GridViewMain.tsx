@@ -15,7 +15,7 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
   const body = reports?.length ? (
     reports.map((report) => (
       <tr key={`${report.from}-${report.to}`}>
-        <td>{report.from}</td>
+        {+report.from === 45 && report.to !== 'HT' ? <td>{report.from}</td> : <td>{report.from}.01</td>}
         <td>{report.to}</td>
         <td>{report.numberOfLeague}</td>
         <td>

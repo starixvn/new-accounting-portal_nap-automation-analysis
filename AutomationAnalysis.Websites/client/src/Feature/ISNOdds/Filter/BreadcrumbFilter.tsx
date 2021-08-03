@@ -1,7 +1,6 @@
 import { Breadcrumb, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
 import { ImFileExcel } from 'react-icons/im';
 import { useDispatch, useSelector } from 'react-redux';
-import FileSaver from 'file-saver';
 import { ApplicationState } from '../../../configureStore';
 import { showMainReport } from '../Store/ISNOddsActions';
 import numberUtility from '../../../Utils/NumberUtility';
@@ -27,20 +26,27 @@ const BreadcrumbFilter = () => {
   const reportState = useSelector((state: ApplicationState) => state.report);
   const downloadReportExcel = async () => {
     const result = await reportApi.getReportExcel(reportState);
-    FileSaver.saveAs(result, 'users.xlsx');
   };
 
   return (
     <div className="breadcrumb-main">
       <Breadcrumb>
         {detailGridVisible ? (
-          <Breadcrumb.Item href="#" onClick={goBackToMainReport}>
+          <Breadcrumb.Item
+            style={{ color: 'blue', textDecorationLine: 'underline' }}
+            href="#"
+            onClick={goBackToMainReport}
+          >
             {parentBreadcrumbText}
           </Breadcrumb.Item>
         ) : (
           <Breadcrumb.Item style={{ height: '1rem' }} />
         )}
-        {detailGridVisible && <Breadcrumb.Item active>{currentBreadcrumbText}</Breadcrumb.Item>}
+        {detailGridVisible && (
+          <Breadcrumb.Item style={{ color: 'black' }} active>
+            {currentBreadcrumbText}
+          </Breadcrumb.Item>
+        )}
       </Breadcrumb>
       <OverlayTrigger placement="top" overlay={toolTip}>
         <Button onClick={downloadReportExcel}>

@@ -14,14 +14,14 @@ export default function HeaderForGoal() {
         <th colSpan={2}>Difference</th>
       </tr>
       <tr>
-        <th>From</th>
-        <th>To</th>
-        <th>HDP</th>
-        <th>OU</th>
-        <th>HDP</th>
-        <th>OU</th>
-        <th>HDP</th>
-        <th>OU</th>
+        <th style={{ width: '10%' }}>From</th>
+        <th style={{ width: '10%' }}>To</th>
+        <th style={{ width: '10%' }}>HDP</th>
+        <th style={{ width: '10%' }}>OU</th>
+        <th style={{ width: '10%' }}>HDP</th>
+        <th style={{ width: '10%' }}>OU</th>
+        <th style={{ width: '10%' }}>HDP</th>
+        <th style={{ width: '10%' }}>OU</th>
       </tr>
     </>
   );

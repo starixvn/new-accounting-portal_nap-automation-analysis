@@ -1,8 +1,9 @@
 .containers {
-  border-radius: 5px;
-  padding-left: 30px;
-  width: 100%;
+    border-radius: 5px;
+    padding-left: 30px;
+    width: 100%;
 }
+
 
 /* .card {
   font-size: 0.8125rem;
@@ -10,121 +11,121 @@
 
 .card td,
 .card th {
-  padding: 0.2rem !important;
+    padding: 0.2rem !important;
 }
 
 .label-content {
-  float: left;
-  width: 10%;
-  margin-top: 6px;
-  font-size: large;
+    float: left;
+    width: 10%;
+    margin-top: 6px;
+    font-size: large;
 }
 
 .date-label {
-  padding-top: 20px;
+    padding-top: 20px;
 }
 
 .row:after {
-  content: '';
-  display: table;
-  clear: both;
+    content: '';
+    display: table;
+    clear: both;
 }
 
 .form-filter {
-  padding: 10px 30px;
+    padding: 10px 30px;
 }
 
 .filter-header button {
-  border-radius: 0 !important;
-  border: none !important;
-  color: black;
-  background-color: #a9d08e;
+    border-radius: 0 !important;
+    border: none !important;
+    color: black;
+    background-color: #a9d08e;
 }
 
 .goal-button {
-  margin: -6px 10px 0;
-  width: 80px;
+    margin: -6px 10px 0;
+    width: 80px;
 }
 
 .redcard-button {
-  margin-top: -5px;
+    margin-top: -5px;
 }
 
 .active-button {
-  background-color: #548235 !important;
-  color: white !important;
+    background-color: #548235 !important;
+    color: white !important;
 }
 
 .breadcrumb-main {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 1.25rem 1rem;
-  background-color: #ffc000;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1.25rem 1rem;
+    background-color: #ffc000;
 }
 
 .breadcrumb-main button {
-  height: auto;
-  width: 4rem;
-  border: none !important;
-  border-radius: 0 !important;
-  background-color: #f1b200 !important;
+    height: auto;
+    width: 4rem;
+    border: none !important;
+    border-radius: 0 !important;
+    background-color: #f1b200 !important;
 }
 
 .breadcrumb-main button:hover {
-  background-color: #ecb212 !important;
+    background-color: #ecb212 !important;
 }
 
 .breadcrumb {
-  background-color: #ffc000;
-  margin: 0 !important;
+    background-color: #ffc000;
+    margin: 0 !important;
 }
 
 .breadcrumb-item,
 .breadcrumb-item a {
-  color: black !important;
-  font-weight: bold;
+    font-weight: bold;
 }
-.breadcrumb-item + .breadcrumb-item::before {
-  content: '>>' !important;
-  color: black !important;
-  font-weight: bold;
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: '>>' !important;
+    color: black !important;
+    font-weight: bold;
 }
 
 label {
-  padding-right: 1rem !important;
+    padding-right: 1rem !important;
 }
 
 .input-area .form-control {
-  display: inline-block !important;
+    display: inline-block !important;
 }
 
 .filter-select {
-  width: 120px !important;
-  height: 1.5rem !important;
-  font-size: 0.8rem !important;
-  padding: 0 !important;
+    width: 120px !important;
+    height: 1.5rem !important;
+    font-size: 0.8rem !important;
+    padding: 0 !important;
 }
 
 .table-select {
-  border: none !important;
-  outline: none !important;
-  height: 1.5rem !important;
-  background-color: #f2f2f2 !important;
-  padding: 0 !important;
+    border: none !important;
+    outline: none !important;
+    height: 1.5rem !important;
+    background-color: #f2f2f2 !important;
+    padding: 0 !important;
 }
 
 .table-select option {
-  font-size: 0.8125rem;
+    font-size: 0.8125rem;
 }
 
 input:focus,
 select:focus {
-  outline: none !important;
-  box-shadow: none !important;
+    outline: none !important;
+    box-shadow: none !important;
 }
 
 @media only screen and (min-width: 1152px) {
-  .table {
-    margin-bottom: 0rem !important;
-  }
+    .table {
+        margin-bottom: 0rem !important;
+    }
 }

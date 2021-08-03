@@ -19,6 +19,7 @@ import PageLoading from '../../../GlobalComponent/PageLoading';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
 import { mapStateToFilter } from '../Models/ISNOddsFilter';
+import { Report } from '../Models/ISNOdds';
 
 export const options = (values: number[]) =>
   values &&
@@ -69,7 +70,18 @@ export default function Filter() {
     dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
     const result = (await reportApi.getReports(filter)) || [];
-    dispatch(getReports(result));
+    const report: Report[] = [];
+    result.forEach((x) => {
+      if ((+x.from === 45 && !x.to) || (+x.from === 40 && !x.to)) {
+        x.to = 'HT';
+      }
+      if ((+x.from === 90 && !x.to) || (+x.from === 85 && !x.to)) {
+        x.to = 'FT';
+      }
+      report.push(x);
+    });
+    console.log(report);
+    dispatch(getReports(report));
   };
 
   return (

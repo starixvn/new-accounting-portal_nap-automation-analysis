@@ -3,10 +3,10 @@ export default function HeaderForRedCard() {
     <>
       <tr>
         <th colSpan={2}>Time</th>
-        <th rowSpan={2} className=" align-middle">
+        <th rowSpan={2} className="align-middle">
           No. Of League
         </th>
-        <th rowSpan={2} className=" align-middle">
+        <th rowSpan={2} className="align-middle">
           No. Of Match
         </th>
         <th colSpan={2}>Before RedCard</th>
@@ -14,14 +14,14 @@ export default function HeaderForRedCard() {
         <th colSpan={2}>Difference</th>
       </tr>
       <tr>
-        <th>From</th>
-        <th>To</th>
-        <th>HDP</th>
-        <th>OU</th>
-        <th>HDP</th>
-        <th>OU</th>
-        <th>HDP</th>
-        <th>OU</th>
+        <th style={{ width: '10%' }}>From</th>
+        <th style={{ width: '10%' }}>To</th>
+        <th style={{ width: '10%' }}>HDP</th>
+        <th style={{ width: '10%' }}>OU</th>
+        <th style={{ width: '10%' }}>HDP</th>
+        <th style={{ width: '10%' }}>OU</th>
+        <th style={{ width: '10%' }}>HDP</th>
+        <th style={{ width: '10%' }}>OU</th>
       </tr>
     </>
   );
