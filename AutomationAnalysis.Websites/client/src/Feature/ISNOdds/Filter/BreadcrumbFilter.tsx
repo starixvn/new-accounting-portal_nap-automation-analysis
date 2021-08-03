@@ -27,7 +27,7 @@ const BreadcrumbFilter = () => {
   const reportState = useSelector((state: ApplicationState) => state.report);
   const downloadReportExcel = async () => {
     const result = await reportApi.getReportExcel(reportState);
-    FileSaver.saveAs(result, 'users.xlsx');
+    FileSaver.saveAs(result, `report_${new Date().toLocaleDateString()}.xlsx`);
   };
 
   return (

@@ -35,57 +35,61 @@ namespace AutomationAnalysis.ISNOdds.Services
         {
             LoadTemplate(templatePath);
             BuillReportBody(model);
-
             return excelPackage;
         }
 
         public void BuillReportBody(ISNOddsExcelModel model)
         {
-            var infoReport = model.FileInfo;
-
-            var cellA1 = reportSheet.Cells["A1"];
-            cellA1.RichText.Add($"ISN Odds Data - {infoReport.ReportOption}").Bold = true;
-
-            var cellA2 = reportSheet.Cells["A2"];
-
-            var fromDateLabel = cellA2.RichText.Add("FromDate: ");
-            var fromDateValue = cellA2.RichText.Add(infoReport.FromDate);
-            var toDateLabel = cellA2.RichText.Add(" ToDate: ");
-            var toDateValue = cellA2.RichText.Add(infoReport.ToDate);
-
-            var leagueLabel = cellA2.RichText.Add("\nLeague: ");
-            var leagueValue = cellA2.RichText.Add(infoReport.League);
-            var viewLabel = cellA2.RichText.Add(" View: ");
-            var viewValue = cellA2.RichText.Add(infoReport.View);
-
-            var intervalLabel = cellA2.RichText.Add("\nTime interval: ");
-            var intervalValue = cellA2.RichText.Add(infoReport.Interval);
-
-            var hdpLabel = cellA2.RichText.Add("\nInitial HDP: ");
-            var hdbValue = cellA2.RichText.Add(infoReport.InitialHDP);
-            var ouLabel = cellA2.RichText.Add(" Initial OU: ");
-            var ouValue = cellA2.RichText.Add(infoReport.InitialOU);
-
-            var goalLabel = cellA2.RichText.Add($"\n{infoReport.ReportOption}: ");
-            var goalValue = cellA2.RichText.Add(infoReport.TeamType);
-            var totalGoalLabel = cellA2.RichText.Add($" Total {infoReport.ReportOption}: ");
-            var totalGoalValue = cellA2.RichText.Add(infoReport.Score);
-            var redCardLabel = cellA2.RichText.Add($" Current RedCard: ");
-            var redCardValue = cellA2.RichText.Add(infoReport.RedCard);
-
-            cellA2.Style.VerticalAlignment = ExcelVerticalAlignment.Top;
-            fromDateLabel.Bold = true;
-            toDateLabel.Bold = true;
-            leagueLabel.Bold = true;
-            viewLabel.Bold = true;
-            intervalLabel.Bold = true;
-            hdpLabel.Bold = true;
-            ouLabel.Bold = true;
-            goalLabel.Bold = true;
-            totalGoalLabel.Bold = true;
-            redCardLabel.Bold = true;
-
+            AddFileInfo(model.FileInfo);
+            ChangeISNOddsTableHead(model.FileInfo);
             reportSheet.ApplyVertical(model.Reports, ReportConst.StartIndexRow);
+            reportSheet.Cells[reportSheet.Dimension.Address].AutoFitColumns();
+        }
+
+        public void AddFileInfo(ISNOddsExcelFileInfoModel infoModel)
+        {
+            var titleCell = reportSheet.Cells[ReportConst.ReportTitleCell];
+            titleCell.RichText.Add(infoModel.ReportOptionTitle).Bold = true;
+
+            var fileInfoCell = reportSheet.Cells[ReportConst.FileInfoCell];
+            var fromDateTitle = fileInfoCell.RichText.Add(infoModel.FromDateTitle);
+            fileInfoCell.RichText.Add(infoModel.FromDate);
+            var toDateTitle = fileInfoCell.RichText.Add(infoModel.ToDateTitle);
+            fileInfoCell.RichText.Add(infoModel.ToDate);
+            var leagueTitle = fileInfoCell.RichText.Add(infoModel.LeagueTitle);
+            fileInfoCell.RichText.Add(infoModel.League);
+            var viewTitle = fileInfoCell.RichText.Add(infoModel.ViewTitle);
+            fileInfoCell.RichText.Add(infoModel.View);
+            var intervalTitle = fileInfoCell.RichText.Add(infoModel.IntervalTitle);
+            fileInfoCell.RichText.Add(infoModel.Interval);
+            var hdpTitle = fileInfoCell.RichText.Add(infoModel.InitialHDPTitle);
+            fileInfoCell.RichText.Add(infoModel.InitialHDP);
+            var ouTitle = fileInfoCell.RichText.Add(infoModel.InitialOUTitle);
+            fileInfoCell.RichText.Add(infoModel.InitialOU);
+            var goalTitle = fileInfoCell.RichText.Add($"\n{infoModel.ReportOption}: ");
+            fileInfoCell.RichText.Add(infoModel.TeamType);
+            var totalGoalOrRedCardTitle = fileInfoCell.RichText.Add(infoModel.TotalGoalOrRedCardTitle);
+            fileInfoCell.RichText.Add(infoModel.TotalGoalOrRedCard);
+            var currentGoalOrRedCardTitle = fileInfoCell.RichText.Add(infoModel.CurrentGoalOrRedCardTitle);
+            fileInfoCell.RichText.Add(infoModel.CurrentGoalOrRedCard);
+
+            fileInfoCell.Style.VerticalAlignment = ExcelVerticalAlignment.Top;
+            fromDateTitle.Bold = true;
+            toDateTitle.Bold = true;
+            leagueTitle.Bold = true;
+            viewTitle.Bold = true;
+            intervalTitle.Bold = true;
+            hdpTitle.Bold = true;
+            ouTitle.Bold = true;
+            goalTitle.Bold = true;
+            totalGoalOrRedCardTitle.Bold = true;
+            currentGoalOrRedCardTitle.Bold = true;
+        }
+
+        public void ChangeISNOddsTableHead(ISNOddsExcelFileInfoModel infoModel)
+        {
+            reportSheet.Cells[ReportConst.BeforeModeCell].Value = "Before " + infoModel.ReportOption;
+            reportSheet.Cells[ReportConst.AfterModeCell].Value = "After " + infoModel.ReportOption;
         }
     }
 }
