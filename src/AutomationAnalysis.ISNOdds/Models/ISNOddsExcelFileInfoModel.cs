@@ -9,34 +9,19 @@ namespace AutomationAnalysis.ISNOdds.Models
 
     public class ISNOddsExcelFileInfoModel
     {
-        [Cell("A1")]
         public string ReportOption { get; set; }
-
-        [Cell("A2")]
-        public DateTime FromDate { get; set; }
-
-        [Cell("A2")]
-        public DateTime ToDate { get; set; }
-
-        [Cell("A2")]
+        public string FromDate { get; set; }
+        public string ToDate { get; set; }
         public string League { get; set; }
-
-        [Cell("A2")]
         public string View { get; set; }
+        public string Interval { get; set; }
+        public string InitialHDP { get; set; }
+        public string InitialOU { get; set; }
+        public string TeamType { get; set; }
+        public string Score { get; set; }
+        public string RedCard { get; set; }
 
-        [Cell("A2")]
-        public int TimeInterval { get; set; }
-
-        [Cell("A2")]
-        public decimal FromInitialHDP { get; set; }
-
-        [Cell("A2")]
-        public decimal ToInitialHDP { get; set; }
-
-        [Cell("A2")]
-        public decimal FromInitialOU { get; set; }
-
-        [Cell("A2")]
-        public decimal ToInitialOU { get; set; }
+        public string FromDateTitle => "FromDate: ";
+        public string ToDateTitle => "ToDate: ";
     }
 }

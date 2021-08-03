@@ -7,7 +7,7 @@ namespace AutomationAnalysis.ISNOdds.Models
 {
     public class ISNOddsExcelModel
     {
-        public IList<ISNOddsExcelReportModel> Report { get; set; }
+        public IList<ISNOddsExcelReportModel> Reports { get; set; }
 
         public ISNOddsExcelFileInfoModel FileInfo { get; set; }
     }

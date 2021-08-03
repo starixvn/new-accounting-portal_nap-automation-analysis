@@ -24,8 +24,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="AutoMapper" Version="10.1.1" />
-    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="8.1.1" />
     <PackageReference Include="EPPlus" Version="5.7.2" />
     <PackageReference Include="Epplus.Mapper" Version="1.0.0.13" />
     <PackageReference Include="Fanex.Caching.AspNetCore" Version="2.2.2" />

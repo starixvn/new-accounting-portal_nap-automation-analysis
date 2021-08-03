@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
+using AutoMapper;
 
 namespace AutomationAnalysis.ISNOdds
 {
@@ -53,18 +54,27 @@ namespace AutomationAnalysis.ISNOdds
     {
         private readonly ExportExcelService exportExcelService;
         private readonly IWebHostEnvironment hostEnvironment;
+        private readonly IMapper mapper;
 
-        public MainExcelHandler(ExportExcelService exportExcelService, IWebHostEnvironment hostEnvironment)
+        public MainExcelHandler(ExportExcelService exportExcelService, IWebHostEnvironment hostEnvironment, IMapper mapper)
         {
             this.exportExcelService = exportExcelService;
             this.hostEnvironment = hostEnvironment;
+            this.mapper = mapper;
         }
 
         public async Task<ExcelPackage> Handle(MainExcelRequest request, CancellationToken cancellationToken)
         {
             var absolutePath = Path.Combine("App_Data", "Templates", "MainReport.xlsx");
             var templatePath = Path.Combine(hostEnvironment.ContentRootPath, absolutePath);
-            var excelPackage = exportExcelService.CreateExcelPackage(templatePath, request);
+            var fileInfoModel = mapper.Map<ISNOddsExcelFileInfoModel>(request);
+            var isnOddsExcelModel = new ISNOddsExcelModel
+            {
+                FileInfo = fileInfoModel,
+                Reports = request.Reports
+            };
+
+            var excelPackage = exportExcelService.CreateExcelPackage(templatePath, isnOddsExcelModel);
 
             return await Task.FromResult(excelPackage);
         }
