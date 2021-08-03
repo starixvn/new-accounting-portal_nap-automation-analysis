@@ -23,9 +23,9 @@ export default function InitialBetTypeRange() {
           </th>
         </tr>
         <tr>
-          <th className="home-bg">From</th>
+          <th className="away-bg">From</th>
           <th className="away-bg">To</th>
-          <th className="home-bg">From</th>
+          <th className="away-bg">From</th>
           <th className="away-bg">To</th>
         </tr>
       </thead>

@@ -13,8 +13,8 @@ import {
 import { ApplicationState } from '../../../configureStore';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
 import InitialBetTypeRange from './InitialBetTypeRange';
-import RedCardSelector from './RedCardSelector';
-import ScoreSelector from './ScoreSelector';
+import CurrentRedCardOrGoalSelector from './CurrentRedCardOrGoalSelector';
+import TeamTypeGoalOrRedCardSelector from './TeamTypeGoalOrRedCardSelector';
 import PageLoading from '../../../GlobalComponent/PageLoading';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
@@ -28,27 +28,6 @@ export const options = (values: number[]) =>
       {value}
     </option>
   ));
-
-const ScoreAndRedCardChooser = (reportSelect: ReportOption) =>
-  reportSelect === 'Goal' ? (
-    <>
-      <Col sm="3">
-        <ScoreSelector />
-      </Col>
-      <Col sm="3">
-        <RedCardSelector />
-      </Col>
-    </>
-  ) : (
-    <>
-      <Col sm="3">
-        <RedCardSelector />
-      </Col>
-      <Col sm="3">
-        <ScoreSelector />
-      </Col>
-    </>
-  );
 
 export default function Filter() {
   const dispatch = useDispatch();
@@ -80,7 +59,6 @@ export default function Filter() {
       }
       report.push(x);
     });
-    console.log(report);
     dispatch(getReports(report));
   };
 
@@ -155,7 +133,12 @@ export default function Filter() {
             <Col sm="auto">
               <InitialBetTypeRange />
             </Col>
-            {ScoreAndRedCardChooser(reportOption)}
+            <Col sm="3">
+              <TeamTypeGoalOrRedCardSelector />
+            </Col>
+            <Col sm="3">
+              <CurrentRedCardOrGoalSelector />
+            </Col>
             <Col sm="auto">
               <Button variant="success" onClick={submit}>
                 Query

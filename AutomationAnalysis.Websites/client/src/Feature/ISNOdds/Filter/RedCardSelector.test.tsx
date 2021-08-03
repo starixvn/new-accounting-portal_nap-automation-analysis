@@ -1,13 +1,13 @@
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import configureStore from '../../../configureStore';
-import RedCardSelector from './RedCardSelector';
+import CurrentRedCardOrGoalSelector from './CurrentRedCardOrGoalSelector';
 
 describe('RedCardSelector Component', () => {
   const mockStore = configureStore();
   const wrapper = mount(
     <Provider store={mockStore}>
-      <RedCardSelector />
+      <CurrentRedCardOrGoalSelector />
     </Provider>,
   );
 

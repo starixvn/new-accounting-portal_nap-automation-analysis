@@ -1,26 +1,49 @@
+import { ChangeEvent } from 'react';
 import { Form, Table } from 'react-bootstrap';
 import _ from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { options } from './Filter';
 import { ApplicationState } from '../../../configureStore';
-import { selectAwayRedcard, selectHomeRedcard } from '../Store/ISNOddsActions';
+import { selectAwayRedcard, selectAwayScore, selectHomeRedcard, selectHomeScore } from '../Store/ISNOddsActions';
 
 const RedCardSelector = () => {
   const dispatch = useDispatch();
-  const { homeRedCard, awayRedCard } = useSelector((state: ApplicationState) => state.report);
+  const reportState = useSelector((state: ApplicationState) => state.report);
+  const { homeRedCard, awayRedCard, reportOption, homeScore, awayScore } = reportState;
+  const homeRedCardOrScore = reportOption === 'Goal' ? homeRedCard : homeScore;
+  const awayRedCardOrScore = reportOption === 'Goal' ? awayRedCard : awayScore;
+
+  const changeHomeRedCardOrScore = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = +e.target.value;
+    if (reportOption === 'Goal') {
+      dispatch(selectHomeRedcard(value));
+      return;
+    }
+    dispatch(selectHomeScore(value));
+  };
+
+  const changeAwayRedCardOrScore = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = +e.target.value;
+    if (reportOption === 'Goal') {
+      dispatch(selectAwayRedcard(value));
+      return;
+    }
+    dispatch(selectAwayScore(value));
+  };
+
   return (
     <Table bordered size="sm" className="text-center">
       <thead>
         <tr>
           <th rowSpan={2} className="align-middle redcard-header">
-            Redcard
+            {reportOption === 'Goal' ? 'Red Card' : 'Score'}
           </th>
           <th colSpan={2} className="score-header ">
-            Red card
+            {reportOption === 'Goal' ? 'Red Card' : 'Score'}
           </th>
         </tr>
         <tr>
-          <th className="home-bg">Home</th>
+          <th className="away-bg">Home</th>
           <th className="away-bg">Away</th>
         </tr>
       </thead>
@@ -33,8 +56,8 @@ const RedCardSelector = () => {
             <Form>
               <Form.Control
                 as="select"
-                value={homeRedCard}
-                onChange={(e) => dispatch(selectHomeRedcard(+e.target.value))}
+                value={homeRedCardOrScore}
+                onChange={changeHomeRedCardOrScore}
                 className="home-redcard-select table-select"
               >
                 {options(_.range(0, 11))}
@@ -45,8 +68,8 @@ const RedCardSelector = () => {
             <Form>
               <Form.Control
                 as="select"
-                value={awayRedCard}
-                onChange={(e) => dispatch(selectAwayRedcard(+e.target.value))}
+                value={awayRedCardOrScore}
+                onChange={changeAwayRedCardOrScore}
                 className="away-redcard-select table-select"
               >
                 {options(_.range(0, 11))}
