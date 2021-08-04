@@ -25,6 +25,7 @@ const BreadcrumbFilter = () => {
   const toolTip = <Tooltip id="tool-top">Download report</Tooltip>;
 
   const reportState = useSelector((state: ApplicationState) => state.report);
+
   const downloadReportExcel = async () => {
     const result = await reportApi.getReportExcel(reportState);
     FileSaver.saveAs(result, `report_${new Date().toLocaleDateString()}.xlsx`);
