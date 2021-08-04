@@ -11,6 +11,7 @@ import {
   selectView,
 } from '../Store/ISNOddsActions';
 import { ApplicationState } from '../../../configureStore';
+import fullByInterval from '../../../Utils/FullIntervalUtility';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
 import InitialBetTypeRange from './InitialBetTypeRange';
 import CurrentRedCardOrGoalSelector from './CurrentRedCardOrGoalSelector';
@@ -59,7 +60,8 @@ export default function Filter() {
       }
       report.push(x);
     });
-    dispatch(getReports(report));
+    const arrFinal = fullByInterval(filter.interval, report);
+    dispatch(getReports(arrFinal));
   };
 
   return (

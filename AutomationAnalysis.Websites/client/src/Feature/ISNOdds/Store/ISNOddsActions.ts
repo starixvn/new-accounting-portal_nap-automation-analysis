@@ -114,7 +114,7 @@ export const selectToDate = (toDate: Date) =>
     toDate,
   } as const);
 
-export const getReports = (reports: Report[]) =>
+export const getReports = (reports: Report[] | undefined) =>
   ({
     type: ReportActionTypes.GET_REPORTS,
     reports,
