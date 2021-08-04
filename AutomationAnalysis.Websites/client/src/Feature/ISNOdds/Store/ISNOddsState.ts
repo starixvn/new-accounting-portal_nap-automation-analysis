@@ -25,7 +25,7 @@ export interface ReportState {
   readonly reportDetails: ReportDetail[] | undefined;
   readonly isLoading: boolean;
   readonly fromMinute: string;
-  readonly toMinute: string;
+  readonly toMinute: string | null;
 }
 
 const curr = new Date(Date.now());

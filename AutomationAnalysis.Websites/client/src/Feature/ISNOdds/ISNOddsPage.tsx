@@ -7,7 +7,7 @@ import GridViewMain from './GridView/GridViewMain/GridViewMain';
 import { getReportDetails, gettingData } from './Store/ISNOddsActions';
 import { mapStateToFilter } from './Models/ISNOddsFilter';
 import reportApi from '../../Api/reportApi';
-import processReportDetailsData from '../../Utils/HelpersUtility';
+import { processReportDetailsData } from '../../Utils/HelpersUtility';
 import './ISNOddsPage.css';
 import PageLoading from '../../GlobalComponent/PageLoading';
 
@@ -16,7 +16,7 @@ function ReportPage() {
   const { reports, reportOption, reportDetails, isLoading } = reportState;
   const dispatch = useDispatch();
 
-  const drillDown = async (fromMinute: string, toMinute: string) => {
+  const drillDown = async (fromMinute: string, toMinute: string | null) => {
     dispatch(gettingData());
     const filter = { ...mapStateToFilter(reportState), fromMinute, toMinute };
     const data = (await reportApi.getReportDetails(filter)) || [];

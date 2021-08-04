@@ -7,7 +7,7 @@ import { Report } from '../../Models/ISNOdds';
 type Props = {
   mode: ReportOption;
   reports: Report[] | undefined;
-  drillDown: (from: string, to: string) => void;
+  drillDown: (from: string, to: string | null) => void;
 };
 
 const GridViewMain = ({ mode, reports, drillDown }: Props) => {
@@ -15,7 +15,7 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
   const body = reports?.length ? (
     reports.map((report) => (
       <tr key={`${report.from}-${report.to}`}>
-        {+report.from === 45 && report.to !== 'HT' ? <td>{report.from}</td> : <td>{report.from}.01</td>}
+        <td>{report.from}</td>
         <td>{report.to}</td>
         <td>{report.numberOfLeague}</td>
         <td>

@@ -17,7 +17,7 @@ const BreadcrumbFilter = () => {
   const detailGridVisible = !!reportDetails;
 
   const fromMinuteInNumber = parseInt(fromMinute, 10);
-  const toMinuteInNumber = parseInt(toMinute, 10);
+  const toMinuteInNumber = parseInt(toMinute ?? '', 10);
 
   const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;
   const currentBreadcrumbText = numberUtility.toTimeRangeString(fromMinuteInNumber, toMinuteInNumber);

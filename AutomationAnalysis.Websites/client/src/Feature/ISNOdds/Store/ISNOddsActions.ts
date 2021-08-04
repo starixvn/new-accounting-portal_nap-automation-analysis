@@ -121,7 +121,7 @@ export const getReports = (reports: Report[] | undefined) =>
     isLoading: false,
   } as const);
 
-export const getReportDetails = (fromMinute: string, toMinute: string, reportDetails: ReportDetail[]) =>
+export const getReportDetails = (fromMinute: string, toMinute: string | null, reportDetails: ReportDetail[]) =>
   ({
     type: ReportActionTypes.GET_REPORT_DETAILS,
     fromMinute,

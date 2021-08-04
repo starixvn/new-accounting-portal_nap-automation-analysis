@@ -21,6 +21,7 @@ import './Filter.css';
 import reportApi from '../../../Api/reportApi';
 import { mapStateToFilter } from '../Models/ISNOddsFilter';
 import { Report } from '../Models/ISNOdds';
+import { generateFullIntervalReports } from '../../../Utils/HelpersUtility';
 
 export const options = (values: number[]) =>
   values &&
@@ -50,18 +51,9 @@ export default function Filter() {
     dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
     const result = (await reportApi.getReports(filter)) || [];
-    const report: Report[] = [];
-    result.forEach((x) => {
-      if ((+x.from === 45 && !x.to) || (+x.from === 40 && !x.to)) {
-        x.to = 'HT';
-      }
-      if ((+x.from === 90 && !x.to) || (+x.from === 85 && !x.to)) {
-        x.to = 'FT';
-      }
-      report.push(x);
-    });
-    const arrFinal = fullByInterval(filter.interval, report);
-    dispatch(getReports(arrFinal));
+    console.log(result);
+    const processedResult = generateFullIntervalReports(interval, result);
+    dispatch(getReports(processedResult));
   };
 
   return (

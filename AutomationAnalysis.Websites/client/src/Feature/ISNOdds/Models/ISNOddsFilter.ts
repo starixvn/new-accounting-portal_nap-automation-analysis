@@ -17,7 +17,7 @@ export interface ReportFilter {
   mode: number;
   teamType: number;
   fromMinute?: number | string;
-  toMinute?: number | string;
+  toMinute?: number | string | null;
 }
 
 export const mapStateToFilter = (state: ReportState): ReportFilter => ({
