@@ -6,7 +6,7 @@ import { options } from './Filter';
 import { ApplicationState } from '../../../configureStore';
 import { selectAwayRedcard, selectAwayScore, selectHomeRedcard, selectHomeScore } from '../Store/ISNOddsActions';
 
-const RedCardSelector = () => {
+const CurrentRedCardOrGoalSelector = () => {
   const dispatch = useDispatch();
   const reportState = useSelector((state: ApplicationState) => state.report);
   const { homeRedCard, awayRedCard, reportOption, homeScore, awayScore } = reportState;
@@ -82,4 +82,4 @@ const RedCardSelector = () => {
   );
 };
 
-export default RedCardSelector;
+export default CurrentRedCardOrGoalSelector;

@@ -31,7 +31,7 @@ describe('ISNOddsFilter ', () => {
       toDate: new Date('2020-02-11'),
       teamType: 0,
       league: '',
-      view: true,
+      view: false,
       interval: 5,
       fromInitialHDP: 0,
       toInitialHDP: 0,

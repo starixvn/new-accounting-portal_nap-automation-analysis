@@ -1,11 +1,22 @@
 import { mount } from 'enzyme';
 import { Breadcrumb } from 'react-bootstrap';
 import { Provider } from 'react-redux';
+import FileSaver from 'file-saver';
 import configureStore from '../../../configureStore';
 import { getReportDetails } from '../Store/ISNOddsActions';
 import BreadcrumbFilter from './BreadcrumbFilter';
+import reportApi from '../../../Api/reportApi';
+
+jest.mock('../../../Api/reportApi');
+jest.mock('file-saver', () => ({ saveAs: jest.fn() }));
 
 describe('BreadcrumbFilter compoment', () => {
+  beforeAll(() => {
+    (reportApi.getReportExcel as jest.Mock).mockResolvedValue(new Blob());
+  });
+  afterAll(() => {
+    jest.clearAllMocks();
+  });
   const mockStore = configureStore();
 
   const wrapper = mount(
@@ -36,7 +47,12 @@ describe('BreadcrumbFilter compoment', () => {
       ]),
     );
     const item = wrapper.find('a');
+    const button = wrapper.find('button');
 
+    expect(button.simulate('click')).toHaveLength(1);
+    button.simulate('click');
+    expect(reportApi.getReportExcel).toBeCalled();
+    // expect(FileSaver.saveAs).toHaveBeenCalled();
     expect(item.simulate('click')).toHaveLength(1);
   });
 });

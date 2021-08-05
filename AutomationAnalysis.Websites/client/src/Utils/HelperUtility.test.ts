@@ -1,5 +1,5 @@
 import { ReportDetail } from '../Feature/ISNOdds/Models/ISNOddsDetail';
-import processReportDetailsData from './HelpersUtility';
+import { processReportDetailsData } from './HelpersUtility';
 
 describe('HelperUtility method', () => {
   it('', () => {
