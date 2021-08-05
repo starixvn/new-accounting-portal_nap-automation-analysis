@@ -1,3 +1,5 @@
+import { round } from 'lodash';
+
 const toTwoDigitsNumber = (value: number) => {
   return value.toLocaleString('en-US', {
     minimumIntegerDigits: 2,
@@ -23,4 +25,6 @@ const numberUtility = {
   },
 };
 
-export default numberUtility;
+const toTwoDigitsFormat = (value: number) => round(value, 2).toFixed(2);
+
+export { numberUtility, toTwoDigitsFormat };

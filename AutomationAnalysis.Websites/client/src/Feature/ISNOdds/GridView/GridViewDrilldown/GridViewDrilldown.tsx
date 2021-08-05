@@ -1,3 +1,4 @@
+import { toTwoDigitsFormat } from '../../../../Utils/NumberUtility';
 import { ReportDetail } from '../../Models/ISNOddsDetail';
 import { ReportOption } from '../../Store/ISNOddsState';
 import GridView from '../GridView';
@@ -22,12 +23,12 @@ const GridViewDrilldown = ({ mode, reportDetails }: Props) => {
         <td>{reportDetail.minute}</td>
         <td>{reportDetail.second}</td>
         <td>{reportDetail.onlySecond}</td>
-        <td>{reportDetail.beforeHDP}</td>
-        <td>{reportDetail.afterHDP}</td>
-        <td>{reportDetail.beforeOU}</td>
-        <td>{reportDetail.afterOU}</td>
-        <td>{reportDetail.diffHDP}</td>
-        <td>{reportDetail.diffOU}</td>
+        <td>{toTwoDigitsFormat(reportDetail.beforeHDP)}</td>
+        <td>{toTwoDigitsFormat(reportDetail.afterHDP)}</td>
+        <td>{toTwoDigitsFormat(reportDetail.beforeOU)}</td>
+        <td>{toTwoDigitsFormat(reportDetail.afterOU)}</td>
+        <td>{toTwoDigitsFormat(reportDetail.diffHDP)}</td>
+        <td>{toTwoDigitsFormat(reportDetail.diffOU)}</td>
       </tr>
     ))
   ) : (

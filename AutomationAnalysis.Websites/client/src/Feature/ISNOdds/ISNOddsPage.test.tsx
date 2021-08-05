@@ -1,15 +1,13 @@
 import { mount } from 'enzyme';
 import { Provider } from 'react-redux';
 import reportApi from '../../Api/reportApi';
-import processReportDetailsData from '../../Utils/HelpersUtility';
+import { processReportDetailsData } from '../../Utils/HelpersUtility';
 import configureStore from '../../configureStore';
 import Filter from './Filter/Filter';
 import GridViewMain from './GridView/GridViewMain/GridViewMain';
 import ReportPage from './ISNOddsPage';
 import { getReportDetails, getReports } from './Store/ISNOddsActions';
 import GridViewDrilldown from './GridView/GridViewDrilldown/GridViewDrilldown';
-import { ReportState } from './Store/ISNOddsState';
-import { mapStateToFilter, ReportFilter } from './Models/ISNOddsFilter';
 
 jest.mock('../../Api/reportApi');
 jest.mock('../../Utils/HelpersUtility');

@@ -17,7 +17,6 @@ function Header() {
   };
   useEffect(() => {
     headerApi.getMenu().then((response) => {
-      console.log(response);
       setUsername(response.user);
       setMenus(response.menus);
     });

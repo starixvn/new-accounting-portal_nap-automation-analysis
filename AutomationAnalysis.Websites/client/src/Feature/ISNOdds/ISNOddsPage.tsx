@@ -20,7 +20,6 @@ function ReportPage() {
     dispatch(gettingData());
     const [processedFromMinute] = fromMinute.split(':');
     const filter = { ...mapStateToFilter(reportState), fromMinute: processedFromMinute, toMinute };
-    console.log(filter);
     const data = (await reportApi.getReportDetails(filter)) || [];
     const result = processReportDetailsData(data);
     dispatch(getReportDetails(processedFromMinute, toMinute, result));

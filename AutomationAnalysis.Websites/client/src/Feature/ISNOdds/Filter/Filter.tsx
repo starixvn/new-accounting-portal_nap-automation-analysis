@@ -1,7 +1,7 @@
 import { Button, Card, Col, Form, Row } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
-import { ReportOption, ViewOption } from '../Store/ISNOddsState';
+import { ViewOption } from '../Store/ISNOddsState';
 import {
   changeLeague,
   getReports,
@@ -11,7 +11,6 @@ import {
   selectView,
 } from '../Store/ISNOddsActions';
 import { ApplicationState } from '../../../configureStore';
-import fullByInterval from '../../../Utils/FullIntervalUtility';
 import DateRange from '../../../GlobalComponent/DateRange/DateRange';
 import InitialBetTypeRange from './InitialBetTypeRange';
 import CurrentRedCardOrGoalSelector from './CurrentRedCardOrGoalSelector';
