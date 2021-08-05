@@ -20,6 +20,9 @@ namespace AutomationAnalysis.ISNOdds.Models
         public string TeamType { get; set; }
         public string Score { get; set; }
         public string RedCard { get; set; }
+        public string FromMinute { get; set; }
+        public string ToMinute { get; set; }
+        public List<ISNOddsExcelReportDetailModel> ReportDetail { get; set; }
 
         public string FromDateTitle => "FromDate: ";
         public string ToDateTitle => "   ToDate: ";

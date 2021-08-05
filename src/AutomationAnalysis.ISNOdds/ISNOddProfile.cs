@@ -38,7 +38,7 @@ namespace AutomationAnalysis.ISNOdds
                     src => src.MapFrom(src => $"{src.HomeRedCard}-{src.AwayRedCard}"))
                 .ForMember(dest =>
                     dest.Interval,
-                    src => src.MapFrom(src => $"{src.Interval}"));
+                    src => src.MapFrom(src => src.ReportDetails != null ? $"{src.FromMinute}-{src.ToMinute}" : $"{src.Interval}" ));
         }
     }
 }

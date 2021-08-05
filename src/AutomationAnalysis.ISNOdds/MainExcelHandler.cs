@@ -48,6 +48,7 @@ namespace AutomationAnalysis.ISNOdds
 
         public string ToMinute { get; set; }
         public List<ISNOddsExcelReportModel> Reports { get; set; }
+        public IList<ISNOddsExcelReportDetailModel> ReportDetails { get; set; }
     }
 
     public class MainExcelHandler : IRequestHandler<MainExcelRequest, ExcelPackage>
@@ -65,13 +66,15 @@ namespace AutomationAnalysis.ISNOdds
 
         public async Task<ExcelPackage> Handle(MainExcelRequest request, CancellationToken cancellationToken)
         {
-            var absolutePath = Path.Combine("App_Data", "Templates", "MainReport.xlsx");
-            var templatePath = Path.Combine(hostEnvironment.ContentRootPath, absolutePath);
+            var absolutePathForMain = Path.Combine("App_Data", "Templates", "MainReport.xlsx");
+            var absolutePathForDrill = Path.Combine("App_Data", "Templates", "DrilldownReport.xlsx");
+            var templatePath = request.ReportDetails != null ? Path.Combine(hostEnvironment.ContentRootPath, absolutePathForDrill) : Path.Combine(hostEnvironment.ContentRootPath, absolutePathForMain);
             var fileInfoModel = mapper.Map<ISNOddsExcelFileInfoModel>(request);
             var isnOddsExcelModel = new ISNOddsExcelModel
             {
                 FileInfo = fileInfoModel,
-                Reports = request.Reports
+                Reports = request.Reports,
+                ReportDetails = request.ReportDetails
             };
 
             var excelPackage = exportExcelService.CreateExcelPackage(templatePath, isnOddsExcelModel);

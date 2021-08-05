@@ -42,7 +42,14 @@ namespace AutomationAnalysis.ISNOdds.Services
         {
             AddFileInfo(model.FileInfo);
             ChangeISNOddsTableHead(model.FileInfo);
-            reportSheet.ApplyVertical(model.Reports, ReportConst.StartIndexRow);
+            if (model.ReportDetails != null)
+            {
+                reportSheet.ApplyVertical(model.ReportDetails, ReportConst.StartIndexRow);
+            }
+            else
+            {
+                reportSheet.ApplyVertical(model.Reports, ReportConst.StartIndexRow);
+            }
             reportSheet.Cells[reportSheet.Dimension.Address].AutoFitColumns();
         }
 
