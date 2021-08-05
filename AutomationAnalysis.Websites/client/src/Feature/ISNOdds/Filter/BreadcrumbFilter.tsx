@@ -4,27 +4,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import FileSaver from 'file-saver';
 import { ApplicationState } from '../../../configureStore';
 import { showMainReport } from '../Store/ISNOddsActions';
-import numberUtility from '../../../Utils/NumberUtility';
 import reportApi from '../../../Api/reportApi';
 
 const BreadcrumbFilter = () => {
-  const { reportOption, fromMinute, toMinute, reportDetails } = useSelector((state: ApplicationState) => state.report);
   const dispatch = useDispatch();
-  const goBackToMainReport = () => {
-    dispatch(showMainReport());
-  };
+  const reportState = useSelector((state: ApplicationState) => state.report);
+  const { reportOption, fromMinute, toMinute, reportDetails } = reportState;
 
   const detailGridVisible = !!reportDetails;
-
-  const fromMinuteInNumber = parseInt(fromMinute, 10);
-  const toMinuteInNumber = parseInt(toMinute ?? '', 10);
-
   const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;
-  const currentBreadcrumbText = numberUtility.toTimeRangeString(fromMinuteInNumber, toMinuteInNumber);
+  const fromMinuteInNumber = `${fromMinute}:00`;
+  const toMinuteInNumber = Number.isNaN(+(toMinute || '')) ? toMinute : `${toMinute}:00`;
+  const currentBreadcrumbText = `${fromMinuteInNumber}-${toMinuteInNumber}`;
 
   const toolTip = <Tooltip id="tool-top">Download report</Tooltip>;
-
-  const reportState = useSelector((state: ApplicationState) => state.report);
 
   const downloadReportExcel = async () => {
     const result = await reportApi.getReportExcel(reportState);
@@ -38,7 +31,7 @@ const BreadcrumbFilter = () => {
           <Breadcrumb.Item
             style={{ color: 'blue', textDecorationLine: 'underline' }}
             href="#"
-            onClick={goBackToMainReport}
+            onClick={() => dispatch(showMainReport())}
           >
             {parentBreadcrumbText}
           </Breadcrumb.Item>

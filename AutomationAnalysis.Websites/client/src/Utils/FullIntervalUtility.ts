@@ -479,8 +479,8 @@ function getArrFullByInterval(interval: number, dataReturnApi: Report[]): Report
     arrIndex.push(
       _.findIndex(arrByInterval, (o) => {
         return _.isMatch(
-          { from: o.from.toString(), to: x.to.toString() },
-          { from: x.from.toString(), to: o.to.toString() },
+          { from: o.from.toString(), to: x.to?.toString() },
+          { from: x.from.toString(), to: o.to?.toString() },
         );
       }),
     );

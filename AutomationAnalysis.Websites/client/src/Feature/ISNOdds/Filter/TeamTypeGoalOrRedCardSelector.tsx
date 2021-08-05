@@ -59,7 +59,7 @@ const ScoreSelector = () => {
       <thead>
         <tr>
           <th rowSpan={2} className="align-middle goal-header">
-            {reportOption}
+            {reportOption === 'Goal' ? 'Goal' : 'Red Card'}
           </th>
           <th colSpan={2} className="score-header">
             {reportOption === 'Goal' ? 'Score' : 'Red Card'}

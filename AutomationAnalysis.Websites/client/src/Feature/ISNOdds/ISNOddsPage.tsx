@@ -18,10 +18,12 @@ function ReportPage() {
 
   const drillDown = async (fromMinute: string, toMinute: string | null) => {
     dispatch(gettingData());
-    const filter = { ...mapStateToFilter(reportState), fromMinute, toMinute };
+    const [processedFromMinute] = fromMinute.split(':');
+    const filter = { ...mapStateToFilter(reportState), fromMinute: processedFromMinute, toMinute };
+    console.log(filter);
     const data = (await reportApi.getReportDetails(filter)) || [];
     const result = processReportDetailsData(data);
-    dispatch(getReportDetails(fromMinute, toMinute, result));
+    dispatch(getReportDetails(processedFromMinute, toMinute, result));
   };
 
   const mainGridVisible = !!reports && !reportDetails;

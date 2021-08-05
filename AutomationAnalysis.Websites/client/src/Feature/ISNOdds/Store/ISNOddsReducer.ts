@@ -85,6 +85,7 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
       return {
         ...state,
         reports: action.reports,
+        reportDetails: undefined,
         isLoading: action.isLoading,
       };
     case ReportActionTypes.GET_REPORT_DETAILS:

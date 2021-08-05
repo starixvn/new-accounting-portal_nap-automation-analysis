@@ -20,7 +20,6 @@ import PageLoading from '../../../GlobalComponent/PageLoading';
 import './Filter.css';
 import reportApi from '../../../Api/reportApi';
 import { mapStateToFilter } from '../Models/ISNOddsFilter';
-import { Report } from '../Models/ISNOdds';
 import { generateFullIntervalReports } from '../../../Utils/HelpersUtility';
 
 export const options = (values: number[]) =>
@@ -50,9 +49,8 @@ export default function Filter() {
     // }
     dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
-    const result = (await reportApi.getReports(filter)) || [];
-    console.log(result);
-    const processedResult = generateFullIntervalReports(interval, result);
+    const result = await reportApi.getReports(filter);
+    const processedResult = result.length ? generateFullIntervalReports(interval, result) : [];
     dispatch(getReports(processedResult));
   };
 

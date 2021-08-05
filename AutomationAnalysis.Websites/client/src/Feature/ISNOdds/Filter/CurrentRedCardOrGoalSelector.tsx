@@ -1,6 +1,6 @@
 import { ChangeEvent } from 'react';
 import { Form, Table } from 'react-bootstrap';
-import _ from 'lodash';
+import { range } from 'lodash';
 import { useSelector, useDispatch } from 'react-redux';
 import { options } from './Filter';
 import { ApplicationState } from '../../../configureStore';
@@ -36,7 +36,7 @@ const RedCardSelector = () => {
       <thead>
         <tr>
           <th rowSpan={2} className="align-middle redcard-header">
-            {reportOption === 'Goal' ? 'Red Card' : 'Score'}
+            {reportOption === 'Goal' ? 'Red Card' : 'Goal'}
           </th>
           <th colSpan={2} className="score-header ">
             {reportOption === 'Goal' ? 'Red Card' : 'Score'}
@@ -60,7 +60,7 @@ const RedCardSelector = () => {
                 onChange={changeHomeRedCardOrScore}
                 className="home-redcard-select table-select"
               >
-                {options(_.range(0, 11))}
+                {options(range(0, 11))}
               </Form.Control>
             </Form>
           </td>
@@ -72,7 +72,7 @@ const RedCardSelector = () => {
                 onChange={changeAwayRedCardOrScore}
                 className="away-redcard-select table-select"
               >
-                {options(_.range(0, 11))}
+                {options(range(0, 11))}
               </Form.Control>
             </Form>
           </td>
