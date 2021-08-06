@@ -24,7 +24,7 @@ describe('GridViewMain Component', () => {
       diffOU: 2,
     },
   ];
-  const fakeReportNull: Report[] = [];
+  const fakeReportEmpty: Report[] = [];
   it('click drilldown Goal', () => {
     const wrapper = mount(
       <Provider store={mockStore}>
@@ -48,10 +48,10 @@ describe('GridViewMain Component', () => {
   it('null report', () => {
     const wrapper = mount(
       <Provider store={mockStore}>
-        <GridViewMain mode={fakeModeRedCard} reports={fakeReportNull} drillDown={fakeDrilldown} />
+        <GridViewMain mode={fakeModeRedCard} reports={fakeReportEmpty} drillDown={fakeDrilldown} />
       </Provider>,
     );
     const drilldown = wrapper.find('td').text();
-    expect(drilldown).toBe('No found data!');
+    expect(drilldown).toBe('Not found data!');
   });
 });

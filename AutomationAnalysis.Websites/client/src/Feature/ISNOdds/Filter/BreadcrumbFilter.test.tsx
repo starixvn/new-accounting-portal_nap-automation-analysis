@@ -1,14 +1,13 @@
 import { mount } from 'enzyme';
 import { Breadcrumb } from 'react-bootstrap';
 import { Provider } from 'react-redux';
-import FileSaver from 'file-saver';
 import configureStore from '../../../configureStore';
 import { getReportDetails } from '../Store/ISNOddsActions';
 import BreadcrumbFilter from './BreadcrumbFilter';
 import reportApi from '../../../Api/reportApi';
 
 jest.mock('../../../Api/reportApi');
-jest.mock('file-saver', () => ({ saveAs: jest.fn() }));
+// jest.mock('file-saver', () => ({ saveAs: jest.fn() }));
 
 describe('BreadcrumbFilter compoment', () => {
   beforeAll(() => {

@@ -5,6 +5,7 @@ import FileSaver from 'file-saver';
 import { ApplicationState } from '../../../configureStore';
 import { showMainReport } from '../Store/ISNOddsActions';
 import reportApi from '../../../Api/reportApi';
+import { isNumber } from '../../../Utils/HelpersUtility';
 
 const BreadcrumbFilter = () => {
   const dispatch = useDispatch();
@@ -14,7 +15,7 @@ const BreadcrumbFilter = () => {
   const detailGridVisible = !!reportDetails;
   const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;
   const fromMinuteInNumber = `${fromMinute}:00`;
-  const toMinuteInNumber = Number.isNaN(+(toMinute || '')) ? toMinute : `${toMinute}:00`;
+  const toMinuteInNumber = isNumber(toMinute) ? toMinute : `${toMinute}:00`;
   const currentBreadcrumbText = `${fromMinuteInNumber}-${toMinuteInNumber}`;
 
   const toolTip = <Tooltip id="tool-top">Download report</Tooltip>;

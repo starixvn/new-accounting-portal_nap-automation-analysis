@@ -66,9 +66,9 @@ namespace AutomationAnalysis.ISNOdds
 
         public async Task<ExcelPackage> Handle(MainExcelRequest request, CancellationToken cancellationToken)
         {
-            var absolutePathForMain = Path.Combine("App_Data", "Templates", "MainReport.xlsx");
-            var absolutePathForDrill = Path.Combine("App_Data", "Templates", "DrilldownReport.xlsx");
-            var templatePath = request.ReportDetails != null ? Path.Combine(hostEnvironment.ContentRootPath, absolutePathForDrill) : Path.Combine(hostEnvironment.ContentRootPath, absolutePathForMain);
+            var fileName = request.ReportDetails != null ? "DrilldownReport.xlsx" : "MainReport.xlsx";
+            var absolutePath = Path.Combine("App_Data", "Templates", fileName);
+            var templatePath = Path.Combine(hostEnvironment.ContentRootPath, absolutePath);
             var fileInfoModel = mapper.Map<ISNOddsExcelFileInfoModel>(request);
             var isnOddsExcelModel = new ISNOddsExcelModel
             {

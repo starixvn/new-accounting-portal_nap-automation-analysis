@@ -1,20 +1,20 @@
-import _ from 'lodash';
+import { round, meanBy, chain } from 'lodash';
 import { initialReport, Report } from '../Feature/ISNOdds/Models/ISNOdds';
 import { ReportDetail } from '../Feature/ISNOdds/Models/ISNOddsDetail';
 import { dataArea } from './ConstantsUtility';
 
 const headGroupByLeagueNames = (data: ReportDetail[]) =>
-  _.chain(data)
+  chain(data)
     .groupBy((x) => x.leagueName)
     .map((value, key) => ({
       leagueName: key,
       matchName: key,
-      beforeHDP: _.round(_.meanBy(value, 'beforeHDP'), 2),
-      afterHDP: _.round(_.meanBy(value, 'afterHDP'), 2),
-      beforeOU: _.round(_.meanBy(value, 'beforeOU'), 2),
-      afterOU: _.round(_.meanBy(value, 'afterOU'), 2),
-      diffHDP: _.round(_.meanBy(value, 'diffHDP'), 2),
-      diffOU: _.round(_.meanBy(value, 'diffOU'), 2),
+      beforeHDP: meanBy(value, 'beforeHDP'),
+      afterHDP: meanBy(value, 'afterHDP'),
+      beforeOU: meanBy(value, 'beforeOU'),
+      afterOU: meanBy(value, 'afterOU'),
+      diffHDP: meanBy(value, 'diffHDP'),
+      diffOU: meanBy(value, 'diffOU'),
     }))
     .value();
 
@@ -48,14 +48,15 @@ const getDataArea = (interval: number) => {
   return dataArea.FIVE_INTERVAl;
 };
 
+const findReport = (fromValue: string, toValue: string | null, reports: Report[]): Report | undefined =>
+  reports.find((report) => `${report.from}` === fromValue && (report.to === toValue || `${report.to}` === toValue));
+
 const generateFullIntervalReports = (inverval: number, reports: Report[]): Report[] => {
   const fullIntervalArea = getDataArea(inverval);
 
   const processedReports = fullIntervalArea.map((value) => {
     const [fromValue, toValue] = value;
-    const foundReport = reports.find(
-      (report) => `${report.from}` === fromValue && (report.to === toValue || `${report.to}` === toValue),
-    );
+    const foundReport = findReport(fromValue, toValue, reports);
     const from = generateFromInteval(fromValue, toValue);
     const to = generateToInteval(fromValue, toValue);
 
@@ -65,4 +66,8 @@ const generateFullIntervalReports = (inverval: number, reports: Report[]): Repor
   return processedReports;
 };
 
-export { processReportDetailsData, generateFullIntervalReports };
+const isNumber = (value: any) => !Number.isNaN(+(value as string));
+
+const toTwoDigitsFormat = (value: number) => round(value, 2).toFixed(2);
+
+export { processReportDetailsData, generateFullIntervalReports, isNumber, toTwoDigitsFormat };

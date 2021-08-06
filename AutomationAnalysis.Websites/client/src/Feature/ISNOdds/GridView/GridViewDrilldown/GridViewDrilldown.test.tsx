@@ -67,7 +67,7 @@ describe('GridViewMain Component', () => {
       </Provider>,
     );
     const drilldown = wrapper.find('td').text();
-    expect(drilldown).toBe('No found data!');
+    expect(drilldown).toBe('Not found data!');
   });
   it('null report', () => {
     const wrapper = mount(

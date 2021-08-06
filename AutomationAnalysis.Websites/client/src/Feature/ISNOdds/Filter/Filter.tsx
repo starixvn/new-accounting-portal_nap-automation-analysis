@@ -47,7 +47,9 @@ export default function Filter() {
     //   return;
     // }
     dispatch(gettingData());
+    console.log({ reportState });
     const filter = mapStateToFilter(reportState);
+    console.log({ filter });
     const result = await reportApi.getReports(filter);
     const processedResult = result.length ? generateFullIntervalReports(interval, result) : [];
     dispatch(getReports(processedResult));

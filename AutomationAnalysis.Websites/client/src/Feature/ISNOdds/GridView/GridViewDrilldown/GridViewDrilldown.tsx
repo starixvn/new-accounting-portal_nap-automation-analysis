@@ -1,4 +1,4 @@
-import { toTwoDigitsFormat } from '../../../../Utils/NumberUtility';
+import { toTwoDigitsFormat } from '../../../../Utils/HelpersUtility';
 import { ReportDetail } from '../../Models/ISNOddsDetail';
 import { ReportOption } from '../../Store/ISNOddsState';
 import GridView from '../GridView';

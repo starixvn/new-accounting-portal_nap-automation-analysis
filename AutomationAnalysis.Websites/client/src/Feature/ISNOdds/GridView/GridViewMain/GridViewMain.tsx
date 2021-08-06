@@ -3,7 +3,7 @@ import HeaderForGoal from './HeaderForGoal';
 import HeaderForRedCard from './HeaderForRedCard';
 import { ReportOption } from '../../Store/ISNOddsState';
 import { Report } from '../../Models/ISNOdds';
-import { toTwoDigitsFormat } from '../../../../Utils/NumberUtility';
+import { toTwoDigitsFormat } from '../../../../Utils/HelpersUtility';
 
 type Props = {
   mode: ReportOption;

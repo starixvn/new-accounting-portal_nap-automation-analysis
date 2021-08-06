@@ -1,5 +1,5 @@
 import { mount } from 'enzyme';
-import { Provider } from 'react-redux';
+import ReactRedux, { Provider } from 'react-redux';
 import { toast } from 'react-toastify';
 // import { act } from '@testing-library/react';
 import Filter from './Filter';
