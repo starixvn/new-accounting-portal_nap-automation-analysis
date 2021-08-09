@@ -22,6 +22,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		.editorconfig = .editorconfig
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutomationAnalysis.ISNOdds.UnitTests", "AutomationAnalysis.ISNOdds.UnitTests\AutomationAnalysis.ISNOdds.UnitTests.csproj", "{1AAF0F07-E731-4F7A-ABC9-470D93ABEFC1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,6 +50,10 @@ Global
 		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1AAF0F07-E731-4F7A-ABC9-470D93ABEFC1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1AAF0F07-E731-4F7A-ABC9-470D93ABEFC1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1AAF0F07-E731-4F7A-ABC9-470D93ABEFC1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1AAF0F07-E731-4F7A-ABC9-470D93ABEFC1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -57,6 +63,7 @@ Global
 		{305C0AB3-50C2-4C6B-B4A0-8E849CD03542} = {B35EAB87-2414-4926-98A1-02724C4295E1}
 		{056F64B6-C81C-4AB4-80AE-2777071C90BB} = {5DD299F0-08DC-40FA-B100-7875804F726F}
 		{7A43D576-17C9-44B1-AD6D-343AC4EE79D0} = {5DD299F0-08DC-40FA-B100-7875804F726F}
+		{1AAF0F07-E731-4F7A-ABC9-470D93ABEFC1} = {B35EAB87-2414-4926-98A1-02724C4295E1}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {B1E46E49-843A-4B54-9E4E-06B77672BF68}
