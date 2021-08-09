@@ -19,21 +19,12 @@ const ScoreSelector = () => {
   const { teamType, homeScore, awayScore, reportOption, homeRedCard, awayRedCard } = reportState;
   const homeScoreOrRedCard = reportOption === 'Goal' ? homeScore : homeRedCard;
   const awayScoreOrRedCard = reportOption === 'Goal' ? awayScore : awayRedCard;
-  const [homeScoreOrRedCardOptions, setHomeScoreOrRedCardOptions] = useState<number[]>(range(1, 11));
-  const [awayScoreOrRedCardOptions, setAwayScoreOrRedCardOptions] = useState<number[]>(range(0, 11));
+  const rangeOptions = range(0, 11);
+  const disabledZero = teamType === 'Home';
 
   const changeTeamType = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value as TeamOption;
-
     dispatch(selectTeamOption(value));
-
-    if (value === 'Home') {
-      setHomeScoreOrRedCardOptions(range(1, 11));
-      setAwayScoreOrRedCardOptions(range(0, 11));
-    } else {
-      setHomeScoreOrRedCardOptions(range(0, 11));
-      setAwayScoreOrRedCardOptions(range(1, 11));
-    }
   };
 
   const changeHomeScoreOrRedCard = (e: ChangeEvent<HTMLInputElement>) => {
@@ -93,7 +84,7 @@ const ScoreSelector = () => {
                 onChange={changeHomeScoreOrRedCard}
                 className="home-score-select table-select"
               >
-                {options(homeScoreOrRedCardOptions)}
+                {options(rangeOptions, disabledZero)}
               </Form.Control>
             </Form>
           </td>
@@ -105,7 +96,7 @@ const ScoreSelector = () => {
                 onChange={changeAwayScoreOrRedCard}
                 className="away-score-select table-select"
               >
-                {options(awayScoreOrRedCardOptions)}
+                {options(rangeOptions, !disabledZero)}
               </Form.Control>
             </Form>
           </td>

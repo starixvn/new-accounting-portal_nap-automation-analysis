@@ -21,10 +21,10 @@ import reportApi from '../../../Api/reportApi';
 import { mapStateToFilter } from '../Models/ISNOddsFilter';
 import { generateFullIntervalReports } from '../../../Utils/HelpersUtility';
 
-export const options = (values: number[]) =>
+export const options = (values: number[], disabledZero?: boolean) =>
   values &&
   values.map((value) => (
-    <option key={value} value={value}>
+    <option key={value} value={value} disabled={value === 0 && !!disabledZero}>
       {value}
     </option>
   ));
@@ -46,11 +46,22 @@ export default function Filter() {
     //   toast.error('Please choose again Date Range!');
     //   return;
     // }
-    dispatch(gettingData());
+    // dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
-    const result = await reportApi.getReports(filter);
-    const processedResult = result.length ? generateFullIntervalReports(interval, result) : [];
-    dispatch(getReports(processedResult));
+    console.log(filter);
+    // const result = await reportApi.getReports(filter);
+    // const processedResult = result.length ? generateFullIntervalReports(interval, result) : [];
+    // dispatch(getReports(processedResult));
+  };
+
+  const handleButtonGoalClicked = () => {
+    if (reportOption === 'Goal') return;
+    dispatch(selectReportOption('Goal'));
+  };
+
+  const handleButtonRedCardClicked = () => {
+    if (reportOption === 'Redcard') return;
+    dispatch(selectReportOption('Redcard'));
   };
 
   return (
@@ -63,14 +74,14 @@ export default function Filter() {
               <Button
                 variant="success"
                 className={reportOption === 'Goal' ? 'goal-button active-button' : 'goal-button'}
-                onClick={() => dispatch(selectReportOption('Goal'))}
+                onClick={handleButtonGoalClicked}
               >
                 Goal
               </Button>
               <Button
                 variant="success"
                 className={reportOption === 'Goal' ? 'redcard-button' : 'redcard-button active-button'}
-                onClick={() => dispatch(selectReportOption('Redcard'))}
+                onClick={handleButtonRedCardClicked}
               >
                 Redcard
               </Button>
