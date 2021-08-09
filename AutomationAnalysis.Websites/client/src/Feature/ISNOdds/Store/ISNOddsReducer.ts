@@ -8,13 +8,16 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
       return {
         ...initialReportState,
         reportOption: action.reportOption,
+        homeRedCard: action.reportOption === 'Goal' ? 0 : 1,
+        homeScore: action.reportOption === 'Goal' ? 1 : 0,
       };
     case ReportActionTypes.SELECT_TEAM:
       return {
         ...state,
         teamType: action.teamType,
-        homeScore: action.teamType === 'Home' ? 1 : 0,
-        awayScore: action.teamType === 'Away' ? 1 : 0,
+        homeScore: state.reportOption === 'Goal' && action.teamType === 'Home' ? 1 : 0,
+        homeRedCard: state.reportOption === 'Redcard' && action.teamType === 'Home' ? 1 : 0,
+        // awayScore: state.reportOption === 'Goal' && action.teamType === 'Home' ? 0 : 1,
       };
     case ReportActionTypes.SELECT_SCORE_HOME:
       return {

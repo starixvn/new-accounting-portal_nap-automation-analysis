@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { Form, Table } from 'react-bootstrap';
-import _ from 'lodash';
+import { range } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';
 import { options } from './Filter';
 import { TeamOption } from '../Store/ISNOddsState';
@@ -19,8 +19,8 @@ const ScoreSelector = () => {
   const { teamType, homeScore, awayScore, reportOption, homeRedCard, awayRedCard } = reportState;
   const homeScoreOrRedCard = reportOption === 'Goal' ? homeScore : homeRedCard;
   const awayScoreOrRedCard = reportOption === 'Goal' ? awayScore : awayRedCard;
-  const [homeScoreOrRedCardOptions, setHomeScoreOrRedCardOptions] = useState<number[]>(_.range(1, 11));
-  const [awayScoreOrRedCardOptions, setAwayScoreOrRedCardOptions] = useState<number[]>(_.range(0, 11));
+  const [homeScoreOrRedCardOptions, setHomeScoreOrRedCardOptions] = useState<number[]>(range(1, 11));
+  const [awayScoreOrRedCardOptions, setAwayScoreOrRedCardOptions] = useState<number[]>(range(0, 11));
 
   const changeTeamType = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value as TeamOption;
@@ -28,11 +28,11 @@ const ScoreSelector = () => {
     dispatch(selectTeamOption(value));
 
     if (value === 'Home') {
-      setHomeScoreOrRedCardOptions(_.range(1, 11));
-      setAwayScoreOrRedCardOptions(_.range(0, 11));
+      setHomeScoreOrRedCardOptions(range(1, 11));
+      setAwayScoreOrRedCardOptions(range(0, 11));
     } else {
-      setHomeScoreOrRedCardOptions(_.range(0, 11));
-      setAwayScoreOrRedCardOptions(_.range(1, 11));
+      setHomeScoreOrRedCardOptions(range(0, 11));
+      setAwayScoreOrRedCardOptions(range(1, 11));
     }
   };
 
