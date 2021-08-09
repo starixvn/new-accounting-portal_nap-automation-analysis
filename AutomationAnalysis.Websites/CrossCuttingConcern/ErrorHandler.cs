@@ -42,13 +42,13 @@
                         .ToString();
             await logger.ErrorAsync(logMessage);
 
-            var method = context.Request.Method.ToLowerInvariant();
-            var requestedWith = context.Request.Headers["X-Requested-With"];
+            // var method = context.Request.Method.ToLowerInvariant();
+            // var requestedWith = context.Request.Headers["X-Requested-With"];
 
-            if ((method == "post" || method == "put" || method == "delete") && requestedWith == "XMLHttpRequest")
-            {
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-            }
+            // if ((method == "post" || method == "put" || method == "delete") && requestedWith == "XMLHttpRequest")
+            // {
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            // }
 
             await context.Response.WriteAsync(exception.Message);
 

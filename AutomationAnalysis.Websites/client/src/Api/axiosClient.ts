@@ -22,7 +22,7 @@ function setInterceptors(instance: AxiosInstance) {
   return instance.interceptors.response.use(
     (response) => response,
     (error: AxiosError) => {
-      toast.error(`Network Error <br/> ${JSON.stringify(error)}`);
+      toast.error(`Network Error <br/> ${JSON.stringify(error.message)}`);
       return Promise.reject(error);
     },
   );

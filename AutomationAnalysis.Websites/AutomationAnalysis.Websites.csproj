@@ -23,6 +23,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="5.7.2" />
     <PackageReference Include="Epplus.Mapper" Version="1.0.0.13" />

@@ -9,37 +9,37 @@ namespace AutomationAnalysis.ISNOdds.Models
 
     public class ISNOddsExcelReportDetailModel
     {
-        [Cell("A5")]
+        [Cell("A14")]
         public string Index { get; set; }
 
-        [Cell("B5")]
+        [Cell("B14")]
         public string MatchName { get; set; }
 
-        [Cell("C5")]
+        [Cell("C14")]
         public string Minute { get; set; }
 
-        [Cell("D5")]
+        [Cell("D14")]
         public string Second { get; set; }
 
-        [Cell("E5")]
+        [Cell("E14")]
         public string OnlySecond { get; set; }
 
-        [Cell("F5")]
-        public string BeforeHDP { get; set; }
+        [Cell("F14")]
+        public decimal BeforeHDP { get; set; }
 
-        [Cell("G5")]
-        public string BeforeOU { get; set; }
+        [Cell("G14")]
+        public decimal BeforeOU { get; set; }
 
-        [Cell("H5")]
-        public string AfterHDP { get; set; }
+        [Cell("H14")]
+        public decimal AfterHDP { get; set; }
 
-        [Cell("I5")]
-        public string AfterOU { get; set; }
+        [Cell("I14")]
+        public decimal AfterOU { get; set; }
 
-        [Cell("J5")]
-        public string DiffHDP { get; set; }
+        [Cell("J14")]
+        public decimal DiffHDP { get; set; }
 
-        [Cell("K5")]
-        public string DiffOU { get; set; }
+        [Cell("K14")]
+        public decimal DiffOU { get; set; }
     }
 }
