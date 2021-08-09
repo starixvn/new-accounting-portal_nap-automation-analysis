@@ -7,24 +7,10 @@ import RedCardSelector from './CurrentRedCardOrGoalSelector';
 import ScoreSelector from './TeamTypeGoalOrRedCardSelector';
 import configureStore from '../../../configureStore';
 import reportApi from '../../../Api/reportApi';
-import { selectFromDate, selectToDate } from '../Store/ISNOddsActions';
+import { selectFromDate, selectReportOption, selectToDate } from '../Store/ISNOddsActions';
 
 jest.mock('../../../Api/reportApi');
 describe('RedCardSelector Component', () => {
-  beforeAll(() => {
-    (reportApi.getReports as jest.Mock).mockResolvedValue([
-      {
-        leagueName: 'string',
-        matchName: 'string',
-        beforeHDP: 1,
-        beforeOU: 2,
-        afterHDP: 2,
-        afterOU: 2,
-        diffHDP: 2,
-        diffOU: 2,
-      },
-    ]);
-  });
   afterAll(() => {
     jest.clearAllMocks();
   });
@@ -51,12 +37,18 @@ describe('RedCardSelector Component', () => {
     expect(buttonQuery.simulate('click')).toHaveLength(1);
   });
 
+  it('button goal click correct', () => {
+    mockStore.dispatch(selectReportOption('Redcard'));
+    const buttonGoal = wrapper.find('button').at(0);
+    expect(buttonGoal.simulate('click')).toHaveLength(1);
+  });
+
   it('element change callback correct', () => {
     const inputLeague = wrapper.find('input').at(2);
     const selectView = wrapper.find('select').at(0);
     const selectInterval = wrapper.find('select').at(1);
 
-    expect(inputLeague.simulate('change', { target: { value: null } })).toHaveLength(1);
+    expect(inputLeague.simulate('change', { target: { value: '' } })).toHaveLength(1);
     expect(selectView.simulate('change', { target: { value: 'Full Time' } })).toHaveLength(1);
     expect(selectInterval.simulate('change', { target: { value: 5 } })).toHaveLength(1);
   });
@@ -67,6 +59,7 @@ describe('RedCardSelector Component', () => {
     const spy = jest.spyOn(toast, 'error');
     const buttonQuery = wrapper.find('button').at(4);
     buttonQuery.simulate('click');
+
     expect(spy).toHaveBeenCalled();
   });
 
@@ -74,7 +67,9 @@ describe('RedCardSelector Component', () => {
     mockStore.dispatch(selectFromDate(new Date('2021-07-24')));
     mockStore.dispatch(selectToDate(new Date('2021-07-25')));
     const buttonQuery = wrapper.find('button').at(4);
+    const getReportsSpy = jest.spyOn(reportApi, 'getReports').mockResolvedValue([]);
     buttonQuery.simulate('click');
-    expect(reportApi.getReports).toHaveBeenCalled();
+
+    expect(getReportsSpy).toHaveBeenCalled();
   });
 });
