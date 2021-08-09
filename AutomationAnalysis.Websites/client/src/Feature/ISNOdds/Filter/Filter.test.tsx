@@ -56,7 +56,7 @@ describe('RedCardSelector Component', () => {
     const selectView = wrapper.find('select').at(0);
     const selectInterval = wrapper.find('select').at(1);
 
-    expect(inputLeague.simulate('change', { target: { value: 'C1' } })).toHaveLength(1);
+    expect(inputLeague.simulate('change', { target: { value: null } })).toHaveLength(1);
     expect(selectView.simulate('change', { target: { value: 'Full Time' } })).toHaveLength(1);
     expect(selectInterval.simulate('change', { target: { value: 5 } })).toHaveLength(1);
   });

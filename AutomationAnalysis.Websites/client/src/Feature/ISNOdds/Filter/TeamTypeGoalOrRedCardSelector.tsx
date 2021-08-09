@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent } from 'react';
 import { Form, Table } from 'react-bootstrap';
 import { range } from 'lodash';
 import { useDispatch, useSelector } from 'react-redux';

@@ -10,10 +10,10 @@ describe('report reducer', () => {
     });
     expect(
       reportReducer(initialReportState, { type: ReportActionTypes.SELECT_REPORT, reportOption: 'Redcard' }),
-    ).toEqual({ ...initialReportState, reportOption: 'Redcard' });
+    ).toEqual({ ...initialReportState, reportOption: 'Redcard', homeRedCard: 1, homeScore: 0 });
   });
 
-  it('return state selected goal', () => {
+  it('return state selected team type when Goal or Redcard', () => {
     expect(reportReducer(initialReportState, { type: ReportActionTypes.SELECT_TEAM, teamType: 'Home' })).toEqual({
       ...initialReportState,
       teamType: 'Home',
@@ -25,6 +25,33 @@ describe('report reducer', () => {
       teamType: 'Away',
       homeScore: 0,
       awayScore: 1,
+    });
+
+    expect(
+      reportReducer(
+        { ...initialReportState, reportOption: 'Redcard' },
+        { type: ReportActionTypes.SELECT_TEAM, teamType: 'Home' },
+      ),
+    ).toEqual({
+      ...initialReportState,
+      teamType: 'Home',
+      homeRedCard: 1,
+      awayRedCard: 0,
+      homeScore: 0,
+      reportOption: 'Redcard',
+    });
+    expect(
+      reportReducer(
+        { ...initialReportState, reportOption: 'Redcard' },
+        { type: ReportActionTypes.SELECT_TEAM, teamType: 'Away' },
+      ),
+    ).toEqual({
+      ...initialReportState,
+      teamType: 'Away',
+      homeRedCard: 0,
+      awayRedCard: 1,
+      homeScore: 0,
+      reportOption: 'Redcard',
     });
   });
 

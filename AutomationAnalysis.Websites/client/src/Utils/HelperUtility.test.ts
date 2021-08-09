@@ -1,6 +1,12 @@
 import { Report } from '../Feature/ISNOdds/Models/ISNOdds';
 import { ReportDetail } from '../Feature/ISNOdds/Models/ISNOddsDetail';
-import { processReportDetailsData, generateFullIntervalReports, isNumber, toTwoDigitsFormat } from './HelpersUtility';
+import {
+  processReportDetailsData,
+  generateFullIntervalReports,
+  isNumber,
+  toTwoDigitsFormat,
+  findReport,
+} from './HelpersUtility';
 
 describe('HelperUtility method', () => {
   it('processReportDetailsData', () => {
@@ -611,5 +617,40 @@ describe('HelperUtility method', () => {
   it('toTwoDigitsFormat', () => {
     expect(toTwoDigitsFormat(11)).toEqual('11.00');
     expect(toTwoDigitsFormat(4)).toEqual('4.00');
+  });
+
+  it('findReport', () => {
+    const reports: Report[] = [
+      {
+        from: '0',
+        to: '10',
+        numberOfLeague: 1,
+        numberOfMatch: 1,
+        beforeHDP: 1,
+        beforeOU: 1,
+        afterHDP: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+      },
+      {
+        from: '10',
+        to: null,
+        numberOfLeague: 1,
+        numberOfMatch: 1,
+        beforeHDP: 1,
+        beforeOU: 1,
+        afterHDP: 1,
+        afterOU: 1,
+        diffHDP: 1,
+        diffOU: 1,
+      },
+    ];
+
+    const actFound = findReport('0', '10', reports);
+    const actNotound = findReport('0', '5', reports);
+
+    expect(!!actFound).toEqual(true);
+    expect(!!actNotound).toEqual(false);
   });
 });

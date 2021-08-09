@@ -42,16 +42,16 @@ export default function Filter() {
   };
 
   const submit = async () => {
-    // if (validDateRange()) {
-    //   toast.error('Please choose again Date Range!');
-    //   return;
-    // }
-    // dispatch(gettingData());
+    if (validDateRange()) {
+      toast.error('Please choose again Date Range!');
+      return;
+    }
+    dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
-    console.log(filter);
-    // const result = await reportApi.getReports(filter);
-    // const processedResult = result.length ? generateFullIntervalReports(interval, result) : [];
-    // dispatch(getReports(processedResult));
+    // console.log(filter);
+    const result = await reportApi.getReports(filter);
+    const processedResult = result.length ? generateFullIntervalReports(interval, result) : [];
+    dispatch(getReports(processedResult));
   };
 
   const handleButtonGoalClicked = () => {
