@@ -9,34 +9,34 @@ namespace AutomationAnalysis.ISNOdds.Models
 
     public class ISNOddsExcelReportModel
     {
-        [Cell("A5")]
+        [Cell("A14")]
         public string From { get; set; }
 
-        [Cell("B5")]
+        [Cell("B14")]
         public string To { get; set; }
 
-        [Cell("C5")]
+        [Cell("C14")]
         public int NumberOfLeague { get; set; }
 
-        [Cell("D5")]
+        [Cell("D14")]
         public int NumberOfMatch { get; set; }
 
-        [Cell("E5")]
+        [Cell("E14")]
         public float BeforeHDP { get; set; }
 
-        [Cell("F5")]
+        [Cell("F14")]
         public float BeforeOU { get; set; }
 
-        [Cell("G5")]
+        [Cell("G14")]
         public float AfterHDP { get; set; }
 
-        [Cell("H5")]
+        [Cell("H14")]
         public float AfterOU { get; set; }
 
-        [Cell("I5")]
+        [Cell("I14")]
         public float DiffHDP { get; set; }
 
-        [Cell("J5")]
+        [Cell("J14")]
         public float DiffOU { get; set; }
     }
 }

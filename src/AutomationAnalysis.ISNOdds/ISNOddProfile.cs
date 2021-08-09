@@ -22,23 +22,26 @@ namespace AutomationAnalysis.ISNOdds
                     dest.League,
                     src => src.MapFrom(src => string.IsNullOrEmpty(src.League) ? "All" : src.League))
                 .ForMember(dest =>
-                    dest.InitialHDP,
-                    src => src.MapFrom(src => $"From {src.FromInitialHDP} To {src.ToInitialHDP}"))
-                .ForMember(dest =>
-                    dest.InitialOU,
-                    src => src.MapFrom(src => $"From {src.FromInitialOU} To {src.ToInitialOU}"))
-                .ForMember(dest =>
                     dest.ReportOption,
                     src => src.MapFrom(src => src.ReportOption))
                 .ForMember(dest =>
-                    dest.Score,
-                    src => src.MapFrom(src => $"{src.HomeScore}-{src.AwayScore}"))
+                    dest.TeamTypeTitle,
+                    src => src.MapFrom(src => $"{src.ReportOption}:"))
                 .ForMember(dest =>
-                    dest.RedCard,
-                    src => src.MapFrom(src => $"{src.HomeRedCard}-{src.AwayRedCard}"))
+                    dest.TotalGoalOrRedCardTitle,
+                    src => src.MapFrom(src => "Total " + (src.ReportOption == "Goal" ? "Goal: " : "Red Card: ")))
+                .ForMember(dest =>
+                    dest.TotalGoalOrRedCard,
+                    src => src.MapFrom(src => src.ReportOption == "Goal" ? src.Score : src.RedCard))
+                .ForMember(dest =>
+                    dest.CurrentGoalOrRedCardTitle,
+                    src => src.MapFrom(src => "Current " + (src.ReportOption == "Goal" ? "Red Card: " : "Goal: ")))
+                .ForMember(dest =>
+                    dest.CurrentGoalOrRedCard,
+                    src => src.MapFrom(src => src.ReportOption == "Goal" ? src.RedCard : src.Score))
                 .ForMember(dest =>
                     dest.Interval,
-                    src => src.MapFrom(src => src.ReportDetails != null ? $"{src.FromMinute}-{src.ToMinute}" : $"{src.Interval}" ));
+                    src => src.MapFrom(src => src.ReportDetails != null ? $"{src.FromMinute}-{src.ToMinute}" : $"{src.Interval}"));
         }
     }
 }

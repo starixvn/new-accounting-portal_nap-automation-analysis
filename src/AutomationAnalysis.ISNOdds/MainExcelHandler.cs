@@ -47,6 +47,8 @@ namespace AutomationAnalysis.ISNOdds
         public string FromMinute { get; set; }
 
         public string ToMinute { get; set; }
+        public string Score => $"{HomeScore}-{AwayScore}";
+        public string RedCard => $"{HomeRedCard}-{AwayRedCard}";
         public List<ISNOddsExcelReportModel> Reports { get; set; }
         public IList<ISNOddsExcelReportDetailModel> ReportDetails { get; set; }
     }
@@ -70,6 +72,7 @@ namespace AutomationAnalysis.ISNOdds
             var absolutePath = Path.Combine("App_Data", "Templates", fileName);
             var templatePath = Path.Combine(hostEnvironment.ContentRootPath, absolutePath);
             var fileInfoModel = mapper.Map<ISNOddsExcelFileInfoModel>(request);
+
             var isnOddsExcelModel = new ISNOddsExcelModel
             {
                 FileInfo = fileInfoModel,

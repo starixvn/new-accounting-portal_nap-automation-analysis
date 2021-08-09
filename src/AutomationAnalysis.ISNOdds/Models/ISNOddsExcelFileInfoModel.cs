@@ -9,32 +9,52 @@ namespace AutomationAnalysis.ISNOdds.Models
 
     public class ISNOddsExcelFileInfoModel
     {
+        [Cell("C1")]
         public string ReportOption { get; set; }
-        public string FromDate { get; set; }
-        public string ToDate { get; set; }
-        public string League { get; set; }
-        public string View { get; set; }
-        public string Interval { get; set; }
-        public string InitialHDP { get; set; }
-        public string InitialOU { get; set; }
-        public string TeamType { get; set; }
-        public string Score { get; set; }
-        public string RedCard { get; set; }
-        public string FromMinute { get; set; }
-        public string ToMinute { get; set; }
-        public List<ISNOddsExcelReportDetailModel> ReportDetail { get; set; }
 
-        public string FromDateTitle => "FromDate: ";
-        public string ToDateTitle => "   ToDate: ";
-        public string LeagueTitle => "\nLeague: ";
-        public string ViewTitle => "   View: ";
-        public string IntervalTitle => "\nTime interval: ";
-        public string InitialHDPTitle => "\nInitial HDP: ";
-        public string InitialOUTitle => "   InitialOU: ";
-        public string ReportOptionTitle => $"ISN Odds Data - {ReportOption}";
-        public string TotalGoalOrRedCardTitle => "   Total " + (ReportOption == "Goal" ? "Goal: " : "Red Card: ");
-        public string CurrentGoalOrRedCardTitle => "   Current " + (ReportOption == "Goal" ? "Red Card: " : "Goal: ");
-        public string TotalGoalOrRedCard => ReportOption == "Goal" ? Score : RedCard;
-        public string CurrentGoalOrRedCard => ReportOption == "Goal" ? RedCard : Score;
+        [Cell("B2")]
+        public string FromDate { get; set; }
+
+        [Cell("D2")]
+        public string ToDate { get; set; }
+
+        [Cell("B3")]
+        public string League { get; set; }
+
+        [Cell("B4")]
+        public string View { get; set; }
+
+        [Cell("B5")]
+        public string Interval { get; set; }
+
+        [Cell("C6")]
+        public string FromInitialHDP { get; set; }
+
+        [Cell("E6")]
+        public string ToInitialHDP { get; set; }
+
+        [Cell("C7")]
+        public string FromInitialOU { get; set; }
+
+        [Cell("E7")]
+        public string ToInitialOU { get; set; }
+
+        [Cell("B8")]
+        public string TeamType { get; set; }
+
+        [Cell("A8")]
+        public string TeamTypeTitle { get; set; }
+
+        [Cell("A9")]
+        public string TotalGoalOrRedCardTitle { get; set; }
+
+        [Cell("A10")]
+        public string CurrentGoalOrRedCardTitle { get; set; }
+
+        [Cell("B9")]
+        public string TotalGoalOrRedCard { get; set; }
+
+        [Cell("B10")]
+        public string CurrentGoalOrRedCard { get; set; }
     }
 }
