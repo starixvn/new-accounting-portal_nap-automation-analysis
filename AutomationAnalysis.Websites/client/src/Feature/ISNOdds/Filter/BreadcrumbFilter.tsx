@@ -10,9 +10,10 @@ import { isNumber } from '../../../Utils/HelpersUtility';
 const BreadcrumbFilter = () => {
   const dispatch = useDispatch();
   const reportState = useSelector((state: ApplicationState) => state.report);
-  const { reportOption, fromMinute, toMinute, reportDetails } = reportState;
+  const { reportOption, fromMinute, toMinute, reportDetails, reports } = reportState;
 
   const detailGridVisible = !!reportDetails;
+  const disabledDownload = !reportDetails?.length && !reports?.length;
   const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;
   const fromMinuteInNumber = `${fromMinute}:00`;
   const toMinuteInNumber = isNumber(toMinute) ? toMinute : `${toMinute}:00`;

@@ -24,8 +24,8 @@ const GridViewDrilldown = ({ mode, reportDetails }: Props) => {
         <td>{reportDetail.second}</td>
         <td>{reportDetail.onlySecond}</td>
         <td>{toTwoDigitsFormat(reportDetail.beforeHDP)}</td>
-        <td>{toTwoDigitsFormat(reportDetail.afterHDP)}</td>
         <td>{toTwoDigitsFormat(reportDetail.beforeOU)}</td>
+        <td>{toTwoDigitsFormat(reportDetail.afterHDP)}</td>
         <td>{toTwoDigitsFormat(reportDetail.afterOU)}</td>
         <td>{toTwoDigitsFormat(reportDetail.diffHDP)}</td>
         <td>{toTwoDigitsFormat(reportDetail.diffOU)}</td>

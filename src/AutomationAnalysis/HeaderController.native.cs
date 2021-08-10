@@ -28,6 +28,5 @@ namespace AutomationAnalysis
                 Menus = menus
             };
         }
-
     }
 }
