@@ -19,7 +19,7 @@ const GridViewDrilldown = ({ mode, reportDetails }: Props) => {
         style={reportDetail.index ? { backgroundColor: '#cfeafd', fontWeight: 'bold' } : {}}
       >
         <td className={reportDetail.index ? 'font-weight-500' : ''}>{reportDetail.index}</td>
-        <td className={reportDetail.index ? 'font-weight-500' : ''}>{reportDetail.matchName}</td>
+        <td className={reportDetail.index ? 'font-weight-500' : 'text-start'}>{reportDetail.matchName}</td>
         <td>{reportDetail.minute}</td>
         <td>{reportDetail.second}</td>
         <td>{reportDetail.onlySecond}</td>

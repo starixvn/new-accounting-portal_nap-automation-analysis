@@ -42,20 +42,27 @@ namespace AutomationAnalysis.ISNOdds.Services
         public void BuillReportBody(ISNOddsExcelModel model)
         {
             reportSheet.ApplyModel(model.FileInfo);
-            ChangeISNOddsTableHead(model.FileInfo);
             if (model.ReportDetails != null)
             {
+                ChangeISNOddsDetailsTableHead(model.FileInfo);
                 reportSheet.ApplyVertical(model.ReportDetails, ReportConst.StartIndexRow);
                 AddStyleReportDetails();
                 return;
             }
+            ChangeISNOddsTableHead(model.FileInfo);
             reportSheet.ApplyVertical(model.Reports, ReportConst.StartIndexRow);
         }
 
         public void ChangeISNOddsTableHead(ISNOddsExcelFileInfoModel infoModel)
         {
-            reportSheet.Cells[ReportConst.BeforeModeCell].Value = "Before " + infoModel.ReportOption;
-            reportSheet.Cells[ReportConst.AfterModeCell].Value = "After " + infoModel.ReportOption;
+            reportSheet.Cells[ReportConst.BeforeModeMainCell].Value = "Before " + infoModel.ReportOption;
+            reportSheet.Cells[ReportConst.AfterModeMainCell].Value = "After " + infoModel.ReportOption;
+        }
+
+        public void ChangeISNOddsDetailsTableHead(ISNOddsExcelFileInfoModel infoModel)
+        {
+            reportSheet.Cells[ReportConst.BeforeModeDrilldownCell].Value = "Before " + infoModel.ReportOption;
+            reportSheet.Cells[ReportConst.AfterModeDrilldownCell].Value = "After " + infoModel.ReportOption;
         }
 
         public void AddStyleReportDetails()
@@ -72,7 +79,7 @@ namespace AutomationAnalysis.ISNOdds.Services
                 reportSheet.Cells[i, 1, i, lastCol].Style.Fill.PatternType = ExcelFillStyle.Solid;
                 reportSheet.Cells[i, 1, i, lastCol].Style.Fill.BackgroundColor.SetColor(0, 114, 159, 207);
                 reportSheet.Cells[i, 1, i, lastCol].Style.Font.Bold = true;
-                reportSheet.Cells[i,2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                reportSheet.Cells[i, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             }
         }
     }
