@@ -16,7 +16,7 @@ const BreadcrumbFilter = () => {
   const disabledDownload = !reportDetails?.length && !reports?.length;
   const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;
   const fromMinuteInNumber = `${fromMinute}:00`;
-  const toMinuteInNumber = isNumber(toMinute) ? toMinute : `${toMinute}:00`;
+  const toMinuteInNumber = isNumber(toMinute) ? `${toMinute}:00` : toMinute;
   const currentBreadcrumbText = `${fromMinuteInNumber}-${toMinuteInNumber}`;
 
   const toolTip = <Tooltip id="tool-top">Download report</Tooltip>;

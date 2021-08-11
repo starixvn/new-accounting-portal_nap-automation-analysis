@@ -42,10 +42,10 @@ export default function Filter() {
   };
 
   const submit = async () => {
-    if (validDateRange()) {
-      toast.error('Please choose again Date Range!');
-      return;
-    }
+    // if (validDateRange()) {
+    //   toast.error('Please choose again Date Range!');
+    //   return;
+    // }
     dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
     const result = await reportApi.getReports(filter);

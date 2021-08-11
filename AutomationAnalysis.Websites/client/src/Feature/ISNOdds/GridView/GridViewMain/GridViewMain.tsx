@@ -20,14 +20,13 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
         <td>{report.to}</td>
         <td>{report.numberOfLeague}</td>
         <td>
-          <li
-            key={`${report.numberOfMatch}`}
-            style={{ color: 'blue', cursor: 'pointer', listStyleType: 'none' }}
+          <span
+            className={report.numberOfMatch ? 'drilldown-link' : ''}
             onClick={() => drillDown(report.from, report.to)}
             role="presentation"
           >
             {report.numberOfMatch}
-          </li>
+          </span>
         </td>
         <td>{toTwoDigitsFormat(report.beforeHDP)}</td>
         <td>{toTwoDigitsFormat(report.beforeOU)}</td>

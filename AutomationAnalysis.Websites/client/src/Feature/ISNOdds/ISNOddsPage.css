@@ -53,3 +53,8 @@ h1 {
 .text-start {
   text-align: start !important;
 }
+
+.drilldown-link {
+  color: blue;
+  cursor: pointer;
+}
