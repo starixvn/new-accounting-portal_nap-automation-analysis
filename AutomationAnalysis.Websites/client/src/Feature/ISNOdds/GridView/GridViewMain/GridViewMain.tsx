@@ -28,12 +28,12 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
             {report.numberOfMatch}
           </span>
         </td>
-        <td>{formatValue(report.numberOfMatch, report.beforeHDP)}</td>
-        <td>{formatValue(report.numberOfMatch, report.beforeOU)}</td>
-        <td>{formatValue(report.numberOfMatch, report.afterHDP)}</td>
-        <td>{formatValue(report.numberOfMatch, report.afterOU)}</td>
-        <td>{formatValue(report.numberOfMatch, report.diffHDP)}</td>
-        <td>{formatValue(report.numberOfMatch, report.diffOU)}</td>
+        <td>{formatValue(report.numberOfMatch, +report.beforeHDP)}</td>
+        <td>{formatValue(report.numberOfMatch, +report.beforeOU)}</td>
+        <td>{formatValue(report.numberOfMatch, +report.afterHDP)}</td>
+        <td>{formatValue(report.numberOfMatch, +report.afterOU)}</td>
+        <td>{formatValue(report.numberOfMatch, +report.diffHDP)}</td>
+        <td>{formatValue(report.numberOfMatch, +report.diffOU)}</td>
       </tr>
     ))
   ) : (

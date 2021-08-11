@@ -3,12 +3,12 @@ export interface Report {
   to: string | null;
   numberOfLeague: number;
   numberOfMatch: number;
-  beforeHDP: number;
-  beforeOU: number;
-  afterHDP: number;
-  afterOU: number;
-  diffHDP: number;
-  diffOU: number;
+  beforeHDP: number | string;
+  beforeOU: number | string;
+  afterHDP: number | string;
+  afterOU: number | string;
+  diffHDP: number | string;
+  diffOU: number | string;
 }
 
 export const initialReport: Report = {
@@ -16,10 +16,10 @@ export const initialReport: Report = {
   to: '',
   numberOfLeague: 0,
   numberOfMatch: 0,
-  beforeHDP: 0,
-  beforeOU: 0,
-  afterHDP: 0,
-  afterOU: 0,
-  diffHDP: 0,
-  diffOU: 0,
+  beforeHDP: '-',
+  beforeOU: '-',
+  afterHDP: '-',
+  afterOU: '-',
+  diffHDP: '-',
+  diffOU: '-',
 };

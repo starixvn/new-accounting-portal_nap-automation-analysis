@@ -59,7 +59,6 @@ const generateFullIntervalReports = (inverval: number, reports: Report[]): Repor
     const foundReport = findReport(fromValue, toValue, reports);
     const from = generateFromInteval(fromValue, toValue);
     const to = generateToInteval(fromValue, toValue);
-
     return foundReport ? { ...foundReport, from, to } : { ...initialReport, from, to };
   });
 
