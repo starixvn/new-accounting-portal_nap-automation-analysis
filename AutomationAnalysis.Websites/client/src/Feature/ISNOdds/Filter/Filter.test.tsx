@@ -54,8 +54,8 @@ describe('RedCardSelector Component', () => {
   });
 
   it('submit query error range date', () => {
-    mockStore.dispatch(selectFromDate(new Date()));
-    mockStore.dispatch(selectToDate(new Date()));
+    mockStore.dispatch(selectFromDate(new Date('2019-07-24')));
+    mockStore.dispatch(selectToDate(new Date('2021-07-25')));
     const spy = jest.spyOn(toast, 'error');
     const buttonQuery = wrapper.find('button').at(4);
     buttonQuery.simulate('click');

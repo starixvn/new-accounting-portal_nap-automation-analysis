@@ -379,6 +379,128 @@ describe('HelperUtility method', () => {
         diffOU: '-',
       },
     ];
+    const expectedFiveHT = [
+      {
+        from: '0',
+        to: '5',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '5:01',
+        to: '10',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '10:01',
+        to: '15',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '15:01',
+        to: '20',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '20:01',
+        to: '25',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '25:01',
+        to: '30',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '30:01',
+        to: '35',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '35:01',
+        to: '40',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '40:01',
+        to: '45',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '45:01',
+        to: 'HT',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+    ];
     const expectedTen = [
       {
         from: '0',
@@ -501,6 +623,68 @@ describe('HelperUtility method', () => {
         diffOU: '-',
       },
     ];
+    const expectedTenHT = [
+      {
+        from: '0',
+        to: '10',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '10:01',
+        to: '20',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '20:01',
+        to: '30',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '30:01',
+        to: '40',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '40:01',
+        to: 'HT',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+    ];
     const expectedFifteen = [
       {
         from: '0',
@@ -599,11 +783,67 @@ describe('HelperUtility method', () => {
         diffOU: '-',
       },
     ];
+    const expectedFifteenHT = [
+      {
+        from: '0',
+        to: '15',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '15:01',
+        to: '30',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '30:01',
+        to: '45',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+      {
+        from: '45:01',
+        to: 'HT',
+        numberOfLeague: 0,
+        numberOfMatch: 0,
+        beforeHDP: '-',
+        beforeOU: '-',
+        afterHDP: '-',
+        afterOU: '-',
+        diffHDP: '-',
+        diffOU: '-',
+      },
+    ];
 
     const actFive = generateFullIntervalReports('Full Time', intervalFive, mockReports);
     const actTen = generateFullIntervalReports('Full Time', intervalTen, mockReportsHaveValue);
     const actFifteen = generateFullIntervalReports('Full Time', intervalFifteen, mockReports);
+    const actFifteenHT = generateFullIntervalReports('Half Time', intervalFifteen, mockReports);
+    const actTenHT = generateFullIntervalReports('Half Time', intervalTen, mockReports);
+    const actFiveHT = generateFullIntervalReports('Half Time', intervalFive, mockReports);
 
+    expect(actFiveHT).toEqual(expectedFiveHT);
+    expect(actTenHT).toEqual(expectedTenHT);
+    expect(actFifteenHT).toEqual(expectedFifteenHT);
     expect(actFive).toEqual(expectedFive);
     expect(actTen).toEqual(expectedTen);
     expect(actFifteen).toEqual(expectedFifteen);
@@ -617,6 +857,7 @@ describe('HelperUtility method', () => {
   it('toTwoDigitsFormat', () => {
     expect(toTwoDigitsFormat(11)).toEqual('11.00');
     expect(toTwoDigitsFormat(4)).toEqual('4.00');
+    expect(toTwoDigitsFormat('-')).toEqual('-');
   });
 
   it('findReport', () => {
