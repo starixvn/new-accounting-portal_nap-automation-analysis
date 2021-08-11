@@ -24,11 +24,34 @@ describe('GridViewMain Component', () => {
       diffOU: 2,
     },
   ];
+  const fakeReportWithMatchZero: Report[] = [
+    {
+      from: '0.00',
+      to: '5.00',
+      beforeHDP: 0,
+      beforeOU: 0,
+      numberOfLeague: 0,
+      numberOfMatch: 0,
+      afterHDP: 0,
+      afterOU: 0,
+      diffHDP: 0,
+      diffOU: 0,
+    },
+  ];
   const fakeReportEmpty: Report[] = [];
   it('click drilldown Goal', () => {
     const wrapper = mount(
       <Provider store={mockStore}>
         <GridViewMain mode={fakeMode} reports={fakeReport} drillDown={fakeDrilldown} />
+      </Provider>,
+    );
+    const drilldown = wrapper.find('span');
+    expect(drilldown.simulate('click')).toHaveLength(1);
+  });
+  it('click drilldown Goal with match is 0', () => {
+    const wrapper = mount(
+      <Provider store={mockStore}>
+        <GridViewMain mode={fakeMode} reports={fakeReportWithMatchZero} drillDown={fakeDrilldown} />
       </Provider>,
     );
     const drilldown = wrapper.find('span');

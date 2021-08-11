@@ -13,7 +13,6 @@ const BreadcrumbFilter = () => {
   const { reportOption, fromMinute, toMinute, reportDetails, reports } = reportState;
 
   const detailGridVisible = !!reportDetails;
-  const disabledDownload = !reportDetails?.length && !reports?.length;
   const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;
   const fromMinuteInNumber = `${fromMinute}:00`;
   const toMinuteInNumber = isNumber(toMinute) ? `${toMinute}:00` : toMinute;
