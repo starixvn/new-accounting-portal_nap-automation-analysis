@@ -42,17 +42,20 @@ const generateToInteval = (from: string, to: string | null) => {
   return to;
 };
 
-const getDataArea = (interval: number) => {
-  if (interval === 15) return dataArea.FIFTEEN_INTERVAL;
-  if (interval === 10) return dataArea.TEN_INTERVAL;
-  return dataArea.FIVE_INTERVAl;
+const getDataArea = (view: string, interval: number) => {
+  if (interval === 15 && view === 'Full Time') return dataArea.FIFTEEN_INTERVAL;
+  if (interval === 10 && view === 'Full Time') return dataArea.TEN_INTERVAL;
+  if (interval === 5 && view === 'Full Time') return dataArea.FIVE_INTERVAl;
+  if (interval === 10 && view === 'Half Time') return dataArea.TEN_INTERVAL_HALFTIME;
+  if (interval === 15 && view === 'Half Time') return dataArea.FIFTEEN_INTERVAL_HALFTIME;
+  return dataArea.FIVE_INTERVAl_HALFTIME;
 };
 
 const findReport = (fromValue: string, toValue: string | null, reports: Report[]): Report | undefined =>
   reports.find((report) => `${report.from}` === fromValue && (report.to === toValue || `${report.to}` === toValue));
 
-const generateFullIntervalReports = (inverval: number, reports: Report[]): Report[] => {
-  const fullIntervalArea = getDataArea(inverval);
+const generateFullIntervalReports = (view: string, inverval: number, reports: Report[]): Report[] => {
+  const fullIntervalArea = getDataArea(view, inverval);
 
   const processedReports = fullIntervalArea.map((value) => {
     const [fromValue, toValue] = value;
