@@ -31,7 +31,7 @@ describe('GridViewMain Component', () => {
         <GridViewMain mode={fakeMode} reports={fakeReport} drillDown={fakeDrilldown} />
       </Provider>,
     );
-    const drilldown = wrapper.find('li');
+    const drilldown = wrapper.find('span');
     expect(drilldown.simulate('click')).toHaveLength(1);
   });
   it('click drilldown RedCard', () => {
@@ -40,7 +40,7 @@ describe('GridViewMain Component', () => {
         <GridViewMain mode={fakeModeRedCard} reports={fakeReport} drillDown={fakeDrilldown} />
       </Provider>,
     );
-    const drilldown = wrapper.find('li');
+    const drilldown = wrapper.find('span');
     drilldown.simulate('click');
     // expect(drilldown.simulate('click')).toHaveLength(1);
     expect(fakeDrilldown).toHaveBeenCalled();

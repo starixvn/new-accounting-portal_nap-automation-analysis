@@ -53,7 +53,7 @@ describe('ReportPage Component', () => {
       </Provider>,
     );
     const gridMain = wrapper.find(GridViewMain);
-    gridMain.find('li').simulate('click');
+    gridMain.find('span').simulate('click');
     expect(reportApi.getReportDetails).toHaveBeenCalledTimes(1);
   });
 
