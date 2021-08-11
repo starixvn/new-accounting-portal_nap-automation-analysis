@@ -10,7 +10,7 @@ import { isNumber } from '../../../Utils/HelpersUtility';
 const BreadcrumbFilter = () => {
   const dispatch = useDispatch();
   const reportState = useSelector((state: ApplicationState) => state.report);
-  const { reportOption, fromMinute, toMinute, reportDetails, reports } = reportState;
+  const { reportOption, fromMinute, toMinute, reportDetails } = reportState;
 
   const detailGridVisible = !!reportDetails;
   const parentBreadcrumbText = `ISN Odds Data By ${reportOption}`;

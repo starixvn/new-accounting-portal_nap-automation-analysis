@@ -38,12 +38,12 @@ export default function Filter() {
     const dateRange = (toDate.getTime() - fromDate.getTime()) / (24 * 3600 * 1000);
     const yesterDay = new Date(Date.now());
     yesterDay.setDate(yesterDay.getDate() - 1);
-    return dateRange > 365 || fromDate > toDate || fromDate > yesterDay || toDate > yesterDay;
+    return dateRange > 365;
   };
 
   const submit = async () => {
     if (validDateRange()) {
-      toast.error('Please choose again Date Range!');
+      toast.error('Date Range not be larger than 1 year!');
       return;
     }
     dispatch(gettingData());
