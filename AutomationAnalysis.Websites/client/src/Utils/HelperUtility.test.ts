@@ -834,13 +834,12 @@ describe('HelperUtility method', () => {
       },
     ];
 
-    const actFive = generateFullIntervalReports('Full Time', intervalFive, mockReports);
-    const actTen = generateFullIntervalReports('Full Time', intervalTen, mockReportsHaveValue);
-    const actFifteen = generateFullIntervalReports('Full Time', intervalFifteen, mockReports);
-    const actFifteenHT = generateFullIntervalReports('Half Time', intervalFifteen, mockReports);
-    const actTenHT = generateFullIntervalReports('Half Time', intervalTen, mockReports);
-    const actFiveHT = generateFullIntervalReports('Half Time', intervalFive, mockReports);
-
+    const actFive = generateFullIntervalReports(false, intervalFive, mockReports);
+    const actTen = generateFullIntervalReports(false, intervalTen, mockReportsHaveValue);
+    const actFifteen = generateFullIntervalReports(false, intervalFifteen, mockReports);
+    const actFifteenHT = generateFullIntervalReports(true, intervalFifteen, mockReports);
+    const actTenHT = generateFullIntervalReports(true, intervalTen, mockReports);
+    const actFiveHT = generateFullIntervalReports(true, intervalFive, mockReports);
     expect(actFiveHT).toEqual(expectedFiveHT);
     expect(actTenHT).toEqual(expectedTenHT);
     expect(actFifteenHT).toEqual(expectedFifteenHT);
