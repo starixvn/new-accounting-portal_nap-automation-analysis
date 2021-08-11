@@ -3,7 +3,7 @@ import HeaderForGoal from './HeaderForGoal';
 import HeaderForRedCard from './HeaderForRedCard';
 import { ReportOption } from '../../Store/ISNOddsState';
 import { Report } from '../../Models/ISNOdds';
-import { formatValue } from '../../../../Utils/HelpersUtility';
+import { toTwoDigitsFormat } from '../../../../Utils/HelpersUtility';
 
 type Props = {
   mode: ReportOption;
@@ -28,12 +28,12 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
             {report.numberOfMatch}
           </span>
         </td>
-        <td>{formatValue(report.numberOfMatch, +report.beforeHDP)}</td>
-        <td>{formatValue(report.numberOfMatch, +report.beforeOU)}</td>
-        <td>{formatValue(report.numberOfMatch, +report.afterHDP)}</td>
-        <td>{formatValue(report.numberOfMatch, +report.afterOU)}</td>
-        <td>{formatValue(report.numberOfMatch, +report.diffHDP)}</td>
-        <td>{formatValue(report.numberOfMatch, +report.diffOU)}</td>
+        <td>{toTwoDigitsFormat(report.beforeHDP)}</td>
+        <td>{toTwoDigitsFormat(report.beforeOU)}</td>
+        <td>{toTwoDigitsFormat(report.afterHDP)}</td>
+        <td>{toTwoDigitsFormat(report.afterOU)}</td>
+        <td>{toTwoDigitsFormat(report.diffHDP)}</td>
+        <td>{toTwoDigitsFormat(report.diffOU)}</td>
       </tr>
     ))
   ) : (

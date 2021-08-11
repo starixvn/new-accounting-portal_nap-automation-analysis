@@ -67,8 +67,6 @@ const generateFullIntervalReports = (inverval: number, reports: Report[]): Repor
 
 const isNumber = (value: any) => !Number.isNaN(+(value as string));
 
-const toTwoDigitsFormat = (value: number) => round(value, 2).toFixed(2);
+const toTwoDigitsFormat = (value: number | string) => (isNumber(value) ? round(+value, 2).toFixed(2) : value);
 
-const formatValue = (numberOfMatch: number, value: number) => (numberOfMatch !== 0 ? round(value, 2).toFixed(2) : '-');
-
-export { processReportDetailsData, generateFullIntervalReports, isNumber, toTwoDigitsFormat, formatValue, findReport };
+export { processReportDetailsData, generateFullIntervalReports, isNumber, toTwoDigitsFormat, findReport };
