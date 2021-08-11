@@ -70,4 +70,6 @@ const isNumber = (value: any) => !Number.isNaN(+(value as string));
 
 const toTwoDigitsFormat = (value: number) => round(value, 2).toFixed(2);
 
-export { processReportDetailsData, generateFullIntervalReports, isNumber, toTwoDigitsFormat, findReport };
+const formatValue = (numberOfMatch: number, value: number) => (numberOfMatch !== 0 ? round(value, 2).toFixed(2) : '-');
+
+export { processReportDetailsData, generateFullIntervalReports, isNumber, toTwoDigitsFormat, formatValue, findReport };
