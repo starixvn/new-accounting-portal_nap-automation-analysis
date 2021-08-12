@@ -3,6 +3,7 @@ import HomePage from './Home/HomePage';
 import ReportPage from './ISNOdds/ISNOddsPage';
 import RedirectToLogin from './RedirectToLogin/RedirectToLogin';
 import Layout from '../Layout/Layout';
+import NotFoundPage from '../Layout/NotFoundPage';
 
 function Feature() {
   const match = useRouteMatch();
@@ -12,6 +13,7 @@ function Feature() {
         <Route exact path={`${match.url}/`} component={HomePage} />
         <Route exact path={`${match.url}/isn-odds-data`} component={ReportPage} />
         <Route exact path={`${match.url}/redirect-login`} component={RedirectToLogin} />
+        <Route component={NotFoundPage} />
       </Switch>
     </Layout>
   );
