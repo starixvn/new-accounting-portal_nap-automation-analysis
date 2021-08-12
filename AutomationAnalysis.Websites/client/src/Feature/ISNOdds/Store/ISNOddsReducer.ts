@@ -110,6 +110,11 @@ const reportReducer: Reducer<ReportState, ReportActions> = (state = initialRepor
         ...state,
         isLoading: action.isLoading,
       };
+    case ReportActionTypes.END_LOADING_DATA:
+      return {
+        ...state,
+        isLoading: action.isLoading,
+      };
     default:
       return state;
   }

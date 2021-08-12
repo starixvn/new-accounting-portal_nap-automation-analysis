@@ -1,7 +1,6 @@
 import { mount } from 'enzyme';
-import ReactRedux, { Provider } from 'react-redux';
+import { Provider } from 'react-redux';
 import { toast } from 'react-toastify';
-// import { act } from '@testing-library/react';
 import Filter from './Filter';
 import RedCardSelector from './CurrentRedCardOrGoalSelector';
 import ScoreSelector from './TeamTypeGoalOrRedCardSelector';
@@ -59,7 +58,6 @@ describe('RedCardSelector Component', () => {
     const spy = jest.spyOn(toast, 'error');
     const buttonQuery = wrapper.find('button').at(4);
     buttonQuery.simulate('click');
-
     expect(spy).toHaveBeenCalled();
   });
 
@@ -69,7 +67,6 @@ describe('RedCardSelector Component', () => {
     const buttonQuery = wrapper.find('button').at(4);
     const getReportsSpy = jest.spyOn(reportApi, 'getReports').mockResolvedValue([]);
     buttonQuery.simulate('click');
-
     expect(getReportsSpy).toHaveBeenCalled();
   });
 });

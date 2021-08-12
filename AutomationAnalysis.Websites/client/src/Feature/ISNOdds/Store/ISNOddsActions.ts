@@ -22,6 +22,7 @@ export enum ReportActionTypes {
   GET_REPORT_DETAILS = 'GET_REPORT_DETAILS',
   SHOW_MAIN_REPORT = 'SHOW_MAIN_REPORT',
   GETTING_DATA = 'GETTING_DATA',
+  END_LOADING_DATA = 'END_LOADING_DATA',
 }
 
 export const selectReportOption = (reportOption: ReportOption) =>
@@ -140,7 +141,11 @@ export const gettingData = () =>
     type: ReportActionTypes.GETTING_DATA,
     isLoading: true,
   } as const);
-
+export const endLoadingData = () =>
+  ({
+    type: ReportActionTypes.END_LOADING_DATA,
+    isLoading: false,
+  } as const);
 export type ReportActions =
   | ReturnType<typeof selectTeamOption>
   | ReturnType<typeof selectHomeScore>
@@ -160,4 +165,5 @@ export type ReportActions =
   | ReturnType<typeof getReports>
   | ReturnType<typeof getReportDetails>
   | ReturnType<typeof showMainReport>
-  | ReturnType<typeof gettingData>;
+  | ReturnType<typeof gettingData>
+  | ReturnType<typeof endLoadingData>;
