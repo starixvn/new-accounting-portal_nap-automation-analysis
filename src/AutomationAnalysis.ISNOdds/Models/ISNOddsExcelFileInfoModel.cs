@@ -19,10 +19,10 @@ namespace AutomationAnalysis.ISNOdds.Models
         public string ToDate { get; set; }
 
         [Cell("B3")]
-        public string League { get; set; }
+        public string View { get; set; }
 
         [Cell("B4")]
-        public string View { get; set; }
+        public string League { get; set; }
 
         [Cell("B5")]
         public string Interval { get; set; }
