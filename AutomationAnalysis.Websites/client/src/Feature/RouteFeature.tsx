@@ -3,7 +3,7 @@ import HomePage from './Home/HomePage';
 import ReportPage from './ISNOdds/ISNOddsPage';
 import RedirectToLogin from './RedirectToLogin/RedirectToLogin';
 import Layout from '../Layout/Layout';
-import NotFoundPage from '../Layout/NotFoundPage';
+import NotFoundPage from '../Layout/NotFoundPage/NotFoundPage';
 
 function Feature() {
   const match = useRouteMatch();

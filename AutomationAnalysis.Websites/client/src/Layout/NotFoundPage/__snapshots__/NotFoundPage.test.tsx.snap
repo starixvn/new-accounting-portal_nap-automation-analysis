@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NotFoundPage Component renders correctly 1`] = `
+<div
+  className="text-center"
+>
+  <h2>
+    404 Not Found
+  </h2>
+  <div
+    className="error-details"
+  >
+    Sorry, an error has occured, Requested page not found!
+  </div>
+  <Link
+    to="/app"
+  >
+    Go Home
+  </Link>
+</div>
+`;
