@@ -18,6 +18,9 @@ exports[`Route snapshots Test Route Feature 1`] = `
       exact={true}
       path="/app/redirect-login"
     />
+    <Route
+      component={[Function]}
+    />
   </Switch>
 </Layout>
 `;

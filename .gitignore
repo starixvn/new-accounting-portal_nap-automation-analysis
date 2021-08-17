@@ -49,3 +49,4 @@ node_modules
 /AutomationAnalysis.Websites/client/package-lock.json
 /AutomationAnalysis.Websites/client/config/cert.pem
 /AutomationAnalysis.Websites/client/config/key.pem
+/js-lcov

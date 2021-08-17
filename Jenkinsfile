@@ -35,7 +35,7 @@ pipeline {
         stage("ReactJS Unit Test"){
           steps{
             script{
-              pipelineLib.jsJest("%WORKSPACE%/AutomationAnalysis.Websites/client")
+			  bat label: 'React unit test', script: 'cd "%WORKSPACE%/AutomationAnalysis.Websites/client" && npm i && npm run ci:coverage && copy /Y test-report.xml "%WORKSPACE%/js-test-report.xml" '
 			  bat label: 'Replace lcov relative path', script: 'node "%WORKSPACE%\\AutomationAnalysis.Websites\\client\\replace-lcov.js" "%WORKSPACE%"'
             }
           }
