@@ -21,7 +21,7 @@ const GridViewMain = ({ mode, reports, drillDown }: Props) => {
         <td>{report.numberOfLeague}</td>
         <td>
           <span
-            className={report.numberOfMatch ? 'drilldown-link' : ''}
+            className={report.numberOfMatch ? 'drilldown-link' : 'disable-click'}
             onClick={() => drillDown(report.from, report.to)}
             role="presentation"
           >

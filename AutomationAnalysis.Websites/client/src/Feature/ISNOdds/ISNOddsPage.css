@@ -60,3 +60,7 @@ h1 {
     color: blue;
     cursor: pointer;
 }
+
+.disable-click {
+    pointer-events: none;
+}
