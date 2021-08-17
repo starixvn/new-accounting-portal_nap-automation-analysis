@@ -53,6 +53,8 @@ const findReport = (fromValue: string, toValue: string | null, reports: Report[]
   reports.find((report) => `${report.from}` === fromValue && (report.to === toValue || `${report.to}` === toValue));
 
 const generateFullIntervalReports = (isHaftTime: boolean, inverval: number, reports: Report[]): Report[] => {
+  if (!reports?.length) return [];
+
   const intervalDataArea = getDataArea(inverval);
   const lengthArea = isHaftTime ? intervalDataArea.length / 2 : intervalDataArea.length;
   const fullIntervalArea = intervalDataArea.slice(0, lengthArea);
