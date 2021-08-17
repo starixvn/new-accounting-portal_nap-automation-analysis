@@ -19,7 +19,6 @@ namespace AutomationAnalysisUnitTests.Extensions
         }
 
         [Theory]
-
         [InlineData("")]
         [InlineData(null)]
         public void IsContains_NullOrEmptyInput_ReturnFalse(string toBeSearchedString)

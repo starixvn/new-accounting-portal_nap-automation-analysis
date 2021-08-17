@@ -1,7 +1,5 @@
 ﻿namespace AutomationAnalysis.Websites
 {
-    using System;
-    using System.Threading.Tasks;
     using AutomationAnalysis.ISNOdds.Services;
     using Microsoft.AspNetCore.Authentication.Cookies;
     using Microsoft.AspNetCore.Authorization;
@@ -11,6 +9,8 @@
     using Microsoft.Extensions.DependencyInjection;
     using Newtonsoft.Json;
     using Newtonsoft.Json.Serialization;
+    using System;
+    using System.Threading.Tasks;
 
     public static class AuthServices
     {

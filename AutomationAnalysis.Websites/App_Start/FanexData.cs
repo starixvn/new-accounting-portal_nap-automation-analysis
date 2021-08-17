@@ -1,10 +1,10 @@
 namespace AutomationAnalysis.Websites
 {
-    using System.Linq;
     using Fanex.Data;
     using Fanex.Data.SqlServer;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
+    using System.Linq;
 
     public static class FanexData
     {

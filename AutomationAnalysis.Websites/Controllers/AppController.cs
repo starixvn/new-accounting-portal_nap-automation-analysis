@@ -1,12 +1,12 @@
 ﻿namespace AutomationAnalysis.Websites.Controllers
 {
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Mvc;
     using System;
     using System.IO;
     using System.Net;
     using System.Net.Sockets;
     using System.Text;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Mvc;
 
     [Route("/app")]
     public class AppController : Controller
@@ -49,7 +49,7 @@
             return Content(log);
         }
 
-        static string GetMachineIP(IPHostEntry hostEntry)
+        private static string GetMachineIP(IPHostEntry hostEntry)
         {
             foreach (var ip in hostEntry.AddressList)
             {
@@ -61,7 +61,6 @@
 
             return "1.1.1.1";
         }
-
 
         private static string GetIndexHtml(IWebHostEnvironment hostEnvironment)
         {

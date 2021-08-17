@@ -1,6 +1,6 @@
-﻿using System;
+﻿using AutomationAnalysis.Extensions;
+using System;
 using System.Collections.Generic;
-using AutomationAnalysis.Extensions;
 using Xunit;
 
 namespace AutomationAnalysisUnitTests.Extensions

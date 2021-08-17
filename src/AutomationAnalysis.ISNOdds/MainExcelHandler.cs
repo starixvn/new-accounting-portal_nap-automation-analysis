@@ -1,14 +1,14 @@
-﻿using System;
-using MediatR;
-using OfficeOpenXml;
+﻿using AutoMapper;
 using AutomationAnalysis.ISNOdds.Models;
 using AutomationAnalysis.ISNOdds.Services;
+using MediatR;
 using Microsoft.AspNetCore.Hosting;
+using OfficeOpenXml;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
-using AutoMapper;
 
 namespace AutomationAnalysis.ISNOdds
 {

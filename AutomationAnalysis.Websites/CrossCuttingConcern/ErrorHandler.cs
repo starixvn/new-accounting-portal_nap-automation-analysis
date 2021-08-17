@@ -1,12 +1,12 @@
 ﻿namespace AutomationAnalysis.Websites.CrossCuttingConcern
 {
-    using System;
-    using System.Threading.Tasks;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.Database;
     using Microsoft.AspNetCore.Http;
     using Microsoft.Extensions.Configuration;
+    using System;
+    using System.Threading.Tasks;
 
     public class ErrorHandler
     {

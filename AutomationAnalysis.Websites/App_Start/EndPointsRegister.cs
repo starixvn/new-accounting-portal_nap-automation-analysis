@@ -14,7 +14,6 @@
                     defaults: new { controller = "Auth" });
             });
 
-
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

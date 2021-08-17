@@ -1,9 +1,9 @@
 ﻿namespace AutomationAnalysis.Websites
 {
-    using System.Reflection;
     using ISNOdds;
     using MediatR;
     using Microsoft.Extensions.DependencyInjection;
+    using System.Reflection;
 
     public static class MediatorRegister
     {

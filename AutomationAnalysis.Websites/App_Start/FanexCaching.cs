@@ -27,6 +27,5 @@ namespace AutomationAnalysis.Websites
 
             return services;
         }
-
     }
 }

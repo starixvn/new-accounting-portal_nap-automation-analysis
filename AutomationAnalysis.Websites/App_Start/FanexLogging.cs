@@ -1,6 +1,5 @@
 namespace AutomationAnalysis.Websites
 {
-    using System.Collections.Generic;
     using Fanex.Logging;
     using Fanex.Logging.Extensions;
     using Fanex.Logging.Extensions.AspNetCore;
@@ -9,6 +8,7 @@ namespace AutomationAnalysis.Websites
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using SharpRaven;
+    using System.Collections.Generic;
 
     public static class FanexLogging
     {

@@ -3,12 +3,8 @@ using AutomationAnalysis.ISNOdds.Models;
 using Epplus.Mapper.Extensions;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
-using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace AutomationAnalysis.ISNOdds.Services
 {
@@ -19,9 +15,9 @@ namespace AutomationAnalysis.ISNOdds.Services
 
     public class ExportExcelServiceImp : ExportExcelService
     {
-        private ExcelPackage excelPackage { get; set; }
+        private ExcelPackage excelPackage;
 
-        private ExcelWorksheet reportSheet { get; set; }
+        private ExcelWorksheet reportSheet;
 
         public void LoadTemplate(string templatePath)
         {
@@ -35,11 +31,11 @@ namespace AutomationAnalysis.ISNOdds.Services
         public ExcelPackage CreateExcelPackage(string templatePath, ISNOddsExcelModel model)
         {
             LoadTemplate(templatePath);
-            BuillReportBody(model);
+            BuildReportBody(model);
             return excelPackage;
         }
 
-        public void BuillReportBody(ISNOddsExcelModel model)
+        public void BuildReportBody(ISNOddsExcelModel model)
         {
             reportSheet.ApplyModel(model.FileInfo);
             if (model.ReportDetails != null)
@@ -74,12 +70,15 @@ namespace AutomationAnalysis.ISNOdds.Services
             {
                 var value = reportSheet.Cells[i, 1].Value as string;
 
-                if (string.IsNullOrEmpty(value)) continue;
+                if (string.IsNullOrEmpty(value))
+                {
+                    continue;
+                }
 
-                reportSheet.Cells[i, 1, i, lastCol].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                reportSheet.Cells[i, 1, i, lastCol].Style.Fill.BackgroundColor.SetColor(0, 114, 159, 207);
-                reportSheet.Cells[i, 1, i, lastCol].Style.Font.Bold = true;
-                reportSheet.Cells[i, 2].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
+                reportSheet.Cells[i, ReportConst.LeagueRow, i, lastCol].Style.Fill.PatternType = ExcelFillStyle.Solid;
+                reportSheet.Cells[i, ReportConst.LeagueRow, i, lastCol].Style.Fill.BackgroundColor.SetColor(ReportConst.LeagueBackgroundColor);
+                reportSheet.Cells[i, ReportConst.LeagueRow, i, lastCol].Style.Font.Bold = true;
+                reportSheet.Cells[i, ReportConst.LeagueCol].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             }
         }
     }

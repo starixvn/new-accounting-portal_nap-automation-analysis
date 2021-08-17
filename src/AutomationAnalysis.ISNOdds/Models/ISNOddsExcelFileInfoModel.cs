@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace AutomationAnalysis.ISNOdds.Models
+﻿namespace AutomationAnalysis.ISNOdds.Models
 {
     using Epplus.Mapper.Annotations;
 

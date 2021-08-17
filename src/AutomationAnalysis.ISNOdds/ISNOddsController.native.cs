@@ -1,8 +1,7 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-using AutomationAnalysis.ISNOdds.Constant;
+﻿using AutomationAnalysis.ISNOdds.Constant;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace AutomationAnalysis.ISNOdds
 {

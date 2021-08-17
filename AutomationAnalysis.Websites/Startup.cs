@@ -6,7 +6,6 @@ namespace AutomationAnalysis.Websites
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
-    using AutoMapper;
 
     public class Startup
     {

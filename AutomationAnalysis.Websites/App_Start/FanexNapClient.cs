@@ -17,6 +17,5 @@ namespace AutomationAnalysis.Websites
 
             return app;
         }
-
     }
 }

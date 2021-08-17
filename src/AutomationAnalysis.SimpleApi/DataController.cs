@@ -1,10 +1,10 @@
 ﻿namespace AutomationAnalysis.SimpleApi
 {
-    using System.Collections.Generic;
-    using System.Threading.Tasks;
     using AutomationAnalysis.Extensions;
     using Fanex.Data.Repository;
     using Microsoft.AspNetCore.Mvc;
+    using System.Collections.Generic;
+    using System.Threading.Tasks;
 
     [Route("simple-api")]
     public class DataController : Controller

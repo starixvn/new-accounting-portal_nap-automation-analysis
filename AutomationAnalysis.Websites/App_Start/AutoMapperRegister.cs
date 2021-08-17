@@ -1,5 +1,4 @@
-﻿using AutoMapper;
-using AutomationAnalysis.ISNOdds;
+﻿using AutomationAnalysis.ISNOdds;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace AutomationAnalysis.Websites

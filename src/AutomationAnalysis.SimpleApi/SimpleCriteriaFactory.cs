@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using AutomationAnalysis.SimpleApi.Criteria;
+﻿using AutomationAnalysis.SimpleApi.Criteria;
 using Fanex.Data.Repository;
 using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
 
 namespace AutomationAnalysis.SimpleApi
 {

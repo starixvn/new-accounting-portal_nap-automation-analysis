@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
 
     public static class DictionaryExtensions
     {
@@ -21,7 +22,7 @@
 
             foreach (var key in dictionary.Keys)
             {
-                var lowerCaseKey = key.ToLower();
+                var lowerCaseKey = key.ToLower(CultureInfo.InvariantCulture);
                 if (!clonedDictionary.ContainsKey(lowerCaseKey))
                 {
                     clonedDictionary.Add(lowerCaseKey, dictionary[key]);

@@ -1,7 +1,7 @@
 ﻿namespace AutomationAnalysis.ISNOdds.Criteria
 {
-    using System;
     using Fanex.Data.Repository;
+    using System;
 
     public class ISNOddsByGoalRedCardQueryCriteria : CriteriaBase
     {
