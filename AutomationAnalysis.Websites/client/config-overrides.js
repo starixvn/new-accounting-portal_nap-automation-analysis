@@ -1,6 +1,12 @@
 module.exports = {
   webpack(config, env) {
-    return config;
+    const overridedConfig = Object.assign(config, {
+      externals: {
+        react: 'React',
+      },
+    });
+
+    return overridedConfig;
   },
   paths(originalPaths, env) {
     return originalPaths;
