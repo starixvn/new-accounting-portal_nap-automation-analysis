@@ -50,7 +50,7 @@ export default function Filter() {
     dispatch(gettingData());
     const filter = mapStateToFilter(reportState);
     const result = await reportApi.getReports(filter);
-    const processedResult = result.length ? generateFullIntervalReports(isHalfTime, interval, result) : [];
+    const processedResult = generateFullIntervalReports(isHalfTime, interval, result);
     dispatch(getReports(processedResult));
   };
 

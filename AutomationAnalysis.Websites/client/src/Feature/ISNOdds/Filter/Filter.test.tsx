@@ -42,6 +42,12 @@ describe('RedCardSelector Component', () => {
     expect(buttonGoal.simulate('click')).toHaveLength(1);
   });
 
+  it('button redcard click correct', () => {
+    mockStore.dispatch(selectReportOption('Redcard'));
+    const buttonRedcard = wrapper.find('button').at(1);
+    expect(buttonRedcard.simulate('click')).toHaveLength(1);
+  });
+
   it('element change callback correct', () => {
     const inputLeague = wrapper.find('input').at(2);
     const selectView = wrapper.find('select').at(0);
