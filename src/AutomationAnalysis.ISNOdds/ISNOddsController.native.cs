@@ -20,9 +20,8 @@ namespace AutomationAnalysis.ISNOdds
         [HttpPost]
         public async Task<IActionResult> Excel(MainExcelRequest request)
         {
-            var excelPackage = await mediator.Send(request);
-            var content = await excelPackage.GetAsByteArrayAsync();
-            return File(content, FileContentType.EXCEL);
+            var contentFile = await mediator.Send(request);
+            return File(contentFile, FileContentType.EXCEL);
         }
     }
 }
