@@ -85,6 +85,13 @@ namespace AutomationAnalysis.ISNOdds.Services
 
         public void Dispose()
         {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            // Cleanup
             excelPackage.Dispose();
         }
     }
