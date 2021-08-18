@@ -7,7 +7,7 @@ namespace AutomationAnalysis.ISNOdds
     {
         public ISNOddsProfile()
         {
-            CreateMap<MainExcelRequest, ISNOddsExcelFileInfoModel>()
+            CreateMap<ExcelRequest, ISNOddsExcelFileInfoModel>()
                 .ForMember(dest =>
                     dest.FromDate,
                     src => src.MapFrom(src => src.FromDate.ToString("MM/dd/yyyy")))

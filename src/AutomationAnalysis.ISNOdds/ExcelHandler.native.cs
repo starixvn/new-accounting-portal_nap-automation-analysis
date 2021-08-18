@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AutomationAnalysis.ISNOdds
 {
-    public class MainExcelRequest : IRequest<byte[]>
+    public class ExcelRequest : IRequest<byte[]>
     {
         public DateTime FromDate { get; set; }
 
@@ -53,20 +53,20 @@ namespace AutomationAnalysis.ISNOdds
         public IList<ISNOddsExcelReportDetailModel> ReportDetails { get; set; }
     }
 
-    public class MainExcelHandler : IRequestHandler<MainExcelRequest, byte[]>
+    public class ExcelHandler : IRequestHandler<ExcelRequest, byte[]>
     {
         private readonly ExportExcelService exportExcelService;
         private readonly IWebHostEnvironment hostEnvironment;
         private readonly IMapper mapper;
 
-        public MainExcelHandler(ExportExcelService exportExcelService, IWebHostEnvironment hostEnvironment, IMapper mapper)
+        public ExcelHandler(ExportExcelService exportExcelService, IWebHostEnvironment hostEnvironment, IMapper mapper)
         {
             this.exportExcelService = exportExcelService;
             this.hostEnvironment = hostEnvironment;
             this.mapper = mapper;
         }
 
-        public async Task<byte[]> Handle(MainExcelRequest request, CancellationToken cancellationToken)
+        public async Task<byte[]> Handle(ExcelRequest request, CancellationToken cancellationToken)
         {
             var fileName = request.ReportDetails != null ? "DrilldownReport.xlsx" : "MainReport.xlsx";
             var absolutePath = Path.Combine("App_Data", "Templates", fileName);

@@ -18,7 +18,7 @@ namespace AutomationAnalysis.ISNOdds
 
         [Route("excel")]
         [HttpPost]
-        public async Task<IActionResult> Excel(MainExcelRequest request)
+        public async Task<IActionResult> Excel(ExcelRequest request)
         {
             var contentFile = await mediator.Send(request);
             return File(contentFile, FileContentType.EXCEL);
