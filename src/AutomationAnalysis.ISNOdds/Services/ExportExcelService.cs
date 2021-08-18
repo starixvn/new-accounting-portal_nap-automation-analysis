@@ -3,6 +3,7 @@ using AutomationAnalysis.ISNOdds.Models;
 using Epplus.Mapper.Extensions;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
+using System;
 using System.Drawing;
 using System.IO;
 
@@ -13,7 +14,7 @@ namespace AutomationAnalysis.ISNOdds.Services
         ExcelPackage CreateExcelPackage(string templatePath, ISNOddsExcelModel model);
     }
 
-    public class ExportExcelServiceImp : ExportExcelService
+    public class ExportExcelServiceImp : ExportExcelService, IDisposable
     {
         private ExcelPackage excelPackage;
 
@@ -80,6 +81,11 @@ namespace AutomationAnalysis.ISNOdds.Services
                 reportSheet.Cells[i, ReportConst.LeagueRow, i, lastCol].Style.Font.Bold = true;
                 reportSheet.Cells[i, ReportConst.LeagueCol].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             }
+        }
+
+        public void Dispose()
+        {
+            excelPackage.Dispose();
         }
     }
 }
