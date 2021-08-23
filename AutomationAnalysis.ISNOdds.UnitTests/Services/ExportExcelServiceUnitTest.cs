@@ -1,13 +1,22 @@
-namespace AutomationAnalysis.ISNOdds.UnitTests.Services
-{
-    using System.Collections.Generic;
-    using System.IO;
-    using ISNOdds.Services;
-    using Models;
-    using Xunit;
+using AutomationAnalysis.ISNOdds.Models;
+using AutomationAnalysis.ISNOdds.Services;
+using OfficeOpenXml;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using Xunit;
 
-    public class ExportExcelServiceUnitTest
+namespace AutomationAnalysis.ISNOdds.UnitTests
+{
+    public class ExportExcelServiceUnitTest : IDisposable
     {
+        private readonly ExportExcelServiceImp exportExcel;
+
+        public ExportExcelServiceUnitTest()
+        {
+            exportExcel = new ExportExcelServiceImp();
+        }
+
         [Fact]
         public void CreateExcelPackage_ValidMainReportFile_ExportCorrect()
         {
@@ -108,6 +117,11 @@ namespace AutomationAnalysis.ISNOdds.UnitTests.Services
             Assert.Equal("Goal", sheet.Cells["C1"].Value);
             Assert.Equal("0-5", sheet.Cells["B5"].Value);
             Assert.Equal("A -vs B", sheet.Cells["B14"].Value);
+        }
+
+        public void Dispose()
+        {
+            exportExcel.Dispose();
         }
     }
 }
