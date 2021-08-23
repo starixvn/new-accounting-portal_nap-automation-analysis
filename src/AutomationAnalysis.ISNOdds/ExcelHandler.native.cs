@@ -19,7 +19,17 @@ namespace AutomationAnalysis.ISNOdds
 
         public string League { get; set; }
 
+        public string View { get; set; }
+
         public int Interval { get; set; }
+
+        public decimal FromInitialHDP { get; set; }
+
+        public decimal ToInitialHDP { get; set; }
+
+        public decimal FromInitialOU { get; set; }
+
+        public decimal ToInitialOU { get; set; }
 
         public int HomeScore { get; set; }
 
@@ -31,9 +41,12 @@ namespace AutomationAnalysis.ISNOdds
 
         public string ReportOption { get; set; }
 
+        public string TeamType { get; set; }
+
         public string FromMinute { get; set; }
 
         public string ToMinute { get; set; }
+
         public string Score => $"{HomeScore}-{AwayScore}";
         public string RedCard => $"{HomeRedCard}-{AwayRedCard}";
         public List<ISNOddsExcelReportModel> Reports { get; set; }
