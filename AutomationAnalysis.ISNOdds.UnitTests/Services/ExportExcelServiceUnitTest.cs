@@ -1,26 +1,18 @@
-using AutomationAnalysis.ISNOdds.Models;
-using AutomationAnalysis.ISNOdds.Services;
-using OfficeOpenXml;
-using System;
 using System.Collections.Generic;
 using System.IO;
+using AutomationAnalysis.ISNOdds.Models;
+using AutomationAnalysis.ISNOdds.Services;
+using AutomationAnalysis.Utils;
 using Xunit;
 
-namespace AutomationAnalysis.ISNOdds.UnitTests
+namespace AutomationAnalysis.ISNOdds.UnitTests.Services
 {
     public class ExportExcelServiceUnitTest
     {
-        private readonly ExportExcelServiceImp exportExcel;
-
-        public ExportExcelServiceUnitTest()
-        {
-            exportExcel = new ExportExcelServiceImp();
-        }
-
         [Fact]
         public void CreateExcelPackage_ValidMainReportFile_ExportCorrect()
         {
-            var directory = Directory.GetParent(Directory.GetCurrentDirectory())?.Parent.Parent?.FullName;
+            var currentDir = FileUtil.GetRootDirectory();
             var fileName = "MainReport.xlsx";
 
             var fileInfo = new ISNOddsExcelFileInfoModel
@@ -51,8 +43,8 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
                 Reports = list
             };
 
-            using var exportExcel = new ExportExcelServiceImp();
-            var actual = exportExcel.CreateExcelPackage(Path.Combine(directory, fileName), excelModel);
+            using var exportExcelService = new ExportExcelServiceImp();
+            var actual = exportExcelService.CreateExcelPackage(Path.Combine(currentDir.FullName, fileName), excelModel);
             var sheet = actual.Workbook.Worksheets[0];
 
             Assert.Equal("ISN Odds Data", sheet.Cells["A1"].Value);
@@ -62,7 +54,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
         [Fact]
         public void CreateExcelPackage_ValidDrilldownReportFile_ExportCorrect()
         {
-            var directory = Directory.GetParent(Directory.GetCurrentDirectory())?.Parent.Parent?.FullName;
+            var currentDir = FileUtil.GetRootDirectory();
             var fileName = "DrilldownReport.xlsx";
 
             var fileInfo = new ISNOddsExcelFileInfoModel
@@ -110,7 +102,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
             };
 
             using var exportExcelService = new ExportExcelServiceImp();
-            var actual = exportExcelService.CreateExcelPackage(Path.Combine(directory, fileName), excelModel);
+            var actual = exportExcelService.CreateExcelPackage(Path.Combine(currentDir.FullName, fileName), excelModel);
             var sheet = actual.Workbook.Worksheets[0];
 
             Assert.Equal("ISN Odds Data", sheet.Cells["A1"].Value);
