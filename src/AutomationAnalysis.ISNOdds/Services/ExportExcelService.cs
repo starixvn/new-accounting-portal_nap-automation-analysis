@@ -42,16 +42,28 @@
         public void BuildReportBody(ISNOddsExcelModel model)
         {
             reportSheet.ApplyModel(model.FileInfo);
+
             if (model.ReportDetails != null)
             {
-                ChangeISNOddsDetailsTableHead(model.FileInfo);
-                reportSheet.ApplyVertical(model.ReportDetails, ReportConst.StartIndexRow);
-                AddStyleReportDetails();
-                return;
+                BuildDrillDownReport(model);
             }
+            else
+            {
+                BuildMainReport(model);
+            }
+        }
 
+        private void BuildMainReport(ISNOddsExcelModel model)
+        {
             ChangeISNOddsTableHead(model.FileInfo);
             reportSheet.ApplyVertical(model.Reports, ReportConst.StartIndexRow);
+        }
+
+        private void BuildDrillDownReport(ISNOddsExcelModel model)
+        {
+            ChangeISNOddsDetailsTableHead(model.FileInfo);
+            reportSheet.ApplyVertical(model.ReportDetails, ReportConst.StartIndexRow);
+            AddStyleReportDetails();
         }
 
         public void ChangeISNOddsTableHead(ISNOddsExcelFileInfoModel infoModel)
