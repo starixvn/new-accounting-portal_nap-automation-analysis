@@ -3,7 +3,6 @@ using AutomationAnalysis.ISNOdds.Models;
 using AutomationAnalysis.ISNOdds.Services;
 using MediatR;
 using Microsoft.AspNetCore.Hosting;
-using OfficeOpenXml;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -20,17 +19,7 @@ namespace AutomationAnalysis.ISNOdds
 
         public string League { get; set; }
 
-        public string View { get; set; }
-
         public int Interval { get; set; }
-
-        public decimal FromInitialHDP { get; set; }
-
-        public decimal ToInitialHDP { get; set; }
-
-        public decimal FromInitialOU { get; set; }
-
-        public decimal ToInitialOU { get; set; }
 
         public int HomeScore { get; set; }
 
@@ -41,8 +30,6 @@ namespace AutomationAnalysis.ISNOdds
         public int AwayRedCard { get; set; }
 
         public string ReportOption { get; set; }
-
-        public string TeamType { get; set; }
 
         public string FromMinute { get; set; }
 
@@ -68,7 +55,7 @@ namespace AutomationAnalysis.ISNOdds
 
         public async Task<byte[]> Handle(ExcelRequest request, CancellationToken cancellationToken)
         {
-            var fileName = request.ReportDetails != null ? "DrilldownReport.xlsx" : "MainReport.xlsx";
+            var fileName = request.ReportDetails != null ? "DrillDownReport.xlsx" : "MainReport.xlsx";
             var absolutePath = Path.Combine("App_Data", "Templates", fileName);
             var templatePath = Path.Combine(hostEnvironment.ContentRootPath, absolutePath);
             var fileInfoModel = mapper.Map<ISNOddsExcelFileInfoModel>(request);
