@@ -1,14 +1,13 @@
-﻿using AutomationAnalysis.ISNOdds.Constant;
-using AutomationAnalysis.ISNOdds.Models;
-using Epplus.Mapper.Extensions;
-using OfficeOpenXml;
-using OfficeOpenXml.Style;
-using System;
-using System.Drawing;
-using System.IO;
-
-namespace AutomationAnalysis.ISNOdds.Services
+﻿namespace AutomationAnalysis.ISNOdds.Services
 {
+    using System;
+    using System.IO;
+    using Constant;
+    using Epplus.Mapper.Extensions;
+    using Models;
+    using OfficeOpenXml;
+    using OfficeOpenXml.Style;
+
     public interface ExportExcelService
     {
         ExcelPackage CreateExcelPackage(string templatePath, ISNOddsExcelModel model);
@@ -20,20 +19,24 @@ namespace AutomationAnalysis.ISNOdds.Services
 
         private ExcelWorksheet reportSheet;
 
-        public void LoadTemplate(string templatePath)
-        {
-            using (var stream = new FileStream(templatePath, FileMode.Open, FileAccess.Read))
-            {
-                excelPackage = new ExcelPackage(stream);
-                reportSheet = excelPackage.Workbook.Worksheets[0];
-            }
-        }
-
         public ExcelPackage CreateExcelPackage(string templatePath, ISNOddsExcelModel model)
         {
             LoadTemplate(templatePath);
             BuildReportBody(model);
             return excelPackage;
+        }
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        public void LoadTemplate(string templatePath)
+        {
+            using var stream = new FileStream(templatePath, FileMode.Open, FileAccess.Read);
+            excelPackage = new ExcelPackage(stream);
+            reportSheet = excelPackage.Workbook.Worksheets[0];
         }
 
         public void BuildReportBody(ISNOddsExcelModel model)
@@ -46,6 +49,7 @@ namespace AutomationAnalysis.ISNOdds.Services
                 AddStyleReportDetails();
                 return;
             }
+
             ChangeISNOddsTableHead(model.FileInfo);
             reportSheet.ApplyVertical(model.Reports, ReportConst.StartIndexRow);
         }
@@ -67,7 +71,7 @@ namespace AutomationAnalysis.ISNOdds.Services
             var lastRow = reportSheet.Dimension.Rows;
             var lastCol = reportSheet.Dimension.Columns;
 
-            for (int i = ReportConst.StartIndexRow; i <= lastRow; i++)
+            for (var i = ReportConst.StartIndexRow; i <= lastRow; i++)
             {
                 var value = reportSheet.Cells[i, 1].Value as string;
 
@@ -77,21 +81,15 @@ namespace AutomationAnalysis.ISNOdds.Services
                 }
 
                 reportSheet.Cells[i, ReportConst.LeagueRow, i, lastCol].Style.Fill.PatternType = ExcelFillStyle.Solid;
-                reportSheet.Cells[i, ReportConst.LeagueRow, i, lastCol].Style.Fill.BackgroundColor.SetColor(ReportConst.LeagueBackgroundColor);
+                reportSheet.Cells[i, ReportConst.LeagueRow, i, lastCol].Style.Fill.BackgroundColor
+                    .SetColor(ReportConst.LeagueBackgroundColor);
                 reportSheet.Cells[i, ReportConst.LeagueRow, i, lastCol].Style.Font.Bold = true;
                 reportSheet.Cells[i, ReportConst.LeagueCol].Style.HorizontalAlignment = ExcelHorizontalAlignment.Center;
             }
         }
 
-        public void Dispose()
-        {
-            Dispose(true);
-            GC.SuppressFinalize(this);
-        }
-
         protected virtual void Dispose(bool disposing)
         {
-            // Cleanup
             excelPackage.Dispose();
         }
     }

@@ -1,26 +1,17 @@
-using AutomationAnalysis.ISNOdds.Models;
-using AutomationAnalysis.ISNOdds.Services;
-using OfficeOpenXml;
-using System.Collections.Generic;
-using System.IO;
-using Xunit;
-
-namespace AutomationAnalysis.ISNOdds.UnitTests
+namespace AutomationAnalysis.ISNOdds.UnitTests.Services
 {
+    using System.Collections.Generic;
+    using System.IO;
+    using ISNOdds.Services;
+    using Models;
+    using Xunit;
+
     public class ExportExcelServiceUnitTest
     {
-        private readonly ExportExcelServiceImp exportExcel;
-        private readonly ExcelWorksheet worksheet;
-
-        public ExportExcelServiceUnitTest()
-        {
-            exportExcel = new ExportExcelServiceImp();
-        }
-
         [Fact]
         public void CreateExcelPackage_ValidMainReportFile_ExportCorrect()
         {
-            var directory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            var directory = Directory.GetParent(Directory.GetCurrentDirectory())?.Parent.Parent?.FullName;
             var fileName = "MainReport.xlsx";
 
             var fileInfo = new ISNOddsExcelFileInfoModel
@@ -40,7 +31,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
                 CurrentGoalOrRedCard = "1-0",
                 TotalGoalOrRedCard = "1-0",
                 TotalGoalOrRedCardTitle = "Toal Goal",
-                CurrentGoalOrRedCardTitle = "Current Red Card",
+                CurrentGoalOrRedCardTitle = "Current Red Card"
             };
 
             var list = new List<ISNOddsExcelReportModel>();
@@ -51,6 +42,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
                 Reports = list
             };
 
+            using var exportExcel = new ExportExcelServiceImp();
             var actual = exportExcel.CreateExcelPackage(Path.Combine(directory, fileName), excelModel);
             var sheet = actual.Workbook.Worksheets[0];
 
@@ -61,7 +53,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
         [Fact]
         public void CreateExcelPackage_ValidDrilldownReportFile_ExportCorrect()
         {
-            var directory = Directory.GetParent(Directory.GetCurrentDirectory()).Parent.Parent.FullName;
+            var directory = Directory.GetParent(Directory.GetCurrentDirectory())?.Parent.Parent?.FullName;
             var fileName = "DrilldownReport.xlsx";
 
             var fileInfo = new ISNOddsExcelFileInfoModel
@@ -81,24 +73,26 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
                 CurrentGoalOrRedCard = "1-0",
                 TotalGoalOrRedCard = "1-0",
                 TotalGoalOrRedCardTitle = "Toal Goal",
-                CurrentGoalOrRedCardTitle = "Current Red Card",
+                CurrentGoalOrRedCardTitle = "Current Red Card"
             };
 
-            var list = new List<ISNOddsExcelReportDetailModel>();
-            list.Add(new ISNOddsExcelReportDetailModel
+            var list = new List<ISNOddsExcelReportDetailModel>
             {
-                Index = "1",
-                MatchName = "A -vs B",
-                Second = "1",
-                Minute = "1",
-                OnlySecond = "1",
-                BeforeHDP = 1M,
-                AfterHDP = 1M,
-                BeforeOU = 1M,
-                AfterOU = 1M,
-                DiffHDP = 1M,
-                DiffOU = 1M
-            });
+                new ISNOddsExcelReportDetailModel
+                {
+                    Index = "1",
+                    MatchName = "A -vs B",
+                    Second = "1",
+                    Minute = "1",
+                    OnlySecond = "1",
+                    BeforeHDP = 1M,
+                    AfterHDP = 1M,
+                    BeforeOU = 1M,
+                    AfterOU = 1M,
+                    DiffHDP = 1M,
+                    DiffOU = 1M
+                }
+            };
 
             var excelModel = new ISNOddsExcelModel
             {
@@ -106,6 +100,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
                 ReportDetails = list
             };
 
+            using var exportExcel = new ExportExcelServiceImp();
             var actual = exportExcel.CreateExcelPackage(Path.Combine(directory, fileName), excelModel);
             var sheet = actual.Workbook.Worksheets[0];
 
