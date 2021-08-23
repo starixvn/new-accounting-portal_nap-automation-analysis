@@ -8,7 +8,7 @@ using Xunit;
 
 namespace AutomationAnalysis.ISNOdds.UnitTests
 {
-    public class ExportExcelServiceUnitTest : IDisposable
+    public class ExportExcelServiceUnitTest
     {
         private readonly ExportExcelServiceImp exportExcel;
 
@@ -39,7 +39,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
                 TeamTypeTitle = "Goal:",
                 CurrentGoalOrRedCard = "1-0",
                 TotalGoalOrRedCard = "1-0",
-                TotalGoalOrRedCardTitle = "Toal Goal",
+                TotalGoalOrRedCardTitle = "Total Goal",
                 CurrentGoalOrRedCardTitle = "Current Red Card"
             };
 
@@ -109,19 +109,14 @@ namespace AutomationAnalysis.ISNOdds.UnitTests
                 ReportDetails = list
             };
 
-            using var exportExcel = new ExportExcelServiceImp();
-            var actual = exportExcel.CreateExcelPackage(Path.Combine(directory, fileName), excelModel);
+            using var exportExcelService = new ExportExcelServiceImp();
+            var actual = exportExcelService.CreateExcelPackage(Path.Combine(directory, fileName), excelModel);
             var sheet = actual.Workbook.Worksheets[0];
 
             Assert.Equal("ISN Odds Data", sheet.Cells["A1"].Value);
             Assert.Equal("Goal", sheet.Cells["C1"].Value);
             Assert.Equal("0-5", sheet.Cells["B5"].Value);
             Assert.Equal("A -vs B", sheet.Cells["B14"].Value);
-        }
-
-        public void Dispose()
-        {
-            exportExcel.Dispose();
         }
     }
 }
