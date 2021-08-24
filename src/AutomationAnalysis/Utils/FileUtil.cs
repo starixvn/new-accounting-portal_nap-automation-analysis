@@ -3,7 +3,7 @@ using System.IO;
 
 namespace AutomationAnalysis.Utils
 {
-    public class FileUtil
+    public static class FileUtil
     {
         public static FileInfo GetFileInfo(string directory, string file)
         {
