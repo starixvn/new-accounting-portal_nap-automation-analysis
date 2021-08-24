@@ -1,8 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using AutomationAnalysis.ISNOdds.Models;
 using AutomationAnalysis.ISNOdds.Services;
-using AutomationAnalysis.Utils;
 using Xunit;
 
 namespace AutomationAnalysis.ISNOdds.UnitTests.Services
@@ -12,7 +12,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests.Services
         [Fact]
         public void CreateExcelPackage_ValidMainReportFile_ExportCorrect()
         {
-            var currentDir = FileUtil.GetRootDirectory();
+            var currentDir = AppDomain.CurrentDomain.BaseDirectory;
             var fileName = "MainReport.xlsx";
 
             var fileInfo = new ISNOddsExcelFileInfoModel
@@ -44,7 +44,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests.Services
             };
 
             using var exportExcelService = new ExportExcelServiceImp();
-            var actual = exportExcelService.CreateExcelPackage(Path.Combine(currentDir.FullName, fileName), excelModel);
+            var actual = exportExcelService.CreateExcelPackage(Path.Combine(currentDir, fileName), excelModel);
             var sheet = actual.Workbook.Worksheets[0];
 
             Assert.Equal("ISN Odds Data", sheet.Cells["A1"].Value);
@@ -52,10 +52,10 @@ namespace AutomationAnalysis.ISNOdds.UnitTests.Services
         }
 
         [Fact]
-        public void CreateExcelPackage_ValidDrilldownReportFile_ExportCorrect()
+        public void CreateExcelPackage_ValidDrillDownReportFile_ExportCorrect()
         {
-            var currentDir = FileUtil.GetRootDirectory();
-            var fileName = "DrilldownReport.xlsx";
+            var currentDir = AppDomain.CurrentDomain.BaseDirectory;
+            var fileName = "DrillDownReport.xlsx";
 
             var fileInfo = new ISNOddsExcelFileInfoModel
             {
@@ -73,13 +73,13 @@ namespace AutomationAnalysis.ISNOdds.UnitTests.Services
                 TeamTypeTitle = "Goal:",
                 CurrentGoalOrRedCard = "1-0",
                 TotalGoalOrRedCard = "1-0",
-                TotalGoalOrRedCardTitle = "Toal Goal",
+                TotalGoalOrRedCardTitle = "Total Goal",
                 CurrentGoalOrRedCardTitle = "Current Red Card"
             };
 
             var list = new List<ISNOddsExcelReportDetailModel>
             {
-                new ISNOddsExcelReportDetailModel
+                new()
                 {
                     Index = "1",
                     MatchName = "A -vs B",
@@ -102,7 +102,7 @@ namespace AutomationAnalysis.ISNOdds.UnitTests.Services
             };
 
             using var exportExcelService = new ExportExcelServiceImp();
-            var actual = exportExcelService.CreateExcelPackage(Path.Combine(currentDir.FullName, fileName), excelModel);
+            var actual = exportExcelService.CreateExcelPackage(Path.Combine(currentDir, fileName), excelModel);
             var sheet = actual.Workbook.Worksheets[0];
 
             Assert.Equal("ISN Odds Data", sheet.Cells["A1"].Value);
