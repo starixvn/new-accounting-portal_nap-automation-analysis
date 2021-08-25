@@ -1,0 +1,24 @@
+{
+  "name": "nap-automation-analysis",
+  "version": "1.0.0",
+  "description": "docker build -t naas .\r docker run -d -p 5001:5001 -p 5000:5000 --name naas --rm naas",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "add-commitlint": "npm i && npx husky install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@gitlab.nexdev.net:new-accounting-portal/nap-automation-analysis.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^13.1.0",
+    "@commitlint/config-conventional": "^13.1.0",
+    "husky": "^7.0.2"
+  }
+}
