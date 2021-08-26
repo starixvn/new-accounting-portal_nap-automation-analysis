@@ -34,7 +34,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\src\AutomationAnalysis.ISNOdds\AutomationAnalysis.ISNOdds.csproj" />
+    <ProjectReference Include="..\..\src\AutomationAnalysis.ISNOdds\AutomationAnalysis.ISNOdds.csproj" />
   </ItemGroup>
 
 </Project>
