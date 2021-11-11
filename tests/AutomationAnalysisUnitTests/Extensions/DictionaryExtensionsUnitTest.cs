@@ -7,42 +7,66 @@ namespace AutomationAnalysisUnitTests.Extensions
 {
     public class DictionaryExtensionsUnitTest
     {
-        [Fact]
-        public void GetValue_ValidKey_ReturnValue()
+        [Theory]
+        [InlineData("key1", "value1")]
+        [InlineData("key2", "defaultValue")]
+        public void GetValueWithDefaultValue_ReturnExpectedValue(string key, string expectedValue)
         {
-            GetValueTestHelpers("key", "value");
-            GetValueTestHelpers(1, "value");
-            GetValueTestHelpers<object, object>(1, "value");
-            GetValueTestHelpers<DateTime, object>(DateTime.Now, "value");
-        }
-
-        [Fact]
-        public void GetValue_InValidKey_ReturnDefaultValue()
-        {
-            var dic = AddDictionaryOneItem("A", "featureA");
-
-            var result = dic.GetValue("B", "featureB");
-
-            Assert.Equal("featureB", result);
-        }
-
-        private void GetValueTestHelpers<TKey, TValue>(TKey key, TValue value)
-        {
-            var dic = AddDictionaryOneItem(key, value);
-
-            var result = dic.GetValue(key);
-
-            Assert.Equal(value, result);
-        }
-
-        private Dictionary<TKey, TValue> AddDictionaryOneItem<TKey, TValue>(TKey key, TValue value)
-        {
-            var dic = new Dictionary<TKey, TValue>
+            // Arrange
+            var dictionary = new Dictionary<string, string>
             {
-                { key, value }
+                { "key1", "value1" }
             };
 
-            return dic;
+            // Act
+            var actual = dictionary.GetValue(key, "defaultValue");
+
+            // Assert
+            Assert.Equal(actual, expectedValue);
+        }
+
+        [Theory]
+        [InlineData("key1", "value1")]
+        [InlineData("key2", "value2")]
+        public void GetValueWithoutDefaultValue_ReturnDictionaryValue(string key, string expectedValue)
+        {
+            // Arrange
+            var dictionary = new Dictionary<string, string>
+            {
+                { "key1", "value1" },
+                { "key2", "value2" }
+            };
+
+            // Act
+            var actual = dictionary.GetValue(key);
+
+            // Assert
+            Assert.Equal(actual, expectedValue);
+        }
+
+        [Fact]
+        public void CloneCaseInSensitive_Returns_DictionaryWithLowerKey()
+        {
+            // Arrange
+            var dictionary = new Dictionary<string, string>
+            {
+                { "KEY1", "value1" },
+                { "Key1", "value1" },
+                { "key1", "value1" },
+                { "key2", "value2" }
+            };
+
+            var expectedValue = new Dictionary<string, string>(StringComparer.InvariantCultureIgnoreCase)
+            {
+                {"key1", "value1"},
+                {"key2", "value2"}
+            };
+
+            // Act
+            var actual = dictionary.CloneCaseInSensitive();
+
+            // Assert
+            Assert.Equal(actual, expectedValue);
         }
     }
 }

@@ -1,10 +1,11 @@
-import Header from "./Header/Header";
+import Header from './Header/Header';
 
 function Layout(props: any) {
+  const { children } = props;
   return (
     <div>
       <Header />
-      {props.children}
+      {children}
     </div>
   );
 }

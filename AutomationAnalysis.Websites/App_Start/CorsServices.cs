@@ -1,7 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-
-namespace AutomationAnalysis.Websites.App_Start
+﻿namespace AutomationAnalysis.Websites
 {
+    using Microsoft.Extensions.DependencyInjection;
+
     public static class CorsServices
     {
         private const string AllowOrigin = "AllowOrigin";

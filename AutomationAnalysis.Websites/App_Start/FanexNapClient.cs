@@ -1,11 +1,11 @@
-using Fanex.NAP.Client;
-using Fanex.NAP.Client.Configuration;
-using Fanex.NAP.Client.Helpers.Web;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace AutomationAnalysis.Websites.App_Start
+namespace AutomationAnalysis.Websites
 {
+    using Fanex.NAP.Client;
+    using Fanex.NAP.Client.Configuration;
+    using Fanex.NAP.Client.Helpers.Web;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.Extensions.DependencyInjection;
+
     public static class FanexNapClient
     {
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -17,6 +17,5 @@ namespace AutomationAnalysis.Websites.App_Start
 
             return app;
         }
-
     }
 }

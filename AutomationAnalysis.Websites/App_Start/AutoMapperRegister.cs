@@ -1,11 +1,14 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using AutomationAnalysis.ISNOdds;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace AutomationAnalysis.Websites.App_Start
+namespace AutomationAnalysis.Websites
 {
     public static class AutoMapperRegister
     {
         public static IServiceCollection AddAutoMapperServices(this IServiceCollection services)
         {
+            //Mapper.Initialize(cfg => cfg.AddProfile<MappingProfile>());
+            services.AddAutoMapper(typeof(Startup), typeof(ISNOddsProfile));
             return services;
         }
     }

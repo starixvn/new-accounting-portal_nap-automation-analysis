@@ -46,3 +46,7 @@ node_modules
 /NAP.OWP.Websites/App_Data/Files/Readme.md
 *.ncrunchproject
 *.ncrunchsolution
+/AutomationAnalysis.Websites/client/package-lock.json
+/AutomationAnalysis.Websites/client/config/cert.pem
+/AutomationAnalysis.Websites/client/config/key.pem
+/js-lcov

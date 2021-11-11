@@ -1,0 +1,66 @@
+h1 {
+    text-align: center;
+}
+
+.report-container {
+    font-size: 0.8125rem;
+}
+
+.card {
+    margin: 1rem 1.25rem;
+    border: snow;
+}
+
+.card-body {
+    background-color: #f2f2f2;
+}
+
+.score-header,
+.goal-header,
+.redcard-header {
+    background-color: #3c5ea5;
+    color: white;
+}
+
+.home-bg {
+    background-color: lightgrey;
+    color: #333333;
+}
+
+.away-bg {
+    background-color: 'lightpink';
+    color: #333333;
+}
+
+.grid-container {
+    padding: 0 1.25rem;
+}
+
+.grid-main tr td:nth-child(1) {
+    background-color: #f2f2f2;
+}
+
+.grid-main tr td:nth-child(2) {
+    background-color: #f2f2f2;
+}
+
+.grid-main tbody tr:nth-child(even) {
+    background: #ebf5fc;
+}
+
+.font-weight-500 {
+    font-weight: 500;
+}
+
+.text-start {
+    text-align: start !important;
+}
+
+.drilldown-link {
+    color: blue;
+    cursor: pointer;
+}
+
+.disable-click {
+    pointer-events: none;
+}

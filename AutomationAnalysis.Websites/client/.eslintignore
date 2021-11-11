@@ -1,0 +1,7 @@
+{
+    "ignorePatterns": [
+      "config-overrides.js",
+      "path.js",
+      *.css
+    ],    
+}

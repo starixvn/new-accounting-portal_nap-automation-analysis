@@ -16,8 +16,7 @@ pipeline {
     stage('Build') {
       steps {        
         script{
-          pipelineLib.beginSonarQubeForMsBuild("NAP-AutomationAnalysis", "Olympus / NAP-AutomationAnalysis", "/d:sonar.cs.opencover.reportsPaths=%WORKSPACE%\\CoverageReports\\*.xml /d:sonar.cs.vstest.reportsPaths=%WORKSPACE%\\TestResults\\*.trx")
-
+          pipelineLib.beginSonarQubeForMsBuild("NAP-AutomationAnalysis", "Olympus / NAP-AutomationAnalysis", "/d:sonar.cs.opencover.reportsPaths=%WORKSPACE%\\CoverageReports\\*.xml /d:sonar.cs.vstest.reportsPaths=%WORKSPACE%\\TestResults\\*.trx /d:sonar.cs.xunit.reportsPaths=%WORKSPACE%\\UnitTest.xml /d:sonar.sources=AutomationAnalysis.Websites/client/src /d:sonar.javascript.lcov.reportPaths=%WORKSPACE%\\js-lcov\\lcov.info /d:sonar.testExecutionReportPaths=%WORKSPACE%\\js-test-report.xml /d:sonar.tests=AutomationAnalysis.Websites/client/src /d:sonar.test.inclusions=**\\*.test.ts,**\\*.test.tsx")
           pipelineLib.msBuild16("AutomationAnalysis.sln")
         }
       }
@@ -33,6 +32,14 @@ pipeline {
           }
         }
 		
+        stage("ReactJS Unit Test"){
+          steps{
+            script{
+			  bat label: 'React unit test', script: 'cd "%WORKSPACE%/AutomationAnalysis.Websites/client" && npm i && npm run ci:coverage && copy /Y test-report.xml "%WORKSPACE%/js-test-report.xml" '
+			  bat label: 'Replace lcov relative path', script: 'node "%WORKSPACE%\\AutomationAnalysis.Websites\\client\\replace-lcov.js" "%WORKSPACE%"'
+            }
+          }
+        }
       }      
     }    
 
@@ -57,12 +64,12 @@ pipeline {
 
   post{
     always{
-      archiveArtifacts "*.xml,*.email"
-      step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])      
-      mstest failOnError: false
+	  archiveArtifacts "*.xml,*.email"
+      step([$class: 'ACIPluginPublisher', name: '*.xml', shownOnProjectPage: false])
+      cobertura coberturaReportFile: "cobertura.xml", onlyStable: false      
     }
     unsuccessful{
-      emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'mira.nguyen@starixvn.com,tyler.dang@starixvn.com,carlos.nguyen@starixvn.com,esther.nguyen@starixvn.com,jack.nguyen@starixvn.com'
+      emailext body: '$DEFAULT_CONTENT', subject: '$DEFAULT_SUBJECT', to: 'jacob.phan@starixvn.com,luca.duong@starixvn.com,johnny.thai@starixvn.com'
     }
   }
 }

@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Route snapshots Test Route Feature 1`] = `
+<Layout>
+  <Switch>
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/app/"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/app/isn-odds-data"
+    />
+    <Route
+      component={[Function]}
+      exact={true}
+      path="/app/redirect-login"
+    />
+    <Route
+      component={[Function]}
+    />
+  </Switch>
+</Layout>
+`;

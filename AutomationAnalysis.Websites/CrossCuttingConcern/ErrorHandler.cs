@@ -1,23 +1,23 @@
-﻿using Fanex.Logging;
-using Fanex.Logging.Extensions;
-using Fanex.Logging.Extensions.Database;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using System;
-using System.Threading.Tasks;
-
-namespace AutomationAnalysis.Websites.CrossCuttingConcern
+﻿namespace AutomationAnalysis.Websites.CrossCuttingConcern
 {
+    using Fanex.Logging;
+    using Fanex.Logging.Extensions;
+    using Fanex.Logging.Extensions.Database;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.Configuration;
+    using System;
+    using System.Threading.Tasks;
+
     public class ErrorHandler
     {
-        private readonly RequestDelegate _next;
-        private readonly ILogger _logger;
+        private readonly RequestDelegate next;
+        private readonly ILogger logger;
         public IConfiguration Configuration { get; }
 
         public ErrorHandler(RequestDelegate next, ILogger logger, IConfiguration configuration)
         {
-            _next = next;
-            _logger = logger;
+            this.next = next;
+            this.logger = logger;
             Configuration = configuration;
         }
 
@@ -25,7 +25,7 @@ namespace AutomationAnalysis.Websites.CrossCuttingConcern
         {
             try
             {
-                await _next(context);
+                await next(context);
             }
             catch (Exception exception)
             {
@@ -40,15 +40,15 @@ namespace AutomationAnalysis.Websites.CrossCuttingConcern
                         .AddSection("Server Info", CommonInfoGetters.GetServerInfo())
                         .AddSection("Exception Info", CommonInfoGetters.GetExceptionInfo(exception))
                         .ToString();
-            await _logger.ErrorAsync(logMessage);
+            await logger.ErrorAsync(logMessage);
 
-            var method = context.Request.Method.ToLowerInvariant();
-            var requestedWith = context.Request.Headers["X-Requested-With"];
+            // var method = context.Request.Method.ToLowerInvariant();
+            // var requestedWith = context.Request.Headers["X-Requested-With"];
 
-            if ((method == "post" || method == "put" || method == "delete") && requestedWith == "XMLHttpRequest")
-            {
-                context.Response.StatusCode = StatusCodes.Status500InternalServerError;
-            }
+            // if ((method == "post" || method == "put" || method == "delete") && requestedWith == "XMLHttpRequest")
+            // {
+            context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+            // }
 
             await context.Response.WriteAsync(exception.Message);
 

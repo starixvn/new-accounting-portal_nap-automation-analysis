@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-
-namespace AutomationAnalysis.Websites.App_Start
+﻿namespace AutomationAnalysis.Websites
 {
+    using Microsoft.AspNetCore.Builder;
+
     public static class EndPointsRegister
     {
         public static IApplicationBuilder UseFanexAuth(this IApplicationBuilder app)
@@ -14,7 +13,6 @@ namespace AutomationAnalysis.Websites.App_Start
                     pattern: "Auth/{action=Index}",
                     defaults: new { controller = "Auth" });
             });
-
 
             app.UseEndpoints(endpoints =>
             {
@@ -43,17 +41,6 @@ namespace AutomationAnalysis.Websites.App_Start
             });
 
             return app;
-        }
-
-        public static IServiceCollection AddRazorPagesForSinglePageApp(this IServiceCollection services)
-        {
-            services.AddRazorPages()
-                .AddRazorPagesOptions(options =>
-                {
-                    options.Conventions.AddPageRoute("/Index", "/app/{*content}");
-
-                });
-            return services;
         }
     }
 }

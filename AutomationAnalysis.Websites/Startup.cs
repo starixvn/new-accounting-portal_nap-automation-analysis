@@ -1,13 +1,12 @@
-using AutomationAnalysis.Websites.App_Start;
-using AutomationAnalysis.Websites.CrossCuttingConcern;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
 namespace AutomationAnalysis.Websites
 {
+    using CrossCuttingConcern;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
+
     public class Startup
     {
         private const string AllowOrigin = "AllowOrigin";
@@ -22,10 +21,11 @@ namespace AutomationAnalysis.Websites
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPagesForSinglePageApp();
+            services.AddRazorPages();
             services.AddAuthentication(Configuration);
             services.AddAuthorizationController();
             services.AddSession(Configuration);
+            services.AddBussinessServices();
             services.AddCorsServices();
             services.AddFanexCaching(Configuration);
             services.AddFanexData(Configuration);

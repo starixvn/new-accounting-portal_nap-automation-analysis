@@ -5,30 +5,25 @@ namespace AutomationAnalysisUnitTests.Extensions
 {
     public class StringExtensionsUnitTest
     {
-        [Fact]
-        public void IsContains_ValidInput_ReturnTrue()
+        [Theory]
+        [InlineData("sear")]
+        [InlineData("")]
+        [InlineData(null)]
+        public void IsContains_ValidInput_ReturnTrue(string searchString)
         {
             var temp = "searched";
 
-            var result = temp.IsContains("sear");
+            var result = temp.IsContains(searchString);
 
             Assert.True(result);
         }
 
-        [Fact]
-        public void IsContains_EmptyInput_ReturnFalse()
+        [Theory]
+        [InlineData("")]
+        [InlineData(null)]
+        public void IsContains_NullOrEmptyInput_ReturnFalse(string toBeSearchedString)
         {
-            var temp = string.Empty;
-
-            var result = temp.IsContains("sear");
-
-            Assert.False(result);
-        }
-
-        [Fact]
-        public void IsContains_NullInput_ReturnFalse()
-        {
-            var result = ((string)null).IsContains("sear");
+            var result = toBeSearchedString.IsContains("sear");
 
             Assert.False(result);
         }

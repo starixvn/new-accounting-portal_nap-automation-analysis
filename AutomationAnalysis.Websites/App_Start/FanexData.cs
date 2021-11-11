@@ -1,11 +1,11 @@
-using Fanex.Data;
-using Fanex.Data.SqlServer;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using System.Linq;
-
-namespace AutomationAnalysis.Websites.App_Start
+namespace AutomationAnalysis.Websites
 {
+    using Fanex.Data;
+    using Fanex.Data.SqlServer;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using System.Linq;
+
     public static class FanexData
     {
         // This method gets called by the runtime. Use this method to add services to the container.

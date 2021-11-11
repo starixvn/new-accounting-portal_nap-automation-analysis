@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Functions>
+  <Function Name="ISNOdds">
+    <Setting Key="NAA_ISNOdds_By_GoalRedCard" SpName="NAA_ISNOdds_By_GoalRedCard" DbName="DBNAAS.bodb_NAAS.bodbAdminNet" />
+    <Setting Key="NAA_ISNOdds_DrillDownBy_GoalRedCard" SpName="NAA_ISNOdds_DrillDownBy_GoalRedCard" DbName="DBNAAS.bodb_NAAS.bodbAdminNet" />
+  </Function>
+</Functions>

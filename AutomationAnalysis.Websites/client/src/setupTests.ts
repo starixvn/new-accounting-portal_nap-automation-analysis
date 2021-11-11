@@ -1,3 +1,7 @@
-import Enzyme from 'enzyme';
-import ReactSixteenAdapter from 'enzyme-adapter-react-16';
-Enzyme.configure({ adapter: new ReactSixteenAdapter() });
+import { configure } from 'enzyme';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
+
+configure({ adapter: new Adapter() });
+
+window.URL.createObjectURL = jest.fn();

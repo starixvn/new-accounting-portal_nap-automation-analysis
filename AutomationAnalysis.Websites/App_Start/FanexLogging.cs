@@ -1,15 +1,15 @@
-using Fanex.Logging;
-using Fanex.Logging.Extensions;
-using Fanex.Logging.Extensions.AspNetCore;
-using Fanex.Logging.Extensions.Database;
-using Fanex.Logging.Sentry.RavenClient;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using SharpRaven;
-using System.Collections.Generic;
-
-namespace AutomationAnalysis.Websites.App_Start
+namespace AutomationAnalysis.Websites
 {
+    using Fanex.Logging;
+    using Fanex.Logging.Extensions;
+    using Fanex.Logging.Extensions.AspNetCore;
+    using Fanex.Logging.Extensions.Database;
+    using Fanex.Logging.Sentry.RavenClient;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using SharpRaven;
+    using System.Collections.Generic;
+
     public static class FanexLogging
     {
         // This method gets called by the runtime. Use this method to add services to the container.

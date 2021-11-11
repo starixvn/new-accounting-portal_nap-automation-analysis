@@ -1,15 +1,17 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Authorization;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Newtonsoft.Json;
-using System;
-using System.Threading.Tasks;
-
-namespace AutomationAnalysis.Websites.App_Start
+﻿namespace AutomationAnalysis.Websites
 {
+    using AutomationAnalysis.ISNOdds.Services;
+    using Microsoft.AspNetCore.Authentication.Cookies;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Mvc.Authorization;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Newtonsoft.Json;
+    using Newtonsoft.Json.Serialization;
+    using System;
+    using System.Threading.Tasks;
+
     public static class AuthServices
     {
         public static IServiceCollection AddAuthentication(this IServiceCollection services, IConfiguration configuration)
@@ -48,6 +50,7 @@ namespace AutomationAnalysis.Websites.App_Start
                 .AddNewtonsoftJson(options =>
                     {
                         options.SerializerSettings.ReferenceLoopHandling = ReferenceLoopHandling.Ignore;
+                        options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     }
                 );
 
@@ -62,6 +65,13 @@ namespace AutomationAnalysis.Websites.App_Start
                 options.IdleTimeout = TimeSpan.FromMinutes(int.Parse(configuration.GetSection("AuthSettings:SessionTimeOut").Value));
                 options.Cookie.Name = "Fanex.AutomationAnalysis.Session";
             });
+
+            return services;
+        }
+
+        public static IServiceCollection AddBussinessServices(this IServiceCollection services)
+        {
+            services.AddScoped<ExportExcelService, ExportExcelServiceImp>();
 
             return services;
         }

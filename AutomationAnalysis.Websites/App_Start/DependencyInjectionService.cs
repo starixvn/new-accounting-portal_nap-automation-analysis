@@ -1,22 +1,23 @@
-﻿using AutomationAnalysis.Services;
-using Fanex.Data.Repository;
-using Fanex.Logging;
-using Fanex.NAP.Client.AspNetCore.Configuration;
-using Fanex.NAP.Client.AspNetCore.Session;
-using Fanex.NAP.Client.Configuration;
-using Fanex.NAP.Client.Helpers.Web;
-using Fanex.NAP.Client.Services;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using ONEbook.UM.AspNetCore;
-using ONEbook.UM.Configurations;
-using ONEbook.UM.Helpers;
-using ONEbook.UM.Services;
-using ONEbook.UM.Transport;
-
-namespace AutomationAnalysis.Websites.App_Start
+﻿namespace AutomationAnalysis.Websites
 {
+    using Fanex.Data.Repository;
+    using Fanex.Logging;
+    using Fanex.NAP.Client.AspNetCore.Configuration;
+    using Fanex.NAP.Client.AspNetCore.Session;
+    using Fanex.NAP.Client.Configuration;
+    using Fanex.NAP.Client.Helpers.Web;
+    using Fanex.NAP.Client.Services;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using ONEbook.UM.AspNetCore;
+    using ONEbook.UM.Configurations;
+    using ONEbook.UM.Helpers;
+    using ONEbook.UM.Services;
+    using ONEbook.UM.Transport;
+    using Services;
+    using SimpleApi;
+
     public static class DependencyInjectionService
     {
         public static IServiceCollection AddFanexDI(this IServiceCollection services, IConfiguration configuration)
@@ -38,6 +39,8 @@ namespace AutomationAnalysis.Websites.App_Start
 
             services.AddScoped<IDynamicRepository, DynamicRepository>();
             services.AddSingleton<LogServiceWrapper, LogServiceWrapperImp>();
+
+            services.AddScoped<SimpleCriteriaFactory, SimpleCriteriaFactoryBase>();
 
             return services;
         }

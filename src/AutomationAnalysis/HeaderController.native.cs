@@ -1,6 +1,5 @@
 ﻿using Fanex.NAP.Client.Helpers.Web;
 using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
 using System.Linq;
 
 namespace AutomationAnalysis
@@ -16,8 +15,18 @@ namespace AutomationAnalysis
             this.session = session;
         }
 
-        [Route("menu")]
+        [Route("")]
         [Produces("application/json")]
-        public IEnumerable<dynamic> GetMenu() => session.MenuItemList.Select(m => new { m.Url, m.Name });
+        public dynamic Index()
+        {
+            var menus = session.MenuItemList.Select(m => new { m.Url, m.Name });
+            var username = session.UserName;
+
+            return new
+            {
+                User = username,
+                Menus = menus
+            };
+        }
     }
 }
